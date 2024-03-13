@@ -9,7 +9,7 @@ font-family: 'Inter', sans-serif;*/
   padding: 2% !important; }
 
 .menu-option {
-  font-family: 'Inter';
+  font-family: "Raleway", sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
@@ -27,7 +27,7 @@ body nav {
 
 nav {
   font-size: 18px;
-  font-family: Inter;
+  font-family: "Raleway", sans-serif;
   font-weight: 400;
   font-style: normal; }
   nav ul {
@@ -47,16 +47,16 @@ nav {
         transform: scale(1.02);
         color: black; }
       nav ul li span {
-        font-family: 'Abril Fatface';
+        font-family: "Syncopate", sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 32px;
         line-height: 49px; }
         nav ul li span:hover {
-          color: black; }
+          color: rgb(255, 255, 255); }
       nav ul li a {
         text-decoration: none;
-        color: #2A2A2A; }
+        color: #ffffff; }
 
 .menu-icon {
   width: 30px;
@@ -101,12 +101,13 @@ body {
   background-image: url("../Assets/Effect BG.png");
   background-repeat: no-repeat;
   background-size: contain;
+  background-color: #171717 !important;
   margin: 0%;
   position: relative; }
 
 /*Main*/
 main {
-  margin: 240px 11% 0 11%;
+  margin: 160px 11% 0 11%;
   display: flex;
   flex-direction: column;
   position: relative; }
@@ -118,18 +119,19 @@ main img {
   margin-bottom: 100px; }
 
 h1 {
-  color: #2A2A2A;
-  font-family: Abril Fatface;
-  font-size: 86px;
+  color: #f2f2f2;
+  font-family: "Syncopate", sans-serif;
+  font-size: 60px;
   line-height: 121px;
   letter-spacing: 2px;
-  font-weight: 400;
+  font-weight: 700;
+  font-style: normal;
   margin: 0 0 40px 0; }
 
 .h1rectangle-Argentina {
   width: 390px;
   height: 39px;
-  background: #FEBBD3;
+  background: #f2f2f2;
   position: absolute;
   top: 72px;
   z-index: -1; }
@@ -144,7 +146,7 @@ h1 {
   z-index: -1; }
 
 h2 {
-  color: #2A2A2A;
+  color: #f2f2f2;
   font-family: 'Inter';
   font-weight: 300;
   font-size: 26px;
@@ -179,12 +181,12 @@ button {
   cursor: pointer; }
 
 h3 {
-  font-family: 'Abril Fatface';
+  font-family: "Syncopate", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 46px;
   line-height: 65px;
-  color: #2A2A2A;
+  color: #ffffff !important;
   margin: 0px 0 20px 0; }
 
 h4 {
@@ -193,7 +195,7 @@ h4 {
   font-weight: 300;
   font-size: 20px;
   line-height: 32px;
-  color: #2A2A2A;
+  color: #ffffff !important;
   margin: 0; }
 
 /* Case Studies Section */
@@ -245,7 +247,7 @@ h4 {
   font-size: 20px;
   line-height: 29px;
   text-align: center;
-  color: #2A2A2A; }
+  color: #ffffff !important; }
 
 .projectSubtitle {
   font-family: 'Inter';
@@ -279,7 +281,7 @@ h4 {
 
 /*About Section*/
 #about {
-  background: #F1F5FB;
+  background: linear-gradient(90deg, #345c67 .91%, #272a35 107.05%);
   display: flex;
   height: 1080px;
   padding: 0 11% 0 11%;
@@ -353,7 +355,7 @@ h4 {
 /* Gallery Section */
 #gallery {
   text-align: center;
-  background: #FFFFFF;
+  background: #171717 !important;
   align-items: center;
   padding-top: 100px;
   padding-bottom: 100px;
