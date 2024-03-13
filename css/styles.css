@@ -1,0 +1,817 @@
+/*font-family: 'Abril Fatface', cursive;
+font-family: 'Inter', sans-serif;*/
+/*Nav Bar*/
+.menu-nav {
+  width: 100%; }
+
+.menu-nav-ul {
+  width: 100%;
+  padding: 2% !important; }
+
+.menu-option {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase; }
+  .menu-option a {
+    text-decoration: none;
+    color: #2A2A2A; }
+
+#menu-icon2 {
+  position: relative;
+  right: 4%; }
+
+body nav {
+  color: #2A2A2A; }
+
+nav {
+  font-size: 18px;
+  font-family: Inter;
+  font-weight: 400;
+  font-style: normal; }
+  nav ul {
+    margin-top: 0%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0%;
+    margin: 0px 10% 20px 10%; }
+    nav ul li {
+      list-style: none;
+      margin: 20px; }
+      nav ul li:hover {
+        font-weight: 600;
+        transition: all 0.5s;
+        transform: scale(1.02);
+        color: black; }
+      nav ul li span {
+        font-family: 'Abril Fatface';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 49px; }
+        nav ul li span:hover {
+          color: black; }
+      nav ul li a {
+        text-decoration: none;
+        color: #2A2A2A; }
+
+.menu-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer; }
+
+#spacer {
+  flex: 1; }
+
+.menu {
+  opacity: 0;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  display: flex !important;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -5;
+  background-color: #F1F5FB; }
+
+.menu-options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; }
+
+html {
+  scroll-behavior: smooth; }
+
+body {
+  margin: 0%; }
+
+.disappear-desktop {
+  display: none;
+  align-self: center; }
+
+.container {
+  background-image: url("../Assets/Effect BG.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0%;
+  position: relative; }
+
+/*Main*/
+main {
+  margin: 240px 11% 0 11%;
+  display: flex;
+  flex-direction: column;
+  position: relative; }
+
+main img {
+  width: 44px;
+  height: 211px;
+  align-self: flex-end;
+  margin-bottom: 100px; }
+
+h1 {
+  color: #2A2A2A;
+  font-family: Abril Fatface;
+  font-size: 86px;
+  line-height: 121px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  margin: 0 0 40px 0; }
+
+.h1rectangle-Argentina {
+  width: 390px;
+  height: 39px;
+  background: #FEBBD3;
+  position: absolute;
+  top: 72px;
+  z-index: -1; }
+
+.h1rectangle-Designer {
+  width: 368px;
+  height: 39px;
+  background: #FEBBD3;
+  position: absolute;
+  top: 192px;
+  left: 266px;
+  z-index: -1; }
+
+h2 {
+  color: #2A2A2A;
+  font-family: 'Inter';
+  font-weight: 300;
+  font-size: 26px;
+  margin: 0 0 60px 0; }
+
+.button-main {
+  position: relative; }
+
+.button-rectangle {
+  width: 195px;
+  height: 53px;
+  border: 3px solid #2A2A2A;
+  border-radius: 3px;
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  z-index: -1;
+  cursor: pointer; }
+
+button {
+  color: white;
+  background-color: #2A2A2A;
+  border-radius: 3px;
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 18px;
+  width: 201px;
+  height: 59px;
+  top: 401px;
+  z-index: 1;
+  border: none;
+  cursor: pointer; }
+
+h3 {
+  font-family: 'Abril Fatface';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 46px;
+  line-height: 65px;
+  color: #2A2A2A;
+  margin: 0px 0 20px 0; }
+
+h4 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 32px;
+  color: #2A2A2A;
+  margin: 0; }
+
+/* Case Studies Section */
+#caseStudies {
+  text-align: center;
+  position: relative; }
+
+.noPointer {
+  pointer-events: none; }
+
+.h3rectangle-caseStudies {
+  width: 274px;
+  height: 24px;
+  background: #DCEBFA;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1; }
+
+.caseStudies-section {
+  margin: 100px 11% 100px 11%;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+  justify-content: center; }
+
+.caseStudies-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+  padding: 0px;
+  gap: 10px;
+  width: 30%;
+  min-width: 335px; }
+
+.caseStudies-img {
+  width: 100%;
+  height: 283px;
+  object-fit: contain; }
+
+.projectTitle {
+  text-decoration: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 29px;
+  text-align: center;
+  color: #2A2A2A; }
+
+.projectSubtitle {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+  color: #959595; }
+
+.projectDescription {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #8E8E8E; }
+
+.projectStatus {
+  padding: 4px 20px;
+  background: #EFF0F2;
+  border: 1px solid #E7E7E7;
+  border-radius: 10px;
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #2A2A2A; }
+
+/*About Section*/
+#about {
+  background: #F1F5FB;
+  display: flex;
+  height: 1080px;
+  padding: 0 11% 0 11%;
+  align-items: center; }
+
+.h3rectangle-about {
+  width: 210px;
+  height: 24px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 38px;
+  left: -1px;
+  z-index: -1; }
+
+#about img {
+  width: 400px;
+  height: 400px; }
+
+.aboutMe-right h4 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 32px;
+  color: #2A2A2A; }
+
+.aboutMe-right {
+  margin-left: 100px;
+  position: relative; }
+
+.aboutMe-right .button-main {
+  margin-top: 30px; }
+
+/* Resume Section */
+#resume {
+  padding: 100px 11% 220px 11%;
+  display: flex;
+  flex-direction: column;
+  background-image: url("../ProjectImages/Resume-background.png");
+  background-size: cover;
+  position: relative; }
+
+.h3rectangle-resume {
+  width: 174px;
+  height: 24px;
+  background: #DCEBFA;
+  position: absolute;
+  top: 138px;
+  left: 11%;
+  z-index: -1; }
+
+.cv-img {
+  width: 100%;
+  margin-top: 5%; }
+
+.resume-subtitleButton {
+  display: flex;
+  align-items: center; }
+
+.resume-subtitle-line {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; }
+
+.resume-subtitle-line img {
+  width: 100%; }
+
+.resume-subtitleButton {
+  gap: 90px; }
+
+/* Gallery Section */
+#gallery {
+  text-align: center;
+  background: #FFFFFF;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
+  background-image: url("../Assets/BG Gallery.png");
+  background-size: cover; }
+
+.h3rectangle-gallery {
+  width: 160px;
+  height: 24px;
+  background: #FEBBD3;
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1; }
+
+.gallery-cardsSection {
+  margin: 100px 11% 0px 11%;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, auto));
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center; }
+
+.gallery-img {
+  width: 100%;
+  object-fit: contain; }
+
+.gallery-project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+  padding: 0px;
+  gap: 10px;
+  width: 80%;
+  min-width: 400px; }
+
+/* Contact Section */
+#contact {
+  margin-left: 11%;
+  display: flex;
+  position: relative;
+  padding: 180px 0 180px 0; }
+
+.h3rectangle-contact {
+  width: 356px;
+  height: 24px;
+  background: #DCEBFA;
+  position: absolute;
+  top: 220px;
+  left: 0%;
+  z-index: -1; }
+
+.contact-socialnetworks {
+  display: flex;
+  gap: 20px;
+  width: 36px;
+  margin-top: 60px; }
+
+.contact-leftsection {
+  flex: 1; }
+
+.contactForm-bg {
+  position: absolute;
+  right: 0px;
+  top: -100px;
+  z-index: -1; }
+
+.contact-form {
+  margin-right: 11%;
+  margin-left: 300px;
+  width: 100%;
+  max-width: 670px;
+  flex: 1;
+  position: relative; }
+
+.contact-button {
+  width: 100%; }
+
+form {
+  font-family: 'Inter';
+  font-weight: 300;
+  font-size: 18px;
+  color: #2A2A2A;
+  width: 100%;
+  left: 1006px;
+  top: 192px;
+  background: #FFFFFF;
+  border-radius: 20px 20px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px; }
+
+form input {
+  font-family: 'Inter';
+  font-weight: 300;
+  font-size: 18px;
+  color: #2A2A2A;
+  width: 77%;
+  align-self: center;
+  border: none;
+  border-bottom: 1px solid #2A2A2A;
+  margin-bottom: 10px;
+  outline: none; }
+  form input.contact-button {
+    color: white;
+    background-color: #2A2A2A;
+    border-radius: 3px;
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 18px;
+    height: 59px;
+    margin: 0;
+    z-index: 1;
+    border: none;
+    cursor: pointer; }
+
+form textarea {
+  font-family: 'Inter';
+  font-weight: 300;
+  font-size: 18px;
+  color: #2A2A2A;
+  width: 77%;
+  align-self: center;
+  border: none;
+  border-bottom: 1px solid #2A2A2A;
+  outline: none;
+  margin-bottom: 60px;
+  resize: none; }
+
+form p {
+  width: 77%;
+  align-self: center;
+  margin-bottom: 10px; }
+
+.contact-form img {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  z-index: -1; }
+
+/* Footer */
+footer {
+  text-align: center;
+  font-family: 'Inter';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 120px;
+  background: #F1F5FB; }
+
+footer p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2A2A2A; }
+
+footer span {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 32px;
+  color: #8E8E8E; }
+
+/*Case Studies pages*/
+.h1-caseStudyPage {
+  color: #2A2A2A;
+  font-family: Abril Fatface;
+  font-size: 48px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  margin: -100px 0 20px 0;
+  text-align: center; }
+
+.h2-caseStudyPage {
+  text-align: center;
+  color: #2A2A2A;
+  font-family: 'Inter';
+  font-weight: 300;
+  font-size: 21px;
+  margin: 0 10% 20px 10%;
+  line-height: 140%; }
+
+.h3-caseStudyPage {
+  text-align: center;
+  color: #959595;
+  font-family: 'Inter';
+  font-weight: 300;
+  font-size: 18px;
+  margin: 0; }
+
+.projectPage-Img {
+  width: 100%; }
+
+.projectPage-imgGroup {
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 64%;
+  align-items: center;
+  box-shadow: 6px 20px 60px rgba(0, 0, 0, 0.16); }
+
+.prototypeFigma {
+  width: 64%;
+  margin: 20px auto 0 auto;
+  display: flex;
+  flex-direction: column; }
+
+.previous-nextProject {
+  width: 64%;
+  margin: 160px auto 100px auto;
+  display: flex;
+  justify-content: space-between; }
+
+/*Media Queries*/
+@media screen and (max-width: 1400px) {
+  .aboutMe-right h4 {
+    font-size: 20px; } }
+
+@media screen and (max-width: 1300px) {
+  #about {
+    flex-direction: column-reverse;
+    height: 100%;
+    padding: 11%;
+    gap: 60px; }
+  #about img {
+    width: 70%;
+    object-fit: contain;
+    height: auto; }
+  #contact {
+    flex-direction: column;
+    height: 100%;
+    padding: 11%;
+    margin-left: 0;
+    gap: 60px; }
+  .contact-form {
+    margin-left: 0; } }
+
+@media screen and (max-width: 1400px) {
+  .about img {
+    width: 70%;
+    object-fit: contain; } }
+
+@media screen and (max-width: 888px) {
+  .container {
+    padding: 2%;
+    background-image: url("../Assets/MobileEffectBG.png"); }
+  .disappear-mobile {
+    display: none !important; }
+  .disappear-desktop {
+    display: block; }
+  nav > ul {
+    align-items: flex-start;
+    margin: 0; }
+  nav > ul > li > a > span {
+    font-size: 24px; }
+  h1 {
+    font-size: 42px;
+    line-height: 54px; }
+  .h1rectangle-Argentina {
+    display: none; }
+  .h1rectangle-Designer {
+    display: none; }
+  h2 {
+    font-size: 14px;
+    line-height: 180%; }
+  #resume {
+    display: none; }
+  .gallery-cardsSection {
+    grid-template-columns: repeat(auto-fit, minmax(250px, auto)); }
+  .gallery-project {
+    min-width: 300px; } }
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding-bottom: 0; }
+  main {
+    margin: 180px 4% 0 4%; }
+  main img {
+    margin-top: 86px; }
+  h1 {
+    font-size: 40px;
+    line-height: 54px;
+    margin-bottom: 20px; }
+  h2 {
+    font-size: 16px;
+    margin-bottom: 30px; }
+  .button-rectangle {
+    width: 148px;
+    height: 43px;
+    left: 2px;
+    top: 2px; }
+  button {
+    font-size: 14px;
+    width: 150px;
+    height: 45px; }
+  h3 {
+    font-size: 24px;
+    margin-bottom: 10px; }
+  .h3rectangle-caseStudies {
+    width: 150px;
+    height: 13px;
+    top: 39px; }
+  h4 {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 17px; }
+  .caseStudies-section {
+    margin: 30px 11% 30px 11%; }
+  #about {
+    padding: 50px 25px; }
+  .aboutMe-right {
+    margin-left: 0; }
+  .aboutMe-right h3 {
+    text-align: center; }
+  .h3rectangle-about {
+    height: 13px;
+    width: 127px;
+    left: 50%;
+    transform: translateX(-50%); }
+  .aboutMe-right h4 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 19px; }
+  .aboutMe-right > .button-main {
+    text-align: center; }
+  .aboutMe-right > .button-main > a > .button-rectangle {
+    left: 50%;
+    transform: translateX(-48%); }
+  #about img {
+    width: 340px; }
+  #gallery {
+    padding-top: 40px;
+    padding-bottom: 80px; }
+  #gallery h4 {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 19px; }
+  .h3rectangle-gallery {
+    width: 90px;
+    height: 14px;
+    top: 77px; }
+  .gallery-cardsSection {
+    margin: 40px 11% 0px 11%;
+    gap: 50px; }
+  .gallery-project {
+    margin-bottom: 0; }
+  .projectTitle {
+    font-size: 18.2857px; }
+  .projectSubtitle {
+    font-size: 12.7205px; }
+  .projectDescription {
+    font-size: 12px; }
+  .caseStudies-card {
+    gap: 0;
+    margin-bottom: 50px; }
+  #contact {
+    gap: 0;
+    padding: 11% 4% 25% 4%; }
+  #contact > .contact-leftsection > h3 {
+    text-align: center; }
+  #contact > .contact-leftsection > h4 {
+    text-align: center; }
+  .h3rectangle-contact {
+    width: 185px;
+    height: 14px;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%); }
+  .contact-socialnetworks {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    transform: scale(0.7);
+    margin-bottom: 40px; }
+  .contact-form > form > p {
+    font-size: 12px;
+    margin-bottom: 0; }
+  .contact-form > form > input {
+    font-size: 12px; }
+  .contact-form > img {
+    width: 50px;
+    bottom: -10px;
+    right: -10px; }
+  .contactForm-bg {
+    width: 140%;
+    height: 60%;
+    top: 250px;
+    transform: scaleY(1.5); }
+  footer {
+    height: 44px;
+    gap: 3px; }
+  footer > p {
+    font-size: 8px;
+    line-height: 10px;
+    margin: 0; }
+  footer > span {
+    font-size: 6px;
+    line-height: 10px; }
+  .h1-caseStudyPage {
+    font-family: 'Abril Fatface';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 27px;
+    letter-spacing: 0; }
+  .h2-caseStudyPage {
+    font-size: 12px;
+    margin: 0; }
+  .h3-caseStudyPage {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 140%;
+    margin-top: 20px; }
+  .projectPage-imgGroup {
+    width: 92%;
+    margin: 40px 4%; }
+  .prototypeFigma {
+    width: 92%;
+    margin: 0px 4%; }
+  .previous-nextProject {
+    width: 92%;
+    margin: 30px 4%; }
+  .previous-nextProject img {
+    width: 100px; } }
+
+/*Animation*/
+.caseStudies-img:hover {
+  transition: all 0.6s;
+  transform: scale(1.1); }
+
+.gallery-img:hover {
+  transition: all 0.6s;
+  transform: scale(1.06); }
+
+.button-main button:hover {
+  transition: all 0.5s;
+  transform: scale(1.02);
+  background-color: black; }
+
+.contact-socialnetworks img:hover {
+  transition: all 0.5s;
+  transform: scale(1.1); }
+
+.contact-button:hover {
+  transition: all 0.6s;
+  transform: scale(1.03);
+  background-color: black;
+  box-shadow: 6px 20px 60px rgba(0, 0, 0, 0.12); }
+
+.contact-form form:hover {
+  transition: all 0.6s;
+  box-shadow: 6px 20px 60px rgba(0, 0, 0, 0.12); }

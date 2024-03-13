@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- SEO-->
+    <meta name="description" content="Dark Mode UI Design for a Sport Teams Management and Communication App." />
+
+    <meta name="keywords" content="Victoria, Zheng, diseñador, ux, ui, design, ux/ui, designer, user, experience, interface, portfolio" />
+
+    <meta name="author" content="Victoria Zheng" />
+
+    <!-- Favicon--> 
+    <link rel="shortcut icon" href="https://vickavz.github.io/Portfolio-Victoria-Zheng/Pages/Assets/VZ&#32;Favicon.png" type="image/x-icon">
+    <title>Victoria Zheng | Sport Teams Management and Communication App </title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Link-->
+    <link rel="stylesheet" href="../style.css">
+    
+    <!-- Font Inter-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="menu" class="menu disappear-desktop">
+        <nav class="menu-nav">
+            <ul class="menu-nav-ul">
+                <li><a href="../index.html"><span>• Victoria Zheng •</span></a></li>
+                <li id="spacer"></li>
+                <li id="menu-icon2" class="disappear-desktop"><img class="menu-icon" src="../Assets/Cross&#32;icon.svg" alt=""></li>
+            </ul>
+        </nav>
+        <div class="menu-options">
+            <span class="menu-option"><a href="../index.html#caseStudies">CASE STUDIES</a></span>
+            <span class="menu-option"><a href="../index.html#about">ABOUT</a></span>
+            <span class="menu-option"><a href="../index.html#gallery">GALLERY</a></span>
+            <span class="menu-option"><a href="../index.html#contact">CONTACT</a></span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Nav Bar-->
+        <nav>
+            <ul>
+                <li><a href="../index.html"><span>• Victoria Zheng •</span></a></li>
+                <li id="spacer"></li>
+                <li class="disappear-mobile"><a href="../index.html#caseStudies">CASE STUDIES</a></li>
+                <li class="disappear-mobile"><a href="../index.html#about">ABOUT</a></li>
+                <li class="disappear-mobile"><a href="../index.html#gallery">GALLERY</a></li>
+                <li class="disappear-mobile"><a href="../index.html#contact">CONTACT</a></li>
+                <li id="menu-icon" class="disappear-desktop"><img class="menu-icon" src="../Assets/burger&#32;menu.svg" alt=""></li>
+            </ul>
+        </nav>
+
+    <!-- Main-->
+    <main>
+        <h1 class="h1-caseStudyPage">Sport Teams Management and Communication App</h1>
+        <h2 class="h2-caseStudyPage">Dark Mode UI Design for a Sport Teams Management and Communication App. 
+            <br />
+            <br />
+            The mockups feature a meticulously designed dark mode interface, presenting a stylish and modern aesthetic that not only enhances visual appeal but also optimizes usability. The seamless fusion of functionality with aesthetics introduces a fresh and dynamic perspective to user interaction, ensuring a visually engaging and efficient experience for managing and communicating with sports teams.
+
+        <h3 class="h3-caseStudyPage">DARK MODE UI DESIGN</h3>
+    </main>
+
+    <div class="projectPage-imgGroup">
+        <img class="projectPage-Img" src="../Sport&#32;Teams&#32;Management&#32;and&#32;Communication&#32;App-images/1.webp" alt="Sport Teams Management and Communication App">
+        <br />
+        <br />
+        <br />
+        <img class="projectPage-Img" src="../Sport&#32;Teams&#32;Management&#32;and&#32;Communication&#32;App-images/2.webp" alt="Sport Teams Management and Communication App">
+        <br />
+        <br />
+        <br />
+        <img class="projectPage-Img" src="../Sport&#32;Teams&#32;Management&#32;and&#32;Communication&#32;App-images/3.webp" alt="Sport Teams Management and Communication App">
+    </div>
+
+
+    <!-- Footer -->
+
+    <footer>
+        <p>Let’s get in touch: vickyx1@hotmail.com</p>
+        <span>© Victoria Zheng 2022</span>
+    </footer>
+    </div>
+        
+    <script>
+        const showMenu = false;
+        document.getElementById('menu-icon').onclick = function() {
+            document.getElementById('menu').style.opacity = 1;
+            document.getElementById('menu').style.zIndex = 10;
+        }
+        document.getElementById('menu-icon2').onclick = function() {
+            document.getElementById('menu').style.opacity = 0;
+            document.getElementById('menu').style.zIndex = -5;
+        }
+        const menuItems = document.querySelectorAll('.menu-option');
+        menuItems.forEach((item) => {
+            item.onclick = function() {
+            document.getElementById('menu').style.opacity = 0;
+            document.getElementById('menu').style.zIndex = -5;
+        }
+        });
+    </script>
+</body>
+</html>
