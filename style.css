@@ -16,17 +16,14 @@
   --text-mid: #3D3D3D;
   --text-muted: #6B7280;
   --purple: #7C3AED;
-  --purple-light: #8B5CF6;
-  --glass-bg: rgba(25, 20, 26, 0.6);
-  --glass-border: rgba(255,255,255,0.1);
+  --glass-bg: rgba(25, 20, 26, 0.55);
+  --glass-border: rgba(255,255,255,0.12);
   --tag-bg: rgba(25, 20, 26, 0.6);
   --tag-light-bg: rgba(0, 0, 0, 0.06);
   --tag-light-border: rgba(0, 0, 0, 0.1);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', sans-serif;
@@ -36,70 +33,81 @@ body {
 }
 
 img { display: block; max-width: 100%; }
-a { text-decoration: none; color: inherit; }
+a   { text-decoration: none; color: inherit; }
 
 /* ─── Navbar ────────────────────────────────────── */
 .navbar {
   position: fixed;
   top: 28px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   z-index: 1000;
-  width: min(560px, calc(100% - 40px));
+  display: flex;
+  justify-content: center;
+  pointer-events: none;   /* let clicks through the gap */
 }
 
 .navbar-inner {
+  pointer-events: all;    /* re-enable on the pill itself */
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 32px;
   padding: 14px 28px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.06);
+  background: var(--glass-bg);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--glass-border);
   box-shadow: 0 4px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+  /* smooth color transitions */
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 .navbar-logo {
   font-family: 'Geist', sans-serif;
   font-weight: 700;
-  font-size: 16px;
-  color: var(--white);
-  opacity: 0.9;
+  font-size: 15px;
+  color: rgba(255,255,255,0.9);
+  white-space: nowrap;
+  transition: color 0.35s ease;
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .navbar-links a {
   font-family: 'Inter', sans-serif;
   font-size: 13.5px;
   font-weight: 450;
-  color: rgba(255,255,255,0.8);
-  padding: 6px 12px;
+  color: rgba(255,255,255,0.75);
+  padding: 6px 14px;
   border-radius: 999px;
   transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
 }
 
 .navbar-links a:hover {
   color: var(--white);
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.12);
 }
 
-/* Dark section navbar adaptation */
+/* ── Light mode (over white sections) ── */
 .navbar.light .navbar-inner {
-  background: rgba(255,255,255,0.65);
-  border-color: rgba(0,0,0,0.08);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.72);
+  border-color: rgba(0,0,0,0.09);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9);
 }
 
-.navbar.light .navbar-logo,
-.navbar.light .navbar-links a {
+.navbar.light .navbar-logo {
   color: rgba(0,0,0,0.85);
+}
+
+.navbar.light .navbar-links a {
+  color: rgba(0,0,0,0.65);
 }
 
 .navbar.light .navbar-links a:hover {
@@ -107,73 +115,40 @@ a { text-decoration: none; color: inherit; }
   background: rgba(0,0,0,0.06);
 }
 
-/* ─── Hero Section ──────────────────────────────── */
+/* ─── Hero ──────────────────────────────────────── */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(ellipse 80% 80% at 50% 60%, #2A1E4A 0%, #19141A 100%);
+  background: radial-gradient(ellipse 90% 85% at 50% 60%, #2A1E4A 0%, #19141A 100%);
 }
 
-.hero-bg-decoration {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-/* Left half-ring decoration */
-.deco-left {
-  position: absolute;
-  left: -80px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  border: 32px solid transparent;
-  background: linear-gradient(135deg, #FFD700, #FF6B9D, #C084FC) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
-  opacity: 0.7;
-  filter: blur(1px);
-}
-
-/* Right 3D discs */
-.deco-right {
-  position: absolute;
-  right: 60px;
-  top: 50%;
-  transform: translateY(-55%);
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  align-items: flex-end;
-}
-
-.disc {
-  border-radius: 50%;
-  background: conic-gradient(from 180deg, #FF6EC7, #FFD700, #00F5C4, #7C3AED, #FF6EC7);
-  transform: perspective(300px) rotateX(68deg);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-}
-
-.disc-1 { width: 160px; height: 160px; }
-.disc-2 { width: 120px; height: 120px; opacity: 0.85; }
-.disc-3 { width: 80px; height: 80px; opacity: 0.7; }
-
-/* Noise texture overlay */
+/* Noise grain */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Lens PNG — static, right side */
+.hero-lens {
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-52%);
+  width: clamp(220px, 28vw, 380px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  opacity: 0.92;
 }
 
 .hero-content {
@@ -190,7 +165,7 @@ a { text-decoration: none; color: inherit; }
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 400;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.55);
   letter-spacing: 0.01em;
 }
 
@@ -211,25 +186,27 @@ a { text-decoration: none; color: inherit; }
   margin-top: 8px;
 }
 
+/* ─── Tags ──────────────────────────────────────── */
 .tag {
   font-family: 'Inter', sans-serif;
   font-size: 13.5px;
   font-weight: 500;
   padding: 10px 20px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid transparent;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
 .tag-dark {
-  background: rgba(25, 20, 26, 0.7);
-  color: rgba(255,255,255,0.85);
+  background: rgba(25, 20, 26, 0.65);
+  color: rgba(255,255,255,0.82);
+  border-color: rgba(255,255,255,0.1);
 }
 
 .tag-light {
-  background: rgba(0,0,0,0.06);
-  color: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.05);
+  color: rgba(0,0,0,0.65);
   border-color: rgba(0,0,0,0.1);
 }
 
@@ -242,114 +219,77 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
 }
 
-/* Section 1 - Diligent */
+/* Section 1 — Diligent */
 .section-diligent {
   background: var(--white);
   color: var(--text-dark);
 }
+.section-diligent .cs-visual  { padding: 80px 40px 80px 80px; }
+.section-diligent .cs-content { padding: 80px 80px 80px 40px; }
 
-.section-diligent .cs-visual {
-  position: relative;
-  padding: 80px 40px 80px 80px;
-}
-
-.section-diligent .cs-content {
-  padding: 80px 80px 80px 40px;
-}
-
-/* Red triangle decoration */
+/* Red corner triangle */
 .section-diligent::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 0;
+  bottom: 0; left: 0;
+  width: 0; height: 0;
   border-style: solid;
   border-width: 0 0 200px 200px;
   border-color: transparent transparent #E63946 transparent;
+  pointer-events: none;
 }
 
-/* Section 2 - Conduiit */
+/* Section 2 — Conduiit */
 .section-conduiit {
   background: #F4F4F4;
   color: var(--text-dark);
 }
+.section-conduiit .cs-visual  { padding: 80px 80px 80px 40px; order: 2; }
+.section-conduiit .cs-content { padding: 80px 40px 80px 80px; order: 1; }
 
-.section-conduiit .cs-visual {
-  padding: 80px 80px 80px 40px;
-  order: 2;
-}
-
-.section-conduiit .cs-content {
-  padding: 80px 40px 80px 80px;
-  order: 1;
-}
-
-/* Infinity symbol decorations */
 .infinity-deco {
   position: absolute;
-  font-size: 120px;
-  line-height: 1;
   color: var(--purple);
-  opacity: 0.08;
+  opacity: 0.07;
   font-weight: 900;
   pointer-events: none;
   user-select: none;
+  line-height: 1;
 }
 
-/* Section 3 - Mercado Libre */
+/* Section 3 — Mercado Libre */
 .section-mercadolibre {
   background: var(--white);
   color: var(--text-dark);
 }
+.section-mercadolibre .cs-visual  { padding: 80px 40px 80px 80px; }
+.section-mercadolibre .cs-content { padding: 80px 80px 80px 40px; }
 
-.section-mercadolibre .cs-visual {
-  padding: 80px 40px 80px 80px;
-}
-
-.section-mercadolibre .cs-content {
-  padding: 80px 80px 80px 40px;
-}
-
-/* Dot grid pattern for MercadoLibre */
 .dot-grid-bg {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
+  top: 0; right: 0;
+  width: 50%; height: 100%;
   background-image: radial-gradient(rgba(0,0,0,0.07) 1px, transparent 1px);
   background-size: 24px 24px;
   pointer-events: none;
 }
 
-/* Visual mockup container */
+/* Shared visual / content */
 .cs-visual img {
   width: 100%;
   height: auto;
   border-radius: 20px;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.15);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.13);
 }
 
-/* Content area */
 .cs-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   margin-bottom: 24px;
 }
 
-.cs-brand-logo {
-  height: 28px;
-  width: auto;
-}
-
-.cs-brand-name {
-  font-family: 'Geist', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: inherit;
+.cs-brand img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .cs-title {
@@ -427,29 +367,34 @@ a { text-decoration: none; color: inherit; }
 }
 
 .project-card {
+  display: block;
   border-radius: 20px;
-  overflow: hidden;
-  position: relative;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.project-card:hover {
+/* Only the image wrapper gets the hover lift */
+.project-card-img-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover .project-card-img-wrap {
   transform: translateY(-6px);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45);
 }
 
-.project-card img {
+.project-card-img-wrap img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 16px;
+  border-radius: 0; /* handled by wrapper */
 }
 
 .project-card-label {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.55);
   margin-top: 16px;
   text-align: left;
   padding: 0 4px;
@@ -466,32 +411,31 @@ a { text-decoration: none; color: inherit; }
 
 .trusted-label {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  color: rgba(255,255,255,0.45);
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 500;
-  margin-bottom: 48px;
+  margin-bottom: 44px;
 }
 
 .logos-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 56px;
+  gap: 52px;
   flex-wrap: wrap;
 }
 
-.logos-row .logo-name {
-  font-family: 'Geist', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.55);
-  letter-spacing: -0.01em;
-  transition: color 0.2s;
+.logos-row img {
+  display: block;
+  width: auto;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  filter: brightness(0) invert(1); /* ensure white on dark */
 }
 
-.logos-row .logo-name:hover { color: rgba(255,255,255,0.9); }
+.logos-row img:hover { opacity: 1; }
 
 .footer-contact {
   padding: 100px 80px;
@@ -501,7 +445,6 @@ a { text-decoration: none; color: inherit; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0;
 }
 
 .footer-photo {
@@ -534,7 +477,6 @@ a { text-decoration: none; color: inherit; }
 .footer-name {
   font-family: 'Inter', sans-serif;
   font-size: 17px;
-  font-weight: 400;
   color: var(--text-mid);
   margin-bottom: 36px;
 }
@@ -543,10 +485,10 @@ a { text-decoration: none; color: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 2px;
-  border: 1.5px solid rgba(0,0,0,0.15);
+  border: 1.5px solid rgba(0,0,0,0.14);
   border-radius: 999px;
-  padding: 6px 6px;
-  background: rgba(255,255,255,0.5);
+  padding: 6px;
+  background: rgba(255,255,255,0.55);
   backdrop-filter: blur(8px);
 }
 
@@ -565,28 +507,25 @@ a { text-decoration: none; color: inherit; }
   background: rgba(0,0,0,0.06);
 }
 
-.footer-links .footer-sep {
+.footer-sep {
   width: 1px;
   height: 18px;
-  background: rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.14);
 }
 
 /* ─── Edelap Case Study Page ─────────────────────── */
-.cs-page {
-  background: var(--white);
-  min-height: 100vh;
-}
+.cs-page { background: var(--white); min-height: 100vh; }
 
 .cs-page-header {
   background: var(--dark-bg);
   padding: 140px 80px 80px;
   text-align: center;
+  position: relative;
 }
 
 .cs-page-back {
   position: absolute;
-  top: 100px;
-  left: 80px;
+  top: 100px; left: 80px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -595,7 +534,6 @@ a { text-decoration: none; color: inherit; }
   color: rgba(255,255,255,0.6);
   transition: color 0.2s;
 }
-
 .cs-page-back:hover { color: var(--white); }
 
 .cs-page-content {
@@ -607,27 +545,24 @@ a { text-decoration: none; color: inherit; }
 .cs-page-content img {
   width: 100%;
   height: auto;
-  display: block;
 }
 
-/* ─── Animations ─────────────────────────────────── */
+/* ─── Scroll Animations ──────────────────────────── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .hero-eyebrow { animation: fadeUp 0.8s ease both; animation-delay: 0.1s; }
-.hero-name { animation: fadeUp 0.8s ease both; animation-delay: 0.25s; }
-.hero-tags { animation: fadeUp 0.8s ease both; animation-delay: 0.4s; }
-.navbar { animation: fadeUp 0.6s ease both; animation-delay: 0s; }
+.hero-name    { animation: fadeUp 0.8s ease both; animation-delay: 0.25s; }
+.hero-tags    { animation: fadeUp 0.8s ease both; animation-delay: 0.4s; }
+.navbar       { animation: fadeUp 0.6s ease both; }
 
-/* Scroll reveal */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
@@ -641,54 +576,45 @@ a { text-decoration: none; color: inherit; }
   }
 
   .section-diligent .cs-visual,
-  .section-conduiit .cs-visual,
+  .section-conduiit  .cs-visual,
   .section-mercadolibre .cs-visual {
     padding: 60px 40px 0;
-    order: 1;
+    order: 1 !important;
   }
 
-  .section-conduiit .cs-content,
   .section-diligent .cs-content,
+  .section-conduiit  .cs-content,
   .section-mercadolibre .cs-content {
     padding: 40px 40px 60px;
-    order: 2;
+    order: 2 !important;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
+  .projects-grid { grid-template-columns: 1fr; }
 
   .more-projects,
   .footer-trusted,
-  .footer-contact {
-    padding: 60px 40px;
-  }
+  .footer-contact { padding: 60px 40px; }
 
   .logos-row { gap: 32px; }
 }
 
 @media (max-width: 640px) {
-  .navbar-inner { padding: 12px 20px; }
-  .hero-name { font-size: 52px; }
-  .hero-tags { gap: 8px; }
+  .navbar-inner { padding: 12px 20px; gap: 16px; }
+  .hero-name  { font-size: 52px; }
+  .hero-lens  { width: 160px; right: -20px; }
+  .hero-tags  { gap: 8px; }
 
   .section-diligent .cs-visual,
-  .section-conduiit .cs-visual,
-  .section-mercadolibre .cs-visual {
-    padding: 40px 24px 0;
-  }
+  .section-conduiit  .cs-visual,
+  .section-mercadolibre .cs-visual { padding: 40px 24px 0; }
 
-  .section-conduiit .cs-content,
   .section-diligent .cs-content,
-  .section-mercadolibre .cs-content {
-    padding: 32px 24px 48px;
-  }
+  .section-conduiit  .cs-content,
+  .section-mercadolibre .cs-content { padding: 32px 24px 48px; }
 
   .more-projects,
   .footer-trusted,
-  .footer-contact {
-    padding: 48px 24px;
-  }
+  .footer-contact { padding: 48px 24px; }
 
   .cs-page-header { padding: 120px 24px 60px; }
   .cs-page-content { padding: 40px 24px; }
