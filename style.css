@@ -278,7 +278,7 @@ a   { text-decoration: none; color: inherit; }
 .cs-visual img {
   width: 100%;
   height: auto;
-  border-radius: 20px;
+  border-radius: 35px;
   box-shadow: 0 32px 80px rgba(0,0,0,0.13);
 }
 
