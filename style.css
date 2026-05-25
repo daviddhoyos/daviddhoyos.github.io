@@ -346,7 +346,7 @@ a   { text-decoration: none; color: inherit; }
 /* ─── Case Study Sections ───────────────────────── */
 .case-study {
   position: relative;
-  min-height: 100vh;
+  min-height: 70vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
