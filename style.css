@@ -193,7 +193,7 @@ a   { text-decoration: none; color: inherit; }
 .navbar:not(.light) .navbar-logo,
 .navbar:not(.light) .navbar-links a,
 .navbar:not(.light) .navbar-email-btn {
-  mix-blend-mode: difference;
+  mix-blend-mode: darken;
   color: #ffffff; /* white inverts to near-black over light bgs */
 }
 
