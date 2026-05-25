@@ -314,64 +314,57 @@ a   { text-decoration: none; color: inherit; }
   display: block;
 }
 
-/* Individual floating + rotation animations */
-.lens-up {
-  animation:
-    lens-float-up   5.8s ease-in-out infinite,
-    lens-rotate-up  8.2s ease-in-out infinite;
-  transform-origin: center center;
+/* ┌─────────────────────────────────────────────────────────────┐
+   │  LENS ANIMATION SETTINGS — editá estos valores a mano      │
+   │                                                             │
+   │  VELOCIDAD (duración del ciclo completo):                   │
+   │    lens-up   → 4.6s   ↑ número = más lento, ↓ = más rápido │
+   │    lens-mid  → 5.1s                                         │
+   │    lens-down → 4.3s                                         │
+   │                                                             │
+   │  DISTANCIA DE FLOTADO (pico en keyframe 45%):               │
+   │    lens-up   → translateY(-11px)  negativo = sube           │
+   │    lens-mid  → translateY(-4px)                             │
+   │    lens-down → translateY(11px)   positivo = baja           │
+   │                                                             │
+   │  BOUNCE (overshoot en keyframe 45% vs 55%):                 │
+   │    45% = pico exagerado (ej: -14px), 55% = asentado (-11px) │
+   │    Diferencia mayor = rebote más pronunciado                 │
+   │                                                             │
+   │  ROTACIÓN (en cada keyframe, valor rotate(Xdeg)):           │
+   │    Más grados = más inclinación. Recomendado: 0.5–2deg      │
+   └─────────────────────────────────────────────────────────────┘ */
+
+/* ── Duración: modificá el primer valor (ej: 4.6s) ── */
+.lens-up   { animation: lens-anim-up   4.6s ease-in-out infinite; transform-origin: center center; }
+.lens-mid  { animation: lens-anim-mid  5.1s ease-in-out infinite; transform-origin: center center; }
+.lens-down { animation: lens-anim-down 4.3s ease-in-out infinite; transform-origin: center center; }
+
+/* ── lens_up: sube + rota. Bounce = diferencia entre 45% y 55% ── */
+@keyframes lens-anim-up {
+  0%   { transform: translateY(0px)   rotate(0deg);   }
+  45%  { transform: translateY(-14px) rotate(1.4deg); } /* ← overshoot (bounce peak)  */
+  55%  { transform: translateY(-11px) rotate(1deg);   } /* ← asentado (float target)  */
+  90%  { transform: translateY(2px)   rotate(-0.3deg);} /* ← micro-rebote al volver   */
+  100% { transform: translateY(0px)   rotate(0deg);   }
 }
 
-.lens-mid {
-  animation:
-    lens-float-mid  6.4s ease-in-out infinite,
-    lens-rotate-mid 9.6s ease-in-out infinite;
-  transform-origin: center center;
+/* ── lens_mid: flota suave, bounce mínimo ── */
+@keyframes lens-anim-mid {
+  0%   { transform: translateY(0px)  rotate(0deg);    }
+  45%  { transform: translateY(-6px) rotate(-0.9deg); } /* ← overshoot */
+  55%  { transform: translateY(-4px) rotate(-0.7deg); } /* ← asentado  */
+  90%  { transform: translateY(1px)  rotate(0.2deg);  } /* ← micro-rebote */
+  100% { transform: translateY(0px)  rotate(0deg);    }
 }
 
-.lens-down {
-  animation:
-    lens-float-down  5.4s ease-in-out infinite,
-    lens-rotate-down 7.8s ease-in-out infinite;
-  transform-origin: center center;
-}
-
-/* Float keyframes — up drifts away upward, down drifts away downward */
-@keyframes lens-float-up {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-11px); }
-}
-
-@keyframes lens-float-mid {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-4px); }
-}
-
-@keyframes lens-float-down {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(11px); }
-}
-
-/* Rotation keyframes — very subtle, each at different phase */
-@keyframes lens-rotate-up {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  25%       { transform: translateY(-5px) rotate(1.2deg); }
-  50%       { transform: translateY(-11px) rotate(0deg); }
-  75%       { transform: translateY(-5px) rotate(-1.2deg); }
-}
-
-@keyframes lens-rotate-mid {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  25%       { transform: translateY(-2px) rotate(-0.8deg); }
-  50%       { transform: translateY(-4px) rotate(0deg); }
-  75%       { transform: translateY(-2px) rotate(0.8deg); }
-}
-
-@keyframes lens-rotate-down {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  25%       { transform: translateY(5px) rotate(-1deg); }
-  50%       { transform: translateY(11px) rotate(0deg); }
-  75%       { transform: translateY(5px) rotate(1deg); }
+/* ── lens_down: baja + rota. Bounce = diferencia entre 45% y 55% ── */
+@keyframes lens-anim-down {
+  0%   { transform: translateY(0px)   rotate(0deg);    }
+  45%  { transform: translateY(14px)  rotate(-1.2deg); } /* ← overshoot */
+  55%  { transform: translateY(11px)  rotate(-0.9deg); } /* ← asentado  */
+  90%  { transform: translateY(-2px)  rotate(0.3deg);  } /* ← micro-rebote */
+  100% { transform: translateY(0px)   rotate(0deg);    }
 }
 
 .hero-content {
