@@ -992,7 +992,7 @@ a   { text-decoration: none; color: inherit; }
      without JS, we do: show brand+title top, then image, then description in a
      separate element. Without DOM changes, best we can do:
      full content block AFTER image (order: visual=1, content=2).
-     Title will appear below image. This is simpler and cleaner. */
+     Title will appear below image . This is simpler and cleaner. */
 
   /* Final clean decision: visual order:1 (top, 50vw), content order:2 (full below) */
   .section-diligent .cs-visual,
