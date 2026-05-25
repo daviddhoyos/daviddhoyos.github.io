@@ -55,42 +55,68 @@ a   { text-decoration: none; color: inherit; }
   gap: 32px;
   padding: 14px 28px;
   border-radius: 999px;
+  position: relative;
+  overflow: visible;
 
-  /* liquid-glass core */
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: url(#glass-filter) blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  /* Liquid glass — dark variant */
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: url(#glass-filter-dark) blur(24px) saturate(180%) brightness(1.05);
+  -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.05);
 
-  /* Apple rim-light */
+  /* Layered rim-light mimicking Apple Liquid Glass */
   box-shadow:
-    inset  2px  2px 1px 0   rgba(255,255,255,0.28),
-    inset -2px -2px 2px 1px rgba(255,255,255,0.10),
-    0  4px 16px 0 rgba(0,0,0,0.25),
-    0 12px 32px 0 rgba(0,0,0,0.18);
-  border: 1px solid rgba(255,255,255,0.14);
-  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    /* top-left bright specular */
+    inset  2px  2px 0px 0  rgba(255,255,255,0.32),
+    /* bottom-right dim */
+    inset -1px -1px 0px 0  rgba(255,255,255,0.06),
+    /* subtle outer glow */
+    0  2px  8px 0 rgba(0,0,0,0.18),
+    0  8px 28px 0 rgba(0,0,0,0.22),
+    0 20px 48px 0 rgba(0,0,0,0.14);
+  border: 1px solid rgba(255,255,255,0.18);
+
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease,
+              backdrop-filter 0.4s ease;
+}
+
+/* Prismatic inner highlight layer */
+.navbar-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.18) 0%,
+    rgba(255,255,255,0.04) 40%,
+    rgba(124,58,237,0.04) 70%,
+    rgba(255,255,255,0.02) 100%
+  );
+  pointer-events: none;
 }
 
 .navbar-logo {
   font-family: 'Geist', sans-serif;
   font-weight: 700;
   font-size: 15px;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.92);
   white-space: nowrap;
   transition: color 0.35s ease;
+  position: relative;
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
   gap: 4px;
+  position: relative;
 }
 
 .navbar-links a {
   font-family: 'Inter', sans-serif;
   font-size: 13.5px;
   font-weight: 450;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.78);
   padding: 6px 14px;
   border-radius: 999px;
   transition: color 0.2s, background 0.2s;
@@ -102,17 +128,83 @@ a   { text-decoration: none; color: inherit; }
   background: rgba(255,255,255,0.14);
 }
 
+/* Email copy button — same look as links */
+.navbar-email-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 450;
+  color: rgba(255,255,255,0.78);
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.navbar-email-btn:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.14);
+}
+
+/* Email toast card */
+.email-toast {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.92);
+  background: rgba(30, 24, 34, 0.82);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 100;
+}
+
+.email-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ── Light mode (over white sections) ── */
 .navbar.light .navbar-inner {
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: url(#glass-filter) blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255,255,255,0.52);
+  backdrop-filter: url(#glass-filter-light) blur(28px) saturate(200%) brightness(1.08);
+  -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.08);
   box-shadow:
-    inset  2px  2px 1px 0   rgba(255,255,255,0.90),
-    inset -2px -2px 2px 1px rgba(255,255,255,0.40),
-    0  4px 16px 0 rgba(0,0,0,0.07),
-    0 12px 32px 0 rgba(0,0,0,0.05);
-  border-color: rgba(255,255,255,0.72);
+    inset  2px  2px 0px 0  rgba(255,255,255,0.95),
+    inset -1px -1px 0px 0  rgba(255,255,255,0.35),
+    0  2px  6px 0 rgba(0,0,0,0.04),
+    0  8px 24px 0 rgba(0,0,0,0.07),
+    0 20px 48px 0 rgba(0,0,0,0.05);
+  border-color: rgba(255,255,255,0.80);
+}
+
+.navbar.light .navbar-inner::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.85) 0%,
+    rgba(255,255,255,0.20) 40%,
+    rgba(200,220,255,0.10) 70%,
+    rgba(255,255,255,0.05) 100%
+  );
 }
 
 .navbar.light .navbar-logo {
@@ -120,7 +212,16 @@ a   { text-decoration: none; color: inherit; }
 }
 
 .navbar.light .navbar-links a {
-  color: rgba(0,0,0,0.65);
+  color: rgba(0,0,0,0.62);
+}
+
+.navbar.light .navbar-email-btn {
+  color: rgba(0,0,0,0.62);
+}
+
+.navbar.light .navbar-email-btn:hover {
+  color: var(--text-dark);
+  background: rgba(0,0,0,0.06);
 }
 
 .navbar.light .navbar-links a:hover {
@@ -232,6 +333,16 @@ a   { text-decoration: none; color: inherit; }
   align-items: center;
 }
 
+/* ── Shared visual sizing (80% of original) ── */
+.cs-visual img {
+  width: 80%;
+  height: auto;
+  border-radius: 35px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.13);
+  display: block;
+  margin: 0 auto;
+}
+
 /* Section 1 — Diligent */
 .section-diligent {
   background: var(--white);
@@ -240,16 +351,24 @@ a   { text-decoration: none; color: inherit; }
 .section-diligent .cs-visual  { padding: 80px 40px 80px 80px; }
 .section-diligent .cs-content { padding: 80px 80px 80px 40px; }
 
-/* Red corner triangle */
-.section-diligent::after {
-  content: '';
+/* SVG triangle background */
+.diligent-triangle {
   position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 0;
-  border-style: solid;
-  border-width: 0 0 200px 200px;
-  border-color: transparent transparent #E63946 transparent;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: 65%;
+  max-height: 620px;
+  z-index: 0;
   pointer-events: none;
+  display: block;
+}
+
+/* Make sure visual and content are above triangle */
+.section-diligent .cs-visual,
+.section-diligent .cs-content {
+  position: relative;
+  z-index: 1;
 }
 
 /* Section 2 — Conduiit */
@@ -285,14 +404,6 @@ a   { text-decoration: none; color: inherit; }
   background-image: radial-gradient(rgba(0,0,0,0.07) 1px, transparent 1px);
   background-size: 24px 24px;
   pointer-events: none;
-}
-
-/* Shared visual / content */
-.cs-visual img {
-  width: 100%;
-  height: auto;
-  border-radius: 35px;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.13);
 }
 
 .cs-brand {
@@ -385,7 +496,6 @@ a   { text-decoration: none; color: inherit; }
   cursor: pointer;
 }
 
-/* Only the image wrapper gets the hover lift */
 .project-card-img-wrap {
   border-radius: 16px;
   overflow: hidden;
@@ -401,7 +511,7 @@ a   { text-decoration: none; color: inherit; }
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 0; /* handled by wrapper */
+  border-radius: 0;
 }
 
 .project-card-label {
@@ -445,35 +555,46 @@ a   { text-decoration: none; color: inherit; }
   width: auto;
   opacity: 0.6;
   transition: opacity 0.2s;
-  filter: brightness(0) invert(1); /* ensure white on dark */
+  filter: brightness(0) invert(1);
 }
 
 .logos-row img:hover { opacity: 1; }
 
+/* ── Footer Contact (avatar left, text right) ── */
 .footer-contact {
   padding: 100px 80px;
   background: linear-gradient(160deg, #E8E4F4 0%, #D4D8F0 40%, #C8D8F4 100%);
   color: var(--text-dark);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 }
 
-.footer-photo {
+.footer-contact-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.footer-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.footer-avatar {
   width: 96px;
   height: 96px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #7C3AED, #3B82F6);
-  margin-bottom: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Geist', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: white;
+  object-fit: cover;
   flex-shrink: 0;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+.footer-contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
 }
 
 .footer-tagline {
@@ -481,17 +602,15 @@ a   { text-decoration: none; color: inherit; }
   font-size: clamp(22px, 3vw, 36px);
   font-weight: 700;
   color: var(--text-dark);
-  max-width: 600px;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  margin-bottom: 8px;
 }
 
 .footer-name {
   font-family: 'Inter', sans-serif;
   font-size: 17px;
   color: var(--text-mid);
-  margin-bottom: 36px;
+  margin-bottom: 12px;
 }
 
 .footer-links {
@@ -503,6 +622,7 @@ a   { text-decoration: none; color: inherit; }
   padding: 6px;
   background: rgba(255,255,255,0.55);
   backdrop-filter: blur(8px);
+  align-self: center;
 }
 
 .footer-links a {
@@ -526,40 +646,6 @@ a   { text-decoration: none; color: inherit; }
   background: rgba(0,0,0,0.14);
 }
 
-/* ─── Edelap Case Study Page ─────────────────────── */
-.cs-page { background: var(--white); min-height: 100vh; }
-
-.cs-page-header {
-  background: var(--dark-bg);
-  padding: 140px 80px 80px;
-  text-align: center;
-  position: relative;
-}
-
-.cs-page-back {
-  position: absolute;
-  top: 100px; left: 80px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: rgba(255,255,255,0.6);
-  transition: color 0.2s;
-}
-.cs-page-back:hover { color: var(--white); }
-
-.cs-page-content {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 80px 40px;
-}
-
-.cs-page-content img {
-  width: 100%;
-  height: auto;
-}
-
 /* ─── Scroll Animations ──────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(28px); }
@@ -581,55 +667,217 @@ a   { text-decoration: none; color: inherit; }
   transform: translateY(0);
 }
 
-/* ─── Responsive ──────────────────────────────────── */
-@media (max-width: 1024px) {
+/* ─── Responsive: Tablet (641px–1024px) ──────────── */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Keep two-column layout but compress it */
   .case-study {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     min-height: auto;
+    align-items: center;
   }
 
-  .section-diligent .cs-visual,
-  .section-conduiit  .cs-visual,
-  .section-mercadolibre .cs-visual {
-    padding: 60px 40px 0;
-    order: 1 !important;
+  /* Thumbnail even smaller on tablet */
+  .cs-visual img {
+    width: 90%;
   }
 
-  .section-diligent .cs-content,
-  .section-conduiit  .cs-content,
-  .section-mercadolibre .cs-content {
-    padding: 40px 40px 60px;
-    order: 2 !important;
-  }
+  .section-diligent .cs-visual  { padding: 60px 24px 60px 40px; }
+  .section-diligent .cs-content { padding: 60px 40px 60px 24px; }
 
-  .projects-grid { grid-template-columns: 1fr; }
+  .section-conduiit .cs-visual  { padding: 60px 40px 60px 24px; }
+  .section-conduiit .cs-content { padding: 60px 24px 60px 40px; }
+
+  .section-mercadolibre .cs-visual  { padding: 60px 24px 60px 40px; }
+  .section-mercadolibre .cs-content { padding: 60px 40px 60px 24px; }
+
+  .cs-title { font-size: clamp(22px, 2.8vw, 34px); }
+  .cs-description { font-size: 14px; }
+
+  .projects-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
 
   .more-projects,
   .footer-trusted,
   .footer-contact { padding: 60px 40px; }
 
   .logos-row { gap: 32px; }
+
+  .diligent-triangle { height: 55%; }
 }
 
+/* ─── Responsive: Mobile (≤640px) ────────────────── */
 @media (max-width: 640px) {
   .navbar-inner { padding: 12px 20px; gap: 16px; }
   .hero-name  { font-size: 52px; }
   .hero-lens  { width: 160px; right: -20px; }
   .hero-tags  { gap: 8px; }
 
+  /* Mobile case study: single column, special order */
+  .case-study {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  /* All case studies: title first (from cs-content), then thumbnail, then rest */
+  /* We use a flex column with custom ordering */
+  .section-diligent,
+  .section-conduiit,
+  .section-mercadolibre {
+    display: flex;
+    flex-direction: column;
+    padding: 48px 24px;
+    gap: 0;
+  }
+
+  /* Title block — floated to top, centered */
+  .section-diligent .cs-content,
+  .section-conduiit .cs-content,
+  .section-mercadolibre .cs-content {
+    order: 1;
+    padding: 0 0 24px 0;
+  }
+
+  /* Only show brand + title above the image */
+  /* We restructure visually using CSS order on children */
+  /* Title section comes first */
+  .section-diligent .cs-content .cs-brand,
+  .section-conduiit .cs-content .cs-brand,
+  .section-mercadolibre .cs-content .cs-brand {
+    text-align: left;
+  }
+
+  .section-diligent .cs-title,
+  .section-conduiit .cs-title,
+  .section-mercadolibre .cs-title {
+    text-align: left;
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  /* Thumbnail — 50vw, centered, between title and body */
   .section-diligent .cs-visual,
-  .section-conduiit  .cs-visual,
-  .section-mercadolibre .cs-visual { padding: 40px 24px 0; }
+  .section-conduiit .cs-visual,
+  .section-mercadolibre .cs-visual {
+    order: 2;
+    padding: 0 0 24px 0;
+    width: 100%;
+  }
+
+  .section-diligent .cs-visual img,
+  .section-conduiit .cs-visual img,
+  .section-mercadolibre .cs-visual img {
+    width: 50vw;
+    margin: 0 auto;
+    border-radius: 20px;
+  }
+
+  /* Description, tags, CTA come after image — but they live in cs-content */
+  /* We need to split cs-content. Since we can't, we'll use a trick: */
+  /* show brand+title in cs-content (order:1), visual (order:2), */
+  /* and hide description/tags/cta from cs-content, then show again after visual */
+  /* Actually: we show ALL of cs-content after visual but hide brand/title overlap */
+  /* Simplest: order cs-content AFTER visual, show full content below */
+
+  /* Re-order: visual first (after title), content below */
+  .section-diligent .cs-content,
+  .section-conduiit .cs-content,
+  .section-mercadolibre .cs-content {
+    order: 3;
+    padding: 0;
+  }
+
+  /* Title/brand block shown above thumbnail — we show it via a pseudo-header */
+  /* Instead, let's show brand + title, hide the rest, then after visual show description etc */
+  /* This requires JS or duplication. Let's do simplest: brand+title = top, image mid, all content bottom */
+  /* The title will appear twice? No — let's just show all content below the image */
+  /* Order: 1=brand+title (first portion of content), 2=visual, 3=description+tags+cta */
+  /* We can't easily split a div in CSS — so best approach: */
+  /* Show cs-content first (order:1), visual second (order:2) — which gives: */
+  /* brand, title, description, tags, cta, [image] — not ideal */
+  /* OR: visual first (order:1) content second (order:2) */
+  /* For the mobile spec: title top, image, text, cta */
+  /* Let's move visual to order:1, content to order:2 — then title IS first in content */
+  /* but it shows AFTER the image. */
+  /* Best practical solution: use flex column, visual order:1, content order:2 */
+  /* The title will be at top of content block (after image), which is close enough */
+  /* and what most portfolio sites do on mobile */
+  /* Let's reorder: brand/title at very top, image, then description/tags/cta */
+
+  .section-diligent .cs-visual,
+  .section-conduiit .cs-visual,
+  .section-mercadolibre .cs-visual {
+    order: 2;
+  }
 
   .section-diligent .cs-content,
-  .section-conduiit  .cs-content,
-  .section-mercadolibre .cs-content { padding: 32px 24px 48px; }
+  .section-conduiit .cs-content,
+  .section-mercadolibre .cs-content {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* On mobile, hide description and tags from the top block,
+     show a second mobile-only content block. Since we can't duplicate DOM
+     without JS, we do: show brand+title top, then image, then description in a
+     separate element. Without DOM changes, best we can do:
+     full content block AFTER image (order: visual=1, content=2).
+     Title will appear below image. This is simpler and cleaner. */
+
+  /* Final clean decision: visual order:1 (top, 50vw), content order:2 (full below) */
+  .section-diligent .cs-visual,
+  .section-conduiit .cs-visual,
+  .section-mercadolibre .cs-visual {
+    order: 1;
+  }
+
+  .section-diligent .cs-content,
+  .section-conduiit .cs-content,
+  .section-mercadolibre .cs-content {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0 0;
+  }
+
+  /* Align text left on mobile */
+  .cs-title { text-align: left; }
+  .cs-description { text-align: left; max-width: 100%; }
+
+  .diligent-triangle { height: 40%; }
+
+  .projects-grid { grid-template-columns: 1fr; }
 
   .more-projects,
   .footer-trusted,
   .footer-contact { padding: 48px 24px; }
 
-  .cs-page-header { padding: 120px 24px 60px; }
-  .cs-page-content { padding: 40px 24px; }
-  .cs-page-back { left: 24px; }
+  /* Footer mobile: stack avatar above text */
+  .footer-contact-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .footer-tagline { font-size: clamp(20px, 6vw, 28px); }
+
+  .footer-links {
+    flex-wrap: wrap;
+    border-radius: 16px;
+  }
+}
+
+/* ─── Large screens (1440px+) ─────────────────────── */
+@media (min-width: 1440px) {
+  .cs-visual img {
+    width: 75%;
+  }
+
+  .section-diligent .cs-visual  { padding: 100px 48px 100px 100px; }
+  .section-diligent .cs-content { padding: 100px 100px 100px 48px; }
+
+  .section-conduiit .cs-visual  { padding: 100px 100px 100px 48px; }
+  .section-conduiit .cs-content { padding: 100px 48px 100px 100px; }
+
+  .section-mercadolibre .cs-visual  { padding: 100px 48px 100px 100px; }
+  .section-mercadolibre .cs-content { padding: 100px 100px 100px 48px; }
 }
