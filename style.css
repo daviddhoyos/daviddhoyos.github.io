@@ -294,7 +294,7 @@ a   { text-decoration: none; color: inherit; }
 /* ─── Lens group — animated three-piece ──────────── */
 .hero-lens-group {
   position: absolute;
-  right: 0px;
+  right: 2%;
   top: 50%;
   transform: translateY(-52%);
   width: clamp(220px, 28vw, 380px);
