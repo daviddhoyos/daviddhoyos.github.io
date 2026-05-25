@@ -206,6 +206,17 @@ a   { text-decoration: none; color: inherit; }
   mix-blend-mode: normal;
 }
 
+/* Also shift the pill itself to a lighter glass so dark text is readable */
+.navbar.over-light-content:not(.light) .navbar-inner {
+  background: rgba(255, 255, 255, 0.42);
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow:
+    inset  2px  2px 0px 0  rgba(255,255,255,0.80),
+    inset -1px -1px 0px 0  rgba(255,255,255,0.25),
+    0  2px  6px 0 rgba(0,0,0,0.05),
+    0  8px 24px 0 rgba(0,0,0,0.08);
+}
+
 /* Light mode always uses dark text */
 .navbar.light .navbar-logo,
 .navbar.light .navbar-links a,
@@ -280,18 +291,87 @@ a   { text-decoration: none; color: inherit; }
   z-index: 0;
 }
 
-/* Lens PNG — static, right side */
-.hero-lens {
+/* ─── Lens group — animated three-piece ──────────── */
+.hero-lens-group {
   position: absolute;
   right: 0px;
   top: 50%;
   transform: translateY(-52%);
   width: clamp(220px, 28vw, 380px);
-  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px, 2vw, 36px);
   pointer-events: none;
   user-select: none;
   z-index: 1;
   opacity: 0.92;
+}
+
+.lens-piece {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Individual floating + rotation animations */
+.lens-up {
+  animation:
+    lens-float-up   5.8s ease-in-out infinite,
+    lens-rotate-up  8.2s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.lens-mid {
+  animation:
+    lens-float-mid  6.4s ease-in-out infinite,
+    lens-rotate-mid 9.6s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.lens-down {
+  animation:
+    lens-float-down  5.4s ease-in-out infinite,
+    lens-rotate-down 7.8s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+/* Float keyframes — up drifts away upward, down drifts away downward */
+@keyframes lens-float-up {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-11px); }
+}
+
+@keyframes lens-float-mid {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-4px); }
+}
+
+@keyframes lens-float-down {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(11px); }
+}
+
+/* Rotation keyframes — very subtle, each at different phase */
+@keyframes lens-rotate-up {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25%       { transform: translateY(-5px) rotate(1.2deg); }
+  50%       { transform: translateY(-11px) rotate(0deg); }
+  75%       { transform: translateY(-5px) rotate(-1.2deg); }
+}
+
+@keyframes lens-rotate-mid {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25%       { transform: translateY(-2px) rotate(-0.8deg); }
+  50%       { transform: translateY(-4px) rotate(0deg); }
+  75%       { transform: translateY(-2px) rotate(0.8deg); }
+}
+
+@keyframes lens-rotate-down {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25%       { transform: translateY(5px) rotate(-1deg); }
+  50%       { transform: translateY(11px) rotate(0deg); }
+  75%       { transform: translateY(5px) rotate(1deg); }
 }
 
 .hero-content {
@@ -364,10 +444,10 @@ a   { text-decoration: none; color: inherit; }
 
 /* ── Shared visual sizing ──────────────────────────
    THUMBNAIL SIZE — change this value to resize images.
-   Desktop default: 90% of the column width.
+   Desktop default: 100% of the column width.
    ─────────────────────────────────────────────── */
 .cs-visual img {
-  width: 90%; /* ← THUMBNAIL SIZE: desktop/1080px */
+  width: 100%; /* ← THUMBNAIL SIZE: desktop/1080px */
   height: auto;
   border-radius: 35px;
   box-shadow: 0 32px 80px rgba(0,0,0,0.13);
@@ -792,7 +872,7 @@ a   { text-decoration: none; color: inherit; }
     display: none; /* hide icon on mobile to save space */
   }
   .hero-name  { font-size: 52px; }
-  .hero-lens  { width: 160px; right: -20px; }
+  .hero-lens-group { width: 160px; right: -20px; }
   .hero-tags  { gap: 8px; }
 
   /* Mobile case study: single column, special order */
@@ -961,7 +1041,7 @@ a   { text-decoration: none; color: inherit; }
 /* ─── Large screens (1440px+) ─────────────────────── */
 @media (min-width: 1440px) {
   .cs-visual img {
-    width: 85%; /* ← THUMBNAIL SIZE: 1440px+ screens */
+    width: 100%; /* ← THUMBNAIL SIZE: 1440px+ screens */
   }
 
   .section-diligent .cs-visual  { padding: 100px 48px 100px 100px; }
