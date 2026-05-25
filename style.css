@@ -183,24 +183,34 @@ a   { text-decoration: none; color: inherit; }
   transform: translateY(0);
 }
 
-/* ─── Navbar text contrast via mix-blend-mode ────────
-   When the navbar is in DARK mode (no .light class) and
-   scrolls over a light-colored image/background, the text
-   uses mix-blend-mode: difference so it stays readable
-   by inverting to dark automatically. Only applied to
-   text nodes, not the glass pill itself.
+/* ─── Navbar text contrast — JS-driven ───────────────
+   When dark navbar scrolls over light content (e.g. white
+   project thumbnails), JS adds .over-light-content.
+   This forces near-black text without changing the glass pill.
    ─────────────────────────────────────────────────── */
+
+/* Default dark navbar — white text */
 .navbar:not(.light) .navbar-logo,
 .navbar:not(.light) .navbar-links a,
 .navbar:not(.light) .navbar-email-btn {
-  mix-blend-mode: difference;
-  color: #ffffff; /* white inverts to near-black over light bgs */
+  color: rgba(255, 255, 255, 0.92);
+  mix-blend-mode: normal;
+  transition: color 0.2s ease;
 }
 
-/* Restore normal blend for light mode — no inversion needed */
+/* Dark navbar over a detected light background → near-black text */
+.navbar.over-light-content:not(.light) .navbar-logo,
+.navbar.over-light-content:not(.light) .navbar-links a,
+.navbar.over-light-content:not(.light) .navbar-email-btn {
+  color: rgba(10, 10, 10, 0.88) !important;
+  mix-blend-mode: normal;
+}
+
+/* Light mode always uses dark text */
 .navbar.light .navbar-logo,
 .navbar.light .navbar-links a,
 .navbar.light .navbar-email-btn {
+  color: rgba(0, 0, 0, 0.72);
   mix-blend-mode: normal;
 }
 .navbar.light .navbar-inner {
@@ -365,6 +375,20 @@ a   { text-decoration: none; color: inherit; }
   margin: 0 auto;
 }
 
+/* Pull images toward their adjacent text block to close the gap */
+.section-diligent .cs-visual img,
+.section-mercadolibre .cs-visual img {
+  /* Image is in LEFT column, text is on RIGHT → align image right */
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.section-conduiit .cs-visual img {
+  /* Image is in RIGHT column, text is on LEFT → align image left */
+  margin-left: 0;
+  margin-right: auto;
+}
+
 /* Section 1 — Diligent */
 .section-diligent {
   background: var(--white);
@@ -398,8 +422,8 @@ a   { text-decoration: none; color: inherit; }
   background: #F4F4F4;
   color: var(--text-dark);
 }
-.section-conduiit .cs-visual  { padding: 80px 80px 80px 40px; order: 2; }
-.section-conduiit .cs-content { padding: 80px 40px 80px 80px; order: 1; }
+.section-conduiit .cs-visual  { padding: 80px 80px 80px 24px; order: 2; }
+.section-conduiit .cs-content { padding: 80px 24px 80px 80px; order: 1; }
 
 .infinity-deco {
   position: absolute;
@@ -574,10 +598,14 @@ a   { text-decoration: none; color: inherit; }
 
 .logos-row img {
   display: block;
+  height: 28px; /* unified height for all logos */
   width: auto;
-  opacity: 0.6;
+  max-width: 140px; /* prevent oversized logos */
+  object-fit: contain;
+  opacity: 0.55;
   transition: opacity 0.2s;
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1); /* force white */
+  vertical-align: middle;
 }
 
 .logos-row img:hover { opacity: 1; }
