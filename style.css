@@ -251,7 +251,7 @@ a   { text-decoration: none; color: inherit; }
 /* ─── Hero ──────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
