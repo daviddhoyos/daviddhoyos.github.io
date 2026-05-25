@@ -305,7 +305,7 @@ a   { text-decoration: none; color: inherit; }
 .hero-name {
   font-family: 'Geist', sans-serif;
   font-size: clamp(64px, 9vw, 120px);
-  font-weight: 800;
+  font-weight: 700;
   color: var(--white);
   letter-spacing: -0.03em;
   line-height: 1;
