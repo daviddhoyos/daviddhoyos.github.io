@@ -297,7 +297,7 @@ a   { text-decoration: none; color: inherit; }
   right: 2%;
   top: 50%;
   transform: translateY(-52%);
-  width: clamp(220px, 28vw, 380px);
+  width: clamp(220px, 28vw, 340px);
   display: flex;
   flex-direction: column;
   align-items: center;
