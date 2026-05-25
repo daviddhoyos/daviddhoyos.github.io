@@ -345,7 +345,7 @@ a   { text-decoration: none; color: inherit; }
   0%   { transform: translateY(0px)   rotate(0deg);   }
   45%  { transform: translateY(-14px) rotate(1.4deg); } /* ← overshoot (bounce peak)  */
   55%  { transform: translateY(-11px) rotate(1deg);   } /* ← asentado (float target)  */
-  90%  { transform: translateY(2px)   rotate(-0.3deg);} /* ← micro-rebote al volver   */
+  90%  { transform: translateY(8px)   rotate(-0.3deg);} /* ← micro-rebote al volver   */
   100% { transform: translateY(0px)   rotate(0deg);   }
 }
 
@@ -363,7 +363,7 @@ a   { text-decoration: none; color: inherit; }
   0%   { transform: translateY(0px)   rotate(0deg);    }
   45%  { transform: translateY(14px)  rotate(-1.2deg); } /* ← overshoot */
   55%  { transform: translateY(11px)  rotate(-0.9deg); } /* ← asentado  */
-  90%  { transform: translateY(-2px)  rotate(0.3deg);  } /* ← micro-rebote */
+  90%  { transform: translateY(-6px)  rotate(0.3deg);  } /* ← micro-rebote */
   100% { transform: translateY(0px)   rotate(0deg);    }
 }
 
