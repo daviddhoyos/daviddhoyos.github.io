@@ -44,23 +44,30 @@ a   { text-decoration: none; color: inherit; }
   z-index: 1000;
   display: flex;
   justify-content: center;
-  pointer-events: none;   /* let clicks through the gap */
+  pointer-events: none;
 }
 
 .navbar-inner {
-  pointer-events: all;    /* re-enable on the pill itself */
+  pointer-events: all;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
   padding: 14px 28px;
   border-radius: 999px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
-  /* smooth color transitions */
+
+  /* liquid-glass core */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: url(#glass-filter) blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  /* Apple rim-light */
+  box-shadow:
+    inset  2px  2px 1px 0   rgba(255,255,255,0.28),
+    inset -2px -2px 2px 1px rgba(255,255,255,0.10),
+    0  4px 16px 0 rgba(0,0,0,0.25),
+    0 12px 32px 0 rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.14);
   transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
@@ -92,14 +99,20 @@ a   { text-decoration: none; color: inherit; }
 
 .navbar-links a:hover {
   color: var(--white);
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.14);
 }
 
 /* ── Light mode (over white sections) ── */
 .navbar.light .navbar-inner {
-  background: rgba(255,255,255,0.72);
-  border-color: rgba(0,0,0,0.09);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: url(#glass-filter) blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow:
+    inset  2px  2px 1px 0   rgba(255,255,255,0.90),
+    inset -2px -2px 2px 1px rgba(255,255,255,0.40),
+    0  4px 16px 0 rgba(0,0,0,0.07),
+    0 12px 32px 0 rgba(0,0,0,0.05);
+  border-color: rgba(255,255,255,0.72);
 }
 
 .navbar.light .navbar-logo {

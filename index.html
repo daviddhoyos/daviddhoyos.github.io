@@ -10,23 +10,38 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 </head>
 <body>
-
+ 
+  <!-- Apple Glass SVG filter — must live in DOM -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+    <defs>
+      <filter id="glass-filter" color-interpolation-filters="linearRGB"
+              filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse">
+        <feDisplacementMap in="SourceGraphic" in2="SourceGraphic"
+          scale="14" xChannelSelector="R" yChannelSelector="B"
+          x="0%" y="0%" width="100%" height="100%" result="displacementMap"/>
+        <feGaussianBlur stdDeviation="2.5 2.5"
+          x="0%" y="0%" width="100%" height="100%"
+          in="displacementMap" edgeMode="none" result="blur"/>
+      </filter>
+    </defs>
+  </svg>
+ 
   <!-- ─── Navbar ─────────────────────────────────── -->
   <nav class="navbar" id="navbar">
     <div class="navbar-inner">
       <span class="navbar-logo">David Hoyos</span>
       <div class="navbar-links">
         <a href="mailto:daviddhoyos1@gmail.com">Email</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/edit?usp=sharing" target="_blank" rel="noopener">Resume</a>
       </div>
     </div>
   </nav>
-
+ 
   <!-- ─── Hero ───────────────────────────────────── -->
   <header class="hero" id="hero" data-theme="dark">
     <img src="assets/images/lens.png" alt="" class="hero-lens" aria-hidden="true" />
-
+ 
     <div class="hero-content">
       <p class="hero-eyebrow">Product Designer</p>
       <h1 class="hero-name">David Hoyos</h1>
@@ -39,9 +54,13 @@
       </div>
     </div>
   </header>
-
+ 
   <!-- ─── Section 1: Diligent ────────────────────── -->
   <section class="case-study section-diligent" aria-label="Diligent case study" data-theme="light">
+    <!-- background triangle — sits behind content via z-index -->
+    <img src="assets/images/diligent_thumbnail_bg_triangle.svg"
+         alt="" class="diligent-triangle" aria-hidden="true" />
+ 
     <div class="cs-visual reveal">
       <img
         src="assets/images/diligent_thumbnail.png"
@@ -70,14 +89,14 @@
       </a>
     </div>
   </section>
-
+ 
   <!-- ─── Section 2: Conduiit ────────────────────── -->
   <section class="case-study section-conduiit" aria-label="Conduiit case study" data-theme="light">
     <span class="infinity-deco" style="top: 20%; right: 4%; font-size:100px;" aria-hidden="true">∞</span>
     <span class="infinity-deco" style="bottom: 15%; right: 2%; font-size: 72px;" aria-hidden="true">∞</span>
     <span class="infinity-deco" style="top: 10%; right: 12%; font-size: 56px;" aria-hidden="true">∞</span>
     <span class="infinity-deco" style="bottom: 20%; left: 46%; font-size: 56px;" aria-hidden="true">∞</span>
-
+ 
     <div class="cs-content reveal">
       <div class="cs-brand">
         <img src="assets/images/conduiit_brand.svg" alt="Conduiit" width="169" height="40" />
@@ -110,7 +129,7 @@
       />
     </div>
   </section>
-
+ 
   <!-- ─── Section 3: Mercado Libre ───────────────── -->
   <section class="case-study section-mercadolibre" aria-label="Mercado Libre case study" data-theme="light">
     <div class="dot-grid-bg" aria-hidden="true"></div>
@@ -145,7 +164,7 @@
       </a>
     </div>
   </section>
-
+ 
   <!-- ─── More Projects ──────────────────────────── -->
   <section class="more-projects" aria-label="More projects" data-theme="dark">
     <h2 class="more-projects-title reveal">More Projects</h2>
@@ -171,7 +190,7 @@
       </a>
     </div>
   </section>
-
+ 
   <!-- ─── Footer ─────────────────────────────────── -->
   <footer>
     <div class="footer-trusted" data-theme="dark">
@@ -184,23 +203,29 @@
         <img src="assets/images/improving_white.svg"    alt="Improving"     height="36" />
       </div>
     </div>
-
+ 
     <div class="footer-contact" data-theme="light">
-      <div class="footer-photo" aria-hidden="true">D</div>
-      <p class="footer-tagline">
-        The deck ends here, but the conversation starts now. Ready to chat?
-      </p>
-      <p class="footer-name">David Hoyos</p>
-      <nav class="footer-links" aria-label="Contact links">
-        <a href="mailto:daviddhoyos1@gmail.com">daviddhoyos1@gmail.com</a>
-        <div class="footer-sep" aria-hidden="true"></div>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-        <div class="footer-sep" aria-hidden="true"></div>
-        <a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/edit?usp=sharing" target="_blank" rel="noopener">Resume</a>
-      </nav>
+      <div class="footer-contact-inner">
+        <div class="footer-contact-row">
+          <img src="assets/images/avatar.png" alt="David Hoyos" class="footer-avatar" />
+          <div class="footer-contact-text">
+            <p class="footer-tagline">
+              The deck ends here, but the<br/>conversation starts now. Ready to chat?
+            </p>
+            <p class="footer-name">David Hoyos</p>
+          </div>
+        </div>
+        <nav class="footer-links" aria-label="Contact links">
+          <a href="mailto:daviddhoyos1@gmail.com">daviddhoyos1@gmail.com</a>
+          <div class="footer-sep" aria-hidden="true"></div>
+          <a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener">LinkedIn</a>
+          <div class="footer-sep" aria-hidden="true"></div>
+          <a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/edit?usp=sharing" target="_blank" rel="noopener">Resume</a>
+        </nav>
+      </div>
     </div>
   </footer>
-
+ 
   <script src="script.js"></script>
 </body>
 </html>
