@@ -335,7 +335,7 @@ a   { text-decoration: none; color: inherit; }
 
 /* ── Shared visual sizing (80% of original) ── */
 .cs-visual img {
-  width: 80%;
+  width: 90%;
   height: auto;
   border-radius: 35px;
   box-shadow: 0 32px 80px rgba(0,0,0,0.13);
