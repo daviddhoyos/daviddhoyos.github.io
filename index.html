@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Hoyos — Product Designer</title>
+  <meta name="description" content="Product Designer specializing in UX/UI Design, Product Design, Research, AI Workflows and SaaS." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- Apple Liquid Glass SVG filters — must live in DOM -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+    <defs>
+      <!-- Dark glass filter (hero/dark sections) -->
+      <filter id="glass-filter-dark" color-interpolation-filters="sRGB"
+              x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.015 0.015"
+                      numOctaves="2" seed="2" result="noise"/>
+        <feColorMatrix type="saturate" values="3" in="noise" result="coloredNoise"/>
+        <feDisplacementMap in="SourceGraphic" in2="coloredNoise"
+          scale="10" xChannelSelector="R" yChannelSelector="G"
+          result="displaced"/>
+        <feGaussianBlur stdDeviation="0.5" in="displaced" result="blurred"/>
+        <feComposite in="blurred" in2="SourceGraphic" operator="atop"/>
+      </filter>
+
+      <!-- Light glass filter (light sections) -->
+      <filter id="glass-filter-light" color-interpolation-filters="sRGB"
+              x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018 0.018"
+                      numOctaves="2" seed="5" result="noise"/>
+        <feColorMatrix type="saturate" values="2" in="noise" result="coloredNoise"/>
+        <feDisplacementMap in="SourceGraphic" in2="coloredNoise"
+          scale="7" xChannelSelector="R" yChannelSelector="G"
+          result="displaced"/>
+        <feGaussianBlur stdDeviation="0.3" in="displaced" result="blurred"/>
+        <feComposite in="blurred" in2="SourceGraphic" operator="atop"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ─── Navbar ─────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <span class="navbar-logo">David Hoyos</span>
+      <div class="navbar-links">
+        <a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/edit?tab=t.0" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener">About</a>
+        <button class="navbar-email-btn" id="emailCopyBtn" aria-label="Copy email address">
+          Email
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <rect x="1" y="4" width="7" height="8" rx="1.2" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M4 4V2.8A1.2 1.2 0 0 1 5.2 1.6h5A1.2 1.2 0 0 1 11.4 2.8v5A1.2 1.2 0 0 1 10.2 9H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <!-- Email copied toast -->
+      <div class="email-toast" id="emailToast" aria-live="polite">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Email copied to clipboard
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ───────────────────────────────────── -->
+  <header class="hero" id="hero" data-theme="dark">
+    <img src="assets/images/lens.png" alt="" class="hero-lens" aria-hidden="true" />
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Product Designer</p>
+      <h1 class="hero-name">David Hoyos</h1>
+      <div class="hero-tags">
+        <span class="tag tag-dark">UX/UI Design</span>
+        <span class="tag tag-dark">Product Design</span>
+        <span class="tag tag-dark">Research</span>
+        <span class="tag tag-dark">AI Workflows</span>
+        <span class="tag tag-dark">SaaS</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Section 1: Diligent ────────────────────── -->
+  <section class="case-study section-diligent" aria-label="Diligent case study" data-theme="light">
+    <!-- SVG triangle background — behind the thumbnail -->
+    <img src="assets/images/diligent_thumbnail_bg_triangle.svg"
+         alt="" class="diligent-triangle" aria-hidden="true" />
+
+    <div class="cs-visual reveal">
+      <img
+        src="assets/images/diligent_thumbnail.png"
+        alt="Diligent Policy Manager dashboard on tablet"
+        loading="lazy"
+      />
+    </div>
+    <div class="cs-content reveal">
+      <div class="cs-brand">
+        <img src="assets/images/diligent_brand.svg" alt="Diligent" width="164" height="45" />
+      </div>
+      <h2 class="cs-title">Legacy SaaS Modernization</h2>
+      <p class="cs-description">
+        Policy Manager is a governance SaaS trusted by US Fortune 500s and School Districts.
+        Its outdated legacy UI and unstable backend were causing severe client churn across
+        both sectors. As the sole UX/UI designer, I led a complete redesign.
+      </p>
+      <div class="cs-tags">
+        <span class="tag tag-light">UX/UI Design</span>
+        <span class="tag tag-light">Product Design</span>
+        <span class="tag tag-light">Research</span>
+      </div>
+      <a href="edelap.html" class="cta-link">
+        View project
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7 2.5l4.5 4.5L7 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── Section 2: Conduiit ────────────────────── -->
+  <section class="case-study section-conduiit" aria-label="Conduiit case study" data-theme="light">
+    <span class="infinity-deco" style="top: 20%; right: 4%; font-size:100px;" aria-hidden="true">∞</span>
+    <span class="infinity-deco" style="bottom: 15%; right: 2%; font-size: 72px;" aria-hidden="true">∞</span>
+    <span class="infinity-deco" style="top: 10%; right: 12%; font-size: 56px;" aria-hidden="true">∞</span>
+    <span class="infinity-deco" style="bottom: 20%; left: 46%; font-size: 56px;" aria-hidden="true">∞</span>
+
+    <div class="cs-content reveal">
+      <div class="cs-brand">
+        <img src="assets/images/conduiit_brand.svg" alt="Conduiit" width="169" height="40" />
+      </div>
+      <h2 class="cs-title">Film Production Finance</h2>
+      <p class="cs-description">
+        Conduiit is a FinTech platform trusted by film giants like Netflix and HBO.
+        The challenge: replacing paper-heavy accounting with a seamless digital system.
+        <br/><br/>
+        I designed the UX/UI to streamline financial workflows, transforming dense
+        spreadsheets, purchase orders, and payment requests into an intuitive and
+        visually polished interface. I focused on customizable dashboards and clear
+        approval matrices to reduce cognitive load.
+      </p>
+      <div class="cs-tags">
+        <span class="tag tag-light">UX/UI Design</span>
+        <span class="tag tag-light">End-to-End</span>
+        <span class="tag tag-light">Research</span>
+      </div>
+      <a href="edelap.html" class="cta-link">
+        View project
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7 2.5l4.5 4.5L7 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="cs-visual reveal">
+      <img
+        src="assets/images/conduiit_thumbnail.png"
+        alt="Conduiit Film Production Finance dashboard on tablet"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <!-- ─── Section 3: Mercado Libre ───────────────── -->
+  <section class="case-study section-mercadolibre" aria-label="Mercado Libre case study" data-theme="light">
+    <div class="dot-grid-bg" aria-hidden="true"></div>
+    <div class="cs-visual reveal">
+      <img
+        src="assets/images/mercadolibre_thumbnail.png"
+        alt="Mercado Libre deployment pipelines interface on tablet"
+        loading="lazy"
+      />
+    </div>
+    <div class="cs-content reveal">
+      <div class="cs-brand">
+        <img src="assets/images/mercadolibre_brand.svg" alt="Mercado Libre" width="161" height="41" />
+      </div>
+      <h2 class="cs-title">Scaling B2B Cloud SaaS</h2>
+      <p class="cs-description">
+        At Mercado Libre (LATAM's Amazon), our internal developer platform pivoted
+        to commercialize its cloud infrastructure into a B2B SaaS.
+        <br/><br/>
+        Collaborating closely with engineering and PMs, I owned the UX for key
+        features to reduce cognitive load. We translated dense technical operations
+        into frictionless interfaces for both expert devs and business stakeholders alike.
+      </p>
+      <div class="cs-tags">
+        <span class="tag tag-light">Product Design</span>
+        <span class="tag tag-light">UX/UI Design</span>
+        <span class="tag tag-light">Research</span>
+      </div>
+      <a href="edelap.html" class="cta-link">
+        View project
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7 2.5l4.5 4.5L7 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── More Projects ──────────────────────────── -->
+  <section class="more-projects" aria-label="More projects" data-theme="dark">
+    <h2 class="more-projects-title reveal">More Projects</h2>
+    <div class="projects-grid">
+      <a href="edelap.html" class="project-card reveal" aria-label="Peak ad-tech platform redesign">
+        <div class="project-card-img-wrap">
+          <img src="assets/images/edge226_thumbnail.png" alt="Peak ad-tech platform redesign" loading="lazy" />
+        </div>
+        <p class="project-card-label">
+          Redesign of the global ad-tech platform, covering Copywriting, Branding,
+          Information Architecture, and a complete visual overhaul.
+        </p>
+      </a>
+      <a href="edelap.html" class="project-card reveal" aria-label="Propelify Innovation Festival redesign">
+        <div class="project-card-img-wrap">
+          <img src="assets/images/propelify_thumbnail.png" alt="Propelify Innovation Festival" loading="lazy" />
+        </div>
+        <p class="project-card-label">
+          Full visual redesign for TechUnited's innovation festival in New Jersey,
+          introducing a new color palette and identity while optimizing the existing
+          Information Architecture.
+        </p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─────────────────────────────────── -->
+  <footer>
+    <div class="footer-trusted" data-theme="dark">
+      <p class="trusted-label">Trusted by</p>
+      <div class="logos-row">
+        <img src="assets/images/qkstudio_white.svg"     alt="QKStudio"      height="36" />
+        <img src="assets/images/dilligent_white.svg"    alt="Diligent"      height="36" />
+        <img src="assets/images/mercadolibre_white.svg" alt="Mercado Libre" height="36" />
+        <img src="assets/loopstudio_white.svg"   alt="Loopstudio"    height="36" />
+        <img src="assets/images/improving_white.svg"    alt="Improving"     height="36" />
+      </div>
+    </div>
+
+    <div class="footer-contact" data-theme="light">
+      <div class="footer-contact-inner">
+        <div class="footer-contact-row">
+          <img src="assets/images/avatar.png" alt="David Hoyos" class="footer-avatar" />
+          <div class="footer-contact-text">
+            <p class="footer-tagline">
+              The deck ends here, but the<br/>conversation starts now. Ready to chat?
+            </p>
+            <p class="footer-name">David Hoyos</p>
+            <nav class="footer-links" aria-label="Contact links">
+              <a href="mailto:daviddhoyos1@gmail.com">daviddhoyos1@gmail.com</a>
+              <div class="footer-sep" aria-hidden="true"></div>
+              <a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener">LinkedIn</a>
+              <div class="footer-sep" aria-hidden="true"></div>
+              <a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/edit?usp=sharing" target="_blank" rel="noopener">Resume</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
