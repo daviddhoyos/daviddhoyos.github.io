@@ -273,7 +273,7 @@ a   { text-decoration: none; color: inherit; }
 /* Lens PNG — static, right side */
 .hero-lens {
   position: absolute;
-  right: -40px;
+  right: 0px;
   top: 50%;
   transform: translateY(-52%);
   width: clamp(220px, 28vw, 380px);
@@ -291,7 +291,7 @@ a   { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .hero-eyebrow {
