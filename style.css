@@ -30,6 +30,7 @@ body {
   background: var(--dark-bg);
   color: var(--white);
   overflow-x: hidden;
+  cursor: url('assets/images/cursor.svg') 12 4, auto; /* custom cursor — numbers = hotspot x y */
 }
 
 img { display: block; max-width: 100%; }
@@ -229,12 +230,12 @@ a   { text-decoration: none; color: inherit; }
   backdrop-filter: url(#glass-filter-light) blur(28px) saturate(200%) brightness(1.08);
   -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.08);
   box-shadow:
-    inset  2px  2px 0px 0  rgba(255,255,255,0.95),
-    inset -1px -1px 0px 0  rgba(255,255,255,0.35),
+    inset  0.5px  0.5px 0px 0  rgba(255,255,255,0.60), /* mismo estilo que dark */
+    inset -1px -1px 0px 0  rgba(255,255,255,0.20),
     0  2px  6px 0 rgba(0,0,0,0.04),
     0  8px 24px 0 rgba(0,0,0,0.07),
     0 20px 48px 0 rgba(0,0,0,0.05);
-  border-color: rgba(255,255,255,0.80);
+  border-color: rgba(0,0,0,0.10); /* igual de fino que el dark */
 }
 
 .navbar.light .navbar-inner::before {
@@ -374,7 +375,7 @@ a   { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 0; /* spacing controlled individually below */
 }
 
 .hero-eyebrow {
@@ -383,6 +384,7 @@ a   { text-decoration: none; color: inherit; }
   font-weight: 400;
   color: rgba(255,255,255,0.55);
   letter-spacing: 0.01em;
+  margin-bottom: 6px; /* ← gap eyebrow→nombre (más pequeño) */
 }
 
 .hero-name {
@@ -399,7 +401,7 @@ a   { text-decoration: none; color: inherit; }
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin-top: 8px;
+  margin-top: 36px; /* ← gap nombre→pills (más grande) */
 }
 
 /* ─── Tags ──────────────────────────────────────── */
@@ -424,6 +426,22 @@ a   { text-decoration: none; color: inherit; }
   background: rgba(0,0,0,0.05);
   color: rgba(0,0,0,0.65);
   border-color: rgba(0,0,0,0.1);
+}
+
+/* ─── Selected Projects header section ───────────── */
+.selected-projects-header {
+  background: var(--white);
+  color: var(--text-dark);
+  padding: 100px 80px 0; /* top = same as more-projects; no bottom — flows into Diligent */
+  text-align: center;
+}
+
+.selected-projects-title {
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(32px, 4vw, 32px); /* same as .more-projects-title */
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
 }
 
 /* ─── Case Study Sections ───────────────────────── */
@@ -1008,7 +1026,9 @@ a   { text-decoration: none; color: inherit; }
   .cs-title { text-align: left; }
   .cs-description { text-align: left; max-width: 100%; }
 
-  .diligent-triangle { height: 40%; }
+  .diligent-triangle { height: 20%; } /* ← era 40%, reducido a 20% en mobile */
+
+  .hero-lens-group { display: none; } /* ← ocultar lentes en mobile */
 
   .projects-grid { grid-template-columns: 1fr; }
 
