@@ -66,7 +66,7 @@ a   { text-decoration: none; color: inherit; }
   /* Layered rim-light mimicking Apple Liquid Glass */
   box-shadow:
     /* top-left bright specular */
-    inset  2px  2px 0px 0  rgba(255,255,255,0.32),
+    inset  0.5px  0.5px 0px 0  rgba(255,255,255,0.32),
     /* bottom-right dim */
     inset -1px -1px 0px 0  rgba(255,255,255,0.06),
     /* subtle outer glow */
@@ -492,7 +492,7 @@ a   { text-decoration: none; color: inherit; }
 
 /* Section 2 — Conduiit */
 .section-conduiit {
-  background: #F4F4F4;
+  background: #f3f3f3;
   color: var(--text-dark);
 }
 .section-conduiit .cs-visual  { padding: 80px 80px 80px 24px; order: 2; }
@@ -716,7 +716,7 @@ a   { text-decoration: none; color: inherit; }
 .footer-contact-text {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 48px;
   flex: 1;
 }
 
@@ -733,7 +733,7 @@ a   { text-decoration: none; color: inherit; }
   font-family: 'Inter', sans-serif;
   font-size: 17px;
   color: var(--text-mid);
-  margin-bottom: 12px;
+  margin-bottom: 48px;
 }
 
 .footer-links {
