@@ -30,7 +30,7 @@ body {
   background: var(--dark-bg);
   color: var(--white);
   overflow-x: hidden;
-  cursor: url('assets/images/cursor.svg') 12 4, auto; /* custom cursor — numbers = hotspot x y */
+  cursor: url('assets/images/cursor.png') 4 2, auto; /* hotspot: punta superior izq del cursor */
 }
 
 img { display: block; max-width: 100%; }
