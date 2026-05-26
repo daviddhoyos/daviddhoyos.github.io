@@ -616,7 +616,7 @@ a   { text-decoration: none; color: inherit; }
 }
 
 .project-card-img-wrap {
-  border-radius: 16px;
+  border-radius: 0px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
