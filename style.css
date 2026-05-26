@@ -443,7 +443,7 @@ a   { text-decoration: none; color: inherit; }
   width: 100%; /* ← THUMBNAIL SIZE: desktop/1080px */
   height: auto;
   border-radius: 35px;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.13);
+  /* box-shadow: 0 32px 80px rgba(0,0,0,0.13); */
   display: block;
   margin: 0 auto;
 }
@@ -594,7 +594,7 @@ a   { text-decoration: none; color: inherit; }
 
 .more-projects-title {
   font-family: 'Geist', sans-serif;
-  font-size: clamp(32px, 4vw, 52px);
+  font-size: clamp(32px, 4vw, 32px);
   font-weight: 700;
   color: var(--white);
   letter-spacing: -0.02em;
@@ -653,8 +653,8 @@ a   { text-decoration: none; color: inherit; }
 
 .trusted-label {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  color: rgba(255,255,255,0.35);
+  font-size: 18px;
+  color: rgba(255,255,255,0.50);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 500;
@@ -675,7 +675,7 @@ a   { text-decoration: none; color: inherit; }
   width: auto;
   max-width: 140px; /* prevent oversized logos */
   object-fit: contain;
-  opacity: 0.55;
+  opacity: 0.70;
   transition: opacity 0.2s;
   filter: brightness(0) invert(1); /* force white */
   vertical-align: middle;
@@ -731,7 +731,7 @@ a   { text-decoration: none; color: inherit; }
 
 .footer-name {
   font-family: 'Inter', sans-serif;
-  font-size: 17px;
+  font-size: 24px;
   color: var(--text-mid);
   margin-bottom: 48px;
 }
@@ -924,7 +924,7 @@ a   { text-decoration: none; color: inherit; }
     width: 57.5vw; /* ← MOBILE THUMBNAIL SIZE (was 50vw, +15%) */
     margin: 0; /* left-aligned */
     margin-left: 0;
-    border-radius: 20px;
+    border-radius: 0px;
   }
 
   /* CTA: full width, centered */
