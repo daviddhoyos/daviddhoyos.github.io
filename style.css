@@ -302,7 +302,7 @@ a   { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(14px, 2vw, 36px);
+  gap: 0; /* ← las imágenes se tocan; el overlap lo manejan los margin-top de los hijos */
   pointer-events: none;
   user-select: none;
   z-index: 1;
@@ -315,57 +315,60 @@ a   { text-decoration: none; color: inherit; }
   display: block;
 }
 
-/* ┌─────────────────────────────────────────────────────────────┐
-   │  LENS ANIMATION SETTINGS — editá estos valores a mano      │
-   │                                                             │
-   │  VELOCIDAD (duración del ciclo completo):                   │
-   │    lens-up   → 4.6s   ↑ número = más lento, ↓ = más rápido │
-   │    lens-mid  → 5.1s                                         │
-   │    lens-down → 4.3s                                         │
-   │                                                             │
-   │  DISTANCIA DE FLOTADO (pico en keyframe 45%):               │
-   │    lens-up   → translateY(-11px)  negativo = sube           │
-   │    lens-mid  → translateY(-4px)                             │
-   │    lens-down → translateY(11px)   positivo = baja           │
-   │                                                             │
-   │  BOUNCE (overshoot en keyframe 45% vs 55%):                 │
-   │    45% = pico exagerado (ej: -14px), 55% = asentado (-11px) │
-   │    Diferencia mayor = rebote más pronunciado                 │
-   │                                                             │
-   │  ROTACIÓN (en cada keyframe, valor rotate(Xdeg)):           │
-   │    Más grados = más inclinación. Recomendado: 0.5–2deg      │
-   └─────────────────────────────────────────────────────────────┘ */
+/* Acercar lens_mid y lens_down usando la transparencia alpha como overlap natural */
+.lens-mid  { margin-top: -55px; } /* ← más negativo = más superpuestos */
+.lens-down { margin-top: -30px; } /* ← más negativo = más superpuestos */
 
-/* ── Duración: modificá el primer valor (ej: 4.6s) ── */
-.lens-up   { animation: lens-anim-up   4.6s ease-in-out infinite; transform-origin: center center; }
-.lens-mid  { animation: lens-anim-mid  5.1s ease-in-out infinite; transform-origin: center center; }
-.lens-down { animation: lens-anim-down 4.3s ease-in-out infinite; transform-origin: center center; }
+/* ┌──────────────────────────────────────────────────────────────────┐
+   │  LENS ANIMATION SETTINGS — editá estos valores a mano           │
+   │                                                                  │
+   │  FLUIDEZ: la clave es que 0% y 100% sean IDÉNTICOS.             │
+   │  Con ease-in-out eso crea una curva senoidal perfecta sin jerks. │
+   │  NO agregar keyframes intermedios de "rebote al volver".         │
+   │                                                                  │
+   │  VELOCIDAD (duración del ciclo):                                 │
+   │    lens-up   → 5s    ↑ número = más lento, ↓ = más rápido       │
+   │    lens-mid  → 6.2s                                              │
+   │    lens-down → 4.8s                                              │
+   │                                                                  │
+   │  DISTANCIA DE FLOTADO (valor en 50%):                            │
+   │    lens-up   → translateY(-18px)  negativo = sube                │
+   │    lens-mid  → translateY(-5px)                                  │
+   │    lens-down → translateY(14px)   positivo = baja                │
+   │                                                                  │
+   │  ROTACIÓN (diferencia entre 0%/100% y 50%):                     │
+   │    lens-up   → de -3.5deg a +3.5deg  (7deg total de swing)      │
+   │    lens-mid  → de +1deg  a -1deg                                 │
+   │    lens-down → de +2.5deg a -2.5deg                              │
+   │    Más grados = bamboleo más notorio                              │
+   │                                                                  │
+   │  OVERLAP (qué tan juntos están):                                 │
+   │    .lens-mid  margin-top: -55px                                  │
+   │    .lens-down margin-top: -30px                                  │
+   │    Más negativo = más solapados                                   │
+   └──────────────────────────────────────────────────────────────────┘ */
 
-/* ── lens_up: sube + rota. Bounce = diferencia entre 45% y 55% ── */
+/* ── Duración: modificá el primer valor ── */
+.lens-up   { animation: lens-anim-up   5s   ease-in-out infinite; transform-origin: center center; }
+.lens-mid  { animation: lens-anim-mid  6.2s ease-in-out infinite; transform-origin: center center; }
+.lens-down { animation: lens-anim-down 4.8s ease-in-out infinite; transform-origin: center center; }
+
+/* ── lens_up: sube + swing de izquierda a derecha bien notorio ── */
 @keyframes lens-anim-up {
-  0%   { transform: translateY(0px)   rotate(0deg);   }
-  45%  { transform: translateY(-14px) rotate(1.4deg); } /* ← overshoot (bounce peak)  */
-  55%  { transform: translateY(-11px) rotate(1deg);   } /* ← asentado (float target)  */
-  90%  { transform: translateY(5px)   rotate(-0.3deg);} /* ← micro-rebote al volver   */
-  100% { transform: translateY(0px)   rotate(0deg);   }
+  0%, 100% { transform: translateY(0px)    rotate(-3.5deg); } /* posición de reposo */
+  50%       { transform: translateY(-18px)  rotate(3.5deg);  } /* pico: arriba + rotado al otro lado */
 }
 
-/* ── lens_mid: flota suave, bounce mínimo ── */
+/* ── lens_mid: flote suave con leve contramovimiento ── */
 @keyframes lens-anim-mid {
-  0%   { transform: translateY(0px)  rotate(0deg);    }
-  45%  { transform: translateY(-6px) rotate(-0.9deg); } /* ← overshoot */
-  55%  { transform: translateY(-4px) rotate(-0.7deg); } /* ← asentado  */
-  90%  { transform: translateY(1px)  rotate(0.2deg);  } /* ← micro-rebote */
-  100% { transform: translateY(0px)  rotate(0deg);    }
+  0%, 100% { transform: translateY(0px)   rotate(1deg);  }
+  50%       { transform: translateY(-5px)  rotate(-1deg); }
 }
 
-/* ── lens_down: baja + rota. Bounce = diferencia entre 45% y 55% ── */
+/* ── lens_down: baja + swing opuesto al up ── */
 @keyframes lens-anim-down {
-  0%   { transform: translateY(0px)   rotate(0deg);    }
-  45%  { transform: translateY(14px)  rotate(-1.2deg); } /* ← overshoot */
-  55%  { transform: translateY(11px)  rotate(-0.9deg); } /* ← asentado  */
-  90%  { transform: translateY(-6px)  rotate(0.3deg);  } /* ← micro-rebote */
-  100% { transform: translateY(0px)   rotate(0deg);    }
+  0%, 100% { transform: translateY(0px)   rotate(2.5deg);  }
+  50%       { transform: translateY(14px)  rotate(-2.5deg); }
 }
 
 .hero-content {
