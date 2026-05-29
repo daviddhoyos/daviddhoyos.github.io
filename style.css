@@ -302,7 +302,7 @@ a   { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0; /* ← las imágenes se tocan; el overlap lo manejan los margin-top de los hijos */
+  gap: clamp(14px, 2vw, 36px);
   pointer-events: none;
   user-select: none;
   z-index: 1;
@@ -315,37 +315,16 @@ a   { text-decoration: none; color: inherit; }
   display: block;
 }
 
-/* Acercar lens_mid y lens_down usando la transparencia alpha como overlap natural */
-.lens-mid  { margin-top: -55px; } /* ← más negativo = más superpuestos */
-.lens-down { margin-top: -30px; } /* ← más negativo = más superpuestos */
-
 /* ┌──────────────────────────────────────────────────────────────────┐
-   │  LENS ANIMATION SETTINGS — editá estos valores a mano           │
-   │                                                                  │
-   │  FLUIDEZ: la clave es que 0% y 100% sean IDÉNTICOS.             │
-   │  Con ease-in-out eso crea una curva senoidal perfecta sin jerks. │
-   │  NO agregar keyframes intermedios de "rebote al volver".         │
-   │                                                                  │
-   │  VELOCIDAD (duración del ciclo):                                 │
-   │    lens-up   → 5s    ↑ número = más lento, ↓ = más rápido       │
-   │    lens-mid  → 6.2s                                              │
-   │    lens-down → 4.8s                                              │
-   │                                                                  │
-   │  DISTANCIA DE FLOTADO (valor en 50%):                            │
-   │    lens-up   → translateY(-18px)  negativo = sube                │
-   │    lens-mid  → translateY(-5px)                                  │
-   │    lens-down → translateY(14px)   positivo = baja                │
-   │                                                                  │
-   │  ROTACIÓN (diferencia entre 0%/100% y 50%):                     │
-   │    lens-up   → de -3.5deg a +3.5deg  (7deg total de swing)      │
-   │    lens-mid  → de +1deg  a -1deg                                 │
-   │    lens-down → de +2.5deg a -2.5deg                              │
-   │    Más grados = bamboleo más notorio                              │
-   │                                                                  │
-   │  OVERLAP (qué tan juntos están):                                 │
-   │    .lens-mid  margin-top: -55px                                  │
-   │    .lens-down margin-top: -30px                                  │
-   │    Más negativo = más solapados                                   │
+   │  LENS ANIMATION — editá estos valores a mano                    │
+   │  VELOCIDAD: 1er valor de animation (ej: 5s). ↑=más lento        │
+   │  CONVERGENCIA: translateY en 50% de lens-up/down                │
+   │    lens-up  50% → translateY(14px)   ↑ px = más convergencia    │
+   │    lens-down 50% → translateY(-12px) ↑ px = más convergencia    │
+   │  ROTACIÓN lens_up (asimétrica → lado derecho casi plano):        │
+   │    0%/100% = rotate(-5deg), 50% = rotate(+8deg)                 │
+   │    Aumentar el 8deg para más efecto "plano"                      │
+   │  OVERLAP estático: .lens-mid margin-top: -55px                  │
    └──────────────────────────────────────────────────────────────────┘ */
 
 /* ── Duración: modificá el primer valor ── */
@@ -353,22 +332,24 @@ a   { text-decoration: none; color: inherit; }
 .lens-mid  { animation: lens-anim-mid  6.2s ease-in-out infinite; transform-origin: center center; }
 .lens-down { animation: lens-anim-down 4.8s ease-in-out infinite; transform-origin: center center; }
 
-/* ── lens_up: sube + swing de izquierda a derecha bien notorio ── */
+/* ── lens_up: CONVERGE hacia lens_mid (baja), rotación asimétrica hacia la derecha ──
+   Rango de rotación: -5deg (inclinada) → +8deg (casi plana al lado derecho)
+   Para más "plana": aumentar el 8deg. Para más tilt inicial: aumentar el -5deg. */
 @keyframes lens-anim-up {
-  0%, 100% { transform: translateY(0px)    rotate(-3.5deg); } /* posición de reposo */
-  50%       { transform: translateY(-18px)  rotate(3.5deg);  } /* pico: arriba + rotado al otro lado */
+  0%, 100% { transform: translateY(0px)   rotate(-5deg); } /* reposo: inclinada */
+  50%       { transform: translateY(14px)  rotate(8deg);  } /* pico: baja (converge) + casi plana */
 }
 
 /* ── lens_mid: flote suave con leve contramovimiento ── */
 @keyframes lens-anim-mid {
   0%, 100% { transform: translateY(0px)   rotate(1deg);  }
-  50%       { transform: translateY(-5px)  rotate(-1deg); }
+  50%       { transform: translateY(-4px)  rotate(-1deg); }
 }
 
-/* ── lens_down: baja + swing opuesto al up ── */
+/* ── lens_down: CONVERGE hacia lens_mid (sube), swing opuesto ── */
 @keyframes lens-anim-down {
-  0%, 100% { transform: translateY(0px)   rotate(2.5deg);  }
-  50%       { transform: translateY(14px)  rotate(-2.5deg); }
+  0%, 100% { transform: translateY(0px)    rotate(2.5deg);  }
+  50%       { transform: translateY(-12px)  rotate(-2.5deg); } /* pico: sube (converge) */
 }
 
 .hero-content {
@@ -811,7 +792,514 @@ a   { text-decoration: none; color: inherit; }
   transform: translateY(0);
 }
 
-/* ─── Responsive: Tablet (641px–1024px) ──────────── */
+/* ─── Case Study PAGE (edelap.html) ────────────────── */
+.cs-page body,
+body.cs-page {
+  background: #fff;
+  color: var(--text-dark);
+}
+
+/* ── CS Page: Back link ── */
+.cs-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  padding: 8px 16px 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.07);
+  transition: all 0.2s;
+  margin-bottom: 48px;
+  text-decoration: none;
+}
+.cs-back:hover { color: #fff; background: rgba(255,255,255,0.12); }
+.cs-back svg { flex-shrink: 0; }
+
+/* ── CS Page: Hero ── */
+.cs-hero {
+  position: relative;
+  min-height: 88vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  overflow: hidden;
+  background: #0A0A10;
+}
+.cs-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.75;
+  pointer-events: none;
+}
+.cs-hero-left {
+  position: relative;
+  z-index: 2;
+  padding: 140px 40px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cs-hero-right {
+  position: relative;
+  z-index: 2;
+  padding: 140px 80px 80px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cs-hero-right img {
+  width: clamp(220px, 30vw, 360px);
+  height: auto;
+  filter: drop-shadow(0 40px 80px rgba(0,0,0,0.6));
+}
+.cs-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 20px;
+}
+.cs-hero-title {
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(32px, 4.5vw, 58px);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.cs-hero-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+
+/* ── CS Page: Section wrapper ── */
+.csp-section {
+  padding: 100px 80px;
+  position: relative;
+}
+.csp-section--white { background: #fff; }
+.csp-section--offwhite { background: var(--off-white); }
+.csp-section--light-blue {
+  background: var(--section1-bg, #EAF2FA);
+  background-image: url('assets/images/section1_bg.png');
+  background-size: cover;
+  background-position: center;
+}
+.csp-section--dark {
+  background: #0A0A10;
+  color: #fff;
+}
+.csp-section--orange { background: #F9A875; }
+
+/* ── CS Section titles ── */
+.csp-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Geist', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.csp-section-label svg { flex-shrink: 0; }
+
+.csp-section-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-mid);
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+.csp-h2 {
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.csp-h3 {
+  font-family: 'Geist', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.csp-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-mid);
+}
+
+/* ── CS Page: two-column layout ── */
+.csp-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.csp-two-col--thirds {
+  grid-template-columns: 2fr 3fr;
+}
+
+/* ── CS Page: image placeholder (for images not yet uploaded) ── */
+.csp-img-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #F0F0F0;
+  border-radius: 16px;
+  border: 2px dashed #D0D0D0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #999;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+}
+.csp-img-placeholder--phone { aspect-ratio: 9/19; max-width: 260px; }
+.csp-img-placeholder--wide  { aspect-ratio: 21/9; }
+.csp-img-placeholder--square { aspect-ratio: 1/1; }
+.csp-img-placeholder span { font-size: 12px; color: #aaa; }
+
+/* Use this to insert real images later:
+   Replace <div class="csp-img-placeholder"> with:
+   <img src="assets/images/YOUR_FILE.png" alt="..." /> */
+
+/* ── CS Page: card ── */
+.csp-card {
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.07);
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.csp-card--dark {
+  background: #0A0A14;
+  border-color: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+/* ── CS Page: table ── */
+.csp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+.csp-table th {
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid rgba(0,0,0,0.08);
+  background: #fff;
+}
+.csp-table td {
+  padding: 16px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  color: var(--text-mid);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.csp-table tr:last-child td { border-bottom: none; }
+.csp-table .cell-highlight {
+  background: #BFDBFE;
+  color: #1E3A5F;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+
+/* ── Severity badges ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge--major { background: #EF4444; color: #fff; }
+.badge--minor { background: #374151; color: #fff; }
+
+/* ── Interview cards ── */
+.csp-interview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+.csp-interview-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid rgba(0,0,0,0.07);
+}
+.csp-interview-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: #C4B5FD;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+.csp-interview-quote-big {
+  font-family: 'Geist', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.csp-interview-quote {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  font-style: italic;
+}
+
+/* ── Findings grid ── */
+.csp-findings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 48px;
+  margin-top: 32px;
+}
+.csp-finding-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-mid);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.csp-finding-icon {
+  width: 22px; height: 22px; flex-shrink: 0;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  margin-top: 1px;
+}
+.csp-finding-icon--x { background: #FEE2E2; color: #DC2626; }
+.csp-finding-icon--check { background: #DCFCE7; color: #16A34A; }
+
+/* ── CTA block (orange) ── */
+.csp-cta-block {
+  background: #F9A875;
+  border-radius: 24px;
+  padding: 56px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 900px;
+}
+.csp-cta-title {
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+.csp-cta-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 32px;
+}
+.csp-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #F9A875;
+  background: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.csp-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+/* ── Hick's Law section ── */
+.csp-hicks {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  padding: 80px;
+  overflow: hidden;
+  background: #0A1A14;
+}
+.csp-hicks-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; opacity: 0.35;
+}
+.csp-hicks-content {
+  position: relative; z-index: 2;
+  max-width: 520px;
+}
+.csp-hicks-title {
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+/* ── Final screen annotations ── */
+.csp-annotated {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.csp-annotated-annotations {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.csp-annotation-item {}
+.csp-annotation-label {
+  font-family: 'Geist', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+.csp-annotation-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-mid);
+}
+
+/* ── Outcomes ── */
+.csp-outcomes-title {
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-align: center;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.csp-outcomes-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 56px;
+}
+.csp-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 540px;
+  margin: 0 auto 48px;
+}
+.csp-metric-card {
+  background: #4CAF50;
+  border-radius: 20px;
+  padding: 32px;
+  color: #fff;
+  text-align: center;
+}
+.csp-metric-card--alt { background: #2E7D32; }
+.csp-metric-value {
+  font-family: 'Geist', sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  display: block;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.csp-metric-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  opacity: 0.85;
+}
+.csp-outcomes-list {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.csp-outcomes-list-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-mid);
+}
+.csp-outcomes-list-item strong { color: var(--text-dark); }
+
+/* ─── Responsive: Mobile — cs-page ── */
+@media (max-width: 640px) {
+  .cs-hero { grid-template-columns: 1fr; min-height: auto; }
+  .cs-hero-left { padding: 120px 24px 40px; }
+  .cs-hero-right { display: none; }
+  .csp-section { padding: 60px 24px; }
+  .csp-two-col { grid-template-columns: 1fr; gap: 32px; }
+  .csp-two-col--thirds { grid-template-columns: 1fr; }
+  .csp-interview-grid { grid-template-columns: 1fr; }
+  .csp-findings-grid { grid-template-columns: 1fr; }
+  .csp-cta-block { grid-template-columns: 1fr; padding: 40px 24px; }
+  .csp-hicks { padding: 60px 24px; }
+  .csp-annotated { grid-template-columns: 1fr; }
+  .csp-metrics-grid { grid-template-columns: 1fr 1fr; max-width: 100%; }
+  .csp-table { font-size: 12px; }
+  .csp-table th, .csp-table td { padding: 10px 8px; }
+}
+
+/* ─── Responsive: Tablet — cs-page ── */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .cs-hero-left { padding: 120px 32px 60px 40px; }
+  .cs-hero-right { padding: 120px 40px 60px 24px; }
+  .csp-section { padding: 80px 40px; }
+  .csp-hicks { padding: 80px 40px; }
+}
+
+/* ─── Responsive: Tablet ─────────────────────────── */
 @media (min-width: 641px) and (max-width: 1024px) {
   /* Keep two-column layout but compress it */
   .case-study {
@@ -1034,6 +1522,11 @@ a   { text-decoration: none; color: inherit; }
   .hero-lens-group { display: none; } /* ← ocultar lentes en mobile */
 
   .projects-grid { grid-template-columns: 1fr; }
+
+  .more-projects-title { white-space: nowrap; } /* ← evita que se parta en 2 líneas */
+
+  /* Selected Projects: mismo padding que More Projects en mobile */
+  .selected-projects-header { padding: 48px 24px 0; }
 
   .more-projects,
   .footer-trusted,

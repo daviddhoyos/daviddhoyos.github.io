@@ -11,78 +11,742 @@
 </head>
 <body class="cs-page">
 
+  <!-- Apple Liquid Glass SVG filters — must live in DOM -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+    <defs>
+      <filter id="glass-filter-dark" color-interpolation-filters="sRGB"
+              x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.015 0.015"
+                      numOctaves="2" seed="2" result="noise"/>
+        <feColorMatrix type="saturate" values="3" in="noise" result="coloredNoise"/>
+        <feDisplacementMap in="SourceGraphic" in2="coloredNoise"
+          scale="10" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+        <feGaussianBlur stdDeviation="0.5" in="displaced" result="blurred"/>
+        <feComposite in="blurred" in2="SourceGraphic" operator="atop"/>
+      </filter>
+      <filter id="glass-filter-light" color-interpolation-filters="sRGB"
+              x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018 0.018"
+                      numOctaves="2" seed="5" result="noise"/>
+        <feColorMatrix type="saturate" values="2" in="noise" result="coloredNoise"/>
+        <feDisplacementMap in="SourceGraphic" in2="coloredNoise"
+          scale="7" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+        <feGaussianBlur stdDeviation="0.3" in="displaced" result="blurred"/>
+        <feComposite in="blurred" in2="SourceGraphic" operator="atop"/>
+      </filter>
+    </defs>
+  </svg>
+
   <!-- ─── Navbar ─────────────────────────────────── -->
   <nav class="navbar" id="navbar">
     <div class="navbar-inner">
-      <span class="navbar-logo">David Hoyos</span>
+      <a href="index.html" class="navbar-logo">David Hoyos</a>
       <div class="navbar-links">
-        <a href="mailto:daviddhoyos1@gmail.com">Email</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="index.html#selected-projects">Work</a>
         <a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/edit?usp=sharing" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener">About</a>
+        <button class="navbar-email-btn" id="emailCopyBtn" aria-label="Copy email address">
+          Email
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <rect x="1" y="4" width="7" height="8" rx="1.2" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M4 4V2.8A1.2 1.2 0 0 1 5.2 1.6h5A1.2 1.2 0 0 1 11.4 2.8v5A1.2 1.2 0 0 1 10.2 9H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="email-toast" id="emailToast" aria-live="polite">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Email copied to clipboard
       </div>
     </div>
   </nav>
 
-  <!-- ─── Case Study Header ──────────────────────── -->
-  <header class="cs-page-header" style="position:relative;">
-    <a href="index.html" class="cs-page-back">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M10.5 3L5.5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Back to portfolio
-    </a>
+  <!-- ═══════════════════════════════════════════════
+       HERO
+       bg: edelap_hero_bg.png | right: iPhone_edelap_hero.png
+  ════════════════════════════════════════════════ -->
+  <header class="cs-hero" data-theme="dark">
+    <!-- Background gradient image -->
+    <img src="assets/images/edelap_hero_bg.png" alt="" class="cs-hero-bg" aria-hidden="true" />
 
-    <p style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(255,255,255,0.5); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px;">Case Study</p>
-    <h1 style="font-family:'Geist',sans-serif; font-size:clamp(36px,6vw,72px); font-weight:800; letter-spacing:-0.03em; color:#fff; max-width:720px; margin:0 auto 20px; line-height:1.05;">
-      Optimizing Essential Services for Millions
-    </h1>
-    <p style="font-family:'Inter',sans-serif; font-size:16px; color:rgba(255,255,255,0.55); max-width:560px; margin:0 auto 36px; line-height:1.65;">
-      Redesigning the mobile core for a leading energy provider in Argentina.
-      Streamlining complex billing flows and payment architectures to drive digital adoption and reduce support friction.
-    </p>
-    <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-      <span class="tag tag-dark">Product Designer</span>
-      <span class="tag tag-dark">UX/UI</span>
-      <span class="tag tag-dark">Research</span>
-    </div>
-  </header>
+    <!-- Left: text content -->
+    <div class="cs-hero-left">
+      <a href="index.html" class="cs-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10.5 3L5.5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to portfolio
+      </a>
 
-  <!-- ─── Case Study Content ─────────────────────── -->
-  <main class="cs-page-content">
-    <img
-      src="assets/images/edelap.jpg"
-      alt="Edelap case study — full case study documentation"
-      loading="eager"
-      style="border-radius:12px; box-shadow: 0 8px 40px rgba(0,0,0,0.1);"
-    />
-  </main>
-
-  <!-- ─── Footer ─────────────────────────────────── -->
-  <footer>
-    <div class="footer-trusted" style="background:#0A0A0A;">
-      <p class="trusted-label">Trusted by</p>
-      <div class="logos-row">
-        <span class="logo-name">QKStudio</span>
-        <span class="logo-name">Diligent</span>
-        <span class="logo-name">mercado libre</span>
-        <span class="logo-name">loopstudio</span>
-        <span class="logo-name">improving</span>
+      <p class="cs-eyebrow">Case Study</p>
+      <h1 class="cs-hero-title">Optimizing Essential Services for Millions</h1>
+      <p class="cs-hero-desc">
+        Redesigning the mobile core for a leading energy provider in Argentina.
+        I streamlined complex billing flows and payment architectures to drive
+        digital adoption and reduce support friction.
+      </p>
+      <div class="hero-tags" style="justify-content: flex-start; margin-top: 0;">
+        <span class="tag tag-dark">Product Designer</span>
+        <span class="tag tag-dark">UX/UI</span>
+        <span class="tag tag-dark">Research</span>
       </div>
     </div>
 
-    <div class="footer-contact">
-      <div class="footer-photo" aria-hidden="true">D</div>
-      <p class="footer-tagline">
-        The deck ends here, but the conversation starts now. Ready to chat?
+    <!-- Right: iPhone mockup -->
+    <div class="cs-hero-right">
+      <!-- src: assets/images/iPhone_edelap_hero.png -->
+      <img src="assets/images/iPhone_edelap_hero.png" alt="Edelap mobile app redesign" />
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════════
+       1. THE STRATEGIC CHALLENGE
+       bg: section1_bg.png | left: boy_mac.png
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--light-blue" data-theme="light" aria-label="The Strategic Challenge">
+    <div class="csp-two-col">
+
+      <!-- Left: illustration -->
+      <div>
+        <!-- src: assets/images/boy_mac.png -->
+        <img src="assets/images/boy_mac.png" alt="Designer working at a laptop" style="width:100%; max-width:420px; height:auto;" />
+      </div>
+
+      <!-- Right: text -->
+      <div>
+        <h2 class="csp-h2" style="font-size: clamp(24px, 3vw, 36px); margin-bottom: 20px;">The Strategic Challenge</h2>
+        <p class="csp-body" style="margin-bottom: 24px;">
+          The legacy virtual office suffered from systemic usability and accessibility
+          gaps that hindered the service experience. To transform this into a
+          high-performing mobile tool, I led a diagnostic audit focused on three
+          critical questions:
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <p style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:var(--text-dark); line-height:1.5;">
+            What are the critical friction points in the current user journey?
+          </p>
+          <p style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:var(--text-dark); line-height:1.5;">
+            How can we accurately measure the impact of these inefficiencies?
+          </p>
+          <p style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:var(--text-dark); line-height:1.5;">
+            Where should we focus our design efforts to drive the most value?
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       2. ATTENTION METRICS
+       Heatmap full-width + two cards below
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--white" data-theme="light" aria-label="Attention Metrics">
+
+    <div class="csp-section-label" style="margin-bottom: 48px;">
+      <!-- Eye icon -->
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="14" stroke="#1E40AF" stroke-width="2"/>
+        <circle cx="16" cy="16" r="6" fill="#1E40AF"/>
+        <circle cx="16" cy="16" r="3" fill="#fff"/>
+      </svg>
+      Attention Metrics
+    </div>
+
+    <!-- Heat Map -->
+    <div style="margin-bottom: 48px;">
+      <h3 class="csp-h3">Heat Map</h3>
+      <p class="csp-body" style="margin-bottom: 24px;">It only recognizes the area of the amount to be paid and ignores the rest.</p>
+      <!-- src: assets/images/heatmap1.png -->
+      <img src="assets/images/heatmap1.png" alt="Heatmap showing user attention concentrated on amount to pay"
+           style="width:100%; border-radius:16px; box-shadow:0 4px 32px rgba(0,0,0,0.12);" />
+    </div>
+
+    <!-- Two cards: Attention % + Clarity -->
+    <div class="csp-two-col">
+      <div>
+        <h3 class="csp-h3">Attention Percentage</h3>
+        <p class="csp-body" style="margin-bottom: 20px;">Doesn't exceed 1% of attention</p>
+        <!-- src: assets/images/heatmap2.png -->
+        <img src="assets/images/heatmap2.png" alt="Attention percentage heatmap showing 1% clicks"
+             style="width:100%; border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.10);" />
+      </div>
+      <div>
+        <h3 class="csp-h3">Clarity Metrics</h3>
+        <p class="csp-body" style="margin-bottom: 20px;">Moderate difficulty</p>
+        <!-- src: assets/images/clarityscore.png -->
+        <img src="assets/images/clarityscore.png" alt="Clarity score: 54%, moderate difficulty"
+             style="width:100%; max-width:340px; border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.10);" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       3. OPTIMAL WORKSHOP — Card Sorting
+       Table with card sorting data from PDF
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--offwhite" data-theme="light" aria-label="Optimal Workshop">
+
+    <div class="csp-section-label" style="margin-bottom: 16px;">
+      <!-- Rewind/workshop icon -->
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <rect width="36" height="36" rx="8" fill="#0A0A0A"/>
+        <path d="M10 18L18 10L26 18" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M10 24L18 16L26 24" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      Optimal Workshop
+    </div>
+
+    <h3 class="csp-h3" style="margin-bottom: 8px;">Card Sorting</h3>
+    <p class="csp-body" style="margin-bottom: 36px;">
+      The results exposed a fundamental dissociation: the existing Information Architecture
+      didn't reflect how users naturally categorize energy services. This validated the need
+      for a complete navigation overhaul to reduce cognitive load.
+    </p>
+
+    <div style="overflow-x: auto; border-radius: 16px; border: 1px solid rgba(0,0,0,0.07); background:#fff;">
+      <table class="csp-table">
+        <thead>
+          <tr>
+            <th style="min-width:180px;">Information</th>
+            <th>Supply</th>
+            <th>Bills &amp; Payments</th>
+            <th>Technical Support</th>
+            <th>Customer Service</th>
+            <th>Energy Advisor</th>
+            <th>Cost Simulator</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Consumption</td>
+            <td><span class="cell-highlight">71%</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>29%</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Supply</td>
+            <td><span class="cell-highlight">71%</span></td>
+            <td></td>
+            <td>29%</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Address &amp; ID</td>
+            <td>43%</td>
+            <td></td>
+            <td>14%</td>
+            <td>29%</td>
+            <td></td>
+            <td>14%</td>
+          </tr>
+          <tr>
+            <td>Account Statement</td>
+            <td>43%</td>
+            <td></td>
+            <td>14%</td>
+            <td><span class="cell-highlight">43%</span></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Amount Due (Total)</td>
+            <td>43%</td>
+            <td><span class="cell-highlight">43%</span></td>
+            <td></td>
+            <td></td>
+            <td>14%</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Download Invoice</td>
+            <td></td>
+            <td><span class="cell-highlight">100%</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Digital Invoice</td>
+            <td></td>
+            <td><span class="cell-highlight">86%</span></td>
+            <td></td>
+            <td>14%</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Direct Debit</td>
+            <td>14%</td>
+            <td><span class="cell-highlight">71%</span></td>
+            <td>14%</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Last Invoice</td>
+            <td>14%</td>
+            <td><span class="cell-highlight">71%</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>14%</td>
+          </tr>
+          <tr>
+            <td>Last Invoice Period</td>
+            <td>14%</td>
+            <td><span class="cell-highlight">71%</span></td>
+            <td>14%</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Amount Due by Cutoff Date</td>
+            <td>29%</td>
+            <td><span class="cell-highlight">57%</span></td>
+            <td>14%</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Consumption Chart</td>
+            <td>29%</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="cell-highlight">43%</span></td>
+            <td>29%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       4. HEURISTIC EVALUATION
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--white" data-theme="light" aria-label="Heuristic Evaluation">
+
+    <div class="csp-section-label" style="margin-bottom: 16px;">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="14" stroke="#6D28D9" stroke-width="2"/>
+        <circle cx="16" cy="16" r="8" fill="#6D28D9"/>
+        <circle cx="16" cy="16" r="4" fill="#fff"/>
+      </svg>
+      Heuristic Evaluation
+    </div>
+
+    <p class="csp-body" style="margin-bottom: 40px; max-width: 680px;">
+      I performed a heuristic evaluation to uncover systemic flaws hindering the user experience.
+      This qualitative diagnosis identified high-friction areas where the interface failed to
+      communicate clearly with the user, setting a clear roadmap for the redesign.
+    </p>
+
+    <div style="overflow-x:auto; border-radius:16px; border:1px solid rgba(0,0,0,0.07);">
+      <table class="csp-table">
+        <thead>
+          <tr>
+            <th style="min-width:260px;">Description</th>
+            <th style="min-width:160px;">Location</th>
+            <th style="min-width:180px;">Violation</th>
+            <th>Severity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Buttons across the screen vary significantly in size with no consistent visual relationship between them, creating confusion and making it difficult for users to orient themselves spatially.</td>
+            <td>Supply Screen</td>
+            <td>Consistency &amp; Standards</td>
+            <td><span class="badge badge--major">3 Major</span></td>
+          </tr>
+          <tr>
+            <td>Using the same color for all buttons undermines visual hierarchy. The absence of a highlighted CTA leaves users without a clear sense of direction. The primary action should be reinforced with a distinctive color to differentiate it from secondary buttons.</td>
+            <td>Supply Screen</td>
+            <td>
+              Aesthetic &amp; Minimalist Design<br/>
+              <span style="font-size:12px;color:var(--text-muted);">Consistency</span>
+            </td>
+            <td><span class="badge badge--major">3 Major</span></td>
+          </tr>
+          <tr>
+            <td>A button placed where a title is expected, combined with inconsistent color and positioning compared to other buttons, renders it practically invisible to the user.</td>
+            <td>Header / User Summary</td>
+            <td>
+              Consistency &amp; Standards<br/>
+              <span style="font-size:12px;color:var(--text-muted);">Aesthetic Design</span>
+            </td>
+            <td><span class="badge badge--minor">2 Minor</span></td>
+          </tr>
+          <tr>
+            <td>Two checklist icons enclosed in a pill shape strongly resemble a toggle switch, but clicking reveals they are text labels. There is no effective visual feedback to clarify their behavior. Users already associate that pattern with a switch — there is no need to reinvent it.</td>
+            <td>Supply Screen / Housing Type / Digital Invoice</td>
+            <td>
+              Consistency &amp; Standards<br/>
+              <span style="font-size:12px;color:var(--text-muted);">Aesthetic Design</span>
+            </td>
+            <td><span class="badge badge--minor">2 Minor</span></td>
+          </tr>
+          <tr>
+            <td>Clicking the "Supply" button navigates to a screen showing a list of supplies under the user's name — the same information already available as a dropdown on the previous screen. No new information is provided, and the button only adds unnecessary visual clutter.</td>
+            <td>Supply / My Supplies</td>
+            <td>
+              Consistency &amp; Standards<br/>
+              <span style="font-size:12px;color:var(--text-muted);">Aesthetic Design</span>
+            </td>
+            <td><span class="badge badge--minor">2 Minor</span></td>
+          </tr>
+          <tr>
+            <td>When clicking the "Join" button, the label does not clearly communicate what action will be performed or what the user is committing to. The term lacks contextual meaning, creating ambiguity about the outcome of the interaction.</td>
+            <td>Supply / Join / Popup</td>
+            <td>
+              Consistency &amp; Standards<br/>
+              <span style="font-size:12px;color:var(--text-muted);">Aesthetic Design</span>
+            </td>
+            <td><span class="badge badge--minor">2 Minor</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       5. INTERVIEWS
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--offwhite" data-theme="light" aria-label="User Interviews">
+    <h2 class="csp-h2">Interviews</h2>
+    <p class="csp-body" style="margin-top:8px;">
+      The discovered insights are valuable for improving the current product, for future versions or new services.
+    </p>
+
+    <div class="csp-interview-grid">
+      <div class="csp-interview-card">
+        <div class="csp-interview-avatar">🙍‍♀️</div>
+        <p style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:var(--text-dark); margin-bottom:4px;">Carolina</p>
+        <p class="csp-interview-quote-big">"I get lost"</p>
+        <p class="csp-interview-quote">
+          "I rarely use the website because I almost always end up lost.
+          I prefer other payment platforms."
+        </p>
+      </div>
+      <div class="csp-interview-card">
+        <div class="csp-interview-avatar" style="background:#BAE6FD;">🙍‍♂️</div>
+        <p style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:var(--text-dark); margin-bottom:4px;">Alexander</p>
+        <p class="csp-interview-quote-big">"I can't find specific things"</p>
+        <p class="csp-interview-quote">
+          "I don't like the way they handle the app. It's hard for me to find
+          specific things. I usually use some other external app."
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       6. WHAT DID WE FIND?
+       Problems (✗) left + Solutions (✓) right
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--white" data-theme="light" aria-label="Findings">
+    <h2 class="csp-h2">What did we find?</h2>
+    <p class="csp-body" style="margin-top:8px;">In failures, we find opportunities. Some of them are the following:</p>
+
+    <div class="csp-findings-grid">
+      <!-- Problems -->
+      <div class="csp-finding-item">
+        <div class="csp-finding-icon csp-finding-icon--x">✕</div>
+        <span>There is no consistency in the information architecture.</span>
+      </div>
+      <div class="csp-finding-item">
+        <div class="csp-finding-icon csp-finding-icon--check">✓</div>
+        <span>Organize the menu by prioritizing the most used actions.</span>
+      </div>
+
+      <div class="csp-finding-item">
+        <div class="csp-finding-icon csp-finding-icon--x">✕</div>
+        <span>Doesn't follow UI design pattern standards.</span>
+      </div>
+      <div class="csp-finding-item">
+        <div class="csp-finding-icon csp-finding-icon--check">✓</div>
+        <span>Provide clarity to the main CTA.</span>
+      </div>
+
+      <div class="csp-finding-item">
+        <div class="csp-finding-icon csp-finding-icon--x">✕</div>
+        <span>Information in a language unfamiliar to the user.</span>
+      </div>
+      <div class="csp-finding-item">
+        <div class="csp-finding-icon csp-finding-icon--check">✓</div>
+        <span>Write text content employing a more user-friendly language.</span>
+      </div>
+
+      <div class="csp-finding-item">
+        <div class="csp-finding-icon csp-finding-icon--x">✕</div>
+        <span>There is no hierarchy of typography, colors or shapes.</span>
+      </div>
+      <div class="csp-finding-item">
+        <div class="csp-finding-icon csp-finding-icon--check">✓</div>
+        <span>Use of Color Theory, Gestalt, UX Writing.</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       7. IT'S TIME FOR UI DESIGN — CTA block
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--offwhite" data-theme="light" aria-label="UI Design">
+    <div class="csp-cta-block">
+      <div>
+        <h2 class="csp-cta-title">It's time for UI Design</h2>
+        <p class="csp-cta-desc">
+          Based on the findings, we will put together the most clear,
+          intuitive and accessible system.
+        </p>
+        <button class="csp-cta-btn">Design Screen</button>
+      </div>
+      <div>
+        <!-- Placeholder for 3D illustration (optional, can be left blank) -->
+        <div style="width:160px; height:160px;"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       8. WIREFRAMES
+       Two image placeholders: sketch + digital
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--white" data-theme="light" aria-label="Wireframes">
+    <h2 class="csp-h2" style="margin-bottom:36px;">Wireframes</h2>
+    <div class="csp-two-col">
+      <!-- Sketch wireframes — replace src when ready -->
+      <div class="csp-img-placeholder" style="aspect-ratio:4/3; border-radius:16px;">
+        <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#ccc" stroke-width="1.5"/><path d="M3 9h18M9 21V9" stroke="#ccc" stroke-width="1.5"/></svg>
+        <strong>Sketch Wireframes</strong>
+        <span>src="assets/images/wireframes_sketch.png"</span>
+      </div>
+      <!-- Digital wireframes — replace src when ready -->
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="csp-img-placeholder" style="aspect-ratio:16/9; border-radius:16px;">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke="#ccc" stroke-width="1.5"/></svg>
+          <strong>Digital Wireframes — Mobile</strong>
+          <span>src="assets/images/wireframes_mobile.png"</span>
+        </div>
+        <div class="csp-img-placeholder" style="aspect-ratio:16/9; border-radius:16px;">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" stroke="#ccc" stroke-width="1.5"/></svg>
+          <strong>Digital Wireframes — Desktop</strong>
+          <span>src="assets/images/wireframes_desktop.png"</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       9. TYPEFACE & COLORS
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--offwhite" data-theme="light" aria-label="Design System">
+    <div class="csp-two-col">
+
+      <!-- Typeface -->
+      <div>
+        <h2 class="csp-h2" style="margin-bottom:28px;">Typeface</h2>
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div style="display:flex; align-items:baseline; gap:16px;">
+            <span style="font-family:'Inter',sans-serif; font-size:13px; color:var(--text-muted); width:56px;">p</span>
+            <span style="font-family:'Inter',sans-serif; font-size:14px; color:var(--text-mid);">p — Lato Regular 16px (1rem)</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:16px;">
+            <span style="font-family:'Inter',sans-serif; font-size:13px; color:var(--text-muted); width:56px;">Label</span>
+            <span style="font-family:'Inter',sans-serif; font-size:14px; color:var(--text-mid);">Label — Lato Medium 16px (1rem)</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:16px;">
+            <span style="font-family:'Geist',sans-serif; font-size:22px; font-weight:700; color:var(--text-dark); width:56px;">H1</span>
+            <span style="font-family:'Inter',sans-serif; font-size:14px; color:var(--text-mid);">H1 — Lato Bold 28px (1.75rem)</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:16px;">
+            <span style="font-family:'Inter',sans-serif; font-size:16px; color:var(--text-dark); width:56px;">H2</span>
+            <span style="font-family:'Inter',sans-serif; font-size:14px; color:var(--text-mid);">H2 — Lato Regular 24px (1.5rem)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colors -->
+      <div>
+        <h2 class="csp-h2" style="margin-bottom:28px;">Colors</h2>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; max-width:300px;">
+          <div style="aspect-ratio:1; background:#5CB85C; border-radius:12px;"></div>
+          <div style="aspect-ratio:1; background:#5BC0DE; border-radius:12px;"></div>
+          <div style="aspect-ratio:1; background:#0A0A0A; border-radius:12px;"></div>
+          <div style="aspect-ratio:1; background:#F7F7F7; border-radius:12px; border:1px solid #e0e0e0;"></div>
+          <div style="aspect-ratio:1; background:#1A4D7C; border-radius:12px;"></div>
+          <div style="aspect-ratio:1; background:#fff; border-radius:12px; border:1px solid #e0e0e0;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       10. COMPONENTS
+       Image placeholder for component library
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--white" data-theme="light" aria-label="Components">
+    <h2 class="csp-h2" style="margin-bottom:12px;">Components</h2>
+    <p class="csp-body" style="margin-bottom:36px; max-width:580px;">
+      By grounding the Information Architecture in user insights, I removed the guesswork from
+      the UI phase, ensuring a seamless transition into a scalable component library.
+    </p>
+    <!-- Replace with actual component screenshot when ready -->
+    <div class="csp-img-placeholder csp-img-placeholder--wide">
+      <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="#ccc" stroke-width="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5" stroke="#ccc" stroke-width="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5" stroke="#ccc" stroke-width="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5" stroke="#ccc" stroke-width="1.5"/></svg>
+      <strong>Component Library</strong>
+      <span>src="assets/images/components.png"</span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       11. APPLYING HICK'S LAW TO NAVIGATION
+       Dark section with background image
+  ════════════════════════════════════════════════ -->
+  <section class="csp-hicks" data-theme="dark" aria-label="Applying Hick's Law">
+    <!-- Replace src with actual bg image when ready -->
+    <!-- <img src="assets/images/hicks_bg.png" alt="" class="csp-hicks-bg" aria-hidden="true" /> -->
+    <div class="csp-hicks-content">
+      <h2 class="csp-hicks-title">Applying Hick's Law to Navigation</h2>
+      <p style="font-family:'Inter',sans-serif; font-size:15px; line-height:1.7; color:rgba(255,255,255,0.65); max-width:480px;">
+        To minimize cognitive load and accelerate decision-making, I restructured the primary
+        navigation by aligning the architecture with the user's mental model. By categorizing
+        high-frequency tasks, I ensured the interface remains intuitive without overwhelming
+        the user with complexity.
       </p>
-      <p class="footer-name">David Hoyos</p>
-      <nav class="footer-links" aria-label="Contact links">
-        <a href="mailto:daviddhoyos1@gmail.com">daviddhoyos1@gmail.com</a>
-        <div class="footer-sep" aria-hidden="true"></div>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-        <div class="footer-sep" aria-hidden="true"></div>
-        <a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/edit?usp=sharing" target="_blank" rel="noopener">Resume</a>
-      </nav>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       12. FINAL DESIGN — Annotated screen
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--white" data-theme="light" aria-label="Final Design">
+    <h2 class="csp-h2" style="margin-bottom:48px;">Final Design</h2>
+
+    <div class="csp-annotated">
+      <!-- iPhone mockup -->
+      <div>
+        <!-- src: assets/images/iPhone_edelap_hero.png (reuse or replace with final annotated version) -->
+        <img src="assets/images/iPhone_edelap_hero.png" alt="Edelap final app design"
+             style="width:clamp(200px,22vw,300px); height:auto; filter:drop-shadow(0 20px 48px rgba(0,0,0,0.15));" />
+      </div>
+
+      <!-- Annotations -->
+      <div class="csp-annotated-annotations">
+        <div class="csp-annotation-item">
+          <p class="csp-annotation-label">Nested Settings:</p>
+          <p class="csp-annotation-text">Address and supply management are nested within the profile to declutter the main interface.</p>
+        </div>
+        <div class="csp-annotation-item">
+          <p class="csp-annotation-label">Primary Focus:</p>
+          <p class="csp-annotation-text">The balance due is the clear visual focal point, supported by helpers for immediate status clarity.</p>
+        </div>
+        <div class="csp-annotation-item">
+          <p class="csp-annotation-label">Ergonomic CTA:</p>
+          <p class="csp-annotation-text">Placed adjacent to the balance in the universal 'thumb zone' (Fitts' Law) for universal reach and faster completion.</p>
+        </div>
+        <div class="csp-annotation-item">
+          <p class="csp-annotation-label">Balanced Insights:</p>
+          <p class="csp-annotation-text">Home screen shows a high-level YoY comparison, linking to detailed analytics for power users.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       13. OUTCOMES & IMPACT
+  ════════════════════════════════════════════════ -->
+  <section class="csp-section csp-section--offwhite" data-theme="light" aria-label="Outcomes and Impact">
+    <h2 class="csp-outcomes-title">Outcomes &amp; Impact</h2>
+    <p class="csp-outcomes-sub">Iterative testing validated a significant uplift in key performance metrics</p>
+
+    <div class="csp-metrics-grid">
+      <div class="csp-metric-card">
+        <span class="csp-metric-value">50%</span>
+        <span class="csp-metric-label">Increased performance</span>
+      </div>
+      <div class="csp-metric-card csp-metric-card--alt">
+        <span class="csp-metric-value" style="font-size:36px;">Great</span>
+        <span class="csp-metric-label">Ease of use</span>
+      </div>
+    </div>
+
+    <div class="csp-outcomes-list">
+      <div class="csp-outcomes-list-item">
+        <span style="font-size:20px;">😊</span>
+        <span><strong>High User Satisfaction:</strong> Driven by a friction-free and intuitive mobile journey.</span>
+      </div>
+      <div class="csp-outcomes-list-item">
+        <span style="font-size:20px;">😊</span>
+        <span><strong>Increased Adoption:</strong> Streamlined access led to higher engagement with digital services.</span>
+      </div>
+      <div class="csp-outcomes-list-item">
+        <span style="font-size:20px;">😊</span>
+        <span><strong>Inclusive Design:</strong> Full WCAG compliance, optimized for screen readers and all users.</span>
+      </div>
+      <div class="csp-outcomes-list-item">
+        <span style="font-size:20px;">😊</span>
+        <span><strong>Reduced Friction:</strong> Simplified complex utility management into a seamless experience.</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── Footer ─────────────────────────────────── -->
+  <footer>
+    <div class="footer-trusted" data-theme="dark">
+      <p class="trusted-label">Trusted by</p>
+      <div class="logos-row">
+        <img src="assets/images/qkstudio_white.svg"     alt="QKStudio"      />
+        <img src="assets/images/dilligent_white.svg"    alt="Diligent"      />
+        <img src="assets/images/mercadolibre_white.svg" alt="Mercado Libre" />
+        <img src="assets/images/loopstudio_white.svg"   alt="Loopstudio"    />
+        <img src="assets/images/improving_white.svg"    alt="Improving"     />
+      </div>
+    </div>
+
+    <div class="footer-contact" data-theme="light">
+      <div class="footer-contact-inner">
+        <div class="footer-contact-row">
+          <img src="assets/images/avatar.png" alt="David Hoyos" class="footer-avatar" />
+          <div class="footer-contact-text">
+            <p class="footer-tagline">
+              The deck ends here, but the<br/>conversation starts now. Ready to chat?
+            </p>
+            <p class="footer-name">David Hoyos</p>
+            <nav class="footer-links" aria-label="Contact links">
+              <a href="mailto:daviddhoyos1@gmail.com">daviddhoyos1@gmail.com</a>
+              <div class="footer-sep" aria-hidden="true"></div>
+              <a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener">LinkedIn</a>
+              <div class="footer-sep" aria-hidden="true"></div>
+              <a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/edit?usp=sharing" target="_blank" rel="noopener">Resume</a>
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 
