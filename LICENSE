@@ -1,0 +1,22 @@
+Copyright (c) 2026 David Hoyos. All rights reserved.
+
+This repository and the website it publishes (https://daviddhoyos.github.io/)
+are proprietary. This includes the source code, text, case study content,
+images, illustrations, animations and design work.
+
+No part of it may be copied, reproduced, modified, distributed, published or
+used to create derivative works without prior written permission from
+David Hoyos.
+
+You are welcome to view the published website and, under GitHub's Terms of
+Service, to view and fork this repository on GitHub for the sole purpose of
+viewing it.
+
+Third-party materials are not covered by this notice and stay under their own
+licenses: the fonts in assets/fonts, and the shader code in hero-shader.js
+(a port of ShaderGradient, MIT, credited in the file). Client names, logos and
+product screens shown in the case studies belong to their respective owners.
+
+THE WEBSITE AND ITS CONTENT ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
+Contact: daviddhoyos1@gmail.com

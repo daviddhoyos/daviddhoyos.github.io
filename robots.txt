@@ -1,0 +1,8 @@
+# Pages are open to search engines. Images are kept out of Google Images.
+User-agent: *
+Allow: /
+
+User-agent: Googlebot-Image
+Disallow: /
+
+Sitemap: https://daviddhoyos.github.io/sitemap.xml

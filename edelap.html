@@ -4,11 +4,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Optimizing Essential Services for Millions | David Hoyos</title>
-<meta name="description" content="David Hoyos, UX/UI Designer. Product Design, Research, AI Workflows, SaaS.">
+<meta name="description" content="I redesigned Edelap&#x27;s customer virtual office as a mobile app, reworking billing and payment flows so paying a bill is the first thing users see.">
+<meta name="robots" content="index, follow, noimageindex">
+<meta name="author" content="David Hoyos">
+<meta name="copyright" content="© 2026 David Hoyos. All rights reserved.">
+<link rel="canonical" href="https://daviddhoyos.github.io/edelap.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="David Hoyos">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://daviddhoyos.github.io/edelap.html">
+<meta property="og:title" content="Optimizing Essential Services for Millions | David Hoyos">
+<meta property="og:description" content="I redesigned Edelap&#x27;s customer virtual office as a mobile app, reworking billing and payment flows so paying a bill is the first thing users see.">
+<meta property="og:image" content="https://daviddhoyos.github.io/assets/og/og-edelap.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Case study: Optimizing Essential Services for Millions, with a 3D staircase">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Optimizing Essential Services for Millions | David Hoyos">
+<meta name="twitter:description" content="I redesigned Edelap&#x27;s customer virtual office as a mobile app, reworking billing and payment flows so paying a bill is the first thing users see.">
+<meta name="twitter:image" content="https://daviddhoyos.github.io/assets/og/og-edelap.jpg">
+<meta name="twitter:image:alt" content="Case study: Optimizing Essential Services for Millions, with a 3D staircase">
 <meta name="theme-color" content="#19141a">
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<link rel="preload" href="assets/ed-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -26,8 +47,9 @@
 <main id="main" tabindex="-1">
 <section class="view enter" id="view-edelap">
 
-  <header class="case-hero case-hero--ed on-dark">
+  <header class="case-hero case-hero--ed case-hero--shader on-dark" data-hero-shader data-shader-colors="#60ffd8, #6a5cff, #3a30c0">
     <div class="wrap ed-hero-grid">
+      <img class="ed-stair" src="assets/ed-staircase.webp" width="440" height="360" alt="" aria-hidden="true" decoding="async">
       <div class="copy">
         <p class="eyebrow">Case study</p>
         <h1 class="t-display-soft" tabindex="-1" data-focus>Optimizing Essential Services for Millions</h1>
@@ -42,7 +64,6 @@
           <div><dt>Methods</dt><dd>Heatmaps, card sorting, heuristic review, interviews</dd></div>
         </dl>
       </div>
-      <img class="ed-hero-phone" src="assets/edelap-phone.webp" width="372" height="579" alt="Edelap mobile app home screen with the balance due and a Pay now button" decoding="async">
     </div>
   </header>
 
@@ -323,11 +344,12 @@
       </ul>
       <div class="legal">
         <a href="in-progress.html">Privacy Policy</a>
-        <p>© 2026 David Hoyos</p>
+        <p>© 2026 David Hoyos. All rights reserved.</p>
       </div>
     </div>
   </section>
 </footer>
 <script src="app.js" defer></script>
+<script src="hero-shader.js" defer></script>
 </body>
 </html>
