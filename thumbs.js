@@ -1,5 +1,6 @@
-/* Home thumbnails: the product window (or, for Edelap, the phone) comes alive on hover.
-   Desktop: hovering the window (or keyboard focus on the card) glides the dashboard down inside it;
+/* Thumbnails: the product window (or, for Edelap, the phone) comes alive on hover.
+   Used by the home cards (.thumb) and by the two small cards on the in-progress page (.status-card).
+   Desktop: hovering the window (home) or the whole card (in-progress), or keyboard focus on the card, glides the dashboard down inside it;
    leaving sends it back. Touch has no hover, so each card plays once when it is well in view.
    Motion itself lives in styles.css (transitions on .thumb.is-live); this only toggles the class and
    builds the pinned app bar. Reduced motion: never toggled. */
@@ -8,11 +9,12 @@
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   const hover = window.matchMedia('(hover: hover) and (pointer: fine)');
 
-  document.querySelectorAll('.thumb').forEach((card) => {
+  document.querySelectorAll('.thumb, .status-card').forEach((card) => {
     const win = card.querySelector('.win');
-    // product windows trigger on the window itself; the Edelap card (phone that rises) triggers on its media box
-    const target = win || card.querySelector('.edelap-media');
-    if (!target) return;
+    const art = win || card.querySelector('.edelap-media');   // the animated piece: product window, or Edelap's media box
+    if (!art) return;
+    // home: hover on the artwork itself; in-progress: the whole small card is the target (it is the link, and it lifts too)
+    const target = card.classList.contains('status-card') ? card : art;
     const viewport = win && win.querySelector('.win-viewport');
     const content = win && win.querySelector('.win-content');
 
@@ -40,14 +42,14 @@
     card.addEventListener('focusout', (e) => { if (!card.contains(e.relatedTarget)) live(false); });
 
     if (!hover.matches && 'IntersectionObserver' in window) {
-      const dur = parseFloat(getComputedStyle(target).getPropertyValue('--dur')) || 4;
+      const dur = parseFloat(getComputedStyle(art).getPropertyValue('--dur')) || 4;
       const io = new IntersectionObserver(([entry]) => {
         if (!entry.isIntersecting) return;
         io.disconnect();
         live(true);
         setTimeout(() => live(false), 150 + dur * 1000 + 1600);
       }, { threshold: 0.6 });
-      io.observe(target);
+      io.observe(art);
     }
   });
 })();
