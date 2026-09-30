@@ -261,15 +261,12 @@ button, a { touch-action: manipulation; }
   -webkit-backdrop-filter: url(#nav-lens) blur(4px) saturate(1.8);
   backdrop-filter: url(#nav-lens) blur(4px) saturate(1.8);
 }
-/* outside home, "David Hoyos" is the way back: a leading chevron, like a back button */
+/* outside home, "Home" is the way back: a leading chevron, like a back button */
 .nav .nav-back { flex: none; margin: 0 6px 0 -4px; transition: transform 200ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) { .nav .nav-name a:hover .nav-back { transform: translateX(-2px); } }
 @media (max-width: 559.98px) {
-  [data-view="home"] .nav .nav-name { display: none; }
-  /* phones: the back item collapses to its chevron (44px target), the name stays for screen readers */
-  .nav .nav-name a { width: 44px; padding: 0; justify-content: center; }
-  .nav .nav-name .nav-back { margin: 0; width: 18px; height: 18px; }
-  .nav .nav-name-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  /* phones: "Home" is a plain text item like the others, on every page; the chevron is dropped to save width */
+  .nav .nav-back { display: none; }
   .nav { padding-inline: 6px; }
   .nav ul { gap: 2px; }
   .nav a { padding: 0 12px; }
@@ -782,6 +779,8 @@ tbody th small, td small { display: block; margin-top: 2px; font: 400 14px/1.5 v
 @media (max-width: 1023.98px) {
   .mock { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .mock-frame { max-width: 340px; margin-inline: auto; }
+  /* the render has more air (and its shadow) on the left: the device body sits 6.4% of the image width right of centre */
+  .mock-frame > img { transform: translateX(-6.4%); }
   .callouts { display: grid; gap: 20px; }
   .callout { position: static; transform: none; padding-left: 16px; border-left: 2px solid var(--c); max-width: none; }
   .callout::before, .callout::after { display: none; }
@@ -940,4 +939,30 @@ tbody th small, td small { display: block; margin-top: 2px; font: 400 14px/1.5 v
 .work { scroll-margin-top: -24px; }
 .work:focus { outline: none; }
 
+/* ---------- phones: lighter case-study headers ----------
+   The floating art (staircase, coin, 3D figure) and the tag chips in the case header are dropped on phones:
+   they push the title and the summary below the fold. Desktop and tablet keep them. */
+@media (max-width: 639.98px) {
+  .ed-stair, .pm-coin, .challenge-figure { display: none; }
+  .case-hero .chips { display: none; }
+  /* with the figure gone, the copy takes the first row (otherwise the empty row keeps its 32px gap) */
+  .challenge .copy { grid-row: 1; }
+}
 
+/* ---------- "Email copied" tooltip (nav "Mail" copies the address instead of opening a mail client) ---------- */
+.copy-tip {
+  position: fixed; z-index: 60; left: 0; top: 0; pointer-events: none;
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px 10px 12px; border-radius: 14px;
+  background: #1d1820; color: #fff; font: 500 14px/1.2 var(--font-body); letter-spacing: 0.005em; white-space: nowrap;
+  box-shadow: 0 10px 28px -10px rgba(8, 4, 16, 0.55), 0 1px 3px rgba(8, 4, 16, 0.25), inset 0 0 0 0.5px rgba(255, 255, 255, 0.14);
+  opacity: 0; visibility: hidden; transform: translateY(-6px) scale(0.96); transform-origin: var(--arrow-x, 50%) 0;
+  transition: opacity 180ms var(--ease-out), transform 220ms var(--ease-out), visibility 0s linear 220ms;
+}
+.copy-tip.is-on { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+/* the little arrow points at the Mail item (JS sets --arrow-x, clamped when the tooltip is pushed off the screen edge) */
+.copy-tip::before {
+  content: ""; position: absolute; top: -5px; left: var(--arrow-x, 50%); width: 10px; height: 10px; margin-left: -5px;
+  background: #1d1820; border-radius: 2px 0 0 0; transform: rotate(45deg);
+}
+.copy-tip svg { flex: none; color: #8be0a4; }
+@media (prefers-reduced-motion: reduce) { .copy-tip { transform: none; transition: opacity 120ms linear, visibility 0s linear 120ms; } }

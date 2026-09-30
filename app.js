@@ -194,6 +194,65 @@
     });
   }
 
+  /* ---------- nav "Mail": copies the address instead of opening a mail client, and says so with a tooltip ----------
+     The link keeps its mailto: href, so without JS (or if copying is blocked) it still opens the mail app. */
+  const mailLinks = document.querySelectorAll('[data-copy-email]');
+  if (mailLinks.length) {
+    const tip = document.createElement('div');
+    tip.className = 'copy-tip';
+    tip.setAttribute('role', 'status');
+    tip.setAttribute('aria-live', 'polite');
+    tip.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span></span>';
+    document.body.appendChild(tip);
+    const tipText = tip.querySelector('span');
+    let hideTimer = 0;
+
+    const copyText = async (text) => {
+      try {
+        if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+      } catch (_) { /* fall through to the legacy path */ }
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none;';
+        document.body.appendChild(ta);
+        ta.select(); ta.setSelectionRange(0, text.length);
+        const ok = document.execCommand('copy');
+        ta.remove();
+        return ok;
+      } catch (_) { return false; }
+    };
+
+    // sits under the nav, centred on the Mail item, kept 12px inside the screen edges; the arrow keeps pointing at the item
+    const placeTip = (link) => {
+      const navRect = (link.closest('.nav') || link).getBoundingClientRect();
+      const r = link.getBoundingClientRect();
+      const w = tip.offsetWidth, vw = document.documentElement.clientWidth;
+      const cx = r.left + r.width / 2;
+      const left = Math.min(Math.max(cx - w / 2, 12), Math.max(12, vw - w - 12));
+      tip.style.left = left + 'px';
+      tip.style.top = Math.round(navRect.bottom + 12) + 'px';
+      tip.style.setProperty('--arrow-x', Math.min(Math.max(cx - left, 16), w - 16) + 'px');
+    };
+
+    const showTip = (link) => {
+      clearTimeout(hideTimer);
+      tipText.textContent = '';                                   // re-set so screen readers announce every copy
+      requestAnimationFrame(() => { tipText.textContent = 'Email copied'; placeTip(link); tip.classList.add('is-on'); });
+      hideTimer = setTimeout(() => tip.classList.remove('is-on'), 2200);
+    };
+
+    mailLinks.forEach((link) => {
+      link.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const email = (link.getAttribute('href') || '').replace(/^mailto:/i, '').split('?')[0];
+        const ok = email && await copyText(email);
+        if (ok) showTip(link); else window.location.href = link.href;   // can't copy: open the mail app as before
+      });
+    });
+    window.addEventListener('scroll', () => { if (tip.classList.contains('is-on')) tip.classList.remove('is-on'); }, { passive: true });
+  }
+
   /* ---------- page load: reveal + scroll regions ---------- */
   armReveals(document);
   bindScrollables();
