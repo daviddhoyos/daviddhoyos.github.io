@@ -1,8 +1,12 @@
-# Pages are open to search engines. Images are kept out of Google Images.
+# Pages are open to search engines. Images are kept out of Google Images,
+# except the favicon files: Google requires them to be crawlable by Googlebot-Image.
 User-agent: *
 Allow: /
 
 User-agent: Googlebot-Image
 Disallow: /
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /apple-touch-icon.png
 
 Sitemap: https://daviddhoyos.github.io/sitemap.xml

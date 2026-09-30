@@ -6,7 +6,7 @@
 /* Lato is only Edelap's own typeface, shown in its "Typeface and Colors" specimen (build decision: content, not UI). */
 @font-face { font-family: Lato; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/lato-400-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: Lato; font-style: normal; font-weight: 700; font-display: swap; src: url("assets/fonts/lato-700-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-:root{--bg-pm:url("assets/pm-header-bg.webp");--bg-edelap:url("assets/edelap-header-bg.webp");--bg-challenge:url("assets/ed-challenge-bg.webp");--bg-dive:url("assets/ed-dive-bg.webp");--bg-nav:url("assets/ed-nav-bg.webp");--bg-hero:url("assets/hero-bg.webp");--bg-hero-shader:url("assets/hero-shader-poster.webp");--bg-pm-shader:url("assets/pm-shader-poster.webp");--bg-ed-shader:url("assets/ed-shader-poster.webp");}
+:root{--bg-pm:url("assets/pm-header-bg.webp");--bg-edelap:url("assets/edelap-header-bg.webp");--bg-nav:url("assets/ed-nav-bg.webp");--bg-hero:url("assets/hero-bg.webp");--bg-hero-shader:url("assets/hero-shader-poster.webp");--bg-pm-shader:url("assets/pm-shader-poster.webp");--bg-ed-shader:url("assets/ed-shader-poster.webp");--bg-challenge-shader:url("assets/ed-challenge-shader-poster.webp");--bg-dive-shader:url("assets/ed-dive-shader-poster.webp");}
 /* ==========================================================================
    David Hoyos Portfolio. Tokens come from DESIGN.md (Figma is the source).
    Anything marked "build decision" is not in the Figma file.
@@ -696,24 +696,37 @@ tbody th small, td small { display: block; margin-top: 2px; font: 400 14px/1.5 v
 .ba-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--grid-gap); }
 @media (max-width: 719.98px) { .ba-grid { grid-template-columns: minmax(0, 1fr); } }
 .challenge {
-  position: relative; isolation: isolate; overflow: hidden; background: #d6eaf8; padding-block: var(--section-y);
+  position: relative; isolation: isolate; overflow: hidden; padding-block: var(--section-y);
+  background: #a898f6 var(--bg-challenge-shader) center / cover no-repeat;
 }
-.challenge::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: var(--bg-challenge) center / cover no-repeat; }
-.challenge .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; }
-.challenge .copy { grid-column: 2; display: grid; gap: 24px; }
+/* section backgrounds drawn by section-shader.js: the poster above is the same opening frame and the no-WebGL fallback */
+[data-bg-shader] > .bg-canvas {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; display: block; pointer-events: none;
+  opacity: 0; transition: opacity 900ms var(--ease-out);
+}
+[data-bg-shader].is-shader-on > .bg-canvas { opacity: 1; }
+/* fine film grain over the gradient (same technique as the home hero): after the canvas in paint order, under the copy */
+[data-bg-shader]::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.6; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+@media (prefers-reduced-motion: reduce) { [data-bg-shader] > .bg-canvas { transition: none; } }
+.challenge .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.challenge-figure { grid-column: 1; grid-row: 1; justify-self: center; height: clamp(300px, 30vw, 420px); width: auto; max-width: 100%; pointer-events: none; }
+.challenge .copy { grid-column: 2; grid-row: 1; display: grid; gap: 24px; position: relative; isolation: isolate; }
+/* soft light halo behind the copy: the gradient drifts, so this keeps the dark text above 4.5:1 wherever a darker patch passes */
+.challenge .copy::before {
+  content: ""; position: absolute; inset: -36px -64px; z-index: -1; pointer-events: none; border-radius: 80px;
+  background: rgba(255, 255, 255, 0.24); -webkit-filter: blur(46px); filter: blur(46px);
+}
 .challenge h2 { color: var(--text-display); }
-.challenge p { color: var(--text-strong); font: 400 18px/1.6 var(--font-body); max-width: 560px; }
+.challenge p { color: var(--text-display); font: 400 18px/1.6 var(--font-body); max-width: 560px; }
 .challenge ul { list-style: none; display: grid; gap: 12px; }
 .challenge li { font: 700 18px/1.5 var(--font-body); color: var(--text-display); max-width: 560px; }
 @media (max-width: 1023.98px) {
-  .challenge .wrap { grid-template-columns: minmax(0, 1fr); }
-  .challenge .copy { grid-column: 1; }
-  .challenge { background: #d6eaf8; padding-top: 320px; }
-  .challenge::before {
-    content: ""; position: absolute; inset: 0 0 auto 0; height: 320px; z-index: -1; pointer-events: none;
-    background: var(--bg-challenge) 30% 0 / auto 320px no-repeat;
-    -webkit-mask-image: linear-gradient(#000 62%, transparent); mask-image: linear-gradient(#000 62%, transparent);
-  }
+  .challenge .wrap { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .challenge-figure { grid-column: 1; grid-row: 1; height: clamp(220px, 56vw, 300px); }
+  .challenge .copy { grid-column: 1; grid-row: 2; }
 }
 .ed-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--grid-gap); }
 .ed-grid-2 .span-2 { grid-column: 1 / -1; }
@@ -747,8 +760,7 @@ tbody th small, td small { display: block; margin-top: 2px; font: 400 14px/1.5 v
   .pairs li { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .pairs .arrow { transform: rotate(90deg); }
 }
-.dive { position: relative; isolation: isolate; overflow: hidden; background: #f8dbe1; padding-block: var(--section-y); text-align: center; }
-.dive::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: var(--bg-dive) center / cover no-repeat; }
+.dive { position: relative; isolation: isolate; overflow: hidden; background: #f8dbe1 var(--bg-dive-shader) center / cover no-repeat; padding-block: var(--section-y); text-align: center; }
 .dive .wrap { display: grid; gap: 20px; justify-items: center; }
 .dive h2 { color: var(--text-display); font: 600 clamp(2rem, 1.3rem + 2.4vw, 3rem)/1.2 var(--font-display); max-width: 800px; }
 .dive p { color: var(--text-strong); font: 400 18px/1.6 var(--font-body); max-width: 640px; }

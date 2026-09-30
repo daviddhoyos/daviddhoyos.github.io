@@ -26,6 +26,9 @@
 <meta name="twitter:image" content="https://daviddhoyos.github.io/assets/og/og-edelap.jpg">
 <meta name="twitter:image:alt" content="Case study: Optimizing Essential Services for Millions, with a 3D staircase">
 <meta name="theme-color" content="#19141a">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
@@ -86,8 +89,11 @@
     </div>
   </section>
 
-  <section class="challenge" aria-labelledby="ed-challenge-h">
+  <section class="challenge" aria-labelledby="ed-challenge-h" data-bg-shader="waterPlane" data-bg-colors="#9387ff, #9260c7, #bf9ffd"
+    data-bg-brightness="1.2" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0"
+    data-bg-rotation="0, 0, 225" data-bg-speed="0.3" data-bg-density="1.8" data-bg-strength="3">
     <div class="wrap">
+      <img class="challenge-figure" src="assets/ed-challenge-figure.webp" width="757" height="800" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="copy">
         <h2 class="t-h2" id="ed-challenge-h">The Challenge</h2>
         <p>The old virtual office had usability and accessibility problems. Before redesigning it, I wanted to know where users got stuck, how to measure it and which fixes would matter most.</p>
@@ -205,7 +211,9 @@
     </div>
   </section>
 
-  <section class="dive" aria-labelledby="ed-dive-h">
+  <section class="dive" aria-labelledby="ed-dive-h" data-bg-shader="plane" data-bg-colors="#ffb675, #dbc7cc, #d6bbe1"
+    data-bg-brightness="1.2" data-bg-distance="3.6" data-bg-polar="90" data-bg-azimuth="180" data-bg-position="-1.4, 0, 0"
+    data-bg-rotation="0, 10, 50" data-bg-speed="0.4" data-bg-density="1.3" data-bg-strength="4">
     <div class="wrap">
       <h2 id="ed-dive-h">Let's dive into the UI design phase.</h2>
       <p>Based on what we found, we will gather all pieces in a clear, intuitive and accesible design system, layout and experience.</p>
@@ -351,5 +359,6 @@
 </footer>
 <script src="app.js" defer></script>
 <script src="hero-shader.js" defer></script>
+<script src="section-shader.js" defer></script>
 </body>
 </html>
