@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en" data-view="case">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Optimizing Essential Services for Millions | David Hoyos</title>
+<meta name="description" content="David Hoyos, UX/UI Designer. Product Design, Research, AI Workflows, SaaS.">
+<meta name="theme-color" content="#19141a">
+<link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav-wrap">
+  <nav class="nav glass" aria-label="Primary" data-nav>
+    <ul>
+      <li class="nav-name"><a href="index.html"><svg class="nav-back" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span class="nav-name-text">David Hoyos</span><span class="sr-only">, back to home</span></a></li>
+      <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume<span class="sr-only"> (opens in a new tab)</span></a></li>
+      <li><a href="mailto:daviddhoyos1@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main" tabindex="-1">
+<section class="view enter" id="view-edelap">
+
+  <header class="case-hero case-hero--ed on-dark">
+    <div class="wrap ed-hero-grid">
+      <div class="copy">
+        <p class="eyebrow">Case study</p>
+        <h1 class="t-display-soft" tabindex="-1" data-focus>Optimizing Essential Services for Millions</h1>
+        <p class="lead">I redesigned the customer virtual office of Edelap, an electricity provider in Argentina, as a mobile app. I reworked the billing and payment flows so paying a bill is the first thing users see.</p>
+        <ul class="chips">
+          <li class="chip-dark">Product Design</li>
+          <li class="chip-dark">UX/UI Design</li>
+          <li class="chip-dark">Research</li>
+        </ul>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>Product Designer</dd></div>
+          <div><dt>Methods</dt><dd>Heatmaps, card sorting, heuristic review, interviews</dd></div>
+        </dl>
+      </div>
+      <img class="ed-hero-phone" src="assets/edelap-phone.webp" width="372" height="579" alt="Edelap mobile app home screen with the balance due and a Pay now button" decoding="async">
+    </div>
+  </header>
+
+  <section class="sec bg-white" aria-labelledby="ed-ba-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="t-h2" id="ed-ba-h">From a button with 1% of the attention to the main action</h2>
+        <p class="sub">In the original virtual office, “Pagar ahora” (Pay now) received about 1% of user attention. In the redesign, the balance and the payment button are the first things on the home screen.</p>
+      </div>
+      <div class="ba-grid">
+        <figure class="figure">
+          <img src="assets/ed-before.webp" width="600" height="560" alt="Original desktop virtual office with the attention heatmap overlay" decoding="async">
+          <figcaption>Original desktop virtual office, with the attention heatmap overlay.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/ed-after.webp" width="600" height="560" alt="Redesigned mobile home of the Edelap app: balance first, with a Pay now button" decoding="async">
+          <figcaption>Redesigned mobile home: balance first, payment as the primary action.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="challenge" aria-labelledby="ed-challenge-h">
+    <div class="wrap">
+      <div class="copy">
+        <h2 class="t-h2" id="ed-challenge-h">The Challenge</h2>
+        <p>The old virtual office had usability and accessibility problems. Before redesigning it, I wanted to know where users got stuck, how to measure it and which fixes would matter most.</p>
+        <ul>
+          <li>What are the critical friction points in the current user journey?</li>
+          <li>How can we accurately measure the impact of these inefficiencies?</li>
+          <li>Where should we focus our design efforts to drive the most value?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist-soft" aria-labelledby="ed-heat-h">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="t-h2" id="ed-heat-h">Users only looked at the amount due</h2></div>
+      <div class="ed-grid-2">
+        <div class="ed-card span-2">
+          <img src="assets/ed-heatmap.webp" width="877" height="425" alt="Heatmap over the original virtual office: attention concentrates on the area of the amount due" decoding="async">
+          <div><h3>Heat Map</h3><p style="margin-top:8px">It only recognizes the area of the amount to be paid and ignores the rest.</p></div>
+        </div>
+        <div class="ed-card">
+          <img src="assets/ed-attention.webp" width="430" height="314" alt="Attention overlay on the original buttons, tagged with 1% and 0%" decoding="async">
+          <div class="t-head"><img src="assets/ed-icon-attention.webp" width="99" height="99" alt="" aria-hidden="true" decoding="async"><div><h3>Attention Percentage</h3><p style="margin-top:4px">Doesn’t exceed 1% of attention</p></div></div>
+        </div>
+        <div class="ed-card">
+          <img src="assets/ed-clarity.webp" width="385" height="315" alt="Clarity score gauge showing 54%, moderate difficulty" decoding="async">
+          <div><h3>Clarity Metrics</h3><p style="margin-top:8px">Moderate difficulty</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="ed-sort-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tool"><img src="assets/ed-icon-optimal.webp" width="82" height="82" alt="" aria-hidden="true" decoding="async">Optimal Workshop</span>
+        <h2 class="t-h2" id="ed-sort-h">Card Sorting</h2>
+        <p class="sub">39 participants sorted 12 account features into 6 categories. The results showed that the existing Information Architecture didn’t match how users group energy services, which validated a full navigation overhaul.</p>
+      </div>
+      <div class="table-wrap" data-scroll data-label="Card sorting table">
+<table class="tbl-sort">
+<caption class="sr-only">Card Sorting</caption>
+<thead><tr><th scope="col">Feature</th><th scope="col">Supply</th><th scope="col">Bills &amp; Payments</th><th scope="col">Technical Support</th><th scope="col">Customer Service</th><th scope="col">Energy Advisor</th><th scope="col">Cost Simulator</th></tr></thead>
+<tbody>
+<tr><th scope="row">Consumption</th><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td></tr>
+<tr><th scope="row">Supply</th><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
+<tr><th scope="row">Address &amp; ID</th><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td></tr>
+<tr><th scope="row">Account Statement</th><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
+<tr><th scope="row">Amount Due (Total)</th><td style="--v:0.43">43%</td><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td></tr>
+<tr><th scope="row">Download Invoice</th><td><span class="sr-only">No value</span></td><td style="--v:1.00">100%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
+<tr><th scope="row">Digital Invoice</th><td><span class="sr-only">No value</span></td><td style="--v:0.86">86%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td></tr>
+<tr><th scope="row">Direct Debit</th><td style="--v:0.14">14%</td><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
+<tr><th scope="row">Last Invoice</th><td style="--v:0.14">14%</td><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td></tr>
+<tr><th scope="row">Last Invoice Period</th><td style="--v:0.14">14%</td><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
+<tr><th scope="row">Amount Due by Cutoff Date</th><td style="--v:0.29">29%</td><td style="--v:0.57">57%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
+<tr><th scope="row">Consumption Chart</th><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.43">43%</td><td style="--v:0.29">29%</td></tr>
+</tbody>
+</table>
+</div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist-soft" aria-labelledby="ed-heur-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="with-icon"><img src="assets/ed-icon-heuristics.webp" width="63" height="60" alt="" aria-hidden="true" decoding="async"></div>
+        <h2 class="t-h2" id="ed-heur-h">Heuristic Evaluation</h2>
+        <p class="sub">I audited the original virtual office against Nielsen’s usability heuristics and found 6 violations: 2 major and 4 minor. Each one became a concrete input for the redesign.</p>
+      </div>
+      <div class="table-wrap" data-scroll data-label="Heuristic evaluation table">
+        <table class="tbl-heur">
+          <caption class="sr-only">Heuristic Evaluation</caption>
+          <thead><tr><th scope="col">Description</th><th scope="col">Location</th><th scope="col">Violation</th><th scope="col">Severity</th></tr></thead>
+          <tbody>
+            <tr><td>Buttons across the screen vary significantly in size with no consistent visual relationship between them, creating confusion and making it difficult for users to orient themselves spatially.</td><td>Supply Screen</td><td><ul><li>Consistency &amp; Standards</li></ul></td><td>3 Major</td></tr>
+            <tr><td>Using the same color for all buttons undermines visual hierarchy. The absence of a highlighted CTA leaves users without a clear sense of direction. The primary action should be reinforced with a distinctive color to differentiate it from secondary buttons on the same screen.</td><td>Supply Screen</td><td><ul><li>Aesthetic &amp; Minimalist Design</li><li>Consistency</li></ul></td><td>3 Major</td></tr>
+            <tr><td>A button placed where a title is expected, combined with inconsistent color and positioning compared to other buttons, renders it practically invisible to the user.</td><td>Header / User Summary</td><td><ul><li>Consistency &amp; Standards</li><li>Aesthetic Design</li></ul></td><td>2 Minor</td></tr>
+            <tr><td>Two checklist icons enclosed in a pill shape strongly resemble a toggle switch, but clicking reveals they are text labels. There is no effective visual feedback to clarify their behavior. Users already associate that pattern with a switch — there is no need to reinvent it.</td><td>Supply Screen / Housing Type / Digital Invoice</td><td><ul><li>Consistency &amp; Standards</li><li>Aesthetic Design</li></ul></td><td>2 Minor</td></tr>
+            <tr><td>Clicking the "Supply" button navigates to a screen showing a list of supplies under the user's name — the same information already available as a dropdown on the previous screen. No new information is provided, and the button only adds unnecessary visual clutter.</td><td>Supply / My Supplies</td><td><ul><li>Consistency &amp; Standards</li><li>Aesthetic Design</li></ul></td><td>2 Minor</td></tr>
+            <tr><td>When clicking the "Join" button, the label does not clearly communicate what action will be performed or what the user is committing to. The term lacks contextual meaning, creating ambiguity about the outcome of the interaction</td><td>Supply / Join / Popup</td><td><ul><li>Consistency &amp; Standards</li><li>Aesthetic Design</li></ul></td><td>2 Minor</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="ed-int-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="t-h2" id="ed-int-h">Interviews</h2>
+        <p class="sub">The discovered Insights are valuable for improving the current product, for future versions or new services.</p>
+      </div>
+      <ul class="quotes">
+        <li><figure class="quote"><h3>I get lost</h3><blockquote><p>"I rarely use the website because I almost always end up lost. I prefer other payments platforms.”</p></blockquote><figcaption>Carolina</figcaption></figure></li>
+        <li><figure class="quote"><h3>I can't find specific things</h3><blockquote><p>I don't like the way they handle the app. It's hard for me to find specific things. I usually use some other external app."</p></blockquote><figcaption>Alexander</figcaption></figure></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec bg-mist-soft" aria-labelledby="ed-found-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="t-h2" id="ed-found-h">What I found</h2>
+        <p class="sub">Each problem pointed to a design opportunity:</p>
+      </div>
+      <div class="found">
+        <img src="assets/ed-illus-findings.webp" width="241" height="242" alt="" aria-hidden="true" decoding="async" style="mix-blend-mode:multiply">
+        <ol class="pairs">
+          <li><p><span class="sr-only">Problem: </span>There is no consistency in the information architecture.</p><svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><p class="opp"><span class="sr-only">Opportunity: </span>Organize the menu by prioritizing the most used actions.</p></li>
+          <li><p><span class="sr-only">Problem: </span>Doesn’t follow UI design pattern standards.</p><svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><p class="opp"><span class="sr-only">Opportunity: </span>Provide clarity to the main CTA</p></li>
+          <li><p><span class="sr-only">Problem: </span>Information in a language unfamiliar to the user.</p><svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><p class="opp"><span class="sr-only">Opportunity: </span>Write text content employing a more user-friendly language.</p></li>
+          <li><p><span class="sr-only">Problem: </span>There is no hierarchy of typography, colors or shapes.</p><svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><p class="opp"><span class="sr-only">Opportunity: </span>Use of Color Theory, Gestalt, UX Writing</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="dive" aria-labelledby="ed-dive-h">
+    <div class="wrap">
+      <h2 id="ed-dive-h">Let's dive into the UI design phase.</h2>
+      <p>Based on what we found, we will gather all pieces in a clear, intuitive and accesible design system, layout and experience.</p>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="ed-wire-h">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="t-h2" id="ed-wire-h">Wireframes</h2></div>
+      <figure class="figure">
+        <div class="scroll-x" data-scroll data-label="Wireframe images, scrolls sideways" style="--min-mobile:720px"><img src="assets/ed-wireframes.webp" width="1040" height="652" alt="A hand-drawn sketch with a sticky note, next to mobile and desktop wireframes" decoding="async"></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec bg-mist-soft" aria-labelledby="ed-type-h">
+    <div class="wrap">
+      <h2 class="sr-only" id="ed-type-h">Typeface and Colors</h2>
+      <div class="specimen">
+        <div>
+          <h3>Typeface</h3>
+          <dl class="spec">
+            <div class="spec-row"><dt>p</dt><dd class="spec-p">p - Lato Regular 16px (1rem)</dd></div>
+            <div class="spec-row"><dt>Label</dt><dd class="spec-label">Label - Lato Medium 16px (1rem)</dd></div>
+            <div class="spec-row"><dt>H1</dt><dd class="spec-h1">H1 - Lato Bold 28px (1.75 rem)</dd></div>
+            <div class="spec-row"><dt>H2</dt><dd class="spec-h2">H2 - Lato Regular 24px (1.5 rem)</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3>Colors</h3>
+          <div class="swatches" role="img" aria-label="Color palette: green, light gray, black, cyan and navy"><i class="sw-green"></i><i class="sw-gray"></i><i class="sw-black"></i><i class="sw-cyan"></i><i class="sw-navy"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="ed-comp-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="t-h2" id="ed-comp-h">Components</h2>
+        <p class="sub">By grounding the Information Architecture in user insights, I removed the guesswork from the UI phase and carried those decisions into a scalable component library.</p>
+      </div>
+      <figure class="figure">
+        <div class="scroll-x" data-scroll data-label="Component library" style="--min-mobile:720px"><img src="assets/ed-components.webp" width="1080" height="600" alt="Component library: navigation states for Inicio, Facturas, Reporte and Ayuda, consumption cards showing 45% and 15%, Pay now buttons and icon sets" decoding="async"></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="navbg on-dark" aria-labelledby="ed-nav-h">
+    <div class="wrap">
+      <h2 class="t-h2" id="ed-nav-h">Fewer choices in the main navigation</h2>
+      <p>The old virtual office had 11 items in its main menu. I cut it to four, Inicio, Facturas, Reporte and Ayuda (Home, Bills, Report, Help), based on the card sorting results. Address and supply settings moved into the profile, since users rarely need them. Fewer options means users find what they need faster (Hick's Law).</p>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-label="Mockup annotations">
+    <div class="wrap">
+      <div class="mock">
+        <div class="mock-frame"><img src="assets/ed-mockup-phone.webp" width="490" height="885" alt="Edelap home screen on a phone: the profile at the top, the balance due with a Pay now button below it, and a consumption chart" decoding="async"></div>
+        <ul class="callouts">
+          <li class="callout" style="--y:.1497;--sx:.884;--off:29px"><p><strong>Nested Settings:</strong> Address and supply management are nested within the profile to declutter the main interface.</p></li>
+          <li class="callout callout--green" style="--y:.3531;--sx:.759;--off:29px"><p><strong>Primary Focus:</strong> The balance due is the clear visual focal point, supported by helpers for immediate status clarity.</p></li>
+          <li class="callout" style="--y:.4401;--sx:.902;--off:10px"><p><strong>Ergonomic CTA:</strong>  A full-width button placed right below the balance: a large, predictable target that is quick to reach and tap (Fitts’s Law).</p></li>
+          <li class="callout callout--green" style="--y:.6729;--sx:.902;--off:24px"><p><strong>Balanced Insights:</strong>  Home screen shows a high-level YoY comparison, linking to detailed analytics for power users.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist-soft" aria-labelledby="ed-out-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="t-h2" id="ed-out-h">What changed after the redesign</h2>
+        <p class="sub">Results from iterative usability testing of the redesigned app.</p>
+      </div>
+      <div class="table-wrap" data-scroll data-label="Outcome table">
+        <table class="tbl-results">
+          <caption class="sr-only">What changed after the redesign</caption>
+          <thead><tr><th scope="col">Metric</th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Clarity score</th><td>54%</td><td>96%</td></tr>
+            <tr><th scope="row">Attention on the pay button</th><td>~1%</td><td>12%</td></tr>
+            <tr><th scope="row">Time to pay a bill</th><td>2 m</td><td>40 s</td></tr>
+            <tr><th scope="row">Bill payment success rate</th><td>40%</td><td>65%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="outcome-list">
+        <li><strong>High User Satisfaction:</strong> Driven by a friction-free and intuitive mobile journey.</li>
+        <li><strong>Increased Adoption:</strong> Streamlined access led to higher engagement with digital services.</li>
+        <li><strong>Inclusive Design:</strong> Built toward WCAG 2.1 AA, with accessible contrast, readable type sizes and large touch targets.</li>
+        <li><strong>Reduced Friction:</strong> Paying a bill went from a hidden action to the main action on the home screen.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="ed-back-h">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="t-h2" id="ed-back-h">Looking back</h2></div>
+      <ul class="cards">
+        <li class="card"><h3>What worked</h3><p>Combining heatmaps with card sorting showed both where users looked and how they expected the menu to be organized.</p></li>
+        <li class="card"><h3>What I’d do differently</h3><p>Validate the new navigation with a tree test before moving to high-fidelity screens.</p></li>
+        <li class="card"><h3>What I’d measure next</h3><p>Bill payment completion rate and time to pay, tracked after launch.</p></li>
+      </ul>
+    </div>
+  </section>
+
+</section>
+
+</main>
+<footer class="site-footer">
+  <section class="companies on-dark" aria-labelledby="companies-h">
+    <img class="band-star" src="assets/star-3d.webp" width="89" height="107" alt="" aria-hidden="true" decoding="async">
+    <div class="wrap">
+      <h2 id="companies-h">Companies I've worked with</h2>
+      <ul class="companies-list">
+        <li><img src="assets/brands/footer-qkstudio.svg" width="143" height="40" alt="QKStudio" style="--h:40" decoding="async"></li>
+        <li><img src="assets/brands/footer-diligent.svg" width="129" height="36" alt="Diligent" style="--h:36" decoding="async"></li>
+        <li><img src="assets/brands/footer-mercadolibre.svg" width="149" height="38" alt="Mercado Libre" style="--h:38" decoding="async"></li>
+        <li><img src="assets/brands/footer-loopstudio.svg" width="168" height="41" alt="loopstudio" style="--h:41" decoding="async"></li>
+        <li><img src="assets/brands/footer-improving.svg" width="193" height="32" alt="improving" style="--h:32;--dy:3" decoding="async"></li>
+        <li><img src="assets/brands/footer-azulo.svg" width="144" height="33" alt="Azulo" style="--h:33" decoding="async"></li>
+      </ul>
+    </div>
+  </section>
+  <section class="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <img class="contact-avatar" src="assets/avatar-footer.webp" width="200" height="200" alt="" decoding="async">
+      <h2 id="contact-h">Hiring a product designer, or want to talk about a project?</h2>
+      <p class="who">David Hoyos</p>
+      <ul class="contact-links glass glass--light">
+        <li><a href="mailto:daviddhoyos1@gmail.com">daviddhoyos1@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/preview" target="_blank" rel="noopener noreferrer">Resume</a></li>
+        <li><a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/export?format=pdf" target="_blank" rel="noopener noreferrer">Download PDF</a></li>
+      </ul>
+      <div class="legal">
+        <a href="in-progress.html">Privacy Policy</a>
+        <p>© 2026 David Hoyos</p>
+      </div>
+    </div>
+  </section>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+(() => {
+  'use strict';
+  const root = document.documentElement;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ---------- reveal on scroll (home only, content visible by default without JS/IO) ---------- */
+  let io = null;
+  if ('IntersectionObserver' in window) {
+    root.classList.add('js-reveal');
+    io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  }
+  const armReveals = (scope) => {
+    scope.querySelectorAll('.reveal:not(.in)').forEach((n) => (io ? io.observe(n) : n.classList.add('in')));
+  };
+
+  /* ---------- horizontal scroll regions: focusable only when they actually scroll ---------- */
+  const updateEdge = (el) => el.classList.toggle('at-end', el.scrollLeft + el.clientWidth >= el.scrollWidth - 2);
+  const updateScrollable = (el) => {
+    const can = el.scrollWidth > el.clientWidth + 1;
+    el.classList.toggle('can-scroll', can);
+    if (can) {
+      el.tabIndex = 0;
+      el.setAttribute('role', 'region');
+      el.setAttribute('aria-label', el.dataset.label || 'Scrollable content');
+      updateEdge(el);
+    } else {
+      el.removeAttribute('tabindex');
+      el.removeAttribute('role');
+      el.removeAttribute('aria-label');
+    }
+  };
+  const ro = 'ResizeObserver' in window ? new ResizeObserver((list) => list.forEach((e) => updateScrollable(e.target.closest('[data-scroll]') || e.target))) : null;
+  const bindScrollables = () => {
+    document.querySelectorAll('[data-scroll]').forEach((el) => {
+      if (ro && !el.__bound) {
+        el.__bound = true;
+        ro.observe(el);
+        el.addEventListener('scroll', () => updateEdge(el), { passive: true });
+        Array.from(el.children).forEach((c) => ro.observe(c));
+      }
+      updateScrollable(el);
+    });
+  };
+
+  /* ---------- nav glass: rests bare over the home hero, materialises when content scrolls under it,
+     and switches tone (dark glass / light glass) with whatever sits beneath, like Apple's regular glass ---------- */
+  const nav = document.querySelector('[data-nav]');
+  if (nav) {
+    const isHome = root.dataset.view === 'home';
+    const DARK = '.on-dark, .bg-ink, .bg-plum, .navbg';
+    let queued = false;
+    const update = () => {
+      queued = false;
+      const r = nav.getBoundingClientRect();
+      const y = r.top + r.height / 2;
+      let under = null;
+      for (const el of document.elementsFromPoint(window.innerWidth / 2, y)) {
+        if (!nav.contains(el)) { under = el; break; }
+      }
+      const light = !!under && !under.closest(DARK);
+      nav.classList.toggle('is-on-light', light);
+      nav.classList.toggle('is-resting', isHome && window.scrollY < 24);
+    };
+    const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue, { passive: true });
+    update();
+  }
+
+  /* ---------- liquid lens for the nav ----------
+     Optical model ported from liquid-glass-js (MIT, Armagan Amcalar): pill signed distance + surface normal,
+     edge and rim refraction with exponential falloff, a boost toward the caps, and a white-to-grey tint.
+     Instead of html2canvas + WebGL (static page snapshot, texture limits on long pages), the same maths bakes
+     two small maps once per nav size:
+       - a displacement map fed to backdrop-filter (live refraction of whatever is really behind), Chromium only;
+       - a specular map (rim reflections lit from the top-left), painted as a background, every browser. */
+  const LENS = {
+    edge: 14, edgeFall: 0.15,   // px of refraction at the edge, decay per px inward   (edgeIntensity / edgeDistance)
+    rim: 9, rimFall: 0.8,       // sharp lensing right on the rim                      (rimIntensity / rimDistance)
+    corner: 6, cornerFall: 0.3, // extra bend toward the rounded caps                   (cornerBoost)
+    blur: 3, sat: 1.8,
+  };
+  const pill = (x, y, w, h) => {
+    const r = h / 2;
+    const cx = Math.min(Math.max(x, r), w - r);
+    const dx = x - cx, dy = y - r;
+    const len = Math.hypot(dx, dy) || 1e-4;
+    return { d: r - len, nx: dx / len, ny: dy / len };
+  };
+  const bakeDisplacement = (w, h) => {
+    const c = document.createElement('canvas'); c.width = w; c.height = h;
+    const ctx = c.getContext('2d'); const img = ctx.createImageData(w, h); const px = img.data;
+    const max = LENS.edge + LENS.rim + LENS.corner, scale = max * 2;
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const { d, nx, ny } = pill(x + 0.5, y + 0.5, w, h);
+      const dd = Math.max(d, 0);
+      const cap = Math.min(x, w - x);
+      const k = LENS.edge * Math.exp(-dd * LENS.edgeFall) + LENS.rim * Math.exp(-dd * LENS.rimFall) +
+        LENS.corner * Math.exp(-cap * LENS.cornerFall * 0.1) * Math.exp(-dd * 0.3);
+      // sample inward (toward the axis): the rim magnifies what's behind, like the edge of a thick lens
+      const i = (y * w + x) * 4;
+      px[i] = 128 + (-nx * k / scale) * 255; px[i + 1] = 128 + (-ny * k / scale) * 255; px[i + 2] = 128; px[i + 3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+    return { url: c.toDataURL(), scale };
+  };
+  const bakeSpecular = (w, h) => {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const W = Math.round(w * dpr), H = Math.round(h * dpr);
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const ctx = c.getContext('2d'); const img = ctx.createImageData(W, H); const px = img.data;
+    const lx = -0.55, ly = -0.83; // light from the top-left
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const { d, nx, ny } = pill((x + 0.5) / dpr, (y + 0.5) / dpr, w, h);
+      if (d < -1) continue;
+      const lit = Math.max(0, nx * lx + ny * ly), back = Math.max(0, -(nx * lx + ny * ly));
+      let a = 0.85 * lit * lit * Math.exp(-Math.max(d, 0) * 0.55)   // key reflection
+            + 0.4 * back * back * Math.exp(-Math.max(d, 0) * 0.7)   // bounce on the opposite rim
+            + 0.22 * Math.exp(-Math.max(d, 0) * 1.6);               // thin even rim
+      a *= Math.min(Math.max(d + 0.5, 0), 1);                       // anti-aliased outer edge
+      const i = (y * W + x) * 4;
+      px[i] = px[i + 1] = px[i + 2] = 255; px[i + 3] = Math.min(255, a * 255);
+    }
+    ctx.putImageData(img, 0, 0);
+    return c.toDataURL();
+  };
+  let chromium = false;
+  try { chromium = ((navigator.userAgentData && navigator.userAgentData.brands) || []).some((b) => /Chromium/i.test(b.brand)); } catch (_) {}
+  const noFx = window.matchMedia('(prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active)');
+  if (nav && !noFx.matches) {
+    const NS = 'http://www.w3.org/2000/svg';
+    let feImg = null, feMap = null, lensScale = 0, shown = 0, anim = 0;
+    if (chromium) {
+      const svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('width', '0'); svg.setAttribute('height', '0'); svg.setAttribute('aria-hidden', 'true');
+      svg.style.position = 'absolute';
+      svg.innerHTML = '<filter id="nav-lens" x="0" y="0" width="100%" height="100%" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">' +
+        '<feImage result="map" preserveAspectRatio="none"/>' +
+        '<feDisplacementMap in="SourceGraphic" in2="map" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter>';
+      document.body.appendChild(svg);
+      feImg = svg.querySelector('feImage'); feMap = svg.querySelector('feDisplacementMap');
+    }
+    // the lens "forms" when the glass materialises: displacement scale eases from 0 to full
+    const setShown = (target) => {
+      if (!feMap) return;
+      cancelAnimationFrame(anim);
+      if (reduceMotion.matches) { shown = target; feMap.setAttribute('scale', (shown * lensScale).toFixed(2)); return; }
+      const from = shown, t0 = performance.now(), dur = 360;
+      const step = (t) => {
+        const k = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - k, 3);
+        shown = from + (target - from) * e;
+        feMap.setAttribute('scale', (shown * lensScale).toFixed(2));
+        if (k < 1) anim = requestAnimationFrame(step);
+      };
+      anim = requestAnimationFrame(step);
+    };
+    let lastW = 0, lastH = 0;
+    const bake = () => {
+      const w = Math.round(nav.offsetWidth), h = Math.round(nav.offsetHeight);
+      if (!w || !h || (w === lastW && h === lastH)) return;
+      lastW = w; lastH = h;
+      nav.style.setProperty('--lens-spec', 'url("' + bakeSpecular(w, h) + '")');
+      if (feImg) {
+        const m = bakeDisplacement(w, h);
+        lensScale = m.scale;
+        ['x', 'y'].forEach((a) => feImg.setAttribute(a, '0'));
+        feImg.setAttribute('width', w); feImg.setAttribute('height', h);
+        feImg.setAttribute('href', m.url);
+        feMap.setAttribute('scale', (shown * lensScale).toFixed(2));
+        nav.classList.add('has-refraction');
+      }
+      nav.classList.add('has-lens');
+    };
+    const sync = () => setShown(nav.classList.contains('is-resting') ? 0 : 1);
+    new MutationObserver(sync).observe(nav, { attributes: true, attributeFilter: ['class'] });
+    if ('ResizeObserver' in window) new ResizeObserver(bake).observe(nav);
+    const start = () => { bake(); sync(); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(start); else start();
+  }
+
+  /* ---------- interactive glass: the specular highlight follows the pointer (fine pointers only) ---------- */
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.glass--interactive').forEach((el) => {
+      let raf = 0, px = 0, py = 0;
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        px = e.clientX - r.left; py = e.clientY - r.top;
+        if (!raf) raf = requestAnimationFrame(() => { raf = 0; el.style.setProperty('--mx', px + 'px'); el.style.setProperty('--my', py + 'px'); });
+      }, { passive: true });
+    });
+  }
+
+  /* ---------- page load: reveal + scroll regions ---------- */
+  armReveals(document);
+  bindScrollables();
+  window.addEventListener('load', bindScrollables);
+})();

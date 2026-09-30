@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en" data-view="case">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stopping enterprise clients from walking away | David Hoyos</title>
+<meta name="description" content="David Hoyos, UX/UI Designer. Product Design, Research, AI Workflows, SaaS.">
+<meta name="theme-color" content="#19141a">
+<link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link rel="preload" href="assets/pm-shader-poster.webp" as="image" type="image/webp">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav-wrap">
+  <nav class="nav glass" aria-label="Primary" data-nav>
+    <ul>
+      <li class="nav-name"><a href="index.html"><svg class="nav-back" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span class="nav-name-text">David Hoyos</span><span class="sr-only">, back to home</span></a></li>
+      <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume<span class="sr-only"> (opens in a new tab)</span></a></li>
+      <li><a href="mailto:daviddhoyos1@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main" tabindex="-1">
+<section class="view enter" id="view-policy-manager">
+
+  <header class="case-hero case-hero--pm case-hero--shader on-dark" data-hero-shader data-shader-colors="#4aa694, #8070a8, #4c7a74">
+    <div class="wrap">
+      <img class="pm-coin" src="assets/pm-coin.webp" width="347" height="369" alt="" aria-hidden="true" decoding="async">
+      <div class="copy">
+        <p class="eyebrow">Policy Manager at Diligent</p>
+        <h1 class="t-display-case" tabindex="-1" data-focus>Stopping enterprise clients from walking away</h1>
+        <p class="lead">Policy Manager is compliance software used by companies like Salesforce and Cisco. It crashed often, looked outdated, and its biggest clients were ready to leave. As the sole product designer, I stabilized it and redesigned the experience.</p>
+        <ul class="chips">
+          <li class="chip-dark">Product Design</li>
+          <li class="chip-dark">UX/UI Design</li>
+          <li class="chip-dark">Design Systems</li>
+          <li class="chip-dark">Research</li>
+          <li class="chip-dark">SaaS</li>
+        </ul>
+      </div>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Sole Product Designer, end to end</dd></div>
+        <div><dt>Company</dt><dd>Diligent</dd></div>
+        <div><dt>Platform</dt><dd>Web and iPad</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <section class="sec bg-white" aria-labelledby="pm-glance-h">
+    <div class="wrap">
+      <h2 class="sr-only" id="pm-glance-h">At a glance</h2>
+      <div class="glance">
+        <div><p class="label">The problem</p><p class="t-statement">Compliance software used by companies like Salesforce and Cisco. It crashed often, didn't follow Diligent's design system, and its largest clients were ready to leave.</p></div>
+        <div><p class="label">What I did</p><p class="t-statement">As the sole designer, I made failures safe first, then restructured the review cycle and integrated Word and Google Docs, so authors could keep drafting where they already worked.</p></div>
+        <div><p class="label">The outcome</p><p class="t-statement">2x development velocity and long-term renewals from the clients at risk. The core patterns still ship in Diligent's product in 2026.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="pm-ctx-h">
+    <div class="wrap ctx-wrap">
+      <img class="ctx-star" src="assets/pm-star.webp" width="205" height="246" alt="" aria-hidden="true" decoding="async">
+      <div class="sec-head">
+        <h2 class="t-h2" id="pm-ctx-h">The source of truth for enterprise compliance</h2>
+        <p class="sub">Policy Manager is where organizations write, review, approve and distribute their compliance policies, from companies like Salesforce and Cisco to major US school districts.</p>
+        <p class="sub">It was one of three products in Diligent’s Mission-Driven Organizations group, and the one with the largest clients. Diligent had just acquired it: it didn’t follow the design system and broke often. I joined as its sole product designer and owned the experience end to end.</p>
+      </div>
+      <ul class="cards">
+        <li class="card"><h3>Editors</h3><p>HR and compliance teams. Power users who live in the tool every day, drafting and updating policies.</p></li>
+        <li class="card"><h3>Approvers</h3><p>Board members and senior executives. They have little patience for software and need to review and approve with zero friction, often from an iPad.</p></li>
+        <li class="card"><h3>The business</h3><p>The largest clients in Diligent’s Mission-Driven Organizations group, and some of them were threatening to leave.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec sec--label bg-white" aria-labelledby="pm-before-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">The problem</p>
+        <h2 class="t-h2" id="pm-before-h">A product customers relied on, and were ready to leave</h2>
+      </div>
+      <ul class="cards" style="margin-bottom:56px">
+        <li class="card"><h3>Churn risk</h3><p>High-value customers were threatening to leave over a product they saw as unstable and broken.</p></li>
+        <li class="card"><h3>Technical fragility</h3><p>Critical flows crashed mid-task and showed raw code errors, which caused panic and a steady stream of support tickets.</p></li>
+        <li class="card"><h3>Adoption barrier</h3><p>The built-in text editor was so limited that users drafted offline in Word, breaking the single source of truth.</p></li>
+      </ul>
+      <figure class="figure">
+        <div class="scroll-x" data-scroll data-label="Legacy dashboard screenshot" style="--min-mobile:760px"><img src="assets/pm-legacy-dashboard.webp" width="1248" height="600" alt="Policy Manager as Diligent acquired it: a dashboard with two donut charts of document profile" decoding="async"></div>
+        <figcaption>Policy Manager as Diligent acquired it.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="hmw bg-ink on-dark">
+    <div class="wrap">
+      <h2>How might we stabilize a newly acquired platform to stop enterprise churn, while reinventing the experience for both power users and low-tech approvers?</h2>
+    </div>
+  </section>
+
+  <section class="sec sec--label bg-white" aria-labelledby="pm-approach-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">The approach</p>
+        <h2 class="t-h2" id="pm-approach-h">Five decisions that changed the product</h2>
+        <p class="sub">I couldn’t rewrite the backend right away, so I started with what users felt first: the failures. Then I fixed the structure, and finally the devices.</p>
+      </div>
+
+      <div class="decisions">
+
+        <article class="decision">
+          <div class="d-head"><p class="label">Decision 1 of 5</p><h3 class="t-h3">Design for failure before redesigning the UI</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">The situation</p><p>The backend couldn’t be rewritten right away, and every crash showed users raw red and yellow code errors in the middle of a task.</p></div>
+            <div class="d-block"><p class="label">What I did</p><p>I replaced them with a standardized error library. With a UX writer borrowed from another team, I wrote messages that explain what happened and what is safe, like “We saved your draft locally before the connection was lost.”</p></div>
+            <div class="d-block"><p class="label">The trade-off</p><p>It didn’t fix the root cause, but it turned each system failure into a managed moment while engineering stabilized the platform.</p></div>
+            <div class="d-block"><p class="label">Why it mattered</p><p>Enterprise clients judge stability by what they see when something fails. Messages that explain what happened and protect the user’s work turn a crash into a recoverable moment. For the business, it was the fastest way to calm the accounts at risk and cut crash-related support tickets while engineering fixed the backend.</p></div>
+          </div>
+          <figure class="figure">
+            <img src="assets/pm-d1-error-anatomy.webp" width="664" height="460" alt="Message anatomy: the sentence “We saved your draft locally before the connection was lost.” with its parts marked as what happened, what is safe and what to do next, above a Next step button" decoding="async">
+            <figcaption>The structure behind each message in the error library, shown with a real example.</figcaption>
+          </figure>
+        </article>
+
+        <article class="decision decision--rev">
+          <div class="d-head"><p class="label">Decision 2 of 5</p><h3 class="t-h3">Turn a local fix into a company standard</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">The situation</p><p>Auditing the errors showed that the same gap existed across the whole Diligent suite.</p></div>
+            <div class="d-block"><p class="label">What I did</p><p>I audited error, empty and 404 states across Diligent’s products, defined a global standard and contributed the components back to the central design system.</p></div>
+            <div class="d-block"><p class="label">Why it mattered</p><p>With one standard, every Diligent team solves errors and empty states once instead of reinventing them. Clients who use several Diligent products get the same behavior everywhere, which matters as Diligent sells its products together as one platform.</p></div>
+          </div>
+          <figure class="figure">
+            <img src="assets/pm-d2-empty-state.webp" width="664" height="460" alt="Subscribers page in the redesign showing an empty table and an Add Subscriber button" decoding="async">
+            <figcaption>An empty state in the redesign: it says what’s missing, and the next action, Add Subscriber, is right there.</figcaption>
+          </figure>
+        </article>
+
+        <article class="decision decision--wide">
+          <div class="d-head"><p class="label">Decision 3 of 5</p><h3 class="t-h3">Replace a fake wizard with flexible tabs</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">The situation</p><p>The review cycle was forced into a step-by-step wizard, but reviewers constantly move back and forth between a policy’s history and its draft.</p></div>
+            <div class="d-block"><p class="label">What I did</p><p>I took the wizard apart and designed a tab-based layout that lets users jump freely between History and Edit, matching how they actually work.</p></div>
+            <div class="d-block" style="grid-column:1 / -1"><p class="label">Why it mattered</p><p>Reviewing is not a linear task: reviewers compare the draft with its history and references, then come back to approve. Tabs match that mental model and keep approval one step away. For the business, review cycles that don’t stall mean policies get approved on time, and that is what keeps clients audit-ready.</p></div>
+          </div>
+          <figure class="figure">
+            <div class="scroll-x" data-scroll data-label="Before and after of the review screen" style="--min-mobile:900px"><img src="assets/pm-d3-tabs.webp" width="1248" height="493" alt="Before and after of the review screen: the step-by-step wizard on the left and the tab-based layout on the right, with three numbered callouts" decoding="async"></div>
+            <ol class="steps steps--row">
+              <li>Steps became tabs: reviewers move between general info, review, editor, references and history in any order.</li>
+              <li>Approve and Not approve moved from the bottom of the panel to the top of the task.</li>
+              <li>The long document list gave way to collapsible navigation, so the review gets the full width.</li>
+            </ol>
+          </figure>
+        </article>
+
+        <article class="decision decision--wide">
+          <div class="d-head"><p class="label">Decision 4 of 5</p><h3 class="t-h3">Integrate with Word instead of competing with it</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">The situation</p><p>Users already drafted in Microsoft Word and Google Docs. Building an editor good enough to replace them would have taken significant engineering resources.</p></div>
+            <div class="d-block"><p class="label">What I did</p><p>I championed an integration strategy and designed import and sync flows for Microsoft Word and Google Docs. Both shipped, so users kept the tools they already knew and Policy Manager stayed the source of truth.</p></div>
+            <div class="d-block"><p class="label">The trade-off</p><p>Instead of competing with Word feature by feature, we kept a simpler built-in editor for quick edits and let Word and Google Docs handle heavy drafting.</p></div>
+            <div class="d-block"><p class="label">Why it mattered</p><p>Authors already knew Word and Google Docs, and asking them to switch was the real barrier. Meeting them there removed the reason to draft offline and kept versions and audit trail inside Policy Manager. For the business, it avoided building and maintaining a full editor, and it made onboarding easier: new clients could bring their existing documents as they were.</p></div>
+          </div>
+          <figure class="figure">
+            <div class="scroll-x" data-scroll data-label="Diligent public demo screenshot" style="--min-mobile:900px"><img src="assets/pm-d4-word.webp" width="1248" height="490" alt="Today: Diligent’s public demo, 2026. A policy open in Policy Manager with the actions “Open in Microsoft Word” and “Replace document” marked 1 and 2" decoding="async"></div>
+            <ol class="steps steps--row" style="--n:2">
+              <li>“Open in Microsoft Word”: authors edit in Word without leaving Policy Manager, so versions and audit trail stay in the product.</li>
+              <li>“Replace document”: a new version drafted outside comes back in with one action.</li>
+            </ol>
+          </figure>
+        </article>
+
+        <article class="decision">
+          <div class="d-head"><p class="label">Decision 5 of 5</p><h3 class="t-h3">Give the board its own approval mode</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">The situation</p><p>Executives reviewing policies on iPads met broken layouts.</p></div>
+            <div class="d-block"><p class="label">What I did</p><p>I designed Policy Manager’s first responsive framework and a dedicated approval mode with large touch targets. A board member can now approve a policy in 3 taps.</p></div>
+            <div class="d-block"><p class="label">Why it mattered</p><p>Approvers use the product the least, but they can block the whole cycle. Designing for them with large touch targets and only the essential actions removes the last bottleneck. For the business, board members are the most senior people at each client, so their experience shapes how the client sees the product at renewal time.</p></div>
+          </div>
+          <figure class="figure">
+            <img src="assets/pm-d5-ipad.webp" width="664" height="460" alt="The redesigned Policy Manager dashboard on an iPad" decoding="async">
+            <figcaption>Policy Manager’s first responsive layout, on iPad.</figcaption>
+          </figure>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--label bg-mist" aria-labelledby="pm-after-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">The redesign</p>
+        <h2 class="t-h2" id="pm-after-h">A stable product that clients trust again</h2>
+        <p class="sub">The redesigned Policy Manager, rebuilt on Lens, Diligent’s new design system, with a responsive layout that works from the desk to the boardroom iPad.</p>
+      </div>
+
+      <div class="stack">
+        <figure class="figure">
+          <div class="scroll-x" data-scroll data-label="Redesigned dashboard screenshot" style="--min-mobile:760px"><img src="assets/pm-after-dashboard.webp" width="1248" height="640" alt="The redesigned Policy Manager dashboard with document profile charts and upcoming review cycles" decoding="async"></div>
+          <figcaption>The new dashboard shows document status and upcoming review cycles at a glance, so owners see what needs attention before it’s overdue.</figcaption>
+        </figure>
+
+        <div class="stack stack--sm">
+          <div class="sub-block">
+            <h3 class="t-h3">Screen by screen</h3>
+            <p>How the main screens changed, for readers who want the detail.</p>
+          </div>
+          <div class="pair">
+            <div class="sub-block" style="margin:0"><h4 class="t-h4">Document details</h4><p>Labels above fields and grouped sections turn a long form into something people can scan, and the document’s status is visible at a glance.</p></div>
+            <div class="pair-imgs">
+              <img class="media" src="assets/pm-details-before.webp" width="612" height="481" alt="Before: the Document details form with a long list of fields" decoding="async">
+              <img class="media" src="assets/pm-details-after.webp" width="612" height="481" alt="After: the Document details form with labels above fields, grouped sections and the document status" decoding="async">
+            </div>
+          </div>
+          <div class="pair">
+            <div class="sub-block" style="margin:0"><h4 class="t-h4">Document editor</h4><p>The editor shows the policy as it will be published, with its outline beside it, so authors can check the structure while they write.</p></div>
+            <div class="pair-imgs">
+              <img class="media" src="assets/pm-editor-before.webp" width="612" height="481" alt="Before: the built-in document editor" decoding="async">
+              <img class="media" src="assets/pm-editor-after.webp" width="612" height="481" alt="After: the document editor showing the policy with its outline beside it" decoding="async">
+            </div>
+          </div>
+          <div class="pair">
+            <div class="sub-block" style="margin:0"><h4 class="t-h4">History viewer</h4><p>Each revision lists what was added and removed, so reviewers see what changed without comparing two versions by eye.</p></div>
+            <div class="pair-imgs">
+              <img class="media" src="assets/pm-history-before.webp" width="612" height="481" alt="Before: the History viewer" decoding="async">
+              <img class="media" src="assets/pm-history-after.webp" width="612" height="481" alt="After: the History viewer listing what was added and removed in each revision" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <div class="stack stack--sm">
+          <div class="sub-block"><h3 class="t-h3">Two new capabilities</h3></div>
+
+          <div class="pair">
+            <div class="sub-block" style="margin:0"><h4 class="t-h4">Sharing policies with subscribing school districts</h4><p>Some clients are partner organizations that maintain policies for groups of school districts. As they moved from BoardDocs to Diligent Community, they needed to publish new or updated policies to those districts straight from Policy Manager, which made this feature critical to keeping them. I designed Subscriber Management: admins add a district from the Community site, choose which policy folders it receives and manage its status.</p></div>
+            <figure class="figure">
+              <div class="scroll-x" data-scroll data-label="Subscriber Management screens" style="--min-mobile:760px"><img src="assets/pm-subscribers.webp" width="1248" height="288" alt="Three Subscriber Management screens: the empty state, adding a subscriber and managing a subscriber’s status" decoding="async"></div>
+              <ol class="steps steps--row"><li>Empty state</li><li>Add a subscriber</li><li>Manage status</li></ol>
+            </figure>
+          </div>
+
+          <div class="pair">
+            <div class="sub-block" style="margin:0"><h4 class="t-h4">Downloading a policy with its changes highlighted</h4><p>Audits often ask for proof of what changed between versions. From the History viewer, users choose which versions to compare and download a PDF with additions and deletions highlighted, so they can share it with people who don’t use Policy Manager.</p></div>
+            <figure class="figure">
+              <div class="scroll-x" data-scroll data-label="PDF export screens" style="--min-mobile:760px"><img src="assets/pm-pdf-export.webp" width="1248" height="259" alt="Three screens: the History viewer, the dialog to choose what to export, and the PDF with changes highlighted" decoding="async"></div>
+              <ol class="steps steps--row"><li>History viewer</li><li>Choose what to export</li><li>PDF with changes highlighted</li></ol>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-plum on-dark" aria-labelledby="pm-still-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="t-h2" id="pm-still-h">Still in the product today</h2>
+        <p class="sub" style="color:var(--lavender-muted)">Diligent’s public demo (2026) shows which decisions held up, and one that evolved in a way that confirms the reasoning behind them.</p>
+      </div>
+      <ul class="cards">
+        <li class="card card--dark"><h3>Decision 3 held up</h3><p>Review is still a tab next to the document, not a wizard, and the flow still carries the name of Lens, the design system it was built on. Reviewers keep moving between draft, history and references in any order.</p></li>
+        <li class="card card--dark"><h3>Decision 4 held up</h3><p>Editing still happens in Word, inside Policy Manager, while versions and audit trail stay in the product. Diligent now sells the feature in those same terms. We shipped Word and Google Docs; the demo shows Word.</p></li>
+        <li class="card card--dark"><h3>What evolved</h3><p>Creating a policy is still a three-step wizard, and that fits: creation is linear, review isn’t. It’s the same principle applied to a different task: match the structure to the way people actually work.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="pm-results-h">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="t-h2" id="pm-results-h">What changed for Diligent and its clients</h2></div>
+      <div class="table-wrap" data-scroll data-label="Results table">
+        <table class="tbl-results">
+          <caption class="sr-only">What changed for Diligent and its clients</caption>
+          <thead><tr><th scope="col">Metric</th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Steps for a board member to approve a policy on iPad<small>Decision 5</small></th><td>14 steps</td><td>3 steps</td></tr>
+            <tr><th scope="row">Support tickets caused by system errors<small>Decisions 1 and 2</small></th><td>Overwhelming</td><td>Controlled</td></tr>
+            <tr><th scope="row">Development velocity<small>Lens design system</small></th><td>Baseline</td><td>2x</td></tr>
+            <tr><th scope="row">High-value enterprise clients<small>All five decisions</small></th><td>At risk of churn</td><td>Long-term renewals</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="pm-back-h">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="t-h2" id="pm-back-h">Looking back</h2></div>
+      <ul class="cards">
+        <li class="card"><h3>What worked</h3><p>Fixing the experience of failure first bought the team time and trust while the backend was being stabilized.</p></li>
+        <li class="card"><h3>What I’d do differently</h3><p>Track error rates and support tickets from day one, to show the impact of defensive design in numbers.</p></li>
+        <li class="card"><h3>What I’d measure next</h3><p>How often board members approve from the iPad approval mode compared with desktop.</p></li>
+      </ul>
+    </div>
+  </section>
+
+</section>
+
+</main>
+<footer class="site-footer">
+  <section class="companies on-dark" aria-labelledby="companies-h">
+    <img class="band-star" src="assets/star-3d.webp" width="89" height="107" alt="" aria-hidden="true" decoding="async">
+    <div class="wrap">
+      <h2 id="companies-h">Companies I've worked with</h2>
+      <ul class="companies-list">
+        <li><img src="assets/brands/footer-qkstudio.svg" width="143" height="40" alt="QKStudio" style="--h:40" decoding="async"></li>
+        <li><img src="assets/brands/footer-diligent.svg" width="129" height="36" alt="Diligent" style="--h:36" decoding="async"></li>
+        <li><img src="assets/brands/footer-mercadolibre.svg" width="149" height="38" alt="Mercado Libre" style="--h:38" decoding="async"></li>
+        <li><img src="assets/brands/footer-loopstudio.svg" width="168" height="41" alt="loopstudio" style="--h:41" decoding="async"></li>
+        <li><img src="assets/brands/footer-improving.svg" width="193" height="32" alt="improving" style="--h:32;--dy:3" decoding="async"></li>
+        <li><img src="assets/brands/footer-azulo.svg" width="144" height="33" alt="Azulo" style="--h:33" decoding="async"></li>
+      </ul>
+    </div>
+  </section>
+  <section class="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <img class="contact-avatar" src="assets/avatar-footer.webp" width="200" height="200" alt="" decoding="async">
+      <h2 id="contact-h">Hiring a product designer, or want to talk about a project?</h2>
+      <p class="who">David Hoyos</p>
+      <ul class="contact-links glass glass--light">
+        <li><a href="mailto:daviddhoyos1@gmail.com">daviddhoyos1@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/preview" target="_blank" rel="noopener noreferrer">Resume</a></li>
+        <li><a href="https://docs.google.com/document/d/1fPKsdBriSMLV6yGdnonFZUUvhjgciDf2CE4t00JRWx0/export?format=pdf" target="_blank" rel="noopener noreferrer">Download PDF</a></li>
+      </ul>
+      <div class="legal">
+        <a href="in-progress.html">Privacy Policy</a>
+        <p>© 2026 David Hoyos</p>
+      </div>
+    </div>
+  </section>
+</footer>
+<script src="app.js" defer></script>
+<script src="hero-shader.js" defer></script>
+</body>
+</html>
