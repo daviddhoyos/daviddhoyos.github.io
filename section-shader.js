@@ -304,7 +304,7 @@ float cnoise(vec3 P)
 
     const resize = () => {
       const r = host.getBoundingClientRect();
-      const w = Math.max(1, Math.round(r.width * CFG.pixelDensity)), h = Math.max(1, Math.round(r.height * CFG.pixelDensity));
+      const w = Math.min(4096, Math.max(1, Math.round(r.width * CFG.pixelDensity))), h = Math.min(4096, Math.max(1, Math.round(r.height * CFG.pixelDensity)));
       if (w === W && h === H) return false;
       W = w; H = h; canvas.width = w; canvas.height = h;
       gl.bindTexture(gl.TEXTURE_2D, fboTex);
@@ -368,6 +368,10 @@ float cnoise(vec3 P)
       if (started) return; started = true;
       canvas = document.createElement('canvas');
       canvas.className = 'bg-canvas'; canvas.setAttribute('aria-hidden', 'true');
+      // layout set here too (opacity stays in the CSS for the fade): if the page ever runs with an out-of-date stylesheet, an in-flow
+      // canvas would be sized from its own section and grow without limit
+      canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:-1';
+      if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
       gl = canvas.getContext('webgl', { antialias: false, alpha: false, depth: true, stencil: false,
         premultipliedAlpha: false, preserveDrawingBuffer: false, powerPreference: 'low-power' });
       if (!gl) return; // the poster stays as the background
