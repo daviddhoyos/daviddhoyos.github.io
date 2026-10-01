@@ -49,7 +49,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="styles.css?v=16">
 <link rel="preload" href="assets/ed-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -68,243 +68,455 @@
 <main id="main" tabindex="-1">
 <section class="view enter" id="view-edelap">
 
-  <header class="case-hero case-hero--ed case-hero--shader case-hero--split on-dark" data-hero-shader data-shader-colors="#60ffd8, #6a5cff, #3a30c0">
+  <header class="case-hero case-hero--ed case-hero--shader case-hero--split on-dark" data-hero-shader data-shader-colors="#3d7fb8, #0b0d12, #9aa6b4">
     <div class="wrap">
       <div class="copy">
         <p class="eyebrow">Virtual office at Edelap</p>
         <h1 class="t-display-case" tabindex="-1" data-focus>Bringing bill payments back to Edelap’s own app</h1>
         <p class="lead">Edelap supplies electricity to about 350,000 customers in Greater La Plata, Argentina. Its virtual office was so confusing that many of them paid through third-party wallets instead. I audited it and redesigned it as a mobile app where paying directly is the first thing people see.</p>
       </div>
-      <div class="case-hero-media edelap-media hero-thumb" aria-hidden="true"><img class="edelap-bg" src="assets/ed-thumb-bg.webp" width="1145" height="973" alt="" decoding="async"><img class="edelap-phone" src="assets/ed-thumb-phone-492.webp" srcset="assets/ed-thumb-phone-246.webp 246w, assets/ed-thumb-phone-492.webp 492w, assets/ed-thumb-phone-737.webp 737w" sizes="(max-width: 1023.98px) 40vw, 240px" width="737" height="1536" alt="" decoding="async"></div>
+      <div class="case-hero-media edelap-media hero-thumb" aria-hidden="true"><img class="edelap-bg" src="assets/ed-thumb-bg.webp" width="1145" height="973" alt="" decoding="async"><img class="edelap-phone" src="assets/edx-after.webp" srcset="assets/ed-thumb-phone-246.webp 246w, assets/ed-thumb-phone-492.webp 492w, assets/ed-thumb-phone-737.webp 737w" sizes="(max-width: 1023.98px) 40vw, 240px" width="520" height="1022" alt="" decoding="async"></div>
       <dl class="facts">
-        <div><dt>Role</dt><dd>Product Designer</dd></div>
+        <div><dt>Role</dt><dd>Product designer</dd></div>
         <div><dt>Type</dt><dd>UX audit and mobile redesign</dd></div>
         <div><dt>Platform</dt><dd>Desktop to mobile</dd></div>
-        <div><dt>Methods</dt><dd>Heatmaps, card sorting, heuristic review, interviews</dd></div>
+        <div><dt>Time to pay a bill</dt><dd>2 min → 40 s</dd></div>
+        <div><dt>Payment success</dt><dd>40% → 65%</dd></div>
       </dl>
     </div>
   </header>
 
-  <section class="sec bg-white" aria-labelledby="ed-glance-h">
+  <section class="sec ed-glance" aria-labelledby="ed-glance-h">
     <div class="wrap">
       <h2 class="sr-only" id="ed-glance-h">At a glance</h2>
       <div class="glance">
-        <div><p class="label">The problem</p><p class="t-statement">The virtual office was so hard to read that “Pagar ahora” got about 1% of the attention, and many customers paid their bill through other apps.</p></div>
-        <div><p class="label">What I did</p><p class="t-statement">I audited it with heatmaps, card sorting, a heuristic evaluation and interviews, then turned each finding into a mobile redesign.</p></div>
-        <div><p class="label">The outcome</p><p class="t-statement">In usability tests, paying a bill went from 2 minutes to 40 seconds, and the payment success rate rose from 40% to 65%.</p></div>
+        <div class="reveal"><p class="label">The problem</p><p class="t-statement">The virtual office was so hard to read that “Pagar ahora” got about 1% of the attention, and many customers paid their bill through other apps.</p></div>
+        <div class="reveal" style="--d:60ms"><p class="label">What I did</p><p class="t-statement">I audited it with heatmaps, card sorting, a heuristic evaluation and interviews, then turned each finding into a mobile redesign.</p></div>
+        <div class="reveal" style="--d:120ms"><p class="label">The outcome</p><p class="t-statement">In usability tests, paying a bill went from 2 minutes to 40 seconds, and the payment success rate rose from 40% to 65%.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="challenge" aria-labelledby="ed-challenge-h" data-bg-shader="waterPlane" data-bg-colors="#9387ff, #9260c7, #bf9ffd"
-    data-bg-brightness="1.2" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0"
-    data-bg-rotation="0, 0, 225" data-bg-speed="0.3" data-bg-density="1.8" data-bg-strength="3">
-    <div class="wrap">
-      <div class="copy">
-        <h2 class="t-h2" id="ed-challenge-h">The challenge</h2>
-        <p>The old virtual office had usability and accessibility problems. Before redesigning it, I wanted to know where users got stuck, how to measure it and which fixes would matter most.</p>
-        <ul>
-          <li>Where in the journey do people get stuck?</li>
-          <li>How can I measure what it costs them?</li>
-          <li>Which fixes would change the most?</li>
-        </ul>
+  <section class="ed-pause on-dark" aria-labelledby="ed-q-h" data-bg-shader="waterPlane" data-bg-colors="#2a6596, #08090c, #7b8696" data-bg-brightness="1" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 210" data-bg-speed="0.06" data-bg-density="1.4" data-bg-strength="2">
+    <div class="wrap ed-q">
+      <div class="sec-head reveal">
+        <p class="label">The question</p>
+        <h2 class="t-h2" id="ed-q-h">Why were people paying Edelap’s bill somewhere else?</h2>
+        <p class="sub">The old virtual office had usability and accessibility problems. Before redesigning anything, I wanted to know three things.</p>
       </div>
+      <ol class="ed-qs">
+        <li class="reveal" style="--d:60ms"><b>1</b>Where in the journey do people get stuck?</li>
+        <li class="reveal" style="--d:120ms"><b>2</b>How can I measure what it costs them?</li>
+        <li class="reveal" style="--d:180ms"><b>3</b>Which fixes would change the most?</li>
+      </ol>
     </div>
   </section>
 
-  <section class="sec bg-mist-soft" aria-labelledby="ed-heat-h">
+  <section class="sec bg-white ed-research" aria-labelledby="ed-res-h">
     <div class="wrap">
-      <div class="sec-head"><h2 class="t-h2" id="ed-heat-h">Users only looked at the amount due</h2></div>
-      <div class="ed-grid-2">
-        <div class="ed-card span-2">
-          <img data-zoom src="assets/ed-heatmap.webp" width="877" height="425" alt="Heatmap over the original virtual office: attention concentrates on the area of the amount due" decoding="async">
-          <div><h3>Heatmap</h3><p style="margin-top:8px">Attention went to the amount due. Everything else on the screen was mostly ignored.</p></div>
-        </div>
-        <div class="ed-card">
-          <img data-zoom src="assets/ed-attention.webp" width="430" height="314" alt="Attention overlay on the original buttons, tagged with 1% and 0%" decoding="async">
-          <div class="t-head"><img src="assets/ed-icon-attention.webp" width="99" height="99" alt="" aria-hidden="true" decoding="async"><div><h3>Attention on each button</h3><p style="margin-top:4px">None of them got more than 1%</p></div></div>
-        </div>
-        <div class="ed-card">
-          <img src="assets/ed-clarity.webp" width="385" height="315" alt="Clarity score gauge showing 54%, moderate difficulty" decoding="async">
-          <div><h3>Clarity score</h3><p style="margin-top:8px">54%: moderate difficulty</p></div>
-        </div>
+      <div class="sec-head reveal">
+        <p class="label">The research</p>
+        <h2 class="t-h2" id="ed-res-h">Four methods pointed at the same problem</h2>
+        <p class="sub">Each method looked at the virtual office from a different angle: where people looked, how they group things, which rules the interface broke, and what customers said.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="sec bg-white" aria-labelledby="ed-sort-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="tool"><img src="assets/ed-icon-optimal.webp" width="82" height="82" alt="" aria-hidden="true" decoding="async">Optimal Workshop</span>
-        <h2 class="t-h2" id="ed-sort-h">Card sorting</h2>
-        <p class="sub">39 participants sorted 12 account features into 6 categories. The results showed that the existing navigation didn’t match how people group their account features, which backed a full navigation rework.</p>
-      </div>
-      <div class="table-wrap" data-scroll data-label="Card sorting table">
-<table class="tbl-sort">
-<caption class="sr-only">Card sorting results</caption>
-<thead><tr><th scope="col">Feature</th><th scope="col">Supply</th><th scope="col">Bills &amp; Payments</th><th scope="col">Technical Support</th><th scope="col">Customer Service</th><th scope="col">Energy Advisor</th><th scope="col">Cost Simulator</th></tr></thead>
-<tbody>
-<tr><th scope="row">Consumption</th><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td></tr>
-<tr><th scope="row">Supply</th><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
-<tr><th scope="row">Address &amp; ID</th><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td></tr>
-<tr><th scope="row">Account Statement</th><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
-<tr><th scope="row">Amount Due (Total)</th><td style="--v:0.43">43%</td><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td></tr>
-<tr><th scope="row">Download Invoice</th><td><span class="sr-only">No value</span></td><td style="--v:1.00">100%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
-<tr><th scope="row">Digital Invoice</th><td><span class="sr-only">No value</span></td><td style="--v:0.86">86%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td></tr>
-<tr><th scope="row">Direct Debit</th><td style="--v:0.14">14%</td><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
-<tr><th scope="row">Last Invoice</th><td style="--v:0.14">14%</td><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td></tr>
-<tr><th scope="row">Last Invoice Period</th><td style="--v:0.14">14%</td><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
-<tr><th scope="row">Amount Due by Cutoff Date</th><td style="--v:0.29">29%</td><td style="--v:0.57">57%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr>
-<tr><th scope="row">Consumption Chart</th><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.43">43%</td><td style="--v:0.29">29%</td></tr>
-</tbody>
-</table>
-</div>
-    </div>
-  </section>
-
-  <section class="sec bg-mist-soft" aria-labelledby="ed-heur-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="with-icon"><img src="assets/ed-icon-heuristics.webp" width="63" height="60" alt="" aria-hidden="true" decoding="async"></div>
-        <h2 class="t-h2" id="ed-heur-h">Heuristic evaluation</h2>
-        <p class="sub">I audited the original virtual office against Nielsen’s usability heuristics and found 6 violations, rated on Nielsen’s 0 to 4 severity scale: 2 major (3) and 4 minor (2). Each one became a concrete input for the redesign.</p>
-      </div>
-      <div class="table-wrap" data-scroll data-label="Heuristic evaluation table">
-        <table class="tbl-heur">
-          <caption class="sr-only">Heuristic evaluation</caption>
-          <thead><tr><th scope="col">Description</th><th scope="col">Location</th><th scope="col">Violation</th><th scope="col">Severity</th></tr></thead>
-          <tbody>
-            <tr><td>Buttons across the screen vary significantly in size with no consistent visual relationship between them, creating confusion and making it difficult for users to orient themselves spatially.</td><td>Supply Screen</td><td><ul><li>Consistency &amp; Standards</li></ul></td><td>Major (3)</td></tr>
-            <tr><td>Using the same color for all buttons undermines visual hierarchy. The absence of a highlighted CTA leaves users without a clear sense of direction. The primary action should be reinforced with a distinctive color to differentiate it from secondary buttons on the same screen.</td><td>Supply Screen</td><td><ul><li>Aesthetic &amp; Minimalist Design</li><li>Consistency</li></ul></td><td>Major (3)</td></tr>
-            <tr><td>A button placed where a title is expected, combined with inconsistent color and positioning compared to other buttons, renders it practically invisible to the user.</td><td>Header / User Summary</td><td><ul><li>Consistency &amp; Standards</li><li>Aesthetic Design</li></ul></td><td>Minor (2)</td></tr>
-            <tr><td>Two checklist icons enclosed in a pill shape strongly resemble a toggle switch, but clicking reveals they are text labels. There is no effective visual feedback to clarify their behavior. Users already associate that pattern with a switch — there is no need to reinvent it.</td><td>Supply Screen / Housing Type / Digital Invoice</td><td><ul><li>Consistency &amp; Standards</li><li>Aesthetic Design</li></ul></td><td>Minor (2)</td></tr>
-            <tr><td>Clicking the "Supply" button navigates to a screen showing a list of supplies under the user's name — the same information already available as a dropdown on the previous screen. No new information is provided, and the button only adds unnecessary visual clutter.</td><td>Supply / My Supplies</td><td><ul><li>Consistency &amp; Standards</li><li>Aesthetic Design</li></ul></td><td>Minor (2)</td></tr>
-            <tr><td>When clicking the "Join" button, the label does not clearly communicate what action will be performed or what the user is committing to. The term lacks contextual meaning, creating ambiguity about the outcome of the interaction</td><td>Supply / Join / Popup</td><td><ul><li>Consistency &amp; Standards</li><li>Aesthetic Design</li></ul></td><td>Minor (2)</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec bg-white" aria-labelledby="ed-int-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 class="t-h2" id="ed-int-h">Interviews</h2>
-        <p class="sub">Two quotes that sum up what people told me: they got lost, and they paid somewhere else.</p>
-      </div>
-      <ul class="quotes">
-        <li><figure class="quote"><h3>I get lost</h3><blockquote><p>"I rarely use the website because I almost always end up lost. I prefer other payments platforms.”</p></blockquote><figcaption>Carolina</figcaption></figure></li>
-        <li><figure class="quote"><h3>I can't find specific things</h3><blockquote><p>I don't like the way they handle the app. It's hard for me to find specific things. I usually use some other external app."</p></blockquote><figcaption>Alexander</figcaption></figure></li>
+      <ul class="ed-methods" aria-label="Methods">
+        <li><a href="#ed-m-heat"><img src="assets/ed-icon-attention.webp" width="40" height="40" alt="" decoding="async">Heatmaps<span>Attention Insight</span></a></li>
+        <li><a href="#ed-m-sort"><img src="assets/ed-icon-optimal.webp" width="40" height="40" alt="" decoding="async">Card sorting<span>Optimal Workshop, 39 people</span></a></li>
+        <li><a href="#ed-m-heur"><img src="assets/ed-icon-heuristics.webp" width="40" height="40" alt="" decoding="async">Heuristic evaluation<span>Nielsen’s 10 heuristics</span></a></li>
+        <li><a href="#ed-m-int"><span class="ed-method-ico" aria-hidden="true"><img src="assets/edx-avatar-1.webp" width="40" height="40" alt="" decoding="async"></span>Interviews<span>Customers</span></a></li>
       </ul>
+
+      <article class="ed-method" id="ed-m-heat">
+        <div class="ed-method-head reveal"><p class="label">Heatmaps</p><h3 class="t-h3">People only looked at the amount due</h3><p>Attention went to the amount to pay. Everything else on the screen, including the button to pay it, was mostly ignored.</p></div>
+        <div class="ed-heat">
+          <figure class="ed-fig reveal"><div class="ed-well"><img data-zoom loading="lazy" src="assets/ed-heatmap.webp" width="877" height="425" alt="Heatmap over the original virtual office: attention concentrates on the area of the amount due" decoding="async"></div></figure>
+          <div class="ed-stats">
+            <div class="ed-stat reveal" style="--d:80ms"><p class="ed-stat-n"><span data-count-from="0" data-count-to="1">1</span>%</p><p>The most attention any button got. “Pagar ahora” was one of them.</p><img data-zoom loading="lazy" class="ed-stat-img" src="assets/ed-attention.webp" width="430" height="314" alt="Attention overlay on the original buttons, tagged with 1% and 0%" decoding="async"></div>
+            <div class="ed-stat reveal" style="--d:160ms"><div class="ed-gauge" style="--g:.54" role="img" aria-label="Clarity score 54%"><span><span data-count-from="0" data-count-to="54">54</span>%</span></div><p><b>Clarity score:</b> moderate difficulty.</p></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="ed-method" id="ed-m-sort">
+        <div class="ed-method-head reveal"><p class="label">Card sorting</p><h3 class="t-h3">The menu didn’t match how people group things</h3><p>39 participants sorted 12 account features into 6 categories. Their groups didn’t match the existing navigation, which backed a full rework. Bills and payments was the clearest group: every participant put “Download invoice” there.</p></div>
+        <figure class="ed-fig reveal"><div class="scroll-x ed-matrix-wrap" data-scroll data-label="Card sorting results" style="--min-mobile:760px">
+              <table class="ed-matrix"><caption class="sr-only">Card sorting results: share of participants who put each feature in each category</caption>
+              <thead><tr><th scope="col">Feature</th><th scope="col">Supply</th><th scope="col">Bills &amp; Payments</th><th scope="col">Technical Support</th><th scope="col">Customer Service</th><th scope="col">Energy Advisor</th><th scope="col">Cost Simulator</th></tr></thead><tbody><tr><th scope="row">Consumption</th><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td></tr><tr><th scope="row">Supply</th><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr><tr><th scope="row">Address &amp; ID</th><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td></tr><tr><th scope="row">Account Statement</th><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr><tr><th scope="row">Amount Due (Total)</th><td style="--v:0.43">43%</td><td style="--v:0.43">43%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td></tr><tr><th scope="row">Download Invoice</th><td><span class="sr-only">No value</span></td><td style="--v:1.00">100%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr><tr><th scope="row">Digital Invoice</th><td><span class="sr-only">No value</span></td><td style="--v:0.86">86%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td></tr><tr><th scope="row">Direct Debit</th><td style="--v:0.14">14%</td><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr><tr><th scope="row">Last Invoice</th><td style="--v:0.14">14%</td><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td></tr><tr><th scope="row">Last Invoice Period</th><td style="--v:0.14">14%</td><td style="--v:0.71">71%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr><tr><th scope="row">Amount Due by Cutoff Date</th><td style="--v:0.29">29%</td><td style="--v:0.57">57%</td><td><span class="sr-only">No value</span></td><td style="--v:0.14">14%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td></tr><tr><th scope="row">Consumption Chart</th><td style="--v:0.29">29%</td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td><span class="sr-only">No value</span></td><td style="--v:0.43">43%</td><td style="--v:0.29">29%</td></tr></tbody></table>
+            </div><figcaption>Share of participants who put each feature in each category. The stronger the tint, the more people agreed.</figcaption></figure>
+      </article>
+
+      <article class="ed-method" id="ed-m-heur">
+        <div class="ed-method-head reveal"><p class="label">Heuristic evaluation</p><h3 class="t-h3">Six broken rules, two of them major</h3><p>I reviewed the virtual office against Nielsen’s usability heuristics and rated each problem on his 0 to 4 severity scale: 2 major (3) and 4 minor (2). Each one became an input for the redesign.</p></div>
+        <ul class="ed-heurs"><li class="ed-heur reveal" style="--d:0ms"><span class="ed-sev ed-sev--major">Major</span><h4 class="t-h4">Buttons with no size system</h4><p>Buttons vary a lot in size with no visual relationship, so it is hard to tell where you are on the screen.</p><p class="ed-heur-meta">Supply screen · Consistency and standards</p></li><li class="ed-heur reveal" style="--d:50ms"><span class="ed-sev ed-sev--major">Major</span><h4 class="t-h4">No primary action</h4><p>Every button uses the same color, so nothing stands out as the main action. Paying should look different from everything else.</p><p class="ed-heur-meta">Supply screen · Aesthetic and minimalist design</p></li><li class="ed-heur reveal" style="--d:100ms"><span class="ed-sev ed-sev--minor">Minor</span><h4 class="t-h4">A button that looks like a title</h4><p>A button sits where a title is expected, with a different color and position from the others, which makes it almost invisible.</p><p class="ed-heur-meta">Header and user summary · Consistency and standards</p></li><li class="ed-heur reveal" style="--d:150ms"><span class="ed-sev ed-sev--minor">Minor</span><h4 class="t-h4">Labels that look like a switch</h4><p>Two icons in a pill look like a toggle, but they are text labels. People already know that pattern as a switch.</p><p class="ed-heur-meta">Housing type and digital invoice · Consistency and standards</p></li><li class="ed-heur reveal" style="--d:200ms"><span class="ed-sev ed-sev--minor">Minor</span><h4 class="t-h4">A button that adds nothing</h4><p>“Supply” opens a list of supplies that was already available in a dropdown on the previous screen.</p><p class="ed-heur-meta">Supply and my supplies · Aesthetic and minimalist design</p></li><li class="ed-heur reveal" style="--d:250ms"><span class="ed-sev ed-sev--minor">Minor</span><h4 class="t-h4">“Join” doesn’t say what happens</h4><p>The label doesn’t explain what you are joining or committing to, so the outcome of the click is unclear.</p><p class="ed-heur-meta">Join popup · Consistency and standards</p></li></ul>
+      </article>
+
+      <article class="ed-method" id="ed-m-int">
+        <div class="ed-method-head reveal"><p class="label">Interviews</p><h3 class="t-h3">“I almost always end up lost”</h3><p>Two quotes that sum up what people told me: they got lost, and they paid somewhere else.</p></div>
+        <ul class="ed-quotes">
+          <li class="ed-quote reveal"><img src="assets/edx-avatar-1.webp" width="56" height="56" alt="" decoding="async" loading="lazy"><blockquote><p>“I rarely use the website because I almost always end up lost. I prefer other payment platforms.”</p></blockquote><p class="ed-quote-who"><b>Carolina</b> · Edelap customer</p></li>
+          <li class="ed-quote reveal" style="--d:80ms"><img src="assets/edx-avatar-2.webp" width="56" height="56" alt="" decoding="async" loading="lazy"><blockquote><p>“I don’t like the way they handle the app. It’s hard for me to find specific things. I usually use some other external app.”</p></blockquote><p class="ed-quote-who"><b>Alexander</b> · Edelap customer</p></li>
+        </ul>
+      </article>
     </div>
   </section>
 
-  <section class="sec bg-mist-soft" aria-labelledby="ed-found-h">
+  <section class="sec ed-found-sec" aria-labelledby="ed-found-h">
     <div class="wrap">
-      <div class="sec-head">
-        <h2 class="t-h2" id="ed-found-h">What I found</h2>
-        <p class="sub">Each problem pointed to a design opportunity:</p>
+      <div class="sec-head reveal"><p class="label">What I found</p><h2 class="t-h2" id="ed-found-h">Four problems, four things to design for</h2></div>
+      <ol class="ed-found">
+        <li class="reveal"><p class="ed-p">The information architecture is inconsistent.</p><p class="ed-o">Organize the menu around the most used actions.</p></li>
+        <li class="reveal" style="--d:60ms"><p class="ed-p">The interface doesn’t follow common UI patterns.</p><p class="ed-o">Make the main action obvious.</p></li>
+        <li class="reveal" style="--d:120ms"><p class="ed-p">The text uses words customers don’t recognize.</p><p class="ed-o">Write in the words customers use.</p></li>
+        <li class="reveal" style="--d:180ms"><p class="ed-p">Type, color and shape have no hierarchy.</p><p class="ed-o">Build a clear hierarchy of type, color and shape.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="ed-navband on-dark" aria-labelledby="ed-nav-h">
+    <div class="wrap ed-navband-grid">
+      <div class="sec-head reveal">
+        <p class="label">The biggest cut</p>
+        <h2 class="t-h2" id="ed-nav-h">From 11 menu items to 4</h2>
+        <p class="sub">I cut the main menu to Inicio, Facturas, Reporte and Ayuda (Home, Bills, Report, Help), based on the card sorting results. Address and supply settings moved into the profile, since people rarely need them. Fewer options means people find what they need faster (Hick’s law).</p>
       </div>
-      <div class="found">
-        <ol class="pairs">
-          <li><p><span class="sr-only">Problem: </span>The information architecture is inconsistent.</p><svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><p class="opp"><span class="sr-only">Opportunity: </span>Organize the menu around the most used actions.</p></li>
-          <li><p><span class="sr-only">Problem: </span>The interface doesn’t follow common UI patterns.</p><svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><p class="opp"><span class="sr-only">Opportunity: </span>Make the main action obvious</p></li>
-          <li><p><span class="sr-only">Problem: </span>The text uses words customers don’t recognize.</p><svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><p class="opp"><span class="sr-only">Opportunity: </span>Write in the words customers use.</p></li>
-          <li><p><span class="sr-only">Problem: </span>Type, color and shape have no hierarchy.</p><svg class="arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><p class="opp"><span class="sr-only">Opportunity: </span>Build a clear hierarchy of type, color and shape.</p></li>
-        </ol>
+      <div class="ed-cut" data-cut aria-hidden="true">
+        <ol class="ed-cut-old"><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li></ol>
+        <div class="ed-cut-new"><span><svg class="" width="22" height="22" viewBox="0 0 54 54" fill="none" aria-hidden="true"><path d="M52.8802 26.5665L29.8651 2.2106L28.3224 0.577208C27.9709 0.207497 27.4956 0 27.0001 0C26.5047 0 26.0293 0.207497 25.6778 0.577208L1.12003 26.5665C0.759859 26.9464 0.47521 27.3988 0.282885 27.897C0.0905606 28.3953 -0.00554309 28.9293 0.000246886 29.4675C0.024072 31.6874 1.76926 33.4596 3.86588 33.4596H6.3973V54H47.6029V33.4596H50.1879C51.2065 33.4596 52.1654 33.037 52.8861 32.2739C53.241 31.8994 53.5222 31.454 53.7134 30.9637C53.9046 30.4733 54.002 29.9476 54 29.4171C54 28.345 53.6009 27.3296 52.8802 26.5665V26.5665ZM30.3356 49.4593H23.6646V36.5939H30.3356V49.4593ZM43.3144 28.9188V49.4593H34.1477V35.0803C34.1477 33.6866 33.0815 32.5577 31.7651 32.5577H22.2351C20.9187 32.5577 19.8526 33.6866 19.8526 35.0803V49.4593H10.6858V28.9188H4.96779L27.0061 5.60353L28.382 7.06034L49.0384 28.9188H43.3144Z" fill="currentColor"/></svg>Inicio</span><span><svg class="" width="22" height="22" viewBox="0 0 51.6 51.6" fill="none" aria-hidden="true"><path d="M41.28 5.16H51.6V43.86C51.6 45.9128 50.7845 47.8815 49.333 49.333C47.8815 50.7845 45.9128 51.6 43.86 51.6H7.74C5.68722 51.6 3.71853 50.7845 2.26699 49.333C0.815462 47.8815 0 45.9128 0 43.86L0 0H41.28V5.16ZM41.28 10.32V43.86C41.28 44.5443 41.5518 45.2005 42.0357 45.6843C42.5195 46.1682 43.1757 46.44 43.86 46.44C44.5443 46.44 45.2005 46.1682 45.6843 45.6843C46.1682 45.2005 46.44 44.5443 46.44 43.86V10.32H41.28ZM5.16 5.16V43.86C5.16 44.5443 5.43182 45.2005 5.91566 45.6843C6.39951 46.1682 7.05574 46.44 7.74 46.44H36.5586C36.266 45.6114 36.1177 44.7387 36.12 43.86V5.16H5.16ZM10.32 25.8H30.96V30.96H10.32V25.8ZM10.32 36.12H30.96V41.28H10.32V36.12ZM10.32 10.32H30.96V20.64H10.32V10.32Z" fill="currentColor"/></svg>Facturas</span><span><svg class="" width="22" height="22" viewBox="0 0 67.2 67.2" fill="none" aria-hidden="true"><path d="M8.40039 14.0004V53.2004C8.40039 56.2888 10.912 58.8004 14.0004 58.8004H53.2004C56.2888 58.8004 58.8004 56.2888 58.8004 53.2004V14.0004C58.8004 10.912 56.2888 8.40039 53.2004 8.40039H14.0004C10.912 8.40039 8.40039 10.912 8.40039 14.0004ZM53.2032 53.2004H14.0004V14.0004H53.2004L53.2032 53.2004Z" fill="currentColor"/><path d="M30.8006 19.6016H36.4006V47.6016H30.8006V19.6016ZM42.0006 28.0016H47.6006V47.6016H42.0006V28.0016ZM19.6006 33.6016H25.2006V47.6016H19.6006V33.6016Z" fill="currentColor"/></svg>Reporte</span><span><svg class="" width="22" height="22" viewBox="0 0 52.8 52.8" fill="none" aria-hidden="true"><path d="M26.4 0C11.843 0 0 11.843 0 26.4V37.3375C0 40.0409 2.36808 42.24 5.28 42.24H7.92C8.62017 42.24 9.29166 41.9619 9.78676 41.4668C10.2819 40.9717 10.56 40.3002 10.56 39.6V26.0225C10.56 25.3223 10.2819 24.6508 9.78676 24.1557C9.29166 23.6606 8.62017 23.3825 7.92 23.3825H5.52288C6.99072 13.1657 15.7819 5.28 26.4 5.28C37.0181 5.28 45.8093 13.1657 47.2771 23.3825H44.88C44.1798 23.3825 43.5083 23.6606 43.0132 24.1557C42.5181 24.6508 42.24 25.3223 42.24 26.0225V42.24C42.24 45.1519 39.8719 47.52 36.96 47.52H31.68V44.88H21.12V52.8H36.96C42.7838 52.8 47.52 48.0638 47.52 42.24C50.4319 42.24 52.8 40.0409 52.8 37.3375V26.4C52.8 11.843 40.957 0 26.4 0Z" fill="currentColor"/></svg>Ayuda</span></div>
       </div>
     </div>
   </section>
-  <section class="sec bg-white" aria-labelledby="ed-ba-h">
+
+  <section class="sec bg-white ed-design" aria-labelledby="ed-design-h">
     <div class="wrap">
-      <div class="sec-head">
-        <h2 class="t-h2" id="ed-ba-h">From 1% of the attention to the main action</h2>
-        <p class="sub">In the original virtual office, “Pagar ahora” (Pay now) received about 1% of user attention. In the redesign, the balance and the payment button are the first things on the home screen.</p>
+      <div class="sec-head reveal">
+        <p class="label">The redesign</p>
+        <h2 class="t-h2" id="ed-design-h">From paper to a home built around paying</h2>
       </div>
-      <div class="ba-grid">
-        <figure class="figure">
-          <img data-zoom src="assets/ed-before.webp" width="600" height="560" alt="Original desktop virtual office with the attention heatmap overlay" decoding="async">
-          <figcaption>Original desktop virtual office, with the attention heatmap overlay.</figcaption>
+
+      <div class="ed-paper">
+        <figure class="ed-fig reveal">
+          <div class="ed-sketch"><img data-zoom src="assets/edx-sketch.webp" srcset="assets/edx-sketch-sm.webp 700w, assets/edx-sketch.webp 1400w" sizes="(max-width: 899.98px) 92vw, 460px" width="1400" height="1677" alt="Hand-drawn sketches of the home, bills and consumption screens, with a sticky note listing pay in place, bills and charts" loading="lazy" decoding="async"></div>
+          <figcaption>Paper first: where the balance, the payment and the consumption chart would sit.</figcaption>
         </figure>
-        <figure class="figure">
-          <img data-zoom src="assets/ed-after.webp" width="600" height="560" alt="Redesigned mobile home of the Edelap app: balance first, with a Pay now button" decoding="async">
-          <figcaption>Redesigned mobile home: balance first, payment as the primary action.</figcaption>
+        <figure class="ed-fig reveal" style="--d:80ms">
+          <div class="ed-wires" data-wires><svg role="img" aria-label="Wireframes: three mobile screens and the desktop version, in grey with green primary actions" class="ed-wire-svg" viewBox="688 140 548 690" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<g id="wf-Edelap_Case_Study" clip-path="url(#wf-clip0_0_1)">
+
+<g id="wf-Wireframes">
+
+
+<g id="wf-Group_2256">
+<g id="wf-Group_2255">
+<g id="wf-Group_2254">
+<g id="wf-shadow" filter="url(#wf-filter0_f_0_1)">
+<rect x="1038.32" y="190.705" width="134.915" height="289.391" fill="#CACACA" class="sk"/>
+</g>
+<path id="wf-Vector_85" d="M1180.26 184.186H1063.9L1055.62 186.192L1051.61 198.48L1048.85 457.527L1066.91 471.319H1176.24L1189.78 457.527V200.987L1180.26 184.186Z" fill="#FBFBFB"/>
+<g id="wf-Group_2212">
+<rect id="wf-IMG_5203" x="1056.05" y="185.389" width="130.626" height="282.927" fill="white"/>
+<path id="wf-Vector_105" d="M1094.27 254.979L1180.4 254.979" stroke="#F4F4F4" stroke-width="0.570417"/>
+<path id="wf-Vector_106" d="M1094.27 292.627H1180.4" stroke="#F4F4F4" stroke-width="0.570417"/>
+<path id="wf-Vector_107" d="M1094.27 330.275H1180.4" stroke="#F4F4F4" stroke-width="0.570417"/>
+<path id="wf-Vector_108" d="M1094.27 367.924H1180.4" stroke="#F4F4F4" stroke-width="0.570417"/>
+<path id="wf-Vector_109" d="M1094.27 405.57H1180.4" stroke="#F4F4F4" stroke-width="0.570417"/>
+<rect id="wf-Rectangle_151" x="1094.27" y="220.756" width="69.0205" height="5.70417" rx="2.85209" fill="#F4F4F4" class="sk"/>
+<rect id="wf-Rectangle_4724" x="1094.27" y="258.4" width="79.288" height="5.70417" rx="2.85209" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4728" x="1094.27" y="296.051" width="15.9717" height="5.70417" rx="2.85209" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4732" x="1094.27" y="333.697" width="50.1967" height="5.70417" rx="2.85209" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4736" x="1094.27" y="371.346" width="79.8584" height="5.70417" rx="2.85209" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4740" x="1094.27" y="408.992" width="30.8025" height="5.70417" rx="2.85209" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_152" x="1094.27" y="229.311" width="58.753" height="5.13376" rx="2.56688" fill="#F4F4F4" class="sk"/>
+<rect id="wf-Rectangle_4725" x="1094.27" y="266.955" width="61.6051" height="5.13376" rx="2.56688" fill="#F4F4F4" class="sk"/>
+<rect id="wf-Rectangle_4729" x="1094.27" y="304.604" width="38.218" height="5.13376" rx="2.56688" fill="#F4F4F4" class="sk"/>
+<rect id="wf-Rectangle_4733" x="1094.27" y="342.252" width="46.7742" height="5.13376" rx="2.56688" fill="#F4F4F4" class="sk"/>
+<rect id="wf-Rectangle_4737" x="1094.27" y="379.898" width="57.0417" height="5.13376" rx="2.56688" fill="#F4F4F4" class="sk"/>
+<rect id="wf-Rectangle_4741" x="1094.27" y="417.549" width="70.1613" height="5.13376" rx="2.56688" fill="#F4F4F4" class="sk"/>
+<rect id="wf-Rectangle_4722" width="27.9504" height="27.9504" rx="5.70417" transform="matrix(1 0 0 -1 1062.32 250.416)" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4726" x="1062.32" y="260.111" width="27.9504" height="27.9504" rx="5.70417" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4730" x="1062.32" y="297.76" width="27.9504" height="27.9504" rx="5.70417" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4734" x="1062.32" y="335.408" width="27.9504" height="27.9504" rx="5.70417" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4738" x="1062.32" y="373.055" width="27.9504" height="27.9504" rx="5.70417" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4742" x="1062.32" y="410.701" width="27.9504" height="27.9504" rx="5.70417" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4723" width="23.3871" height="9.12668" rx="4.56334" transform="matrix(1 0 0 -1 1094.27 251.557)" fill="url(#wf-paint0_linear_0_1)"/>
+<rect id="wf-Rectangle_4727" x="1094.27" y="280.076" width="23.3871" height="9.12668" rx="4.56334" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4731" x="1094.27" y="317.727" width="23.3871" height="9.12668" rx="4.56334" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4735" x="1094.27" y="355.373" width="23.3871" height="9.12668" rx="4.56334" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4739" x="1094.27" y="393.021" width="23.3871" height="9.12668" rx="4.56334" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4743" x="1094.27" y="430.668" width="23.3871" height="9.12668" rx="4.56334" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_4745" x="1094.84" y="458.615" width="53.0488" height="2.28167" rx="1.14083" fill="#D9D9D9" class="sk"/>
+<g id="wf-Group_2213">
+<path id="wf-Vector_110" d="M1063.75 204.498L1061.3 206.947C1061.08 207.17 1061.08 207.531 1061.3 207.753L1063.75 210.202" stroke="#696969" stroke-width="1.14083" stroke-linecap="round"/>
+</g>
+</g>
+</g>
+</g>
+<rect id="wf-001_2" x="1034.38" y="167.133" width="169.522" height="323.997" fill="url(#wf-pattern0_0_1)"/>
+</g>
+<g id="wf-Group_1000009750">
+<g id="wf-shadow_2" filter="url(#wf-filter1_f_0_1)">
+<rect x="883.632" y="190.705" width="134.915" height="289.391" fill="#CACACA" class="sk"/>
+</g>
+<path id="wf-Vector_85_2" d="M1025.57 184.186H909.208L900.933 186.192L896.921 198.48L894.162 457.527L912.218 471.319H1021.55L1035.1 457.527V200.987L1025.57 184.186Z" fill="#FBFBFB"/>
+<rect id="wf-001_2_2" x="879.117" y="167.133" width="169.522" height="323.997" fill="url(#wf-pattern1_0_1)"/>
+<rect id="wf-Rectangle_142" x="912.218" y="430.943" width="107.832" height="18.5571" rx="9.12668" fill="url(#wf-paint1_linear_0_1)"/>
+<rect id="wf-Rectangle_141" x="912.218" y="277.975" width="40.3746" height="42.3639" rx="9.12668" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_143" x="912.218" y="343.678" width="86.2655" height="7.52315" rx="3.76158" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_148" x="912.218" y="358.219" width="45.6404" height="7.52315" rx="3.76158" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_149" x="912.218" y="370.76" width="45.6404" height="7.52315" rx="3.76158" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_150" x="912.218" y="392.826" width="55.6713" height="7.52315" rx="3.76158" fill="#FBFBFB"/>
+<rect id="wf-Rectangle_144" x="958.06" y="277.975" width="40.3746" height="42.3639" rx="9.12668" fill="#ECECEC" class="sk"/>
+<path id="wf-Rectangle_145" d="M1003.9 287.101C1003.9 282.061 1007.99 277.975 1013.03 277.975H1028.71V320.338H1013.03C1007.99 320.338 1003.9 316.252 1003.9 311.212V287.101Z" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_146" x="947.205" y="225.936" width="66.0293" height="5.93094" rx="2.96547" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_147" x="947.205" y="236.525" width="35.3278" height="5.93094" rx="2.96547" fill="#ECECEC" class="sk"/>
+<g id="wf-Group_2119">
+<path id="wf-Rectangle_126" d="M910.212 229.457C910.212 224.675 914.088 220.799 918.87 220.799H932.856C937.638 220.799 941.514 224.675 941.514 229.457V243.443C941.514 248.225 937.638 252.101 932.856 252.101H918.87C914.088 252.101 910.212 248.225 910.212 243.443V229.457Z" fill="#ECECEC" class="sk"/>
+<g id="wf-App">
+<path d="M919.951 237.63H916.642L916.032 239.27H914.987L917.73 231.939H918.873L921.605 239.27H920.561L919.951 237.63ZM919.668 236.847L918.296 233.124L916.925 236.847H919.668Z" fill="#ECECEC" class="sk"/>
+<path d="M923.792 234.542C923.987 234.21 924.278 233.935 924.662 233.716C925.054 233.491 925.508 233.378 926.023 233.378C926.553 233.378 927.032 233.501 927.46 233.748C927.895 233.995 928.236 234.344 928.483 234.795C928.73 235.24 928.853 235.758 928.853 236.35C928.853 236.936 928.73 237.457 928.483 237.916C928.236 238.374 927.895 238.73 927.46 238.984C927.032 239.238 926.553 239.365 926.023 239.365C925.515 239.365 925.065 239.256 924.673 239.037C924.289 238.811 923.995 238.533 923.792 238.201V242.02H922.801V233.473H923.792V234.542ZM927.841 236.35C927.841 235.913 927.75 235.532 927.569 235.208C927.387 234.884 927.141 234.637 926.829 234.467C926.524 234.298 926.186 234.214 925.816 234.214C925.453 234.214 925.116 234.302 924.804 234.478C924.499 234.647 924.252 234.898 924.064 235.229C923.882 235.553 923.792 235.931 923.792 236.361C923.792 236.798 923.882 237.182 924.064 237.514C924.252 237.838 924.499 238.089 924.804 238.265C925.116 238.434 925.453 238.519 925.816 238.519C926.186 238.519 926.524 238.434 926.829 238.265C927.141 238.089 927.387 237.838 927.569 237.514C927.75 237.182 927.841 236.795 927.841 236.35Z" fill="#ECECEC" class="sk"/>
+<path d="M931.148 234.542C931.343 234.21 931.634 233.935 932.018 233.716C932.41 233.491 932.864 233.378 933.379 233.378C933.909 233.378 934.388 233.501 934.816 233.748C935.251 233.995 935.592 234.344 935.839 234.795C936.086 235.24 936.209 235.758 936.209 236.35C936.209 236.936 936.086 237.457 935.839 237.916C935.592 238.374 935.251 238.73 934.816 238.984C934.388 239.238 933.909 239.365 933.379 239.365C932.871 239.365 932.421 239.256 932.029 239.037C931.645 238.811 931.351 238.533 931.148 238.201V242.02H930.157V233.473H931.148V234.542ZM935.197 236.35C935.197 235.913 935.106 235.532 934.925 235.208C934.743 234.884 934.497 234.637 934.185 234.467C933.88 234.298 933.542 234.214 933.172 234.214C932.809 234.214 932.472 234.302 932.16 234.478C931.855 234.647 931.608 234.898 931.42 235.229C931.238 235.553 931.148 235.931 931.148 236.361C931.148 236.798 931.238 237.182 931.42 237.514C931.608 237.838 931.855 238.089 932.16 238.265C932.472 238.434 932.809 238.519 933.172 238.519C933.542 238.519 933.88 238.434 934.185 238.265C934.497 238.089 934.743 237.838 934.925 237.514C935.106 237.182 935.197 236.795 935.197 236.35Z" fill="#ECECEC" class="sk"/>
+</g>
+</g>
+</g>
+<g id="wf-Group_2122">
+<g id="wf-shadow_3" filter="url(#wf-filter2_f_0_1)">
+<rect x="728.369" y="190.705" width="134.915" height="289.391" fill="#CACACA" class="sk"/>
+</g>
+<path id="wf-Vector_85_3" d="M870.303 184.186H753.945L745.67 186.192L741.657 198.48L738.899 457.527L756.954 471.319H866.291L879.833 457.527V200.987L870.303 184.186Z" fill="#FBFBFB"/>
+<rect id="wf-001_2_3" x="723.854" y="167.133" width="169.522" height="323.997" fill="url(#wf-pattern2_0_1)"/>
+<rect id="wf-Rectangle_142_2" x="756.956" y="430.943" width="107.832" height="18.5571" rx="9.12668" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_129" x="752.473" y="274.293" width="53.3402" height="30.5494" rx="9.12668" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_147_2" x="752.473" y="333.125" width="53.3402" height="41.2174" rx="9.12668" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_132" x="753.926" y="380.16" width="96.4078" height="8.64567" rx="4.32284" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_134" x="752.375" y="393.863" width="48.2039" height="8.64567" rx="4.32284" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_130" x="813.087" y="274.293" width="53.3402" height="30.5494" rx="9.12668" fill="url(#wf-paint2_linear_0_1)"/>
+<rect id="wf-Rectangle_148_2" x="813.086" y="333.125" width="53.3402" height="41.2174" rx="9.12668" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_127" x="752.473" y="241.318" width="69.4313" height="6.72441" rx="3.36221" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_135" x="752.473" y="215.617" width="89.2236" height="16.487" rx="8.24349" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_128" x="752.473" y="253.328" width="37.1479" height="6.72441" rx="3.36221" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_145_2" x="752.375" y="310.879" width="53.6192" height="6.84501" rx="3.4225" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_146_2" x="812.839" y="310.877" width="53.6192" height="6.84501" rx="3.4225" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_149_2" x="759.261" y="219.496" width="4.3642" height="8.7284" rx="2.1821" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_144_2" x="848.968" y="219.496" width="17.4568" height="8.7284" rx="4.3642" fill="#ECECEC" class="sk"/>
+</g>
+<g id="wf-Group_18622">
+<g id="wf-Group_18608">
+<g id="wf-Group_18606">
+<g id="wf-Group_2307">
+<g id="wf-Group_2202">
+<g id="wf-Group_2201">
+<g id="wf-Rectangle_8" filter="url(#wf-filter3_f_0_1)">
+<rect x="717.14" y="524.912" width="466.839" height="262.908" fill="black" fill-opacity="0.18"/>
+</g>
+<g id="wf-Group_2198">
+<path id="wf-Rectangle_174" d="M734.298 511.242C734.298 501.029 742.577 492.75 752.79 492.75H1175.42C1185.63 492.75 1193.91 501.029 1193.91 511.242V785.406C1193.91 795.619 1185.63 803.898 1175.42 803.898H752.79C742.578 803.898 734.298 795.619 734.298 785.406V511.242Z" fill="url(#wf-paint3_linear_0_1)"/>
+<g id="wf-traffic_lights">
+<ellipse id="wf-Ellipse_1" cx="757.659" cy="503.674" rx="2.89713" ry="2.61342" fill="#FF5E58"/>
+<ellipse id="wf-Ellipse_2" cx="766.763" cy="503.674" rx="2.89713" ry="2.61342" fill="#FFBF30"/>
+<ellipse id="wf-Ellipse_3" cx="775.869" cy="503.674" rx="2.89713" ry="2.61342" fill="#27C840"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="wf-Group_2053">
+<g id="wf-Group_2016">
+<g id="wf-Group_2005">
+<path id="wf-Rectangle_124" d="M745.282 520.093C745.282 516.097 748.522 512.857 752.518 512.857H1173.35C1177.34 512.857 1180.58 516.097 1180.58 520.093V777.374C1180.58 781.37 1177.34 784.61 1173.35 784.61H752.518C748.522 784.61 745.282 781.37 745.282 777.374V520.093Z" fill="#FBFBFB"/>
+</g>
+<rect id="wf-Rectangle_146_3" x="792.717" y="525.721" width="69.144" height="11.256" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_140" x="885.981" y="525.721" width="203.412" height="11.256" rx="2.412" fill="#DBDBDB" class="sk"/>
+</g>
+<path id="wf-Rectangle_151_2" d="M745.28 520.091C745.28 516.095 748.52 512.855 752.516 512.855H766.184C770.181 512.855 773.42 516.095 773.42 520.091V784.608H752.516C748.52 784.608 745.28 781.368 745.28 777.372V520.091Z" fill="#F1F1F1" class="sk"/>
+<rect id="wf-Rectangle_152_2" x="1020.38" y="555.422" width="143.23" height="16.7848" rx="2.412" fill="url(#wf-paint4_linear_0_1)"/>
+<rect id="wf-Rectangle_171" x="793.23" y="555.422" width="215.964" height="16.7848" rx="2.412" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_153" x="792.715" y="581.998" width="37.788" height="25.728" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_161" x="753.316" y="525.721" width="13.668" height="11.256" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_162" x="753.316" y="544.213" width="13.668" height="11.256" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_163" x="753.316" y="562.705" width="13.668" height="11.256" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_164" x="753.317" y="591.648" width="13.668" height="11.256" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_166" x="753.316" y="608.533" width="13.668" height="11.256" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_165" x="753.316" y="735.564" width="13.668" height="11.256" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_155" x="792.715" y="611.746" width="37.788" height="25.728" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_157" x="792.715" y="640.691" width="37.788" height="25.728" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_159" x="792.715" y="668.834" width="37.788" height="25.728" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_167" x="792.715" y="696.973" width="37.788" height="25.728" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_169" x="792.715" y="725.111" width="37.788" height="25.728" rx="2.412" fill="#DBDBDB" class="sk"/>
+<rect id="wf-Rectangle_154" x="836.937" y="581.998" width="327.228" height="26.532" rx="2.412" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_156" x="836.937" y="610.941" width="327.228" height="25.728" rx="2.412" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_158" x="836.937" y="639.889" width="327.228" height="26.532" rx="2.412" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_160" x="836.937" y="668.834" width="327.228" height="25.728" rx="2.412" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_168" x="836.937" y="696.973" width="327.228" height="25.728" rx="2.412" fill="#ECECEC" class="sk"/>
+<rect id="wf-Rectangle_170" x="836.937" y="725.111" width="327.228" height="25.728" rx="2.412" fill="#ECECEC" class="sk"/>
+</g>
+</g>
+
+</g>
+</g>
+<defs>
+<filter id="wf-filter0_f_0_1" x="1009.8" y="162.184" width="191.957" height="346.432" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="14.2604" result="effect1_foregroundBlur_0_1"/>
+</filter>
+<pattern id="wf-pattern0_0_1" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#wf-image0_0_1" transform="matrix(0.000467727 0 0 0.000244724 0 -0.0011946)"/>
+</pattern>
+<filter id="wf-filter1_f_0_1" x="855.111" y="162.184" width="191.957" height="346.432" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="14.2604" result="effect1_foregroundBlur_0_1"/>
+</filter>
+<pattern id="wf-pattern1_0_1" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#wf-image0_0_1" transform="matrix(0.000467727 0 0 0.000244724 0 -0.0011946)"/>
+</pattern>
+<filter id="wf-filter2_f_0_1" x="699.848" y="162.184" width="191.957" height="346.432" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="14.2604" result="effect1_foregroundBlur_0_1"/>
+</filter>
+<pattern id="wf-pattern2_0_1" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#wf-image0_0_1" transform="matrix(0.000467727 0 0 0.000244724 0 -0.0011946)"/>
+</pattern>
+<filter id="wf-filter3_f_0_1" x="657.644" y="465.416" width="585.831" height="381.9" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="29.748" result="effect1_foregroundBlur_0_1"/>
+</filter>
+<pattern id="wf-pattern3_0_1" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#wf-image1_0_1" transform="translate(-0.0831111) scale(0.000573682 0.000442087)"/>
+</pattern>
+<filter id="wf-filter4_d_0_1" x="548.16" y="689.3" width="155.927" height="156.775" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="60" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_0_1"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="2.31181"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.909804 0 0 0 0 0.811765 0 0 0 0 0.447059 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+</filter>
+<linearGradient id="wf-paint0_linear_0_1" x1="11.6936" y1="0" x2="11.6936" y2="9.12668" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5A953D"/>
+<stop offset="1" stop-color="#76C350"/>
+</linearGradient>
+<linearGradient id="wf-paint1_linear_0_1" x1="966.134" y1="430.943" x2="966.134" y2="449.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#76C551"/>
+<stop offset="1" stop-color="#5B983E"/>
+</linearGradient>
+<linearGradient id="wf-paint2_linear_0_1" x1="839.757" y1="274.293" x2="839.757" y2="304.842" gradientUnits="userSpaceOnUse">
+<stop stop-color="#78C852"/>
+<stop offset="1" stop-color="#57913B"/>
+</linearGradient>
+<linearGradient id="wf-paint3_linear_0_1" x1="734.298" y1="610.469" x2="1193.91" y2="610.469" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C9CFD7"/>
+<stop offset="0.0123939" stop-color="#DEE2E7"/>
+<stop offset="0.0254804" stop-color="#E3E7EC"/>
+<stop offset="0.266755" stop-color="#EAEDF1"/>
+<stop offset="0.510417" stop-color="#EEF1F3"/>
+<stop offset="0.755422" stop-color="#EDF0F3"/>
+<stop offset="0.973701" stop-color="#E3E7EC"/>
+<stop offset="0.987589" stop-color="#F1F5F8"/>
+<stop offset="1" stop-color="white"/>
+</linearGradient>
+<linearGradient id="wf-paint4_linear_0_1" x1="1092" y1="555.422" x2="1092" y2="572.207" gradientUnits="userSpaceOnUse">
+<stop stop-color="#76C551"/>
+<stop offset="1" stop-color="#609F41"/>
+</linearGradient>
+<linearGradient id="wf-paint5_linear_0_1" x1="612.155" y1="767.688" x2="639.463" y2="767.255" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E8CF72"/>
+<stop offset="1" stop-color="#EED471"/>
+</linearGradient>
+<clipPath id="wf-clip0_0_1">
+<rect width="1439" height="13500" fill="white" transform="translate(0 -8247)"/>
+</clipPath>
+<image id="wf-image0_0_1" width="2138" height="4096" preserveAspectRatio="none" href="assets/edx-wire-phone.webp"/>
+
+</defs>
+</svg>
+</div>
+          <figcaption>Wireframes for mobile and desktop. Green marks the primary action from the first draft.</figcaption>
         </figure>
       </div>
-    </div>
-  </section>
 
-  <section class="sec bg-mist-soft" aria-labelledby="ed-wire-h">
-    <div class="wrap">
-      <div class="sec-head"><h2 class="t-h2" id="ed-wire-h">Wireframes</h2></div>
-      <figure class="figure">
-        <div class="scroll-x" data-scroll data-label="Wireframe images, scrolls sideways" style="--min-mobile:720px"><img data-zoom src="assets/ed-wireframes.webp" width="1040" height="652" alt="A hand-drawn sketch with a sticky note, next to mobile and desktop wireframes" decoding="async"></div>
-      </figure>
-    </div>
-  </section>
-
-  <section class="sec bg-white" aria-labelledby="ed-comp-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 class="t-h2" id="ed-comp-h">Components</h2>
-        <p class="sub">The components carry the audit’s fixes into the interface: one color for the primary action, consistent button sizes and a four-item navigation.</p>
+      <div class="ed-ba">
+        <div class="ed-method-head reveal"><h3 class="t-h3">From 1% of the attention to the main action</h3><p>In the redesign, the balance and the payment button are the first things on the home screen.</p></div>
+        <div class="ed-pair reveal">
+          <figure class="ed-pair-item" style="--ar:1.905"><span class="ed-chip">Before</span><div class="ed-shot"><img data-zoom src="assets/edx-before.webp" srcset="assets/edx-before-sm.webp 1000w, assets/edx-before.webp 2000w" sizes="(max-width: 719.98px) 86vw, 760px" width="2000" height="1050" alt="Original desktop virtual office with the attention heatmap and 0% and 1% tags on its buttons" loading="lazy" decoding="async"></div></figure>
+          <figure class="ed-pair-item ed-pair-item--phone" style="--ar:0.509"><span class="ed-chip ed-chip--after">After</span><img data-zoom src="assets/edx-after.webp" srcset="assets/edx-after-sm.webp 260w, assets/edx-after.webp 520w" sizes="(max-width: 719.98px) 60vw, 240px" width="520" height="1022" alt="Redesigned mobile home: the balance first, with a green Pagar ahora button below it" loading="lazy" decoding="async"></figure>
+        </div>
       </div>
-      <figure class="figure">
-        <div class="scroll-x" data-scroll data-label="Component library" style="--min-mobile:720px"><img data-zoom src="assets/ed-components.webp" width="1080" height="600" alt="Component library: navigation states for Inicio, Facturas, Reporte and Ayuda, consumption cards showing 45% and 15%, Pay now buttons and icon sets" decoding="async"></div>
-      </figure>
-    </div>
-  </section>
 
-  <section class="navbg on-dark" aria-labelledby="ed-nav-h">
-    <div class="wrap">
-      <h2 class="t-h2" id="ed-nav-h">Fewer choices in the main navigation</h2>
-      <p>The old virtual office had 11 items in its main menu. I cut it to four, Inicio, Facturas, Reporte and Ayuda (Home, Bills, Report, Help), based on the card sorting results. Address and supply settings moved into the profile, since users rarely need them. Fewer options means users find what they need faster (Hick's Law).</p>
-    </div>
-  </section>
-
-  <section class="sec bg-white" aria-label="Mockup annotations">
-    <div class="wrap">
       <div class="mock">
         <div class="mock-frame"><img src="assets/ed-mockup-phone.webp" width="490" height="885" alt="Edelap home screen on a phone: the profile at the top, the balance due with a Pay now button below it, and a consumption chart" decoding="async"></div>
         <ul class="callouts">
-          <li class="callout" style="--y:.1497;--sx:.884;--off:29px"><p><strong>Nested Settings:</strong> Address and supply management are nested within the profile to declutter the main interface.</p></li>
-          <li class="callout callout--green" style="--y:.3531;--sx:.759;--off:29px"><p><strong>Primary Focus:</strong> The balance due is the clear visual focal point, supported by helpers for immediate status clarity.</p></li>
-          <li class="callout" style="--y:.4401;--sx:.902;--off:10px"><p><strong>Ergonomic CTA:</strong>  A full-width button placed right below the balance: a large, predictable target that is quick to reach and tap (Fitts’s Law).</p></li>
-          <li class="callout callout--green" style="--y:.6729;--sx:.902;--off:24px"><p><strong>Balanced Insights:</strong>  Home screen shows a high-level YoY comparison, linking to detailed analytics for power users.</p></li>
+          <li class="callout" style="--y:.1497;--sx:.884;--off:29px"><p><strong>Nested settings:</strong> Address and supply management are nested within the profile to declutter the main interface.</p></li>
+          <li class="callout callout--green" style="--y:.3531;--sx:.759;--off:29px"><p><strong>Primary focus:</strong> The balance due is the clear visual focal point, supported by helpers for immediate status clarity.</p></li>
+          <li class="callout" style="--y:.4401;--sx:.902;--off:10px"><p><strong>Ergonomic button:</strong> A full-width button placed right below the balance: a large, predictable target that is quick to reach and tap (Fitts’s Law).</p></li>
+          <li class="callout callout--green" style="--y:.6729;--sx:.902;--off:24px"><p><strong>Balanced insights:</strong> The home shows a high-level YoY comparison, linking to detailed analytics for power users.</p></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="sec bg-mist-soft" aria-labelledby="ed-out-h">
+  <section class="sec ed-system" aria-labelledby="ed-sys-h">
     <div class="wrap">
-      <div class="sec-head">
-        <h2 class="t-h2" id="ed-out-h">What changed after the redesign</h2>
-        <p class="sub">Usability test results: the original desktop virtual office compared with the redesigned mobile prototype.</p>
+      <div class="sec-head reveal">
+        <p class="label">Design system</p>
+        <h2 class="t-h2" id="ed-sys-h">The audit’s fixes, as components</h2>
+        <p class="sub">One color for the primary action, consistent button sizes and a four-item navigation. Everything below is built in HTML from the Figma library; try the navigation.</p>
       </div>
-      <div class="table-wrap" data-scroll data-label="Outcome table">
-        <table class="tbl-results">
-          <caption class="sr-only">What changed after the redesign</caption>
-          <thead><tr><th scope="col">Metric</th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Clarity score</th><td>54%</td><td>96%</td></tr>
-            <tr><th scope="row">Attention on the pay button</th><td>~1%</td><td>12%</td></tr>
-            <tr><th scope="row">Time to pay a bill</th><td>2 m</td><td>40 s</td></tr>
-            <tr><th scope="row">Bill payment success rate</th><td>40%</td><td>65%</td></tr>
-          </tbody>
-        </table>
+      <div class="ed-sys">
+        <div class="ed-panel ed-panel--colors reveal"><h3 class="t-h4">Colors</h3><ul class="ed-sws"><li class="ed-sw"><i style="background:#78C852"></i><b>Action green</b><span>#78C852</span><span>Primary actions and positive states</span></li><li class="ed-sw"><i style="background:#27B8EA"></i><b>Sky</b><span>#27B8EA</span><span>Highlights and charts</span></li><li class="ed-sw"><i style="background:#003C6B"></i><b>Edelap navy</b><span>#003C6B</span><span>Headers, active states, cards</span></li><li class="ed-sw"><i style="background:#1B1B1B"></i><b>Ink</b><span>#1B1B1B</span><span>Text</span></li><li class="ed-sw"><i style="background:#F6F6F6"></i><b>Background</b><span>#F6F6F6</span><span>Surfaces</span></li></ul></div>
+        <div class="ed-panel ed-panel--type reveal" style="--d:60ms"><h3 class="t-h4">Type: Lato</h3>
+          <dl class="ed-type">
+            <div><dt>H1</dt><dd class="t1">Estado de tu cuenta<small>Bold, 28px</small></dd></div>
+            <div><dt>H2</dt><dd class="t2">Gráfico de consumo<small>Regular, 24px</small></dd></div>
+            <div><dt>Label</dt><dd class="t3">Fecha de vencimiento<small>Medium, 16px</small></dd></div>
+            <div><dt>p</dt><dd class="t4">Factura digital activada.<small>Regular, 16px</small></dd></div>
+          </dl>
+        </div>
+        <div class="ed-panel ed-panel--nav reveal"><h3 class="t-h4">Navigation</h3><div class="ed-phonebar" role="group" aria-label="Navigation demo"><button type="button" class="ed-tab" aria-pressed="true"><span class="ed-tab-bar" aria-hidden="true"></span><svg class="" width="22" height="22" viewBox="0 0 54 54" fill="none" aria-hidden="true"><path d="M52.8802 26.5665L29.8651 2.2106L28.3224 0.577208C27.9709 0.207497 27.4956 0 27.0001 0C26.5047 0 26.0293 0.207497 25.6778 0.577208L1.12003 26.5665C0.759859 26.9464 0.47521 27.3988 0.282885 27.897C0.0905606 28.3953 -0.00554309 28.9293 0.000246886 29.4675C0.024072 31.6874 1.76926 33.4596 3.86588 33.4596H6.3973V54H47.6029V33.4596H50.1879C51.2065 33.4596 52.1654 33.037 52.8861 32.2739C53.241 31.8994 53.5222 31.454 53.7134 30.9637C53.9046 30.4733 54.002 29.9476 54 29.4171C54 28.345 53.6009 27.3296 52.8802 26.5665V26.5665ZM30.3356 49.4593H23.6646V36.5939H30.3356V49.4593ZM43.3144 28.9188V49.4593H34.1477V35.0803C34.1477 33.6866 33.0815 32.5577 31.7651 32.5577H22.2351C20.9187 32.5577 19.8526 33.6866 19.8526 35.0803V49.4593H10.6858V28.9188H4.96779L27.0061 5.60353L28.382 7.06034L49.0384 28.9188H43.3144Z" fill="currentColor"/></svg><span>INICIO</span><span class="sr-only"> (Home)</span></button><button type="button" class="ed-tab" aria-pressed="false"><span class="ed-tab-bar" aria-hidden="true"></span><svg class="" width="22" height="22" viewBox="0 0 51.6 51.6" fill="none" aria-hidden="true"><path d="M41.28 5.16H51.6V43.86C51.6 45.9128 50.7845 47.8815 49.333 49.333C47.8815 50.7845 45.9128 51.6 43.86 51.6H7.74C5.68722 51.6 3.71853 50.7845 2.26699 49.333C0.815462 47.8815 0 45.9128 0 43.86L0 0H41.28V5.16ZM41.28 10.32V43.86C41.28 44.5443 41.5518 45.2005 42.0357 45.6843C42.5195 46.1682 43.1757 46.44 43.86 46.44C44.5443 46.44 45.2005 46.1682 45.6843 45.6843C46.1682 45.2005 46.44 44.5443 46.44 43.86V10.32H41.28ZM5.16 5.16V43.86C5.16 44.5443 5.43182 45.2005 5.91566 45.6843C6.39951 46.1682 7.05574 46.44 7.74 46.44H36.5586C36.266 45.6114 36.1177 44.7387 36.12 43.86V5.16H5.16ZM10.32 25.8H30.96V30.96H10.32V25.8ZM10.32 36.12H30.96V41.28H10.32V36.12ZM10.32 10.32H30.96V20.64H10.32V10.32Z" fill="currentColor"/></svg><span>FACTURAS</span><span class="sr-only"> (Bills)</span></button><button type="button" class="ed-tab" aria-pressed="false"><span class="ed-tab-bar" aria-hidden="true"></span><svg class="" width="22" height="22" viewBox="0 0 67.2 67.2" fill="none" aria-hidden="true"><path d="M8.40039 14.0004V53.2004C8.40039 56.2888 10.912 58.8004 14.0004 58.8004H53.2004C56.2888 58.8004 58.8004 56.2888 58.8004 53.2004V14.0004C58.8004 10.912 56.2888 8.40039 53.2004 8.40039H14.0004C10.912 8.40039 8.40039 10.912 8.40039 14.0004ZM53.2032 53.2004H14.0004V14.0004H53.2004L53.2032 53.2004Z" fill="currentColor"/><path d="M30.8006 19.6016H36.4006V47.6016H30.8006V19.6016ZM42.0006 28.0016H47.6006V47.6016H42.0006V28.0016ZM19.6006 33.6016H25.2006V47.6016H19.6006V33.6016Z" fill="currentColor"/></svg><span>REPORTE</span><span class="sr-only"> (Report)</span></button><button type="button" class="ed-tab" aria-pressed="false"><span class="ed-tab-bar" aria-hidden="true"></span><svg class="" width="22" height="22" viewBox="0 0 52.8 52.8" fill="none" aria-hidden="true"><path d="M26.4 0C11.843 0 0 11.843 0 26.4V37.3375C0 40.0409 2.36808 42.24 5.28 42.24H7.92C8.62017 42.24 9.29166 41.9619 9.78676 41.4668C10.2819 40.9717 10.56 40.3002 10.56 39.6V26.0225C10.56 25.3223 10.2819 24.6508 9.78676 24.1557C9.29166 23.6606 8.62017 23.3825 7.92 23.3825H5.52288C6.99072 13.1657 15.7819 5.28 26.4 5.28C37.0181 5.28 45.8093 13.1657 47.2771 23.3825H44.88C44.1798 23.3825 43.5083 23.6606 43.0132 24.1557C42.5181 24.6508 42.24 25.3223 42.24 26.0225V42.24C42.24 45.1519 39.8719 47.52 36.96 47.52H31.68V44.88H21.12V52.8H36.96C42.7838 52.8 47.52 48.0638 47.52 42.24C50.4319 42.24 52.8 40.0409 52.8 37.3375V26.4C52.8 11.843 40.957 0 26.4 0Z" fill="currentColor"/></svg><span>AYUDA</span><span class="sr-only"> (Help)</span></button></div><p class="ed-panel-note">Active tab: navy, with a bar on top. The rest stay gray.</p></div>
+        <div class="ed-panel ed-panel--cards reveal" style="--d:60ms"><h3 class="t-h4">Consumption cards</h3>
+          <div class="ed-cons">
+            <div class="ed-con"><p class="ed-con-n">45%<svg class="ed-arrow" width="26" height="26" viewBox="0 0 28.354 44.1028" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.177 0C14.5947 0 14.9953 0.165937 15.2907 0.461307C15.5861 0.756676 15.752 1.15728 15.752 1.575V38.7229L25.6619 28.8099C25.9576 28.5142 26.3587 28.348 26.777 28.348C27.1952 28.348 27.5963 28.5142 27.8921 28.8099C28.1878 29.1056 28.354 29.5068 28.354 29.925C28.354 30.3432 28.1878 30.7444 27.8921 31.0401L15.2921 43.6401C15.1458 43.7868 14.972 43.9031 14.7806 43.9825C14.5893 44.0619 14.3842 44.1028 14.177 44.1028C13.9698 44.1028 13.7647 44.0619 13.5733 43.9825C13.382 43.9031 13.2082 43.7868 13.0619 43.6401L0.461889 31.0401C0.166146 30.7444 -9.85415e-09 30.3432 0 29.925C9.85416e-09 29.5068 0.166146 29.1056 0.461889 28.8099C0.757632 28.5142 1.15875 28.348 1.57699 28.348C1.99523 28.348 2.39635 28.5142 2.69209 28.8099L12.602 38.7229V1.575C12.602 1.15728 12.7679 0.756676 13.0633 0.461307C13.3587 0.165937 13.7593 0 14.177 0V0Z" fill="currentColor"/></svg></p><p>menor consumo que el <b>02/20</b></p></div>
+            <div class="ed-con"><p class="ed-con-n">15%<svg class="ed-arrow ed-arrow--up" width="26" height="26" viewBox="0 0 28.354 44.1028" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.177 0C14.5947 0 14.9953 0.165937 15.2907 0.461307C15.5861 0.756676 15.752 1.15728 15.752 1.575V38.7229L25.6619 28.8099C25.9576 28.5142 26.3587 28.348 26.777 28.348C27.1952 28.348 27.5963 28.5142 27.8921 28.8099C28.1878 29.1056 28.354 29.5068 28.354 29.925C28.354 30.3432 28.1878 30.7444 27.8921 31.0401L15.2921 43.6401C15.1458 43.7868 14.972 43.9031 14.7806 43.9825C14.5893 44.0619 14.3842 44.1028 14.177 44.1028C13.9698 44.1028 13.7647 44.0619 13.5733 43.9825C13.382 43.9031 13.2082 43.7868 13.0619 43.6401L0.461889 31.0401C0.166146 30.7444 -9.85415e-09 30.3432 0 29.925C9.85416e-09 29.5068 0.166146 29.1056 0.461889 28.8099C0.757632 28.5142 1.15875 28.348 1.57699 28.348C1.99523 28.348 2.39635 28.5142 2.69209 28.8099L12.602 38.7229V1.575C12.602 1.15728 12.7679 0.756676 13.0633 0.461307C13.3587 0.165937 13.7593 0 14.177 0V0Z" fill="currentColor"/></svg></p><p>mayor consumo que el <b>02/20</b></p></div>
+          </div>
+        </div>
+        <div class="ed-panel ed-panel--cta reveal"><h3 class="t-h4">Primary button</h3><button type="button" class="ed-cta">Pagar ahora</button><button type="button" class="ed-cta is-pressed" tabindex="-1" aria-hidden="true">Pagar ahora</button><p class="ed-panel-note">Default and pressed. Full width, right under the balance.</p></div>
+        <div class="ed-panel ed-panel--icons reveal" style="--d:60ms"><h3 class="t-h4">Icons</h3><ul class="ed-icons"><li class="is-off"><svg class="" width="40" height="40" viewBox="0 0 54 54" fill="none" aria-hidden="true"><path d="M52.8802 26.5665L29.8651 2.2106L28.3224 0.577208C27.9709 0.207497 27.4956 0 27.0001 0C26.5047 0 26.0293 0.207497 25.6778 0.577208L1.12003 26.5665C0.759859 26.9464 0.47521 27.3988 0.282885 27.897C0.0905606 28.3953 -0.00554309 28.9293 0.000246886 29.4675C0.024072 31.6874 1.76926 33.4596 3.86588 33.4596H6.3973V54H47.6029V33.4596H50.1879C51.2065 33.4596 52.1654 33.037 52.8861 32.2739C53.241 31.8994 53.5222 31.454 53.7134 30.9637C53.9046 30.4733 54.002 29.9476 54 29.4171C54 28.345 53.6009 27.3296 52.8802 26.5665V26.5665ZM30.3356 49.4593H23.6646V36.5939H30.3356V49.4593ZM43.3144 28.9188V49.4593H34.1477V35.0803C34.1477 33.6866 33.0815 32.5577 31.7651 32.5577H22.2351C20.9187 32.5577 19.8526 33.6866 19.8526 35.0803V49.4593H10.6858V28.9188H4.96779L27.0061 5.60353L28.382 7.06034L49.0384 28.9188H43.3144Z" fill="currentColor"/></svg><span class="sr-only">Home</span></li><li class="is-off"><svg class="" width="40" height="40" viewBox="0 0 51.6 51.6" fill="none" aria-hidden="true"><path d="M41.28 5.16H51.6V43.86C51.6 45.9128 50.7845 47.8815 49.333 49.333C47.8815 50.7845 45.9128 51.6 43.86 51.6H7.74C5.68722 51.6 3.71853 50.7845 2.26699 49.333C0.815462 47.8815 0 45.9128 0 43.86L0 0H41.28V5.16ZM41.28 10.32V43.86C41.28 44.5443 41.5518 45.2005 42.0357 45.6843C42.5195 46.1682 43.1757 46.44 43.86 46.44C44.5443 46.44 45.2005 46.1682 45.6843 45.6843C46.1682 45.2005 46.44 44.5443 46.44 43.86V10.32H41.28ZM5.16 5.16V43.86C5.16 44.5443 5.43182 45.2005 5.91566 45.6843C6.39951 46.1682 7.05574 46.44 7.74 46.44H36.5586C36.266 45.6114 36.1177 44.7387 36.12 43.86V5.16H5.16ZM10.32 25.8H30.96V30.96H10.32V25.8ZM10.32 36.12H30.96V41.28H10.32V36.12ZM10.32 10.32H30.96V20.64H10.32V10.32Z" fill="currentColor"/></svg><span class="sr-only">Bills</span></li><li class="is-off"><svg class="" width="40" height="40" viewBox="0 0 67.2 67.2" fill="none" aria-hidden="true"><path d="M8.40039 14.0004V53.2004C8.40039 56.2888 10.912 58.8004 14.0004 58.8004H53.2004C56.2888 58.8004 58.8004 56.2888 58.8004 53.2004V14.0004C58.8004 10.912 56.2888 8.40039 53.2004 8.40039H14.0004C10.912 8.40039 8.40039 10.912 8.40039 14.0004ZM53.2032 53.2004H14.0004V14.0004H53.2004L53.2032 53.2004Z" fill="currentColor"/><path d="M30.8006 19.6016H36.4006V47.6016H30.8006V19.6016ZM42.0006 28.0016H47.6006V47.6016H42.0006V28.0016ZM19.6006 33.6016H25.2006V47.6016H19.6006V33.6016Z" fill="currentColor"/></svg><span class="sr-only">Report</span></li><li class="is-off"><svg class="" width="40" height="40" viewBox="0 0 52.8 52.8" fill="none" aria-hidden="true"><path d="M26.4 0C11.843 0 0 11.843 0 26.4V37.3375C0 40.0409 2.36808 42.24 5.28 42.24H7.92C8.62017 42.24 9.29166 41.9619 9.78676 41.4668C10.2819 40.9717 10.56 40.3002 10.56 39.6V26.0225C10.56 25.3223 10.2819 24.6508 9.78676 24.1557C9.29166 23.6606 8.62017 23.3825 7.92 23.3825H5.52288C6.99072 13.1657 15.7819 5.28 26.4 5.28C37.0181 5.28 45.8093 13.1657 47.2771 23.3825H44.88C44.1798 23.3825 43.5083 23.6606 43.0132 24.1557C42.5181 24.6508 42.24 25.3223 42.24 26.0225V42.24C42.24 45.1519 39.8719 47.52 36.96 47.52H31.68V44.88H21.12V52.8H36.96C42.7838 52.8 47.52 48.0638 47.52 42.24C50.4319 42.24 52.8 40.0409 52.8 37.3375V26.4C52.8 11.843 40.957 0 26.4 0Z" fill="currentColor"/></svg><span class="sr-only">Help</span></li><li class="is-on"><svg class="" width="40" height="40" viewBox="0 0 54 54" fill="none" aria-hidden="true"><path d="M52.8802 26.5665L29.8651 2.2106L28.3224 0.577208C27.9709 0.207497 27.4956 0 27.0001 0C26.5047 0 26.0293 0.207497 25.6778 0.577208L1.12003 26.5665C0.759859 26.9464 0.47521 27.3988 0.282885 27.897C0.0905606 28.3953 -0.00554309 28.9293 0.000246886 29.4675C0.024072 31.6874 1.76926 33.4596 3.86588 33.4596H6.3973V54H47.6029V33.4596H50.1879C51.2065 33.4596 52.1654 33.037 52.8861 32.2739C53.241 31.8994 53.5222 31.454 53.7134 30.9637C53.9046 30.4733 54.002 29.9476 54 29.4171C54 28.345 53.6009 27.3296 52.8802 26.5665V26.5665ZM30.3356 49.4593H23.6646V36.5939H30.3356V49.4593ZM43.3144 28.9188V49.4593H34.1477V35.0803C34.1477 33.6866 33.0815 32.5577 31.7651 32.5577H22.2351C20.9187 32.5577 19.8526 33.6866 19.8526 35.0803V49.4593H10.6858V28.9188H4.96779L27.0061 5.60353L28.382 7.06034L49.0384 28.9188H43.3144Z" fill="currentColor"/></svg><span class="sr-only">Home</span></li><li class="is-on"><svg class="" width="40" height="40" viewBox="0 0 51.6 51.6" fill="none" aria-hidden="true"><path d="M41.28 5.16H51.6V43.86C51.6 45.9128 50.7845 47.8815 49.333 49.333C47.8815 50.7845 45.9128 51.6 43.86 51.6H7.74C5.68722 51.6 3.71853 50.7845 2.26699 49.333C0.815462 47.8815 0 45.9128 0 43.86L0 0H41.28V5.16ZM41.28 10.32V43.86C41.28 44.5443 41.5518 45.2005 42.0357 45.6843C42.5195 46.1682 43.1757 46.44 43.86 46.44C44.5443 46.44 45.2005 46.1682 45.6843 45.6843C46.1682 45.2005 46.44 44.5443 46.44 43.86V10.32H41.28ZM5.16 5.16V43.86C5.16 44.5443 5.43182 45.2005 5.91566 45.6843C6.39951 46.1682 7.05574 46.44 7.74 46.44H36.5586C36.266 45.6114 36.1177 44.7387 36.12 43.86V5.16H5.16ZM10.32 25.8H30.96V30.96H10.32V25.8ZM10.32 36.12H30.96V41.28H10.32V36.12ZM10.32 10.32H30.96V20.64H10.32V10.32Z" fill="currentColor"/></svg><span class="sr-only">Bills</span></li><li class="is-on"><svg class="" width="40" height="40" viewBox="0 0 67.2 67.2" fill="none" aria-hidden="true"><path d="M8.40039 14.0004V53.2004C8.40039 56.2888 10.912 58.8004 14.0004 58.8004H53.2004C56.2888 58.8004 58.8004 56.2888 58.8004 53.2004V14.0004C58.8004 10.912 56.2888 8.40039 53.2004 8.40039H14.0004C10.912 8.40039 8.40039 10.912 8.40039 14.0004ZM53.2032 53.2004H14.0004V14.0004H53.2004L53.2032 53.2004Z" fill="currentColor"/><path d="M30.8006 19.6016H36.4006V47.6016H30.8006V19.6016ZM42.0006 28.0016H47.6006V47.6016H42.0006V28.0016ZM19.6006 33.6016H25.2006V47.6016H19.6006V33.6016Z" fill="currentColor"/></svg><span class="sr-only">Report</span></li><li class="is-on"><svg class="" width="40" height="40" viewBox="0 0 52.8 52.8" fill="none" aria-hidden="true"><path d="M26.4 0C11.843 0 0 11.843 0 26.4V37.3375C0 40.0409 2.36808 42.24 5.28 42.24H7.92C8.62017 42.24 9.29166 41.9619 9.78676 41.4668C10.2819 40.9717 10.56 40.3002 10.56 39.6V26.0225C10.56 25.3223 10.2819 24.6508 9.78676 24.1557C9.29166 23.6606 8.62017 23.3825 7.92 23.3825H5.52288C6.99072 13.1657 15.7819 5.28 26.4 5.28C37.0181 5.28 45.8093 13.1657 47.2771 23.3825H44.88C44.1798 23.3825 43.5083 23.6606 43.0132 24.1557C42.5181 24.6508 42.24 25.3223 42.24 26.0225V42.24C42.24 45.1519 39.8719 47.52 36.96 47.52H31.68V44.88H21.12V52.8H36.96C42.7838 52.8 47.52 48.0638 47.52 42.24C50.4319 42.24 52.8 40.0409 52.8 37.3375V26.4C52.8 11.843 40.957 0 26.4 0Z" fill="currentColor"/></svg><span class="sr-only">Help</span></li></ul><p class="ed-panel-note">Inactive and active.</p></div>
       </div>
-      <p class="results-note">Paying a bill went from a hidden action to the main action on the home screen.</p>
+    </div>
+  </section>
+
+  <section class="sec ed-outcome on-dark" aria-labelledby="ed-out-h">
+    <div class="wrap">
+      <div class="ed-outcome-grid">
+        <div class="sec-head reveal">
+          <p class="label">The outcome</p>
+          <h2 class="t-h2" id="ed-out-h">Paying became the main action</h2>
+          <p class="sub">Usability tests: the original desktop virtual office compared with the redesigned mobile prototype.</p>
+        </div>
+        <dl class="ed-stats-out" data-stats>
+          <div class="reveal"><dt>Time to pay a bill</dt><dd>2 m → <span data-count-from="0" data-count-to="40">40</span> s</dd></div>
+          <div class="reveal" style="--d:60ms"><dt>Bill payment success rate</dt><dd>40% → <span data-count-from="0" data-count-to="65">65</span>%</dd></div>
+          <div class="reveal" style="--d:120ms"><dt>Clarity score</dt><dd>54% → <span data-count-from="0" data-count-to="96">96</span>%</dd></div>
+          <div class="reveal" style="--d:180ms"><dt>Attention on the pay button</dt><dd>~1% → <span data-count-from="0" data-count-to="12">12</span>%</dd></div>
+        </dl>
+      </div>
     </div>
   </section>
 
   <section class="sec bg-white" aria-labelledby="ed-back-h">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <h2 class="t-h2" id="ed-back-h">Looking back</h2>
         <p class="sub">What worked: combining heatmaps with card sorting showed both where people looked and how they expected the menu to be organized.</p>
       </div>
-      <h3 class="t-h3 change-title">What I’d change today</h3>
+      <h3 class="t-h3 ed-change-title">What I’d change today</h3>
       <ul class="cards cards--2">
         <li class="card"><h3>Compare like with like</h3><p>The before numbers come from the desktop virtual office and the after numbers from the mobile prototype, so part of the change could come from the device. Today I’d test the old and new flows on the same device, with the same task.</p></li>
         <li class="card"><h3>Report who took part</h3><p>The results don’t say how many people took each test, so there’s no way to tell how solid a jump from 40% to 65% is. Today I’d publish the sample size next to every number and read small samples as a direction, not proof.</p></li>
@@ -354,5 +566,6 @@
 <script src="thumbs.js?v=7" defer></script>
 <script src="hero-shader.js?v=3" defer></script>
 <script src="section-shader.js?v=3" defer></script>
+<script src="edelap.js?v=2" defer></script>
 </body>
 </html>
