@@ -1617,3 +1617,7 @@ html[data-view="resume"] main, html[data-view="resume"] .site-footer { position:
 .pm-stats-note { margin-top: 32px; max-width: 680px; font: 400 18px/1.6 var(--font-body); }
 .pm-still { margin-top: 96px; }
 @media (max-width: 639.98px) { .pm-stats { grid-template-columns: minmax(0, 1fr); } .pm-still { margin-top: 72px; } }
+
+/* Decision 3: before and after side by side instead of a toggle */
+.pm-side { align-items: start; }
+.pm-side-item { min-width: 0; }
