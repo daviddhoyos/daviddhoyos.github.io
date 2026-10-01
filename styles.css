@@ -1763,3 +1763,23 @@ html[data-view="resume"] main, html[data-view="resume"] .site-footer { position:
 .pm-motion .pm-pair-item:nth-child(2) { transition: translate 600ms var(--ease-out) 120ms, opacity 600ms var(--ease-out) 120ms; }
 .pm-motion [data-marks]:not(.in) .pm-pair-item:nth-child(2) { translate: 12px 0; opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .pm-motion [data-marks] .pm-mk, .pm-motion .pm-pair-item { transition: none !important; opacity: 1 !important; scale: 1 !important; translate: none !important; } }
+
+/* ---------- Policy Manager, round 3: calmer pauses, compact outcome, blue interaction colour ---------- */
+/* interaction colour on this page is the page's own blue, never the old violet */
+#view-policy-manager { --violet-link: var(--pm-blue); --violet-accent: var(--pm-blue); --focus: var(--pm-blue); }
+#view-policy-manager .on-dark { --focus: #ffffff; }
+body:has(#view-policy-manager) .contact-email:hover { border-color: var(--pm-blue-soft); }
+.pm-toc a:focus-visible { outline-color: #fff; }
+
+/* outcome: heading and numbers side by side, one screen tall */
+.pm-outcome { padding-block: clamp(80px, 8vw, 112px); }
+.pm-outcome-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 40px clamp(48px, 6vw, 96px); align-items: end; }
+.pm-outcome-grid .sec-head { margin-bottom: 0; }
+.pm-outcome .pm-stats dd { font-size: clamp(2.75rem, 1.8rem + 3.4vw, 4.75rem); }
+@media (max-width: 1023.98px) { .pm-outcome-grid { grid-template-columns: minmax(0, 1fr); align-items: start; } }
+
+/* still in the product: calm light section */
+.pm-still-sec { background: var(--pm-tint-soft); border-bottom: 1px solid var(--pm-line); }
+.pm-still-sec .label { color: var(--pm-blue); }
+.pm-still-card { background: #fff; box-shadow: inset 0 0 0 1px var(--pm-line); }
+.pm-still-card p { color: var(--text-body); }

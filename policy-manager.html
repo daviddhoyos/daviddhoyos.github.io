@@ -49,7 +49,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=13">
+<link rel="stylesheet" href="styles.css?v=14">
 <link rel="preload" href="assets/pm-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -131,7 +131,7 @@
     </div>
   </section>
 
-  <section class="pm-plan pm-pause on-dark" aria-labelledby="pm-approach-h" data-bg-shader="waterPlane" data-bg-colors="#2b4bd6, #0a1233, #7d96ff" data-bg-brightness="0.95" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 225" data-bg-speed="0.25" data-bg-density="1.6" data-bg-strength="2.6">
+  <section class="pm-plan pm-pause on-dark" aria-labelledby="pm-approach-h" data-bg-shader="waterPlane" data-bg-colors="#2b4bd6, #0a1233, #7d96ff" data-bg-brightness="0.95" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 225" data-bg-speed="0.06" data-bg-density="1.4" data-bg-strength="2">
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="label">The approach</p>
@@ -319,28 +319,33 @@
     </div>
   </section>
 
-  <section class="sec pm-outcome pm-pause on-dark" aria-labelledby="pm-next-h" data-bg-shader="waterPlane" data-bg-colors="#1f3aa8, #070c22, #5d7bff" data-bg-brightness="1.1" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 160" data-bg-speed="0.25" data-bg-density="1.6" data-bg-strength="2.6">
+  <section class="sec pm-outcome pm-pause on-dark" aria-labelledby="pm-next-h" data-bg-shader="waterPlane" data-bg-colors="#1f3aa8, #070c22, #5d7bff" data-bg-brightness="1.1" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 160" data-bg-speed="0.06" data-bg-density="1.4" data-bg-strength="2">
+    <div class="wrap">
+      <div class="pm-outcome-grid">
+        <div class="sec-head reveal">
+          <p class="label">The outcome</p>
+          <h2 class="t-h2" id="pm-next-h">What happened next</h2>
+          <p class="sub">The clients at risk signed long-term renewals, and support tickets caused by system errors came under control while engineering fixed the backend.</p>
+        </div>
+        <dl class="pm-stats" data-stats>
+          <div class="reveal" style="--d:80ms"><dt>Steps for a board member to approve a policy</dt><dd>14 <span aria-hidden="true">→</span><span class="sr-only">to</span> <span data-count-from="14" data-count-to="3">3</span></dd></div>
+          <div class="reveal" style="--d:160ms"><dt>Development velocity on Lens, the new design system</dt><dd><span data-count-from="1" data-count-to="2" data-count-decimals="1">2</span>x</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec pm-still-sec" aria-labelledby="pm-still-h">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="label">The outcome</p>
-        <h2 class="t-h2" id="pm-next-h">What happened next</h2>
+        <h2 class="t-h2" id="pm-still-h">Still in the product today</h2>
+        <p class="sub">Diligent’s public demo (2026) shows which decisions held up, and one that evolved in a way that confirms the reasoning behind them.</p>
       </div>
-      <dl class="pm-stats" data-stats>
-        <div><dt>Steps for a board member to approve a policy</dt><dd>14 <span aria-hidden="true">→</span><span class="sr-only">to</span> <span data-count-from="14" data-count-to="3">3</span></dd></div>
-        <div><dt>Development velocity on Lens, the new design system</dt><dd><span data-count-from="1" data-count-to="2" data-count-decimals="1">2</span>x</dd></div>
-      </dl>
-      <p class="pm-stats-note">The clients at risk signed long-term renewals, and support tickets caused by system errors came under control while engineering fixed the backend.</p>
-      <div class="pm-still">
-        <div class="sec-head">
-          <h3 class="t-h3">Still in the product today</h3>
-          <p class="sub">Diligent’s public demo (2026) shows which decisions held up, and one that evolved in a way that confirms the reasoning behind them.</p>
-        </div>
-        <ul class="cards">
-        <li class="card card--dark pm-card-dark"><h3>Decision 3 held up</h3><p>Review is still a tab next to the document, not a wizard, and the flow still carries the name of Lens, the design system it was built on. Reviewers keep moving between draft, history and references in any order.</p></li>
-        <li class="card card--dark pm-card-dark"><h3>Decision 4 held up</h3><p>Editing still happens in Word, inside Policy Manager, while versions and audit trail stay in the product. Diligent now sells the feature in those same terms. We shipped Word and Google Docs; the demo shows Word.</p></li>
-        <li class="card card--dark pm-card-dark"><h3>What evolved</h3><p>Creating a policy is still a three-step wizard, and that fits: creation is linear, review isn’t. It’s the same principle applied to a different task: match the structure to the way people actually work.</p></li>
+      <ul class="cards">
+        <li class="card pm-still-card reveal"><h3>Decision 3 held up</h3><p>Review is still a tab next to the document, not a wizard, and the flow still carries the name of Lens, the design system it was built on. Reviewers keep moving between draft, history and references in any order.</p></li>
+        <li class="card pm-still-card reveal"><h3>Decision 4 held up</h3><p>Editing still happens in Word, inside Policy Manager, while versions and audit trail stay in the product. Diligent now sells the feature in those same terms. We shipped Word and Google Docs; the demo shows Word.</p></li>
+        <li class="card pm-still-card reveal"><h3>What evolved</h3><p>Creating a policy is still a three-step wizard, and that fits: creation is linear, review isn’t. It’s the same principle applied to a different task: match the structure to the way people actually work.</p></li>
       </ul>
-      </div>
     </div>
   </section>
 
