@@ -49,7 +49,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="styles.css?v=13">
 <link rel="preload" href="assets/pm-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -68,7 +68,7 @@
 <main id="main" tabindex="-1">
 <section class="view enter" id="view-policy-manager">
 
-  <header class="case-hero case-hero--pm case-hero--shader case-hero--split on-dark" data-hero-shader data-shader-colors="#4aa694, #8070a8, #4c7a74">
+  <header class="case-hero case-hero--pm case-hero--shader case-hero--split on-dark" data-hero-shader data-shader-colors="#6d88ff, #1a2766, #a3b4ff">
     <div class="wrap">
       <div class="copy">
         <p class="eyebrow">Policy Manager at Diligent</p>
@@ -86,7 +86,7 @@
     </div>
   </header>
 
-  <section class="sec bg-white" aria-labelledby="pm-glance-h">
+  <section class="sec pm-glance" aria-labelledby="pm-glance-h">
     <div class="wrap">
       <h2 class="sr-only" id="pm-glance-h">At a glance</h2>
       <div class="glance">
@@ -97,89 +97,100 @@
     </div>
   </section>
 
-  <section class="sec sec--label bg-mist" aria-labelledby="pm-start-h">
+  <section class="sec sec--label bg-white" aria-labelledby="pm-start-h">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="label">The starting point</p>
-        <h2 class="t-h2" id="pm-start-h">A product customers relied on, and were ready to leave</h2>
-        <p class="sub">Policy Manager is where organizations write, review, approve and distribute their compliance policies, from companies like Salesforce and Cisco to large US school districts. It was one of four products in Diligent’s Mission-Driven Organizations group, alongside BoardDocs, BoardEffect and Community, and the one with the largest clients.</p>
-        <p class="sub">Diligent had just acquired it. It didn’t follow the design system and broke often. Each product in the group had its own designer under one design manager; I was Policy Manager’s and owned the experience end to end.</p>
+      <div class="pm-start">
+        <div class="sec-head reveal">
+          <p class="label">The starting point</p>
+          <h2 class="t-h2" id="pm-start-h">A product customers relied on, and were ready to leave</h2>
+          <p class="sub">Policy Manager is where organizations write, review, approve and distribute their compliance policies, from companies like Salesforce and Cisco to large US school districts. It was the product with the largest clients in Diligent’s Mission-Driven Organizations group.</p>
+          <p class="sub">Diligent had just acquired it. It didn’t follow the design system and broke often. Each product in the group had its own designer under one design manager; I was Policy Manager’s and owned the experience end to end.</p>
+        </div>
+        <figure class="pm-fig reveal" style="--d:80ms">
+          <div class="pm-well"><div class="pm-shot"><img data-zoom src="assets/pmx-legacy.webp" srcset="assets/pmx-legacy-sm.webp 900w, assets/pmx-legacy.webp 1800w" sizes="(max-width: 1023.98px) 92vw, 640px" width="1800" height="996" alt="Policy Manager as Diligent acquired it: a dashboard with two donut charts of document profile" decoding="async"></div></div>
+          <figcaption>Policy Manager as Diligent acquired it.</figcaption>
+        </figure>
       </div>
       <ul class="pm-issues">
-        <li><h3 class="t-h4">Clients ready to leave</h3><p>High-value customers saw the product as unstable and were threatening to leave.</p></li>
-        <li><h3 class="t-h4">Crashes mid-task</h3><p>Critical flows failed halfway through and showed raw code errors, which drove a steady stream of support tickets.</p></li>
-        <li><h3 class="t-h4">Drafting happened elsewhere</h3><p>The built-in editor was so limited that people wrote in Word offline, so Policy Manager stopped being the source of truth.</p></li>
+        <li class="reveal" style="--d:0ms"><h3 class="t-h4">Clients ready to leave</h3><p>High-value customers saw the product as unstable and were threatening to leave.</p></li>
+        <li class="reveal" style="--d:60ms"><h3 class="t-h4">Crashes mid-task</h3><p>Critical flows failed halfway through and showed raw code errors, which drove a steady stream of support tickets.</p></li>
+        <li class="reveal" style="--d:120ms"><h3 class="t-h4">Drafting happened elsewhere</h3><p>The built-in editor was so limited that people wrote in Word offline, so Policy Manager stopped being the source of truth.</p></li>
       </ul>
-      <figure class="figure">
-        <div class="scroll-x" data-scroll data-label="Legacy dashboard screenshot" style="--min-mobile:760px"><img data-zoom src="assets/pm-legacy-dashboard.webp" width="1248" height="600" alt="Policy Manager as Diligent acquired it: a dashboard with two donut charts of document profile" decoding="async"></div>
-        <figcaption>Policy Manager as Diligent acquired it.</figcaption>
-      </figure>
-      <div class="pm-users">
-        <h3 class="t-h4">Two kinds of users</h3>
-        <dl>
-          <div><dt>Editors</dt><dd>HR and compliance teams who draft and update policies every day.</dd></div>
-          <div><dt>Approvers</dt><dd>Board members and senior executives. They use the product the least and have little patience for complex software.</dd></div>
-        </dl>
-      </div>
+      <div class="pm-people">
+        <div class="pm-people-head reveal">
+          <h3 class="t-h3">Four kinds of people, one product</h3>
+          <p>Review schedules were already highly configurable, and I didn’t change that. My work was shaping every screen around the person using it.</p>
+        </div>
+        <ul class="pm-personas">
+          <li class="pm-persona reveal" style="--d:0ms"><p class="pm-persona-tag">Full access</p><h4 class="t-h4">Administrators</h4><p>See every document and can change anything. An administrator can act as an editor and an approver at the same time.</p></li>
+          <li class="pm-persona pm-persona--key reveal" style="--d:60ms"><p class="pm-persona-tag">Most frequent users</p><h4 class="t-h4">Editors</h4><p>HR, legal and compliance teams who draft and update policies. Comfortable with technology and quick to learn a new system.</p></li>
+          <li class="pm-persona pm-persona--key reveal" style="--d:120ms"><p class="pm-persona-tag">Second most frequent</p><h4 class="t-h4">Approvers</h4><p>Board members and senior leaders who approve, reject or send a policy back with comments. A full interface can overwhelm them, so they got a lighter version built around that one job.</p></li>
+          <li class="pm-persona reveal" style="--d:180ms"><p class="pm-persona-tag">Read only</p><h4 class="t-h4">Employees</h4><p>People who never open Policy Manager. They find, read and download the published policies in Policy Portal, in their own language.</p></li>
+        </ul>
+</div>
     </div>
   </section>
 
-  <section class="sec sec--label bg-white" aria-labelledby="pm-approach-h">
+  <section class="pm-plan pm-pause on-dark" aria-labelledby="pm-approach-h" data-bg-shader="waterPlane" data-bg-colors="#2b4bd6, #0a1233, #7d96ff" data-bg-brightness="0.95" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 225" data-bg-speed="0.25" data-bg-density="1.6" data-bg-strength="2.6">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <p class="label">The approach</p>
         <h2 class="t-h2" id="pm-approach-h">Five decisions that changed the product</h2>
         <p class="sub">I couldn’t rewrite the backend right away, so I started with what users felt first: the failures. Then I fixed the structure, and finally the roles.</p>
       </div>
+      <ol class="pm-toc"><li class="reveal" style="--d:0ms"><a href="#pm-d1"><b>1</b><span>Design for failure before redesigning the UI</span></a></li><li class="reveal" style="--d:60ms"><a href="#pm-d2"><b>2</b><span>Turn a local fix into a company standard</span></a></li><li class="reveal" style="--d:120ms"><a href="#pm-d3"><b>3</b><span>Replace a fake wizard with flexible tabs</span></a></li><li class="reveal" style="--d:180ms"><a href="#pm-d4"><b>4</b><span>Integrate with Word instead of competing with it</span></a></li><li class="reveal" style="--d:240ms"><a href="#pm-d5"><b>5</b><span>Give approvers a shorter path</span></a></li></ol>
+    </div>
+  </section>
 
+  <section class="sec bg-white pm-decisions" aria-label="The five decisions">
+    <div class="wrap">
       <div class="decisions">
 
-        <article class="decision">
+        <article class="decision" id="pm-d1">
           <div class="d-head"><p class="label">Decision 1 of 5</p><h3 class="t-h3">Design for failure before redesigning the UI</h3></div>
           <div class="d-body">
             <div class="d-block"><p class="label">The situation</p><p>The backend couldn’t be rewritten right away, and every crash showed raw red and yellow code errors in the middle of a task.</p></div>
             <div class="d-block"><p class="label">What I did</p><p>I replaced them with a standardized error library. With a UX writer borrowed from another team, I wrote messages that say what happened and what is safe. It didn’t fix the root cause, but every failure became a moment people could recover from while engineering stabilized the platform.</p></div>
             <div class="d-block"><p class="label">Why it mattered</p><p>Enterprise clients judge stability by what they see when something breaks. This was the fastest way to calm the accounts at risk and cut crash-related tickets.</p></div>
           </div>
-          <figure class="figure pm-msg-fig">
-            <div class="pm-msg" data-msg>
-              <p class="pm-msg-text"><span class="pm-part" data-part="safe">We saved your draft locally</span> before <span class="pm-part" data-part="happened">the connection was lost</span>.</p>
-              <span class="pm-part pm-msg-btn" data-part="next">Next step</span>
-              <ul class="pm-msg-legend" aria-label="Parts of the message">
-                <li><button type="button" data-show-part="happened"><i class="k-happened"></i>What happened</button></li>
-                <li><button type="button" data-show-part="safe"><i class="k-safe"></i>What is safe</button></li>
-                <li><button type="button" data-show-part="next"><i class="k-next"></i>What to do next</button></li>
-              </ul>
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well">
+              <div class="pm-msg" data-msg>
+                <p class="pm-msg-text"><span class="pm-part" data-part="safe">We saved your draft locally</span> before <span class="pm-part" data-part="happened">the connection was lost</span>.</p>
+                <span class="pm-part pm-msg-btn" data-part="next">Next step</span>
+                <ul class="pm-msg-legend" aria-label="Parts of the message">
+                  <li><button type="button" data-show-part="happened"><i class="k-happened"></i>What happened</button></li>
+                  <li><button type="button" data-show-part="safe"><i class="k-safe"></i>What is safe</button></li>
+                  <li><button type="button" data-show-part="next"><i class="k-next"></i>What to do next</button></li>
+                </ul>
+              </div>
             </div>
-            <figcaption>The structure behind every message in the error library. Point at each part to see it in the sentence.</figcaption>
+            <figcaption>The structure behind every message in the error library. Point at a part to find it in the sentence.</figcaption>
           </figure>
         </article>
 
-        <article class="decision decision--rev">
+        <article class="decision decision--rev" id="pm-d2">
           <div class="d-head"><p class="label">Decision 2 of 5</p><h3 class="t-h3">Turn a local fix into a company standard</h3></div>
           <div class="d-body">
             <div class="d-block"><p class="label">The situation</p><p>Auditing the errors showed the same gap across the whole Diligent suite.</p></div>
             <div class="d-block"><p class="label">What I did</p><p>I audited error, empty and 404 states across Diligent’s products, defined one standard and contributed the components to the central design system.</p></div>
             <div class="d-block"><p class="label">Why it mattered</p><p>Every team now solves these states once. Clients who use several Diligent products get the same behavior everywhere, which matters because Diligent sells them together as one platform.</p></div>
           </div>
-          <figure class="figure">
-            <img data-zoom src="assets/pm-d2-empty-state.webp" width="664" height="460" alt="Subscribers page in the redesign showing an empty table and an Add Subscriber button" decoding="async">
-            <figcaption>An empty state in the redesign: it says what’s missing, and the next action, Add Subscriber, is right there.</figcaption>
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well"><div class="pm-shot"><img data-zoom src="assets/pmx-d2-empty.webp" srcset="assets/pmx-d2-empty-sm.webp 520w, assets/pmx-d2-empty.webp 1040w" sizes="(max-width: 1023.98px) 92vw, 560px" width="1040" height="694" alt="Subscribers page showing an empty table that says there are no subscribers yet, with an Add Subscriber button" loading="lazy" decoding="async"></div></div>
+            <figcaption>An empty state that says what’s missing, with the next action, Add Subscriber, right there.</figcaption>
           </figure>
         </article>
 
-        <article class="decision decision--wide">
+        <article class="decision decision--wide" id="pm-d3">
           <div class="d-head"><p class="label">Decision 3 of 5</p><h3 class="t-h3">Replace a fake wizard with flexible tabs</h3></div>
-          <figure class="figure">
-            <div class="pair-imgs pm-side">
-              <div class="pm-side-item"><img data-zoom src="assets/pm-d3-before.webp" width="1248" height="986" alt="Before: the review screen as a step-by-step wizard, with three numbered callouts" loading="lazy" decoding="async"></div>
-              <div class="pm-side-item"><img data-zoom src="assets/pm-d3-after.webp" width="1248" height="986" alt="After: the review screen with tabs, Approve and Not approve at the top, and a collapsible navigation, with three numbered callouts" loading="lazy" decoding="async"></div>
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well"><div class="pm-pair">
+              <div class="pm-pair-item" style="--ar:1.8019"><span class="pm-chip">Before</span><div class="pm-shot"><img data-zoom src="assets/pmx-d3-before.webp" srcset="assets/pmx-d3-before-sm.webp 564w, assets/pmx-d3-before.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="626" alt="Before: the review screen as a step-by-step wizard" loading="lazy" decoding="async"><span class="pm-mk" style="--x:20.92%;--y:15.65%" aria-hidden="true">1</span><span class="pm-mk" style="--x:44.86%;--y:78.59%" aria-hidden="true">2</span><span class="pm-mk" style="--x:3.55%;--y:27.16%" aria-hidden="true">3</span></div></div>
+              <div class="pm-pair-item" style="--ar:1.4047"><span class="pm-chip pm-chip--after">After</span><div class="pm-shot"><img data-zoom src="assets/pmx-d3-after.webp" srcset="assets/pmx-d3-after-sm.webp 564w, assets/pmx-d3-after.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="803" alt="After: the review screen with tabs, Approve and Not approve at the top of the task, and collapsible navigation" loading="lazy" decoding="async"><span class="pm-mk" style="--x:7.45%;--y:19.95%" aria-hidden="true">1</span><span class="pm-mk" style="--x:51.24%;--y:37.41%" aria-hidden="true">2</span><span class="pm-mk" style="--x:2.13%;--y:29.93%" aria-hidden="true">3</span></div></div>
             </div>
-            <ol class="steps steps--row">
-              <li>Steps became tabs: reviewers move between general info, review, editor, references and history in any order.</li>
-              <li>Approve and Not approve moved from the bottom of the panel to the top of the task.</li>
-              <li>The long document list gave way to collapsible navigation, so the review gets the full width.</li>
-            </ol>
+            <p class="pm-swipe" aria-hidden="true">Swipe to compare</p></div>
+            <ol class="pm-legend" style="--n:3"><li><span class="pm-mk pm-mk--static" aria-hidden="true">1</span><span><span class="sr-only">Marker 1: </span>Steps became tabs: reviewers move between general info, review, editor, references and history in any order.</span></li><li><span class="pm-mk pm-mk--static" aria-hidden="true">2</span><span><span class="sr-only">Marker 2: </span>Approve and Not approve moved from the bottom of the panel to the top of the task.</span></li><li><span class="pm-mk pm-mk--static" aria-hidden="true">3</span><span><span class="sr-only">Marker 3: </span>The long document list gave way to collapsible navigation, so the review gets the full width.</span></li></ol>
           </figure>
           <div class="d-body">
             <div class="d-block"><p class="label">The situation</p><p>The review cycle was forced into a step-by-step wizard, but reviewers constantly move back and forth between a policy’s history and its draft.</p></div>
@@ -188,14 +199,11 @@
           </div>
         </article>
 
-        <article class="decision decision--wide">
+        <article class="decision decision--wide" id="pm-d4">
           <div class="d-head"><p class="label">Decision 4 of 5</p><h3 class="t-h3">Integrate with Word instead of competing with it</h3></div>
-          <figure class="figure">
-            <div class="scroll-x" data-scroll data-label="Diligent public demo screenshot" style="--min-mobile:900px"><img data-zoom src="assets/pm-d4-word.webp" width="1248" height="490" alt="Today: Diligent’s public demo, 2026. A policy open in Policy Manager with the actions “Open in Microsoft Word” and “Replace document” marked 1 and 2" decoding="async"></div>
-            <ol class="steps steps--row" style="--n:2">
-              <li>“Open in Microsoft Word”: authors edit in Word without leaving Policy Manager, so versions and audit trail stay in the product.</li>
-              <li>“Replace document”: a new version drafted outside comes back in with one action.</li>
-            </ol>
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well"><span class="pm-chip pm-chip--today">Today: Diligent’s public demo, 2026</span><div class="pm-shot" style="--mw:880px"><img data-zoom src="assets/pmx-d4-word.webp" srcset="assets/pmx-d4-word-sm.webp 800w, assets/pmx-d4-word.webp 1600w" sizes="(max-width: 1023.98px) 92vw, 880px" width="1600" height="524" alt="A policy open in Policy Manager in Diligent’s 2026 public demo, with the actions Open in Microsoft Word and Replace document marked 1 and 2" loading="lazy" decoding="async"><span class="pm-mk" style="--x:17.47%;--y:87.99%" aria-hidden="true">1</span><span class="pm-mk" style="--x:33.39%;--y:87.99%" aria-hidden="true">2</span></div></div>
+            <ol class="pm-legend" style="--n:2"><li><span class="pm-mk pm-mk--static" aria-hidden="true">1</span><span><span class="sr-only">Marker 1: </span>“Open in Microsoft Word”: authors edit in Word without leaving Policy Manager, so versions and audit trail stay in the product.</span></li><li><span class="pm-mk pm-mk--static" aria-hidden="true">2</span><span><span class="sr-only">Marker 2: </span>“Replace document”: a new version drafted outside comes back in with one action.</span></li></ol>
           </figure>
           <div class="d-body">
             <div class="d-block"><p class="label">The situation</p><p>Users already drafted in Microsoft Word and Google Docs. Building an editor good enough to replace them would have taken significant engineering resources.</p></div>
@@ -204,23 +212,24 @@
           </div>
         </article>
 
-        <article class="decision">
+        <article class="decision" id="pm-d5">
           <div class="d-head"><p class="label">Decision 5 of 5</p><h3 class="t-h3">Give approvers a shorter path</h3></div>
           <div class="d-body">
             <div class="d-block"><p class="label">The situation</p><p>Many people only needed to review policies, but there were no roles and everyone got the full editor. Approvers were often board members and senior executives with little patience for complex software.</p></div>
             <div class="d-block"><p class="label">What I did</p><p>I defined roles with the team and designed a simplified review cycle for approvers: the stages, what’s due and their own tasks. HR and legal kept every review option. I first proposed a separate iPad app for board members; the team chose roles instead, so approvers got a lighter view inside the same product.</p></div>
             <div class="d-block"><p class="label">Why it mattered</p><p>Approvers use the product the least but can block the whole cycle. They’re also the most senior people at each client, so their experience shapes how the client sees the product at renewal time.</p></div>
           </div>
-          <figure class="figure">
-            <img data-zoom class="media-pad" src="assets/pm-d5-review-1328.webp" srcset="assets/pm-d5-review-664.webp 664w, assets/pm-d5-review-1328.webp 1328w" sizes="(max-width: 1023.98px) calc(100vw - 48px), 640px" width="1328" height="778" alt="The approver’s review cycle for an anti-bribery policy: five stages on the left and the Drafting stage’s tasks on the right" loading="lazy" decoding="async">
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well"><div class="pm-shot"><img data-zoom src="assets/pm-d5-review-1328.webp" width="1328" height="778" sizes="(max-width: 1023.98px) 92vw, 560px" alt="The approver’s review cycle for an anti-bribery policy: five stages on the left and the Drafting stage’s tasks on the right" loading="lazy" decoding="async"></div></div>
             <figcaption>The approver’s review cycle: the stages on the left, the current stage’s tasks on the right.</figcaption>
           </figure>
         </article>
 
-        <div class="pm-demo" data-demo>
+        <div class="pm-demo on-dark" data-demo>
           <div class="pm-demo-head">
+            <p class="label">Try it</p>
             <h3 class="t-h3">Approving a policy as a board member</h3>
-            <p>Each click is one step. Both flows start together: the new one is done on the third click.</p>
+            <p>One click is one step. Both flows start together; the new one is done on the third click.</p>
           </div>
           <div class="pm-track" data-track="old" data-total="14">
             <p class="pm-track-label"><b>Before</b><span data-status>14 steps to approve</span></p>
@@ -231,7 +240,7 @@
             <ol class="pm-dots" aria-hidden="true"><li></li><li></li><li></li></ol>
           </div>
           <div class="pm-demo-actions">
-            <button type="button" class="btn-case pm-demo-next" data-demo-next>Take the next step<span class="btn-case-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+            <button type="button" class="pm-demo-next" data-demo-next>Take the next step<span class="pm-demo-next-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
             <button type="button" class="pm-demo-reset" data-demo-reset hidden>Start over</button>
             <p class="sr-only" aria-live="polite" data-demo-live></p>
           </div>
@@ -241,126 +250,107 @@
     </div>
   </section>
 
-  <section class="sec sec--label bg-mist" aria-labelledby="pm-after-h">
+  <section class="sec sec--label pm-redesign" aria-labelledby="pm-after-h">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <p class="label">The redesign</p>
         <h2 class="t-h2" id="pm-after-h">A stable product that clients trust again</h2>
-        <p class="sub">Policy Manager rebuilt on Lens, Diligent’s new design system.</p>
+        <p class="sub">Policy Manager rebuilt on Lens, Diligent’s new design system. The dashboard shows document status and upcoming review cycles at a glance, so owners see what needs attention before it’s overdue.</p>
+      </div>
+      <figure class="pm-fig pm-hero-shot">
+        <div class="pm-well"><div class="pm-shot" style="--mw:880px"><img data-zoom src="assets/pmx-dashboard.webp" srcset="assets/pmx-dashboard-sm.webp 1040w, assets/pmx-dashboard.webp 2080w" sizes="(max-width: 1023.98px) 92vw, 880px" width="2080" height="1164" alt="The redesigned Policy Manager dashboard with document profile charts and upcoming review cycles" loading="lazy" decoding="async"></div></div>
+      </figure>
+
+      <div class="pm-screens" data-screens>
+        <div class="pm-screens-head">
+          <h3 class="t-h3">Screen by screen</h3>
+          <div class="pm-tabs" role="tablist" aria-label="Screens"><button role="tab" id="pm-t-details" aria-controls="pm-p-details" aria-selected="true">Document details</button><button role="tab" id="pm-t-editor" aria-controls="pm-p-editor" aria-selected="false" tabindex="-1">Document editor</button><button role="tab" id="pm-t-history" aria-controls="pm-p-history" aria-selected="false" tabindex="-1">History viewer</button></div>
+        </div>
+        <div class="pm-well pm-screens-well"><div role="tabpanel" id="pm-p-details" aria-labelledby="pm-t-details">
+            <p class="pm-screen-desc">Labels above fields and grouped sections turn a long form into something people can scan, and the document’s status is visible at a glance.</p>
+            <div class="pm-pair">
+              <div class="pm-pair-item" style="--ar:1.8106"><span class="pm-chip">Before</span><div class="pm-shot"><img data-zoom src="assets/pmx-details-before.webp" srcset="assets/pmx-details-before-sm.webp 564w, assets/pmx-details-before.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="623" alt="Before: the Document details form with a long list of fields" loading="lazy" decoding="async"></div></div>
+              <div class="pm-pair-item" style="--ar:1.4047"><span class="pm-chip pm-chip--after">After</span><div class="pm-shot"><img data-zoom src="assets/pmx-details-after.webp" srcset="assets/pmx-details-after-sm.webp 564w, assets/pmx-details-after.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="803" alt="After: the Document details form with labels above fields, grouped sections and the document status" loading="lazy" decoding="async"></div></div>
+            </div>
+            <p class="pm-swipe" aria-hidden="true">Swipe to compare</p>
+          </div><div role="tabpanel" id="pm-p-editor" aria-labelledby="pm-t-editor" hidden>
+            <p class="pm-screen-desc">The editor shows the policy as it will be published, with its outline beside it, so authors check the structure while they write.</p>
+            <div class="pm-pair">
+              <div class="pm-pair-item" style="--ar:1.8048"><span class="pm-chip">Before</span><div class="pm-shot"><img data-zoom src="assets/pmx-editor-before.webp" srcset="assets/pmx-editor-before-sm.webp 564w, assets/pmx-editor-before.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="625" alt="Before: the built-in document editor with a toolbar over plain text" decoding="async"></div></div>
+              <div class="pm-pair-item" style="--ar:1.4047"><span class="pm-chip pm-chip--after">After</span><div class="pm-shot"><img data-zoom src="assets/pmx-editor-after.webp" srcset="assets/pmx-editor-after-sm.webp 564w, assets/pmx-editor-after.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="803" alt="After: the document editor showing the policy with its outline beside it" decoding="async"></div></div>
+            </div>
+            <p class="pm-swipe" aria-hidden="true">Swipe to compare</p>
+          </div><div role="tabpanel" id="pm-p-history" aria-labelledby="pm-t-history" hidden>
+            <p class="pm-screen-desc">Each revision lists what was added and removed, so reviewers see what changed without comparing two versions by eye.</p>
+            <div class="pm-pair">
+              <div class="pm-pair-item" style="--ar:1.8223"><span class="pm-chip">Before</span><div class="pm-shot"><img data-zoom src="assets/pmx-history-before.webp" srcset="assets/pmx-history-before-sm.webp 564w, assets/pmx-history-before.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="619" alt="Before: the History viewer with a list of versions and the policy text" decoding="async"></div></div>
+              <div class="pm-pair-item" style="--ar:1.4047"><span class="pm-chip pm-chip--after">After</span><div class="pm-shot"><img data-zoom src="assets/pmx-history-after.webp" srcset="assets/pmx-history-after-sm.webp 564w, assets/pmx-history-after.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="803" alt="After: the History viewer listing what was added and removed in each revision" decoding="async"></div></div>
+            </div>
+            <p class="pm-swipe" aria-hidden="true">Swipe to compare</p>
+          </div></div>
       </div>
 
-      <div class="stack">
-        <figure class="figure">
-          <div class="scroll-x" data-scroll data-label="Redesigned dashboard screenshot" style="--min-mobile:760px"><img data-zoom src="assets/pm-after-dashboard.webp" width="1248" height="640" alt="The redesigned Policy Manager dashboard with document profile charts and upcoming review cycles" decoding="async"></div>
-          <figcaption>The new dashboard shows document status and upcoming review cycles at a glance, so owners see what needs attention before it’s overdue.</figcaption>
-        </figure>
-
-        <div class="pm-screens" data-screens>
-          <div class="pm-screens-list">
-            <h3 class="t-h3">Screen by screen</h3>
-            <div class="pm-screens-tabs" role="tablist" aria-label="Screens">
-              <button role="tab" id="pm-t-details" aria-controls="pm-p-details" aria-selected="true"><b>Document details</b><span>Labels above fields and grouped sections turn a long form into something people can scan, and the status is visible at a glance.</span></button>
-              <button role="tab" id="pm-t-editor" aria-controls="pm-p-editor" aria-selected="false" tabindex="-1"><b>Document editor</b><span>The editor shows the policy as it will be published, with its outline beside it, so authors check the structure while they write.</span></button>
-              <button role="tab" id="pm-t-history" aria-controls="pm-p-history" aria-selected="false" tabindex="-1"><b>History viewer</b><span>Each revision lists what was added and removed, so reviewers see what changed without comparing two versions by eye.</span></button>
-            </div>
+      <div class="pm-caps">
+        <h3 class="t-h3">Beyond the core flows</h3>
+        <div class="pm-cap">
+          <div class="pm-cap-copy">
+            <h4 class="t-h4">Sharing policies with subscribing school districts</h4>
+            <p>Some clients are partner organizations that maintain policies for groups of school districts. As they moved from BoardDocs to Diligent Community, they needed to publish new or updated policies to those districts straight from Policy Manager, which made this feature critical to keeping them. I designed Subscriber Management: admins add a district from the Community site, choose which policy folders it receives and manage its status.</p>
           </div>
-          <div class="pm-screens-panels">
-            <div role="tabpanel" id="pm-p-details" aria-labelledby="pm-t-details"><div class="pm-ba" data-ba>
-              <div class="pm-seg" role="group" aria-label="Show Document details before or after">
-                <button type="button" aria-pressed="false" data-ba-show="before">Before</button>
-                <button type="button" aria-pressed="true" data-ba-show="after">After</button>
-              </div>
-              <div class="pm-ba-frame" style="aspect-ratio:1224 / 962">
-                <img data-zoom data-ba-img="before" src="assets/pm-details-before.webp" width="1224" height="962" alt="Before: the Document details form with a long list of fields" loading="lazy" decoding="async">
-                <img data-zoom data-ba-img="after" class="is-on" src="assets/pm-details-after.webp" width="1224" height="962" alt="After: the Document details form with labels above fields, grouped sections and the document status" loading="lazy" decoding="async">
-              </div>
-            </div></div>
-            <div role="tabpanel" id="pm-p-editor" aria-labelledby="pm-t-editor" hidden><div class="pm-ba" data-ba>
-              <div class="pm-seg" role="group" aria-label="Show the Document editor before or after">
-                <button type="button" aria-pressed="false" data-ba-show="before">Before</button>
-                <button type="button" aria-pressed="true" data-ba-show="after">After</button>
-              </div>
-              <div class="pm-ba-frame" style="aspect-ratio:1224 / 962">
-                <img data-zoom data-ba-img="before" src="assets/pm-editor-before.webp" width="1224" height="962" alt="Before: the built-in document editor" decoding="async">
-                <img data-zoom data-ba-img="after" class="is-on" src="assets/pm-editor-after.webp" width="1224" height="962" alt="After: the document editor showing the policy with its outline beside it" decoding="async">
-              </div>
-            </div></div>
-            <div role="tabpanel" id="pm-p-history" aria-labelledby="pm-t-history" hidden><div class="pm-ba" data-ba>
-              <div class="pm-seg" role="group" aria-label="Show the History viewer before or after">
-                <button type="button" aria-pressed="false" data-ba-show="before">Before</button>
-                <button type="button" aria-pressed="true" data-ba-show="after">After</button>
-              </div>
-              <div class="pm-ba-frame" style="aspect-ratio:1224 / 962">
-                <img data-zoom data-ba-img="before" src="assets/pm-history-before.webp" width="1224" height="962" alt="Before: the History viewer" decoding="async">
-                <img data-zoom data-ba-img="after" class="is-on" src="assets/pm-history-after.webp" width="1224" height="962" alt="After: the History viewer listing what was added and removed in each revision" decoding="async">
-              </div>
-            </div></div>
-          </div>
+          <ol class="pm-flow"><li><div class="pm-shot"><img data-zoom src="assets/pmx-subs-empty.webp" srcset="assets/pmx-subs-empty-sm.webp 360w, assets/pmx-subs-empty.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Subscribers page with no subscribers yet and an Add Subscriber button" loading="lazy" decoding="async"></div><p><b>1</b>Empty state</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-subs-add.webp" srcset="assets/pmx-subs-add-sm.webp 360w, assets/pmx-subs-add.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Add Subscriber form with name, type, policy folders and status" loading="lazy" decoding="async"></div><p><b>2</b>Add a subscriber</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-subs-manage.webp" srcset="assets/pmx-subs-manage-sm.webp 360w, assets/pmx-subs-manage.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Subscribers table with a dialog to deactivate a subscriber" loading="lazy" decoding="async"></div><p><b>3</b>Manage status</p></li></ol>
         </div>
-
-        <div class="stack stack--sm">
-          <div class="sub-block"><h3 class="t-h3">Two new capabilities</h3></div>
-
-          <div class="pm-cap">
-            <div class="pm-cap-copy">
-              <h4 class="t-h4">Sharing policies with subscribing school districts</h4>
-              <p>Some clients are partner organizations that maintain policies for groups of school districts. As they moved from BoardDocs to Diligent Community, they needed to publish new or updated policies to those districts straight from Policy Manager, which made this feature critical to keeping them.</p>
-              <p>I designed Subscriber Management: admins add a district from the Community site, choose which policy folders it receives and manage its status.</p>
-            </div>
-            <div class="pm-viewer" data-viewer>
-              <div class="pm-viewer-steps" role="group" aria-label="Subscriber Management screens"><button type="button" aria-pressed="true" data-step-show="0"><b>1</b>Empty state</button><button type="button" aria-pressed="false" data-step-show="1"><b>2</b>Add a subscriber</button><button type="button" aria-pressed="false" data-step-show="2"><b>3</b>Manage status</button></div>
-              <div class="pm-viewer-frame" style="aspect-ratio:736 / 456"><img data-zoom data-step-img="0" class="is-on" src="assets/pm-subs-1-empty.webp" width="736" height="456" alt="Subscribers page with no subscribers yet and an Add Subscriber button" loading="lazy" decoding="async"><img data-zoom data-step-img="1" src="assets/pm-subs-2-add.webp" width="736" height="456" alt="Add Subscriber form with name, type, policy folders and status" loading="lazy" decoding="async"><img data-zoom data-step-img="2" src="assets/pm-subs-3-manage.webp" width="738" height="456" alt="Subscribers table with a dialog to deactivate a subscriber" loading="lazy" decoding="async"></div>
-            </div>
+        <div class="pm-cap">
+          <div class="pm-cap-copy">
+            <h4 class="t-h4">Downloading a policy with its changes highlighted</h4>
+            <p>Audits often ask for proof of what changed between versions. From the History viewer, users choose which versions to compare and download a PDF with additions and deletions highlighted, so they can share it with people who don’t use Policy Manager.</p>
           </div>
-
-          <div class="pm-cap">
-            <div class="pm-cap-copy">
-              <h4 class="t-h4">Downloading a policy with its changes highlighted</h4>
-              <p>Audits often ask for proof of what changed between versions. From the History viewer, users choose which versions to compare and download a PDF with additions and deletions highlighted, so they can share it with people who don’t use Policy Manager.</p>
-            </div>
-            <div class="pm-viewer" data-viewer>
-              <div class="pm-viewer-steps" role="group" aria-label="PDF export screens"><button type="button" aria-pressed="true" data-step-show="0"><b>1</b>History viewer</button><button type="button" aria-pressed="false" data-step-show="1"><b>2</b>Choose what to export</button><button type="button" aria-pressed="false" data-step-show="2"><b>3</b>PDF with changes</button></div>
-              <div class="pm-viewer-frame" style="aspect-ratio:736 / 398"><img data-zoom data-step-img="0" class="is-on" src="assets/pm-pdf-1-history.webp" width="736" height="398" alt="History viewer with a list of revisions and the policy text" loading="lazy" decoding="async"><img data-zoom data-step-img="1" src="assets/pm-pdf-2-choose.webp" width="736" height="398" alt="Download dialog to choose the language, version, tracked changes, comments and format" loading="lazy" decoding="async"><img data-zoom data-step-img="2" src="assets/pm-pdf-3-highlighted.webp" width="738" height="398" alt="The exported PDF with additions and deletions highlighted" loading="lazy" decoding="async"></div>
-            </div>
-          </div>
+          <ol class="pm-flow"><li><div class="pm-shot"><img data-zoom src="assets/pmx-pdf-history.webp" srcset="assets/pmx-pdf-history-sm.webp 360w, assets/pmx-pdf-history.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="420" alt="History viewer with a list of revisions and the policy text" loading="lazy" decoding="async"></div><p><b>1</b>History viewer</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-pdf-choose.webp" srcset="assets/pmx-pdf-choose-sm.webp 360w, assets/pmx-pdf-choose.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="420" alt="Download dialog to choose the language, version, tracked changes, comments and format" loading="lazy" decoding="async"></div><p><b>2</b>Choose what to export</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-pdf-highlighted.webp" srcset="assets/pmx-pdf-highlighted-sm.webp 360w, assets/pmx-pdf-highlighted.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="406" alt="The exported PDF with additions and deletions highlighted" loading="lazy" decoding="async"></div><p><b>3</b>PDF with changes highlighted</p></li></ol>
         </div>
+        <div class="pm-cap pm-cap--portal">
+          <div class="pm-cap-copy">
+            <h4 class="t-h4">Policy Portal, for everyone who just needs to read</h4>
+            <p>Most people at a client never open Policy Manager. They read the published policies in Policy Portal. I was part of its redesign: an index by folder, a basic and an advanced search, the most popular and most recent policies, and a language switch, so employees find a policy and read or download it without help.</p>
+          </div>
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well"><div class="pm-shot" style="--mw:760px"><img data-zoom src="assets/pmx-portal.webp" srcset="assets/pmx-portal-sm.webp 900w, assets/pmx-portal.webp 1800w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1800" height="975" alt="Policy Portal with tabs for Index, Search, Most Popular and Recent Activity, a language selector set to English and the policy folders" loading="lazy" decoding="async"></div></div>
+          </figure>
+</div>
       </div>
     </div>
   </section>
 
-  <section class="sec bg-plum on-dark" aria-labelledby="pm-next-h">
+  <section class="sec pm-outcome pm-pause on-dark" aria-labelledby="pm-next-h" data-bg-shader="waterPlane" data-bg-colors="#1f3aa8, #070c22, #5d7bff" data-bg-brightness="1.1" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 160" data-bg-speed="0.25" data-bg-density="1.6" data-bg-strength="2.6">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <p class="label">The outcome</p>
         <h2 class="t-h2" id="pm-next-h">What happened next</h2>
       </div>
-      <dl class="pm-stats">
-        <div><dt>Steps for a board member to approve a policy</dt><dd>14 <span aria-hidden="true">→</span><span class="sr-only">to</span> 3</dd></div>
-        <div><dt>Development velocity on Lens, the new design system</dt><dd>2x</dd></div>
+      <dl class="pm-stats" data-stats>
+        <div><dt>Steps for a board member to approve a policy</dt><dd>14 <span aria-hidden="true">→</span><span class="sr-only">to</span> <span data-count-from="14" data-count-to="3">3</span></dd></div>
+        <div><dt>Development velocity on Lens, the new design system</dt><dd><span data-count-from="1" data-count-to="2" data-count-decimals="1">2</span>x</dd></div>
       </dl>
       <p class="pm-stats-note">The clients at risk signed long-term renewals, and support tickets caused by system errors came under control while engineering fixed the backend.</p>
-
       <div class="pm-still">
         <div class="sec-head">
           <h3 class="t-h3">Still in the product today</h3>
           <p class="sub">Diligent’s public demo (2026) shows which decisions held up, and one that evolved in a way that confirms the reasoning behind them.</p>
         </div>
         <ul class="cards">
-        <li class="card card--dark"><h3>Decision 3 held up</h3><p>Review is still a tab next to the document, not a wizard, and the flow still carries the name of Lens, the design system it was built on. Reviewers keep moving between draft, history and references in any order.</p></li>
-        <li class="card card--dark"><h3>Decision 4 held up</h3><p>Editing still happens in Word, inside Policy Manager, while versions and audit trail stay in the product. Diligent now sells the feature in those same terms. We shipped Word and Google Docs; the demo shows Word.</p></li>
-        <li class="card card--dark"><h3>What evolved</h3><p>Creating a policy is still a three-step wizard, and that fits: creation is linear, review isn’t. It’s the same principle applied to a different task: match the structure to the way people actually work.</p></li>
+        <li class="card card--dark pm-card-dark"><h3>Decision 3 held up</h3><p>Review is still a tab next to the document, not a wizard, and the flow still carries the name of Lens, the design system it was built on. Reviewers keep moving between draft, history and references in any order.</p></li>
+        <li class="card card--dark pm-card-dark"><h3>Decision 4 held up</h3><p>Editing still happens in Word, inside Policy Manager, while versions and audit trail stay in the product. Diligent now sells the feature in those same terms. We shipped Word and Google Docs; the demo shows Word.</p></li>
+        <li class="card card--dark pm-card-dark"><h3>What evolved</h3><p>Creating a policy is still a three-step wizard, and that fits: creation is linear, review isn’t. It’s the same principle applied to a different task: match the structure to the way people actually work.</p></li>
       </ul>
       </div>
     </div>
   </section>
 
-  <section class="sec bg-mist" aria-labelledby="pm-back-h">
+  <section class="sec bg-white" aria-labelledby="pm-back-h">
     <div class="wrap">
       <div class="sec-head"><h2 class="t-h2" id="pm-back-h">Looking back</h2></div>
-      <ul class="cards">
-        <li class="card"><h3>What worked</h3><p>Fixing the experience of failure first bought the team time and trust while the backend was being stabilized.</p></li>
-        <li class="card"><h3>What I’d do differently</h3><p>Track error rates and support tickets from day one, to show the impact of defensive design in numbers.</p></li>
-        <li class="card"><h3>What I’d measure next</h3><p>How long approvers take to move a stage forward in the simplified review cycle, compared with the full one.</p></li>
+      <ul class="pm-back">
+        <li><p class="label">What worked</p><p>Fixing the experience of failure first bought the team time and trust while the backend was being stabilized.</p></li>
+        <li><p class="label">What I’d do differently</p><p>Track error rates and support tickets from day one, to show the impact of defensive design in numbers.</p></li>
+        <li><p class="label">What I’d measure next</p><p>How long approvers take to move a stage forward in the simplified review cycle, compared with the full one.</p></li>
       </ul>
     </div>
   </section>
@@ -404,6 +394,7 @@
 <script src="lightbox.js?v=1" defer></script>
 <script src="thumbs.js?v=7" defer></script>
 <script src="hero-shader.js?v=3" defer></script>
-<script src="policy-manager.js?v=1" defer></script>
+<script src="section-shader.js?v=3" defer></script>
+<script src="policy-manager.js?v=3" defer></script>
 </body>
 </html>

@@ -1,13 +1,5 @@
-/* Policy Manager case study: message anatomy, before/after toggles, screen tabs, step viewers and the approval demo. */
+/* Policy Manager case study: message anatomy, screen tabs and the approval demo. */
 (() => {
-  /* the image itself, or the .zoom-wrap lightbox.js puts around it */
-  const layer = (img) => (img.parentElement.classList.contains('zoom-wrap') ? img.parentElement : img);
-  // lightbox.js may run after this file: move the initial is-on from the image to its wrapper once it exists
-  const syncLayers = () => document.querySelectorAll('.pm-ba-frame img.is-on, .pm-viewer-frame img.is-on').forEach((img) => {
-    const l = layer(img); if (l !== img) { img.classList.remove('is-on'); l.classList.add('is-on'); }
-  });
-  syncLayers(); window.addEventListener('load', syncLayers);
-
   /* ---------- message anatomy: point at a part of the legend to find it in the sentence ---------- */
   document.querySelectorAll('[data-msg]').forEach((box) => {
     const set = (part) => { if (part) box.dataset.active = part; else delete box.dataset.active; };
@@ -17,26 +9,6 @@
       ['pointerleave', 'blur'].forEach((ev) => b.addEventListener(ev, () => set(null)));
       b.addEventListener('click', () => set(box.dataset.active === part ? null : part));
     });
-  });
-
-  /* ---------- before / after ---------- */
-  document.querySelectorAll('[data-ba]').forEach((ba) => {
-    const btns = [...ba.querySelectorAll('[data-ba-show]')];
-    const imgs = [...ba.querySelectorAll('[data-ba-img]')];
-    btns.forEach((b) => b.addEventListener('click', () => {
-      btns.forEach((x) => x.setAttribute('aria-pressed', x === b));
-      imgs.forEach((i) => layer(i).classList.toggle('is-on', i.dataset.baImg === b.dataset.baShow));
-    }));
-  });
-
-  /* ---------- step viewers (three screens of one flow) ---------- */
-  document.querySelectorAll('[data-viewer]').forEach((v) => {
-    const btns = [...v.querySelectorAll('[data-step-show]')];
-    const imgs = [...v.querySelectorAll('[data-step-img]')];
-    btns.forEach((b) => b.addEventListener('click', () => {
-      btns.forEach((x) => x.setAttribute('aria-pressed', x === b));
-      imgs.forEach((i) => layer(i).classList.toggle('is-on', i.dataset.stepImg === b.dataset.stepShow));
-    }));
   });
 
   /* ---------- screen by screen tabs ---------- */
