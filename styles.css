@@ -2050,3 +2050,30 @@ body:has(#view-edelap) .contact-email:hover { border-color: var(--ed-sky-lite); 
 /* consumption cards: sized to their content, like the Figma component */
 .ed-cons { grid-template-columns: repeat(2, max-content); }
 .ed-con { width: 168px; padding: 16px 18px; }
+
+/* ---------- Edelap, round 3 ---------- */
+/* card sorting, as in the Figma: a plain grid, white cells, very light grey for empty ones, blue only for each row's top answer */
+.ed-matrix--figma { border-collapse: collapse; border-spacing: 0; font: 400 14px/1.3 var(--font-body); }
+.ed-matrix--figma thead td { background: #fff; }
+.ed-matrix--figma thead th { padding: 14px 12px; text-align: left; font: 600 14px/1.3 var(--font-body); color: var(--text-strong); background: #fff; }
+.ed-matrix--figma tbody th { padding: 0 16px; height: 46px; font: 500 14px/1.3 var(--font-body); color: var(--text-strong); background: #fff; }
+.ed-matrix--figma td, .ed-matrix--figma tbody th { border-top: 1px solid #e6e8ec; }
+.ed-matrix--figma td { height: 46px; padding: 0 12px; text-align: left; border-radius: 0; color: var(--text-strong); background: #fff; box-shadow: none !important; border-left: 1px solid #e6e8ec; }
+.ed-matrix--figma td.is-empty { background: #f6f7f9; }
+.ed-matrix--figma td.is-top { background: #98beea; }
+.ed-matrix--figma td.is-tie { background: #d1e2f5; }
+.ed-matrix--figma td[style] { background: initial; }
+.ed-matrix-wrap:has(.ed-matrix--figma) { overflow: hidden; border-radius: 16px; box-shadow: 0 0 0 1px #e6e8ec; }
+
+/* paper and wireframes: same media height, captions on the same line */
+.ed-paper { grid-template-columns: auto auto; justify-content: center; align-items: start; gap: 24px clamp(40px, 6vw, 96px); }
+.ed-paper > .ed-fig { width: max-content; max-width: 100%; }
+.ed-paper .ed-fig figcaption { max-width: 440px; }
+.ed-sketch img { width: auto; height: 540px; max-height: none; max-width: 100%; object-fit: initial; }
+.ed-wires svg { width: auto; height: 540px; max-height: none; max-width: 100%; }
+@media (max-width: 1023.98px) {
+  .ed-paper { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .ed-paper > .ed-fig { width: 100%; }
+  .ed-sketch img, .ed-wires svg { width: 100%; height: auto; }
+}
+.ed-matrix--figma td, .ed-matrix--figma th { vertical-align: middle; } .ed-matrix--figma { table-layout: fixed; } .ed-matrix--figma tbody th, .ed-matrix--figma thead td:first-child { width: 22%; }
