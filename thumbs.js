@@ -9,7 +9,7 @@
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   const hover = window.matchMedia('(hover: hover) and (pointer: fine)');
 
-  document.querySelectorAll('.thumb, .status-card').forEach((card) => {
+  document.querySelectorAll('.thumb, .status-card, .hero-thumb').forEach((card) => {
     const win = card.querySelector('.win');
     const art = win || card.querySelector('.edelap-media');   // the animated piece: product window, or Edelap's media box
     if (!art) return;
@@ -36,6 +36,14 @@
     }
 
     const live = (on) => card.classList.toggle('is-live', on && !reduce.matches);
+
+    // case-study header: the same window plays once on its own, shortly after the page settles, and stays there
+    if (card.classList.contains('hero-thumb')) {
+      if (!win) return;
+      const start = () => setTimeout(() => live(true), 700);
+      if (document.readyState === 'complete') start(); else window.addEventListener('load', start, { once: true });
+      return;
+    }
     target.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') live(true); });
     target.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') live(false); });
     card.addEventListener('focusin', () => live(true));
