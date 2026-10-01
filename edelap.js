@@ -18,6 +18,11 @@
     el.style.animationDuration = `${(3.8 + ((i * 0.37) % 1) * 1.6).toFixed(2)}s`;
   });
 
+  /* the breathing loop only runs while the wireframes are near the viewport (CSS pauses it otherwise) */
+  document.querySelectorAll('[data-wires]').forEach((w) => {
+    new IntersectionObserver((en) => w.classList.toggle('is-near', en[0].isIntersecting), { rootMargin: '200px 0px' }).observe(w);
+  });
+
   const once = (sel, cb, threshold = 0.4) => {
     const io = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { cb(e.target); io.unobserve(e.target); } }), { threshold });
     document.querySelectorAll(sel).forEach((n) => io.observe(n));

@@ -1926,6 +1926,7 @@ body:has(#view-edelap) .contact-email:hover { border-color: var(--ed-sky-lite); 
 .ed-wire--desk { grid-column: 1 / -1; max-width: 520px; justify-self: center; width: 100%; }
 @keyframes ed-breathe { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
 .ed-motion [data-wires] .sk { animation: ed-breathe 4.4s ease-in-out infinite; }
+.ed-motion [data-wires]:not(.is-near) .sk { animation-play-state: paused; }
 @media (max-width: 899.98px) { .ed-paper { grid-template-columns: minmax(0, 1fr); } }
 
 .ed-ba { display: grid; gap: 24px; margin-bottom: clamp(72px, 8vw, 104px); }

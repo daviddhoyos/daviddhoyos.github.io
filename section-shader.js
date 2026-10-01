@@ -10,7 +10,7 @@
    - canvas is linear + flat (no tone mapping, no sRGB encode), 1 device pixel per CSS pixel, fov 45, zoom 1, camera orbiting the origin
    - plane = 10 x 10 with 1 x 192 segments, waterPlane = 10 x 10 with 192 x 192; then the RGB halftone "grain" pass
    Performance: the GL context is only created when the section is near the viewport, rendering pauses when it leaves, when the tab is
-   hidden, and is capped at 30 fps on touch devices. Reduced motion gets one still frame. No WebGL: the CSS poster stays. */
+   hidden, and is capped at 30 fps on touch devices and 60 fps on desktop. Reduced motion gets one still frame. No WebGL: the CSS poster stays. */
 (() => {
   'use strict';
   const hosts = document.querySelectorAll('[data-bg-shader]');
@@ -248,7 +248,7 @@ float cnoise(vec3 P)
     const GRAIN = d.bgGrain === 'on'; // the RGB halftone is coarse on pastel colors: sections use a fine CSS grain instead (styles.css)
 
     let canvas, gl, scene, quad, planeBuf, indexBuf, indexCount, quadBuf, fbo, fboTex, depthRb;
-    let W = 0, H = 0, elapsed = START, last = 0, raf = 0, visible = false, ready = false, lost = false, started = false;
+    let W = 0, H = 0, elapsed = START, last = 0, raf = 0, visible = false, ready = false, lost = false, started = false, dirty = false;
 
     const compile = (type, src) => {
       const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
@@ -285,21 +285,22 @@ float cnoise(vec3 P)
 
     const setup = () => {
       scene = program(VS, FS);
-      quad = program(QUAD_VS, GRAIN_FS);
+      if (GRAIN) quad = program(QUAD_VS, GRAIN_FS);
       const geo = CFG.water ? buildPlane(192, 192) : buildPlane(1, 192);
       planeBuf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, planeBuf); gl.bufferData(gl.ARRAY_BUFFER, geo.pos, gl.STATIC_DRAW);
       indexBuf = gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuf); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, geo.idx, gl.STATIC_DRAW);
       indexCount = geo.idx.length;
-      quadBuf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, 3, 0, 2, -1, -1, 0, 0, 3, -1, 2, 0]), gl.STATIC_DRAW);
-      fboTex = gl.createTexture(); depthRb = gl.createRenderbuffer(); fbo = gl.createFramebuffer();
+      if (GRAIN) {
+        quadBuf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, 3, 0, 2, -1, -1, 0, 0, 3, -1, 2, 0]), gl.STATIC_DRAW);
+        fboTex = gl.createTexture(); depthRb = gl.createRenderbuffer(); fbo = gl.createFramebuffer();
+      }
       gl.useProgram(scene.p);
       gl.uniform3fv(scene.u.uC1, CFG.colors[0]); gl.uniform3fv(scene.u.uC2, CFG.colors[1]); gl.uniform3fv(scene.u.uC3, CFG.colors[2]);
       gl.uniform1f(scene.u.uGain, CFG.gain); gl.uniform1f(scene.u.uSpeed, CFG.speed);
       gl.uniform1f(scene.u.uNoiseDensity, CFG.density); gl.uniform1f(scene.u.uNoiseStrength, CFG.strength);
       gl.uniformMatrix4fv(scene.u.modelViewMatrix, false, modelView);
-      gl.useProgram(quad.p);
-      gl.uniform1i(quad.u.tDiffuse, 0); gl.uniform1i(quad.u.grain, GRAIN ? 1 : 0);
+      if (GRAIN) { gl.useProgram(quad.p); gl.uniform1i(quad.u.tDiffuse, 0); gl.uniform1i(quad.u.grain, 1); }
     };
 
     const resize = () => {
@@ -307,6 +308,8 @@ float cnoise(vec3 P)
       const w = Math.min(4096, Math.max(1, Math.round(r.width * CFG.pixelDensity))), h = Math.min(4096, Math.max(1, Math.round(r.height * CFG.pixelDensity)));
       if (w === W && h === H) return false;
       W = w; H = h; canvas.width = w; canvas.height = h;
+      gl.useProgram(scene.p); gl.uniformMatrix4fv(scene.u.projectionMatrix, false, projection(w / h));
+      if (!GRAIN) return true; // straight to the canvas: no offscreen texture / depth buffer
       gl.bindTexture(gl.TEXTURE_2D, fboTex);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
@@ -319,13 +322,12 @@ float cnoise(vec3 P)
       gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, fboTex, 0);
       gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, depthRb);
       gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-      gl.useProgram(scene.p); gl.uniformMatrix4fv(scene.u.projectionMatrix, false, projection(w / h));
       gl.useProgram(quad.p); gl.uniform1f(quad.u.width, w / CFG.pixelDensity); gl.uniform1f(quad.u.height, h / CFG.pixelDensity);
       return true;
     };
 
     const draw = (time) => {
-      gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, GRAIN ? fbo : null);
       gl.viewport(0, 0, W, H);
       gl.clearColor(bg[0], bg[1], bg[2], 1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.enable(gl.DEPTH_TEST); gl.disable(gl.CULL_FACE); // the plane is double sided
@@ -336,6 +338,7 @@ float cnoise(vec3 P)
       gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuf);
       gl.drawElements(gl.TRIANGLES, indexCount, gl.UNSIGNED_SHORT, 0);
       gl.disableVertexAttribArray(ap);
+      if (!GRAIN) return;
       gl.bindFramebuffer(gl.FRAMEBUFFER, null);
       gl.viewport(0, 0, W, H); gl.disable(gl.DEPTH_TEST);
       gl.useProgram(quad.p);
@@ -350,11 +353,12 @@ float cnoise(vec3 P)
 
     const frame = (now) => {
       raf = 0;
-      const minStep = coarse.matches ? 1000 / 30 - 2 : 0;
+      const minStep = 1000 / (coarse.matches ? 30 : 60) - 2; // 30 fps on touch, 60 fps cap on desktop
       if (last && now - last < minStep) { raf = requestAnimationFrame(frame); return; }
       if (last) elapsed += Math.min(now - last, 100) / 1000; // no jump after a stall
       last = now;
-      resize(); draw(elapsed);
+      if (dirty) { dirty = false; resize(); }
+      draw(elapsed);
       raf = requestAnimationFrame(frame);
     };
     const running = () => ready && !lost && visible && !document.hidden && !reduceMotion.matches;
@@ -380,7 +384,7 @@ float cnoise(vec3 P)
       resize(); draw(elapsed);
       host.insertBefore(canvas, host.firstChild);
       requestAnimationFrame(() => host.classList.add('is-shader-on'));
-      if ('ResizeObserver' in window) new ResizeObserver(() => { if (!raf) still(); }).observe(host);
+      if ('ResizeObserver' in window) new ResizeObserver(() => { dirty = true; if (!raf) still(); }).observe(host);
       document.addEventListener('visibilitychange', sync);
       reduceMotion.addEventListener?.('change', () => { sync(); still(); });
       canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); lost = true; sync(); host.classList.remove('is-shader-on'); });

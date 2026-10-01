@@ -3,7 +3,7 @@
    lit by the "city" environment (prefiltered and baked into two tiny textures below), then the
    ShaderGradient grain (its RGB halftone pass). No dependencies.
    Performance: renders at 1 device pixel per CSS pixel (pixelDensity 1, as configured), pauses when the
-   hero is off screen or the tab is hidden, caps at 30 fps on touch devices, and starts after the page
+   hero is off screen or the tab is hidden, caps at 30 fps on touch devices and 60 fps on desktop, and starts after the page
    has loaded so it never competes with the headline. Reduced motion gets one still frame. */
 (() => {
   'use strict';
@@ -357,15 +357,15 @@
   /* ---------- loop ---------- */
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const coarse = window.matchMedia('(pointer: coarse)');
-  let elapsed = START, last = 0, raf = 0, visible = true, ready = false, lost = false;
+  let elapsed = START, last = 0, raf = 0, visible = true, ready = false, lost = false, dirty = false;
 
   const frame = (now) => {
     raf = 0;
-    const minStep = coarse.matches ? 1000 / 30 - 2 : 0;
+    const minStep = 1000 / (coarse.matches ? 30 : 60) - 2; // 30 fps on touch, 60 fps cap on desktop (120/144 Hz screens)
     if (last && now - last < minStep) { raf = requestAnimationFrame(frame); return; }
     if (last) elapsed += Math.min(now - last, 100) / 1000; // no jump after a stall
     last = now;
-    resize();
+    if (dirty) { dirty = false; resize(); }
     draw(elapsed);
     raf = requestAnimationFrame(frame);
   };
@@ -385,7 +385,7 @@
     if ('IntersectionObserver' in window) {
       new IntersectionObserver((en) => { visible = en[0].isIntersecting; sync(); }).observe(hero);
     }
-    if ('ResizeObserver' in window) new ResizeObserver(() => { if (!raf) still(); }).observe(hero);
+    if ('ResizeObserver' in window) new ResizeObserver(() => { dirty = true; if (!raf) still(); }).observe(hero);
     document.addEventListener('visibilitychange', sync);
     reduceMotion.addEventListener?.('change', () => { sync(); still(); });
     sync();
