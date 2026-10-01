@@ -1,20 +1,28 @@
 <!doctype html>
-<html lang="en" data-view="status">
+<html lang="en" data-view="resume">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Page not found | David Hoyos</title>
-<meta name="description" content="This page doesn&#x27;t exist. Head back to the portfolio of David Hoyos, UX/UI and Product Designer.">
-<meta name="robots" content="noindex, follow">
+<title>Resume | David Hoyos, Product Designer (UX/UI)</title>
+<meta name="description" content="Resume of David Hoyos, product designer (UX/UI) with six years designing web and mobile products for Mercado Libre, Diligent and teams around the world.">
+<meta name="robots" content="index, follow, noimageindex">
 <meta name="author" content="David Hoyos">
 <meta name="copyright" content="© 2026 David Hoyos. All rights reserved.">
+<link rel="canonical" href="https://daviddhoyos.github.io/resume.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="David Hoyos">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://daviddhoyos.github.io/resume.html">
+<meta property="og:title" content="Resume | David Hoyos, Product Designer (UX/UI)">
+<meta property="og:description" content="Resume of David Hoyos, product designer (UX/UI) with six years designing web and mobile products for Mercado Libre, Diligent and teams around the world.">
+<meta property="og:image" content="https://daviddhoyos.github.io/assets/og/og-home.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="David Hoyos, Product Designer, on a dark background with an orange gradient">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://daviddhoyos.github.io/assets/og/og-home.jpg">
 <meta name="theme-color" content="#19141a">
-<meta name="site-root" content="/">
-<script>
-/* GitHub Pages serves this file at any missing URL, so relative paths break. This sets the base from the
-   site-root meta above. Custom domain or USER.github.io: keep "/". Project site (USER.github.io/REPO): use "/REPO/". */
-(function(){var m=document.querySelector('meta[name="site-root"]');if(m){var b=document.createElement('base');b.href=location.origin+m.content;document.head.prepend(b);}})();
-</script>
 <link rel="icon" href="favicon.ico" sizes="32x32" data-dark="favicon-dark.ico">
 <link rel="icon" href="favicon.svg" type="image/svg+xml" data-dark="favicon-dark.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png" data-dark="apple-touch-icon-dark.png">
@@ -36,8 +44,10 @@
   if (mq.addEventListener) mq.addEventListener('change', apply); else if (mq.addListener) mq.addListener(apply);
 })();
 </script>
+<link rel="preload" href="assets/hero-shader-poster.webp" as="image" type="image/webp">
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
@@ -48,24 +58,29 @@
       <li class="nav-name"><a href="index.html"><svg class="nav-back" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span class="nav-name-text">Home</span></a></li>
       <li><a href="index.html#projects">Case studies</a></li>
       <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
-      <li><a href="resume.html">Resume</a></li>
+      <li><a href="resume.html" aria-current="page">Resume</a></li>
       <li><a href="mailto:daviddhoyos1@gmail.com" data-copy-email>Email<span class="sr-only"> (copies the email address)</span></a></li>
     </ul>
   </nav>
 </header>
+<!-- the in-progress page's shader, fixed to the viewport so it stays one screen in size while the pages scroll over it -->
+<div class="resume-backdrop hero-bg hero--shader on-dark" data-hero-shader data-shader-start="0" aria-hidden="true"></div>
 <main id="main" tabindex="-1">
-<section class="view enter" id="view-not-found">
-  <div class="status hero-bg on-dark">
-    <div class="wrap">
-      <div class="copy">
-        <h1 class="t-display-case" tabindex="-1" data-focus>Page not found</h1>
-        <p class="lead">This page doesn't exist. Here are the finished case studies.</p>
-        <div class="actions">
-          <a class="btn btn--light" href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to home</a>
-          <a class="btn btn--glass glass glass--clear glass--interactive" href="policy-manager.html">Policy Manager</a>
-          <a class="btn btn--glass glass glass--clear glass--interactive" href="edelap.html">Edelap</a>
-        </div>
+<section class="view enter resume on-dark" id="view-resume" aria-labelledby="resume-h">
+  <div class="wrap resume-wrap">
+    <div class="resume-head">
+      <div class="resume-title">
+        <h1 class="hero-name rise" style="--i:0" id="resume-h" tabindex="-1" data-focus>Resume</h1>
+        <p class="resume-sub rise" style="--i:1">David Hoyos · Product Designer</p>
       </div>
+      <div class="resume-actions rise" style="--i:2">
+        <a class="btn btn--glass glass glass--clear glass--interactive" href="assets/david-hoyos-resume.pdf" target="_blank" rel="noopener">Open PDF<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16L16 8M9 8h7v7"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="btn btn--light" href="assets/david-hoyos-resume.pdf" download="David-Hoyos-Resume.pdf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download</a>
+      </div>
+    </div>
+    <div class="resume-doc rise" style="--i:3" data-resume data-src="assets/david-hoyos-resume.pdf" aria-busy="true">
+      <div class="resume-page on-light is-loading" aria-hidden="true"></div>
+      <noscript><p class="resume-fallback">The preview needs JavaScript. <a href="assets/david-hoyos-resume.pdf">Open the resume as a PDF</a>.</p></noscript>
     </div>
   </div>
 </section>
@@ -111,5 +126,7 @@
   </section>
 </footer>
 <script src="app.js?v=7" defer></script>
+<script src="hero-shader.js?v=3" defer></script>
+<script src="resume.js?v=1" defer></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 /* Thumbnails: the product window (or, for Edelap, the phone) comes alive on hover.
    Used by the home cards (.thumb) and by the two small cards on the in-progress page (.status-card).
-   Desktop: hovering the window (home) or the whole card (in-progress), or keyboard focus on the card, glides the dashboard down inside it;
-   leaving sends it back. Touch has no hover, so each card plays once when it is well in view.
+   Desktop: hovering anywhere on the card (thumbnail, title, text or link), or keyboard focus on it, glides the dashboard
+   down inside it; leaving the card sends it back. The lift + deeper shadow stays on the thumbnail itself (styles.css). Touch has no hover, so each card plays once when it is well in view.
    Motion itself lives in styles.css (transitions on .thumb.is-live); this only toggles the class and
    builds the pinned app bar. Reduced motion: never toggled. */
 (() => {
@@ -13,8 +13,9 @@
     const win = card.querySelector('.win');
     const art = win || card.querySelector('.edelap-media');   // the animated piece: product window, or Edelap's media box
     if (!art) return;
-    // home: hover on the artwork itself; in-progress: the whole small card is the target (it is the link, and it lifts too)
-    const target = card.classList.contains('status-card') ? card : art;
+    // the whole card is the hover target (home: thumbnail + copy; in-progress: the small card), so the motion is
+    // discovered while reading the title, not only when the cursor happens to cross the image
+    const target = card;
     const viewport = win && win.querySelector('.win-viewport');
     const content = win && win.querySelector('.win-content');
 

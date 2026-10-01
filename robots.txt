@@ -7,6 +7,9 @@ User-agent: Googlebot-Image
 Disallow: /
 Allow: /favicon.ico
 Allow: /favicon.svg
+Allow: /favicon-dark.svg
 Allow: /apple-touch-icon.png
+Allow: /apple-touch-icon-dark.png
+Allow: /favicon-dark.ico
 
 Sitemap: https://daviddhoyos.github.io/sitemap.xml

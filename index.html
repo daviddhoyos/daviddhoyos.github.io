@@ -26,13 +26,31 @@
 <meta name="twitter:image" content="https://daviddhoyos.github.io/assets/og/og-home.jpg">
 <meta name="twitter:image:alt" content="David Hoyos, Product Designer, on a dark background with an orange gradient">
 <meta name="theme-color" content="#19141a">
-<link rel="icon" href="favicon.ico" sizes="32x32">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.ico" sizes="32x32" data-dark="favicon-dark.ico">
+<link rel="icon" href="favicon.svg" type="image/svg+xml" data-dark="favicon-dark.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png" data-dark="apple-touch-icon-dark.png">
+<script>
+/* favicon follows the colour scheme (dark grey mark on light, white mark on dark). The <link> is replaced, not just
+   re-pointed, because Chrome only refreshes the tab icon when a new element appears. */
+(function () {
+  var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  if (!mq) return;
+  var apply = function () {
+    document.querySelectorAll('link[data-dark]').forEach(function (l) {
+      if (!l.dataset.light) l.dataset.light = l.getAttribute('href');
+      var href = mq.matches ? l.dataset.dark : l.dataset.light;
+      if (l.getAttribute('href') === href) return;
+      var n = l.cloneNode(); n.setAttribute('href', href); l.replaceWith(n);
+    });
+  };
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply); else if (mq.addListener) mq.addListener(apply);
+})();
+</script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/hero-shader-poster.webp" as="image" type="image/webp">
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -55,7 +73,7 @@
       <li class="nav-name"><a href="#top" aria-current="page">Home</a></li>
       <li><a href="#projects">Case studies</a></li>
       <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
-      <li><a href="assets/david-hoyos-resume.pdf" download="David-Hoyos-Resume.pdf">Resume<span class="sr-only"> (downloads a PDF)</span></a></li>
+      <li><a href="resume.html">Resume</a></li>
       <li><a href="mailto:daviddhoyos1@gmail.com" data-copy-email>Email<span class="sr-only"> (copies the email address)</span></a></li>
     </ul>
   </nav>
@@ -185,8 +203,8 @@
     </div>
   </section>
 </footer>
-<script src="app.js?v=6" defer></script>
+<script src="app.js?v=7" defer></script>
 <script src="hero-shader.js?v=3" defer></script>
-<script src="thumbs.js?v=6" defer></script>
+<script src="thumbs.js?v=7" defer></script>
 </body>
 </html>

@@ -61,7 +61,9 @@
       for (const el of document.elementsFromPoint(window.innerWidth / 2, y)) {
         if (!nav.contains(el)) { under = el; break; }
       }
-      const light = !!under && !under.closest(DARK);
+      // .on-light marks a light island inside a dark area (the resume pages over the shader): nearest wins
+      const tone = under && under.closest(DARK + ', .on-light');
+      const light = !!under && (!tone || tone.matches('.on-light'));
       nav.classList.toggle('is-on-light', light);
       nav.classList.toggle('is-resting', isHome && window.scrollY < 24);
     };
