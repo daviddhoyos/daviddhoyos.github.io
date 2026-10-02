@@ -200,7 +200,8 @@
     });
   }
 
-  /* ---------- nav "Mail": copies the address instead of opening a mail client, and says so with a tooltip ----------
+  /* ---------- nav "Mail" and footer address: copy the address instead of opening a mail client, and say so with a tooltip ----------
+     (only with a mouse; on touch screens both open the mail app)
      The link keeps its mailto: href, so without JS (or if copying is blocked) it still opens the mail app. */
   const mailLinks = document.querySelectorAll('[data-copy-email]');
   if (mailLinks.length) {
@@ -248,8 +249,11 @@
       hideTimer = setTimeout(() => tip.classList.remove('is-on'), 2200);
     };
 
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)'); // same test as the CSS that swaps the icon
     mailLinks.forEach((link) => {
       link.addEventListener('click', async (e) => {
+        // copying is for mouse users; on touch screens the link stays a plain mailto: and opens the mail app
+        if (!finePointer.matches) return;
         e.preventDefault();
         const email = (link.getAttribute('href') || '').replace(/^mailto:/i, '').split('?')[0];
         const ok = email && await copyText(email);

@@ -23,6 +23,12 @@
   if (colors.length === 3) [CFG.color1, CFG.color2, CFG.color3] = colors;
   const START = parseFloat(hero.dataset.shaderStart || '0') || 0; // seconds into the motion to open on
   const GRAIN = hero.dataset.shaderGrain !== 'off';
+  /* data-shader-focus="x": where the glow sits in the wide (desktop) frame, in half-heights from the centre
+     (+ is right). A narrower frame keeps the same vertical framing and only shows a central slice of the wide one,
+     so a glow near the edge drops out on phones; with a focus, that slice slides toward it, never past the
+     wide frame's edge (FOCUS_REF is the desktop header's width / half-height). Default 0: plain centred crop. */
+  const FOCUS = parseFloat(hero.dataset.shaderFocus || '0') || 0;
+  const FOCUS_REF = 2;
 
   /* city environment, prefiltered for roughness 0.6 (spec) and 1.0 (diffuse), log2-encoded */
   const ENV_SPEC = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAIAAAAt/+nTAAAFDklEQVR42pVY22IrJwzU0P3/L2tfz5c0dpwFTR8EurAbJ8XJXrGZkUYSgL//+SMC8ZYuf2h8e/Wbx983/HTpd4cA6wZv+98OTxGhdSTzs3lDeqf4/47HPjQEsx/smvn57HgI0zfjFW6ZzL4GD0KBkFhgDPnbYyZaOWwDo1wQBDdI9oAHxd9SBKyGx62NAMPj0IWkUCi0Zk+2a6dxZZJwO/j0AcplQXQwfgcinI4CQZny2JUlzLANXmCfTeNS5v8bV2yGz7jjILAmAMIjB1U5H9y6giLARfpMirkiV7UrzTx474fsXDNvQXvXZLEABMdQRXyxHLm0xmqoGL9aXtXQp7P647cEXJqb7QGgtXmuh9XnGGM4q4l+nfwcIWXuqC7I8PW+XZ2wSchTYYa+0Df/QNHQNJM4Ru/JKxfwcesjZCVNByxDqw4dqqo6xlCdt3c+yFn4noCDRmsN188icPaOwqAc3fb1Wcn4Sobphw4dY4wxdP2raoRDVtC1GFTtoKG1BrTW1tkezCMaGo7z66sESBDYIqsSmzk0POBmH2OM7gfnYL02/IWGe3yKJ0FuqTl+Ox5fbwlsx/JKIscrmY3fe+92mhwcPyMH3yQ1H2hGbvumrVcA2vF6vRqS63bYtYJEnykkD+Fh+hm999GtLQ46PJDvansO6RWGSDBba39l9H42Cb0+P2uOvf+sH5ZIWSuVegiE+XvvvZ9nNwYpE4XWN/OnV1VCFwLBwQh8Pp85sQruIjnlZ2wMxPBz4R8L/Tnd0F1DlLDy+oUZRpGRsNz8rYASDzQcz+fjWukEtRrc1Bd4HC8NjaFj9NF7PxOD0fsYarlq6TxCiT4jmT7wHm1loU05ezAcz8eHVztB0XhlUtGHE2YUm4T66KP38+y9n30xsBjwkoikym0eGMk0OaGqaUtJ7Xh+PFrb5xmbB64TlCxjD4ISAy6hMXQM8xIEoRApItzykxeCnE+RKDij4/PxbyrMJY7TEgehTTefzdSFsirxlNDwNGT6GaoqSqFNbddgMUCa1FYGmUbWFFJxOz4fHzuBPGHIF0gBAfiKiRSvxOYDo2AXqoNGwAJUAEgLO5V10PRCDGVO9yncxJ4qWTtej0etA5CU5xkXiwwiU/nagJmBjtGHjiUeVarKWgC1JdMWS9mVgbKKatiJuJEbUplAw3GmLJQrbYZu2Y8pJFafVApWMfCSpkNp5idt5QkRBZoAEJ1OrKvrbf2HXNsifBBR247+enp4Lq/ORc1CP7FyPRSAaQ6zllzKWAZM6I7eCDRbZgBtajGvxisL5GhYWbGkAJ9Of71ywfWopWQO8WfO4VzURxJfsTxzqtW3GbsynadLRRoEgDqluDrBqx8v0xoBDj2/guWujQsBbkwiBvLqRmgEaEEOyRMFY5Py25tdnPSSqT+XJyE42PvcINlJB1ybsNxxMPOnGc0MR3pQoqoimXPbxrnb8EoMvSORceKgjvwNpqAKiS/cbvV8Wxa5DDlA6ANDBLRaIiIgFzbO3QPizglMGzfVg4xtlVXkswaLhFJ2y/trSLc+DsjN/0iZXdITz8L2XTPshcael3za5/XpHYESW9x/ac4cQyC83fUMGlG2Jn2ur8/FXQno26hgZWIEeLvzyp0MQ6mQvA0qdVRex17VKu/Csn7HsgjJ62rnh3YUu+22pny3zcgdN37eZ+asIDddC/Q66g9bzMfNGvs3G9/YrfubnfL/sWNfF2xv2n8oY4W2ocSb3AAAAABJRU5ErkJggg==';
@@ -231,7 +237,8 @@
   const viewF = new Float32Array(view);
   const projection = (aspect) => {
     const f = 1 / Math.tan(Math.atan(Math.tan(rad(CFG.fov) / 2) / CFG.cameraZoom)), near = 0.1, far = 1000;
-    return new Float32Array([f / aspect, 0, 0, 0, 0, f, 0, 0, 0, 0, (far + near) / (near - far), -1, 0, 0, (2 * far * near) / (near - far), 0]);
+    const room = Math.max(0, FOCUS_REF - aspect), cx = Math.min(room, Math.max(-room, FOCUS)); // lens shift, in half-heights
+    return new Float32Array([f / aspect, 0, 0, 0, 0, f, 0, 0, cx / aspect, 0, (far + near) / (near - far), -1, 0, 0, (2 * far * near) / (near - far), 0]);
   };
   const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
 

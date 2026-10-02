@@ -1132,6 +1132,13 @@ tbody th small, td small { display: block; margin-top: 2px; font: 400 14px/1.5 v
   transition: background-color 200ms var(--ease-out), transform 200ms var(--ease-out);
 }
 .contact-email:active .contact-email-icon { transform: scale(0.94); }
+/* email links (nav and footer): on touch screens they open the mail app, with a mouse they copy the address (see app.js);
+   the footer swaps its icon (envelope / copy) and both swap their screen-reader hint */
+[data-copy-email] .ce-copy { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  [data-copy-email] .ce-copy { display: block; }
+  [data-copy-email] .ce-send { display: none; }
+}
 @media (hover: hover) and (pointer: fine) {
   .contact-email:hover { border-color: #ff9a3d; }
   .contact-email:hover .contact-email-icon { background: rgba(255, 154, 61, 0.22); }
@@ -2607,4 +2614,6 @@ body:has(#view-edelap) .contact-email:hover { border-color: var(--ed-sky-lite); 
 /* Edelap case study: on mobile the hero phone is hidden, the copy and facts carry the hero on their own */
 @media (max-width: 639.98px) {
   .case-hero--ed .case-hero-media { display: none; }
+  /* its graphite palette is darker than the other heroes', so the phone scrim is lighter to let the glow read */
+  .case-hero--ed.case-hero--shader::after { background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0.6) 100%); }
 }
