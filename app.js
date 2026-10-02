@@ -135,7 +135,7 @@
   const noFx = window.matchMedia('(prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active)');
   if (nav && !noFx.matches) {
     const NS = 'http://www.w3.org/2000/svg';
-    let feImg = null, feMap = null, lensScale = 0, shown = 0, anim = 0;
+    let feImg = null, feMap = null, lensScale = 0, shown = 0, anim = 0, goal = -1;
     if (chromium) {
       const svg = document.createElementNS(NS, 'svg');
       svg.setAttribute('width', '0'); svg.setAttribute('height', '0'); svg.setAttribute('aria-hidden', 'true');
@@ -149,6 +149,10 @@
     // the lens "forms" when the glass materialises: displacement scale eases from 0 to full
     const setShown = (target) => {
       if (!feMap) return;
+      // the observer fires on every class change (light/dark tone too): only animate when the target really changes,
+      // otherwise each tone switch rewrote the filter for 360ms and re-ran the backdrop refraction every frame
+      if (target === goal) return;
+      goal = target;
       cancelAnimationFrame(anim);
       if (reduceMotion.matches) { shown = target; feMap.setAttribute('scale', (shown * lensScale).toFixed(2)); return; }
       const from = shown, t0 = performance.now(), dur = 360;

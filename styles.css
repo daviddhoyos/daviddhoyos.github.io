@@ -487,6 +487,71 @@ button, a { touch-action: manipulation; }
 .js-reveal .reveal { opacity: 0; transform: translateY(16px); transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); transition-delay: var(--d, 0ms); }
 .js-reveal .reveal.in { opacity: 1; transform: none; }
 
+/* ---------- home case cards (.thumb--clay) ----------
+   One link per card: the title's link stretches over the whole card (::after), so the card is the target and there is
+   no separate button. The art (product window or Edelap's media) sits in .thumb-art with its colour glow.
+   Entrance: the art rises 20px while the frame opens from 92% to 100% and the picture inside settles from 107% to 100%
+   (frame and picture move in opposite directions, like a lens finding focus), on one long expo curve; the copy fades in
+   after it. Uses the individual `scale` property so it never fights the `transform` already used by the reveal and the
+   dashboard's glide.
+   Hover (mouse) / focus: the art grows 2% and a soft light in the screen's own colours fades in behind it (a ~5 KB
+   pre-blurred image, no live blur). Over the art, the cursor becomes a "View case study" label (thumbs.js). */
+:root { --ease-expo: cubic-bezier(0.16, 1, 0.3, 1); }
+.work { overflow-x: clip; }
+.thumb--clay { position: relative; }
+.thumb--clay .thumb-art { position: relative; isolation: isolate; transition: scale 700ms var(--ease-expo); }
+.thumb--clay.thumb--media-left .thumb-art { order: -1; }
+@media (min-width: 1024px) { .thumb--clay:not(.thumb--media-left) .thumb-art { order: 2; } }
+@media (max-width: 1023.98px) { .thumb--clay .thumb-art { order: -1; } }
+.thumb-link { color: inherit; text-decoration: none; }
+.thumb-link::after { content: ""; position: absolute; inset: -12px; border-radius: calc(var(--r-media) + 8px); z-index: 2; }
+.thumb-link:focus-visible { outline: none; }
+.thumb-link:focus-visible::after { outline: 2px solid var(--focus); outline-offset: 4px; }
+.thumb--clay .win-glow {
+  position: absolute; left: -18%; top: -20%; width: 136%; height: 150%; max-width: none; z-index: -1; pointer-events: none;
+  opacity: 0; transition: opacity 500ms ease;
+}
+.js-reveal .thumb--clay .thumb-art.reveal {
+  transform: translateY(20px);
+  transition: opacity 650ms ease, transform 1300ms var(--ease-expo), scale 700ms var(--ease-expo);
+}
+.js-reveal .thumb--clay .thumb-art.reveal.in { transform: none; }
+.thumb--clay .win { transition: transform 260ms var(--ease-out), scale 1300ms var(--ease-expo); }
+.thumb--clay :is(.win-content, .win-pin, .win-pin-side) { transform-origin: 50% 0; }
+.thumb--clay .win-content { transition: transform 450ms var(--ease-out), scale 1300ms var(--ease-expo); }
+.thumb--clay.is-live .win-content { transition: transform var(--dur, 4s) ease 150ms, scale 1300ms var(--ease-expo); }
+.thumb--clay :is(.win-pin, .win-pin-side) { transition: scale 1300ms var(--ease-expo); }
+.thumb--clay .edelap-media { transition: scale 1300ms var(--ease-expo); }
+.thumb--clay .edelap-bg { transition: scale 1300ms var(--ease-expo); }
+.thumb--clay .edelap-phone { transition: transform 450ms var(--ease-out), scale 1300ms var(--ease-expo); }
+.thumb--clay.is-live .edelap-phone { transition: transform 700ms var(--ease-out) 120ms, scale 1300ms var(--ease-expo); }
+.js-reveal .thumb--clay .reveal :is(.win, .edelap-media) { scale: 0.92; }
+.js-reveal .thumb--clay .reveal :is(.win-content, .win-pin, .win-pin-side, .edelap-bg, .edelap-phone) { scale: 1.07; }
+.js-reveal .thumb--clay .reveal.in :is(.win, .edelap-media, .win-content, .win-pin, .win-pin-side, .edelap-bg, .edelap-phone) { scale: 1; }
+.js-reveal .thumb--clay .thumb-copy.reveal { transform: none; transition: opacity 900ms var(--ease-expo) 250ms; }
+.thumb--clay.is-live .win-glow { opacity: 0.9; }
+.thumb--clay.is-live .thumb-art.in { scale: 1.02; }
+.thumb--clay .win:hover { transform: none; }
+.thumb--clay:focus-within .win { transform: none; }
+@media (hover: hover) and (pointer: fine) { .thumb--clay.has-cursor, .thumb--clay.has-cursor .thumb-link { cursor: none; } }
+/* a short summary on phones: one sentence at 15px, so the image and the copy fit on one screen */
+.thumb--clay .thumb-copy { gap: 12px; }
+.thumb--clay .thumb-copy .thumb-meta { margin-top: 0; }
+@media (max-width: 639.98px) { .thumb--clay .thumb-copy p:not(.thumb-meta) { font-size: 15px; line-height: 1.55; } }
+.case-cursor {
+  position: fixed; left: 0; top: 0; z-index: 60; pointer-events: none; white-space: nowrap;
+  padding: 9px 16px; border-radius: var(--r-pill); background: var(--ink-night); color: #fff;
+  font: 500 15px/1.2 var(--font-body); letter-spacing: -0.005em;
+  opacity: 0; scale: 0.8; transition: opacity 200ms ease, scale 335ms var(--ease-expo); will-change: transform;
+}
+.case-cursor.on { opacity: 1; scale: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .thumb--clay .reveal :is(.win, .edelap-media, .win-content, .win-pin, .win-pin-side, .edelap-bg, .edelap-phone) { scale: 1; transition: none; }
+  .js-reveal .thumb--clay .thumb-art.reveal { transform: none; }
+  .thumb--clay.is-live .thumb-art.in { scale: 1; }
+  .case-cursor { transition: opacity 200ms ease; scale: 1; }
+}
+
 /* ---------- home: more projects, companies ---------- */
 .more { background: var(--ink-night); color: #fff; padding-block: var(--section-y); }
 /* same scale and spacing as .work-title: 600 clamp(2rem, 1.4rem + 1.9vw, 2.625rem), and half a section between title and content */
@@ -2078,3 +2143,30 @@ body:has(#view-edelap) .contact-email:hover { border-color: var(--ed-sky-lite); 
   .ed-sketch img, .ed-wires svg { width: 100%; height: auto; }
 }
 .ed-matrix--figma td, .ed-matrix--figma th { vertical-align: middle; } .ed-matrix--figma { table-layout: fixed; } .ed-matrix--figma tbody th, .ed-matrix--figma thead td:first-child { width: 22%; }
+
+/* ==========================================================================
+   Fury case study (fury.html). fy- prefix, reusing the case-study building blocks (glance, decisions, pm-fig wells).
+   Same structure as the other cases, in a cooler blue that sits next to Fury's own UI.
+   ========================================================================== */
+#view-fury {
+  --pm-blue: #2a63c9;           /* accent on white (5.5:1) */
+  --pm-blue-soft: #9cc4ff;
+  --pm-tint: #edf2fa;
+  --pm-tint-soft: #f5f8fd;
+  --pm-teal: var(--pm-blue);
+}
+#view-fury .label { color: var(--pm-blue); }
+#view-fury .on-dark .label { color: var(--pm-blue-soft); }
+.fy-source { color: var(--pm-blue); font-weight: 500; text-underline-offset: 3px; }
+.fy-source::after { content: " ↗"; }
+.fy-pipes { background: var(--pm-tint-soft); }
+.fy-pipes .wrap, #view-fury .sec.bg-white:not(.pm-decisions) .wrap { display: grid; gap: clamp(40px, 5vw, 64px); }
+.fy-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 4vw, 48px) var(--grid-gap); align-items: start; }
+@media (max-width: 767.98px) { .fy-grid { grid-template-columns: minmax(0, 1fr); } }
+.fy-naming { padding: clamp(28px, 4vw, 48px); justify-items: start; gap: 20px; background: var(--pm-ink); color: #fff; }
+.fy-rule { font: 500 clamp(1.25rem, 1rem + 1.2vw, 1.75rem)/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.fy-rule span:last-child { color: var(--pm-blue-soft); }
+.fy-names { list-style: none; display: grid; gap: 10px; font: 400 15px/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; color: rgba(255, 255, 255, 0.72); }
+.fy-names b { font-weight: 500; color: var(--pm-blue-soft); }
+.fy-hero-shot { align-self: center; }
+.fy-hero-shot img { display: block; width: 100%; height: auto; aspect-ratio: 1440 / 1100; object-fit: cover; object-position: top; border-radius: 12px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 30px 80px -30px rgba(0, 0, 0, 0.7); }

@@ -24,7 +24,8 @@
       const pin = document.createElement('div');
       pin.className = 'win-pin'; pin.setAttribute('aria-hidden', 'true');
       const clip = document.createElement('div');
-      const img = content.cloneNode(); img.className = ''; img.alt = ''; img.removeAttribute('loading');
+      // the copy keeps loading="lazy": an eager copy made every card's large screenshot download at page load
+      const img = content.cloneNode(); img.className = ''; img.alt = '';
       clip.appendChild(img); pin.appendChild(clip); viewport.appendChild(pin);
     }
 
@@ -32,7 +33,7 @@
     if (win && win.hasAttribute('data-pin-side')) {
       const side = document.createElement('div');
       side.className = 'win-pin-side'; side.setAttribute('aria-hidden', 'true');
-      const img = content.cloneNode(); img.className = ''; img.alt = ''; img.removeAttribute('loading');
+      const img = content.cloneNode(); img.className = ''; img.alt = '';
       side.appendChild(img); viewport.appendChild(side);
     }
 
@@ -61,4 +62,46 @@
       io.observe(art);
     }
   });
+})();
+
+/* Home case cards (.thumb--clay): over the art, the cursor becomes a "View case study" label that follows the mouse with
+   a little lag. The whole card is one link (the title's ::after), so this listens on the card and checks the art's box.
+   Mouse only; the loop runs only while the label is catching up. */
+(() => {
+  'use strict';
+  const cards = document.querySelectorAll('.thumb--clay');
+  if (!cards.length || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const tag = document.createElement('div');
+  tag.className = 'case-cursor'; tag.setAttribute('aria-hidden', 'true'); tag.textContent = 'View case study';
+  document.body.appendChild(tag);
+  let x = 0, y = 0, tx = 0, ty = 0, raf = 0, w = 0, h = 0, shown = false, owner = null;
+  const place = () => { tag.style.transform = `translate3d(${x - w / 2}px, ${y - h / 2}px, 0)`; };
+  const step = () => {
+    const k = reduce.matches ? 1 : 0.22;
+    x += (tx - x) * k; y += (ty - y) * k; place();
+    raf = (Math.abs(tx - x) + Math.abs(ty - y) > 0.3) ? requestAnimationFrame(step) : 0;
+  };
+  const show = (on, card) => {
+    if (on === shown) return;
+    shown = on; tag.classList.toggle('on', on);
+    if (owner) owner.classList.remove('has-cursor');
+    owner = on ? card : null;
+    if (owner) owner.classList.add('has-cursor');
+  };
+  cards.forEach((card) => {
+    const art = card.querySelector('.thumb-art');
+    if (!art) return;
+    card.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const r = art.getBoundingClientRect();
+      const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (inside && !shown) { w = tag.offsetWidth; h = tag.offsetHeight; x = e.clientX; y = e.clientY; place(); }
+      tx = e.clientX; ty = e.clientY;
+      show(inside, card);
+      if (inside && !raf) raf = requestAnimationFrame(step);
+    });
+    card.addEventListener('pointerleave', () => show(false, card));
+  });
+  window.addEventListener('scroll', () => show(false), { passive: true });
 })();

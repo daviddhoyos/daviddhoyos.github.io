@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en" data-view="case">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Designing for the platform 15,000 Mercado Libre engineers ship with | David Hoyos</title>
+<meta name="description" content="Fury, Mercado Libre&#x27;s internal developer platform: Segments, deployment pipelines and Scotia, designed as part of the Fury design team.">
+<meta name="robots" content="index, follow, noimageindex">
+<meta name="author" content="David Hoyos">
+<meta name="copyright" content="© 2026 David Hoyos. All rights reserved.">
+<link rel="canonical" href="https://daviddhoyos.github.io/fury.html">
+<meta name="theme-color" content="#19141a">
+<link rel="icon" href="favicon.ico" sizes="32x32" data-dark="favicon-dark.ico">
+<link rel="icon" href="favicon.svg" type="image/svg+xml" data-dark="favicon-dark.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png" data-dark="apple-touch-icon-dark.png">
+<script>
+/* favicon follows the colour scheme (dark grey mark on light, white mark on dark). The <link> is replaced, not just
+   re-pointed, because Chrome only refreshes the tab icon when a new element appears. */
+(function () {
+  var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  if (!mq) return;
+  var apply = function () {
+    document.querySelectorAll('link[data-dark]').forEach(function (l) {
+      if (!l.dataset.light) l.dataset.light = l.getAttribute('href');
+      var href = mq.matches ? l.dataset.dark : l.dataset.light;
+      if (l.getAttribute('href') === href) return;
+      var n = l.cloneNode(); n.setAttribute('href', href); l.replaceWith(n);
+    });
+  };
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply); else if (mq.addListener) mq.addListener(apply);
+})();
+</script>
+<link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css?v=19">
+<link rel="preload" href="assets/pm-shader-poster.webp" as="image" type="image/webp">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav-wrap">
+  <nav class="nav glass" aria-label="Primary" data-nav>
+    <ul>
+      <li class="nav-name"><a href="index.html"><svg class="nav-back" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span class="nav-name-text">Home</span></a></li>
+      <li><a href="index.html#projects">Case studies</a></li>
+      <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="mailto:daviddhoyos1@gmail.com" data-copy-email>Email<span class="sr-only"> (copies the email address)</span></a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main" tabindex="-1">
+<section class="view enter" id="view-fury">
+
+  <header class="case-hero case-hero--fy case-hero--shader case-hero--split on-dark" data-hero-shader data-shader-colors="#3d7bff, #0b1d4d, #7fd4ff">
+    <div class="wrap">
+      <div class="copy">
+        <p class="eyebrow">Fury at Mercado Libre</p>
+        <h1 class="t-display-case" tabindex="-1" data-focus>Designing for the platform 15,000 Mercado Libre engineers ship with</h1>
+        <p class="lead">Fury is Mercado Libre’s internal developer platform. Every business in the company builds, deploys and monitors its services on it. I was part of the Fury design team, working inside the squads that own each part of the platform.</p>
+      </div>
+      <div class="case-hero-media fy-hero-shot" aria-hidden="true"><img src="assets/fury/fury-exec-finished-sm.webp" srcset="assets/fury/fury-exec-finished-sm.webp 800w, assets/fury/fury-exec-finished.webp 1440w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 560px" width="1440" height="1383" alt="" decoding="async" fetchpriority="high"></div>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Product designer, Fury design team</dd></div>
+        <div><dt>Company</dt><dd>Mercado Libre, Nasdaq-100</dd></div>
+        <div><dt>Product</dt><dd>Internal developer platform</dd></div>
+        <div><dt>Used by</dt><dd>15,000+ engineers</dd></div>
+        <div><dt>Runs</dt><dd>30,000+ microservices</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <section class="sec pm-glance fy-glance" aria-labelledby="fy-glance-h">
+    <div class="wrap">
+      <h2 class="sr-only" id="fy-glance-h">At a glance</h2>
+      <div class="glance">
+        <div><p class="label">The platform</p><p class="t-statement">One platform under the marketplace, Mercado Pago and every other Mercado Libre business.</p></div>
+        <div><p class="label">What we worked on</p><p class="t-statement">Segments, so one service can be set up per country and company, and deployment pipelines built from modules.</p></div>
+        <div><p class="label">How I worked</p><p class="t-statement">Inside the squads that own each feature, designing with Scotia, our team’s adaptation of Andes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--label bg-white" aria-labelledby="fy-start-h">
+    <div class="wrap">
+      <div class="pm-start">
+        <div class="sec-head reveal">
+          <p class="label">The starting point</p>
+          <h2 class="t-h2" id="fy-start-h">One platform under every Mercado Libre business</h2>
+          <p class="sub">Mercado Libre is the largest e-commerce company in Latin America. Fury is the platform underneath it: built in-house since 2015, it’s where engineers create, deploy, manage and monitor their applications, every day.</p>
+          <p class="sub">Each part of Fury belongs to a squad. As part of the design team, I worked with those squads on new features and UX fixes, so the work below was shaped together with engineers, product managers and other designers.</p>
+          <p class="sub"><a class="fy-source" href="https://medium.com/mercadolibre-tech/the-technological-evolution-at-mercado-libre-fb269776a4e8" target="_blank" rel="noopener noreferrer">How Mercado Libre’s tech team built Fury<span class="sr-only"> (opens in a new tab)</span></a></p>
+        </div>
+        <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot"><img data-zoom src="assets/fury/fury-pipelines-list.webp" srcset="assets/fury/fury-pipelines-list-sm.webp 800w, assets/fury/fury-pipelines-list.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 640px" width="1440" height="1024" alt="Fury deployment pipelines list, with each pipeline’s description, last editor and a Run button" decoding="async"></div></div>
+            <figcaption>Deployment pipelines, one of the sections of Fury I worked on.</figcaption>
+          </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="pm-plan pm-pause on-dark" aria-labelledby="fy-seg-h" data-bg-shader="waterPlane" data-bg-colors="#2b6be0, #071a40, #6fd0ff" data-bg-brightness="0.95" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 225" data-bg-speed="0.06" data-bg-density="1.4" data-bg-strength="2">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="label">Segments</p>
+        <h2 class="t-h2" id="fy-seg-h">One service, set up differently for each country and company</h2>
+        <p class="sub">Mercado Libre runs in many countries and through several companies, and the same service often needs different settings in each. Segments split a service by segments such as Argentina, Brazil, Mexico, Mex Bank or Non prod, across tools like Key Value Store, BigQueue and traffic authorizations.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white pm-decisions" aria-label="Five decisions in Segments">
+    <div class="wrap">
+      <div class="decisions">
+
+        <article class="decision" id="fy-d1">
+          <div class="d-head"><p class="label">Decision 1 of 5</p><h3 class="t-h3">Choose the segments when the service is created</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">The situation</p><p>A segment changes where a service runs and which rules apply to it, so it can’t be an afterthought hidden in settings.</p></div>
+            <div class="d-block"><p class="label">What we did</p><p>Segmentation became its own block in the creation form, right after the basic details. Picking a non-productive segment sets the related parameters to Test automatically, and the form says so.</p></div>
+            <div class="d-block"><p class="label">Why it mattered</p><p>Teams decide the most consequential setting first, with the defaults that keep test segments away from production values.</p></div>
+          </div>
+          <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-new-topic.webp" srcset="assets/fury/fury-new-topic-sm.webp 800w, assets/fury/fury-new-topic.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 664px" width="1440" height="1388" alt="BigQueue new topic form with a Segmentation block of country and environment checkboxes, followed by criticality, tags, rate limit and TTL" decoding="async"></div></div>
+          </figure>
+        </article>
+
+        <article class="decision decision--rev" id="fy-d2">
+          <div class="d-head"><p class="label">Decision 2 of 5</p><h3 class="t-h3">Combined by default, split when a segment needs it</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">The situation</p><p>Most settings are the same in every segment. Asking for each value once per segment would make the form several times longer.</p></div>
+            <div class="d-block"><p class="label">What we did</p><p>Criticality, tags, rate limit and time to live show one row for all segments. A Combined and Split switch opens a row per segment only when one of them needs a different value.</p></div>
+            <div class="d-block"><p class="label">Why it mattered</p><p>The common case stays short, and the exception is one click away instead of a separate flow.</p></div>
+          </div>
+          <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-add-segment.webp" srcset="assets/fury/fury-add-segment-sm.webp 800w, assets/fury/fury-add-segment.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 664px" width="1440" height="1260" alt="Edit topic screen where criticality and rate limit sections have a Combined and Split switch next to the segments count" decoding="async"></div></div>
+          </figure>
+        </article>
+
+        <article class="decision" id="fy-d3">
+          <div class="d-head"><p class="label">Decision 3 of 5</p><h3 class="t-h3">A name that says which segment you’re looking at</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">The situation</p><p>Lists can hold the same service many times, once per segment. Without a convention, rows that look identical point to different infrastructure.</p></div>
+            <div class="d-block"><p class="label">What we did</p><p>We defined one rule: the service name followed by the segment. While configuring, the final name appears as a read-only field, so people see it before it exists.</p></div>
+            <div class="d-block"><p class="label">Why it mattered</p><p>Engineers can tell segments apart in a table, a log or a URL without opening each item.</p></div>
+          </div>
+          <figure class="pm-fig reveal">
+            <div class="pm-well fy-naming">
+              <p class="fy-rule"><span>[service-name]</span>-<span>[segment]</span></p>
+              <ul class="fy-names" aria-label="Examples">
+                <li>kvs-name-<b>mexbank</b></li><li>kvs-name-<b>nonprod</b></li><li>kvs-name-<b>platform</b></li><li>kvs-name-<b>legacy</b></li>
+              </ul>
+            </div>
+            <figcaption>The naming rule for segmented entities. The segment is abbreviated and lowercase in the name and in tables, and written in full where rows are grouped by segment.</figcaption>
+          </figure>
+        </article>
+
+        <article class="decision decision--rev" id="fy-d4">
+          <div class="d-head"><p class="label">Decision 4 of 5</p><h3 class="t-h3">Ask which segment before a destructive action</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">The situation</p><p>Flushing a topic deletes its scheduled messages. In a segmented service, doing it everywhere by mistake is a production incident.</p></div>
+            <div class="d-block"><p class="label">What we did</p><p>The flush dialog asks for the segment first, warns when productive scopes might still use the service, and requires typing a confirmation before the button turns on.</p></div>
+            <div class="d-block"><p class="label">Why it mattered</p><p>The riskiest action in the screen became the one with the most friction, and only there.</p></div>
+          </div>
+          <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-segmented-flush.webp" srcset="assets/fury/fury-segmented-flush-sm.webp 800w, assets/fury/fury-segmented-flush.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 664px" width="1440" height="1027" alt="Flush topic dialog with a warning, a segment selector and a confirmation field over the topic detail heatmap" decoding="async"></div></div>
+          </figure>
+        </article>
+
+        <article class="decision" id="fy-d5">
+          <div class="d-head"><p class="label">Decision 5 of 5</p><h3 class="t-h3">Access between segments, made explicit</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">The situation</p><p>Applications in one segment sometimes need to call services in another, and those permissions have to be visible and reviewable.</p></div>
+            <div class="d-block"><p class="label">What we did</p><p>Traffic authorization separates the access groups a team exposes from the ones it’s been granted. Each group shows its rule type, such as inter-segment, with the segment of origin and destination.</p></div>
+            <div class="d-block"><p class="label">Why it mattered</p><p>Cross-segment access stops being a hidden exception in a config file and becomes something a team can read, approve and revoke.</p></div>
+          </div>
+          <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-traffic-access.webp" srcset="assets/fury/fury-traffic-access-sm.webp 800w, assets/fury/fury-traffic-access.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 664px" width="1440" height="1024" alt="Traffic authorization screen listing exposed access groups, with rule type Inter segment and segment origin and destination" decoding="async"></div></div>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--label fy-pipes" aria-labelledby="fy-pipes-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="label">Deployment pipelines</p>
+        <h2 class="t-h2" id="fy-pipes-h">Pipelines built from modules</h2>
+        <p class="sub">A pipeline is a sequence of modules: deploy, wait, swap traffic, roll back and finish. Each deployment module lists its scopes with their version, configuration release and strategy, such as canary or blue-green.</p>
+      </div>
+      <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot" style="--mw:880px"><img loading="lazy" data-zoom src="assets/fury/fury-pipeline-build.webp" srcset="assets/fury/fury-pipeline-build-sm.webp 800w, assets/fury/fury-pipeline-build.webp 1433w" sizes="(max-width: 1023.98px) 92vw, 880px" width="1433" height="1440" alt="New pipeline from scratch: deployment, wait, finish and rollback modules stacked, with a row of modules to add" decoding="async"></div></div>
+            <figcaption>Building a pipeline: modules stack in order, and new ones are added from the row at the bottom.</figcaption>
+          </figure>
+      <div class="fy-grid">
+        <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-pipeline-preview.webp" srcset="assets/fury/fury-pipeline-preview-sm.webp 800w, assets/fury/fury-pipeline-preview.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1440" height="1024" alt="Run pipeline preview showing the sequence of modules and the traffic percentages of the swap traffic module" decoding="async"></div></div>
+            <figcaption>Before running, a preview shows the whole sequence, and each module opens its details.</figcaption>
+          </figure>
+        <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-exec-rollback.webp" srcset="assets/fury/fury-exec-rollback-sm.webp 800w, assets/fury/fury-exec-rollback.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1440" height="1192" alt="Execution details with the rollback module expanded, showing failed scopes and an error tooltip" decoding="async"></div></div>
+            <figcaption>When a step fails, the error appears where it happened: here, in one scope of the rollback.</figcaption>
+          </figure>
+        <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-pipeline-reco.webp" srcset="assets/fury/fury-pipeline-reco-sm.webp 800w, assets/fury/fury-pipeline-reco.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1440" height="1024" alt="New pipeline from a recommendation, with name, description and variables to complete" decoding="async"></div></div>
+            <figcaption>Teams can start from a recommended pipeline and only fill in what changes.</figcaption>
+          </figure>
+        <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-ai-insights.webp" srcset="assets/fury/fury-ai-insights-sm.webp 800w, assets/fury/fury-ai-insights.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1440" height="1024" alt="Analytics insights with the rate of deployed versions and recommendations next to the metrics" decoding="async"></div></div>
+            <figcaption>AI Insights, another piece I worked on: metrics on deployed versions with recommendations beside them.</figcaption>
+          </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec pm-outcome pm-pause on-dark" aria-labelledby="fy-scotia-h" data-bg-shader="waterPlane" data-bg-colors="#1f56c8, #06122e, #5cc4ff" data-bg-brightness="1.1" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 160" data-bg-speed="0.06" data-bg-density="1.4" data-bg-strength="2">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="label">Scotia</p>
+        <h2 class="t-h2" id="fy-scotia-h">Andes, adapted for Fury</h2>
+        <p class="sub">Andes is Mercado Libre’s design system. Fury needed pieces it didn’t cover yet, like dense tables, technical icons and empty states for developer tools, so the team built Scotia, a library on top of Andes.</p>
+        <p class="sub">I didn’t create Scotia. Like every designer on the team, I kept it in step with Andes and added the components my projects needed, so the next person could reuse them.</p>
+      </div>
+      <ul class="cards">
+        <li class="card reveal"><h3>Tables</h3><p>Presets with 5, 10 and 15 rows, search and pagination, and expandable rows for nested data.</p></li>
+        <li class="card reveal" style="--d:60ms"><h3>Empty states</h3><p>Four sizes and 16 illustrations, so an empty screen explains what goes there and how to start.</p></li>
+        <li class="card reveal" style="--d:120ms"><h3>Icons</h3><p>Technical icons like pull request, fork, merge and version, and logos for tools such as GitHub, Datadog, AWS and GCP.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="fy-lib-h">
+    <div class="wrap">
+      <h2 class="sr-only" id="fy-lib-h">Scotia in Figma</h2>
+      <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot" style="--mw:1000px"><img loading="lazy" data-zoom src="assets/fury/fury-scotia-tables.webp" srcset="assets/fury/fury-scotia-tables-sm.webp 800w, assets/fury/fury-scotia-tables.webp 1600w" sizes="(max-width: 1023.98px) 92vw, 1000px" width="1600" height="850" alt="Scotia table presets in Figma: simple, with search and pagination, and expandable" decoding="async"></div></div>
+            <figcaption>Table presets in Scotia.</figcaption>
+          </figure>
+      <div class="fy-grid">
+        <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-empty-states.webp" srcset="assets/fury/fury-empty-states-sm.webp 800w, assets/fury/fury-empty-states.webp 1508w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1508" height="1600" alt="Grid of Scotia empty state illustrations in several sizes" decoding="async"></div></div>
+            <figcaption>Empty state illustrations, adapted to each size.</figcaption>
+          </figure>
+        <figure class="pm-fig reveal">
+            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-scotia-status.webp" srcset="assets/fury/fury-scotia-status-sm.webp 800w, assets/fury/fury-scotia-status.webp 1497w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1497" height="1920" alt="Scotia build status table listing each component’s specs, design and code status, and the team responsible" decoding="async"></div></div>
+            <figcaption>The library’s build status, split between the design team and front end.</figcaption>
+          </figure>
+      </div>
+    </div>
+  </section>
+
+  <nav class="next-case" aria-label="Next case study">
+    <div class="wrap">
+      <a href="policy-manager.html"><span class="next-label">Next case study</span><span class="next-title">Saving a product its biggest clients were ready to leave</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </nav>
+
+</section>
+
+</main>
+<footer class="site-footer">
+  <section class="contact on-dark" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <h2 id="contact-h">Good products start with good conversations.</h2>
+          <p>Hiring for a role, or have a project in mind? Write to me. Fair warning: I'll happily talk your ear off about it.</p>
+          <div class="contact-who">
+            <img src="assets/avatar-footer.webp" width="200" height="200" alt="" decoding="async" loading="lazy">
+            <p><span>David Hoyos</span>Product Designer, based in Argentina</p>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="contact-email" href="mailto:daviddhoyos1@gmail.com" data-copy-email><span>daviddhoyos1@gmail.com</span><span class="contact-email-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"/></svg></span><span class="sr-only"> (copies the email address)</span></a>
+          <ul class="contact-links">
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16L16 8M9 8h7v7"/></svg><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="assets/david-hoyos-resume.pdf" download="David-Hoyos-Resume.pdf">Download resume<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="sr-only"> (PDF)</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal">
+        <p>© 2026 David Hoyos. All rights reserved.</p>
+      </div>
+    </div>
+  </section>
+</footer>
+<script src="app.js?v=8" defer></script>
+<script src="lightbox.js?v=1" defer></script>
+<script src="thumbs.js?v=9" defer></script>
+<script src="hero-shader.js?v=6" defer></script>
+<script src="section-shader.js?v=6" defer></script>
+</body>
+</html>

@@ -10,13 +10,51 @@
    - canvas is linear + flat (no tone mapping, no sRGB encode), 1 device pixel per CSS pixel, fov 45, zoom 1, camera orbiting the origin
    - plane = 10 x 10 with 1 x 192 segments, waterPlane = 10 x 10 with 192 x 192; then the RGB halftone "grain" pass
    Performance: the GL context is only created when the section is near the viewport, rendering pauses when it leaves, when the tab is
-   hidden, and is capped at 30 fps on touch devices and 60 fps on desktop. Reduced motion gets one still frame. No WebGL: the CSS poster stays. */
+   hidden, and runs at an adaptive 60/30 fps shared with the hero (see the governor below). Reduced motion gets one still frame. No WebGL: the CSS poster stays. */
 (() => {
   'use strict';
+
+  /* ---------- adaptive frame rate, shared by every shader on the page ----------
+     Starts at 60 fps on every device. If the page can't hold that for two 2-second windows in a row (under 80% of the target),
+     it drops to 30; if it can't hold 30 either, the shaders stop and the CSS posters stay. It only goes down, never back up,
+     and the level found is kept for the rest of the visit (sessionStorage), so the next page starts there. Frames from
+     several shaders in the same vsync count once; a gap over 250 ms (tab switch, long task) resets the window instead of
+     counting as slow, unless it happens four times in a row. The motion always advances with real time, so a lower rate is less smooth, never slower. */
+  const gov = window.__fpsGov || (window.__fpsGov = (() => {
+    const LEVELS = [60, 30, 0];
+    let i = 0, start = 0, frames = 0, bad = 0, stalls = 0, lastNow = -1;
+    try { i = Math.min(2, Math.max(0, parseInt(sessionStorage.getItem('fps-level'), 10) || 0)); } catch (e) {}
+    const subs = new Set();
+    return {
+      fps: () => LEVELS[i],
+      on: (fn) => subs.add(fn),
+      tick(now, gap) {
+        if (!LEVELS[i] || now === lastNow) return;
+        lastNow = now;
+        if (!isFinite(gap)) { start = 0; return; }   // first frame after a pause: nothing to measure yet
+        if (gap > 250) {                               // one long gap is a hiccup; four in a row is a slow device
+          start = 0;
+          if (++stalls < 4) return;
+          stalls = 0; bad++;
+        } else {
+          stalls = 0;
+          if (!start) { start = now; frames = 0; return; }
+          frames++;
+          if (now - start < 2000) return;
+          const rate = frames * 1000 / (now - start);
+          start = now; frames = 0;
+          bad = rate < LEVELS[i] * 0.8 ? bad + 1 : 0;
+        }
+        if (bad < 2) return;
+        bad = 0; i++;
+        try { sessionStorage.setItem('fps-level', String(i)); } catch (e) {}
+        subs.forEach((fn) => fn(LEVELS[i]));
+      }
+    };
+  })());
   const hosts = document.querySelectorAll('[data-bg-shader]');
   if (!hosts.length) return;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const coarse = window.matchMedia('(pointer: coarse)');
 
   /* ---------- GLSL ---------- */
   const NOISE = `
@@ -248,7 +286,7 @@ float cnoise(vec3 P)
     const GRAIN = d.bgGrain === 'on'; // the RGB halftone is coarse on pastel colors: sections use a fine CSS grain instead (styles.css)
 
     let canvas, gl, scene, quad, planeBuf, indexBuf, indexCount, quadBuf, fbo, fboTex, depthRb;
-    let W = 0, H = 0, elapsed = START, last = 0, raf = 0, visible = false, ready = false, lost = false, started = false, dirty = false;
+    let W = 0, H = 0, elapsed = START, last = 0, due = 0, raf = 0, visible = false, ready = false, lost = false, started = false, dirty = false;
 
     const compile = (type, src) => {
       const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
@@ -353,17 +391,19 @@ float cnoise(vec3 P)
 
     const frame = (now) => {
       raf = 0;
-      const minStep = 1000 / (coarse.matches ? 30 : 60) - 2; // 30 fps on touch, 60 fps cap on desktop
-      if (last && now - last < minStep) { raf = requestAnimationFrame(frame); return; }
+      const step = 1000 / gov.fps(); // fixed clock: 75/90/144 Hz screens average the target rate
+      if (due && now < due - 2) { raf = requestAnimationFrame(frame); return; }
+      due = due && now - due < step ? due + step : now + step;
+      gov.tick(now, last ? now - last : Infinity);
       if (last) elapsed += Math.min(now - last, 100) / 1000; // no jump after a stall
       last = now;
       if (dirty) { dirty = false; resize(); }
       draw(elapsed);
       raf = requestAnimationFrame(frame);
     };
-    const running = () => ready && !lost && visible && !document.hidden && !reduceMotion.matches;
+    const running = () => ready && !lost && visible && !document.hidden && !reduceMotion.matches && gov.fps() > 0;
     const sync = () => {
-      if (running()) { if (!raf) { last = 0; raf = requestAnimationFrame(frame); } }
+      if (running()) { if (!raf) { last = 0; due = 0; raf = requestAnimationFrame(frame); } }
       else if (raf) { cancelAnimationFrame(raf); raf = 0; }
     };
     const still = () => { if (ready && !lost) { resize(); draw(elapsed); } };
@@ -383,7 +423,8 @@ float cnoise(vec3 P)
       ready = true;
       resize(); draw(elapsed);
       host.insertBefore(canvas, host.firstChild);
-      requestAnimationFrame(() => host.classList.add('is-shader-on'));
+      if (gov.fps() > 0) requestAnimationFrame(() => host.classList.add('is-shader-on'));
+      gov.on((fps) => { if (!fps) host.classList.remove('is-shader-on'); sync(); });
       if ('ResizeObserver' in window) new ResizeObserver(() => { dirty = true; if (!raf) still(); }).observe(host);
       document.addEventListener('visibilitychange', sync);
       reduceMotion.addEventListener?.('change', () => { sync(); still(); });
