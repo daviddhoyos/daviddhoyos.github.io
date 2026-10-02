@@ -13,6 +13,7 @@
 
   const dlg = document.createElement('dialog');
   dlg.className = 'lightbox';
+  dlg.tabIndex = -1;
   dlg.setAttribute('aria-label', 'Enlarged image');
   dlg.innerHTML = '<div class="lightbox-stage"><img class="lightbox-img" alt=""></div><p class="lightbox-caption"></p>' +
     '<button class="lightbox-close" type="button" aria-label="Close enlarged image">' + ICON_CLOSE + '</button>';
@@ -40,6 +41,7 @@
     big.src = bestSrc(img); big.alt = img.alt;
     cap.textContent = captionOf(img); cap.hidden = !cap.textContent;
     dlg.showModal();
+    dlg.focus({ preventScroll: true });   // showModal() focuses the first button (the close X); keep focus on the dialog itself
     const from = img.getBoundingClientRect();
     const run = () => {
       const to = big.getBoundingClientRect();

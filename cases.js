@@ -142,6 +142,14 @@
     e.preventDefault(); measure(); go(S[i]);
   }));
 
+  /* ---------- touch press: the art shrinks 1% almost instantly on tap-down (Apple-style), eases back on release ---------- */
+  arts.forEach((art) => {
+    const on = (e) => { if (e.pointerType !== 'mouse') art.classList.add('is-pressed'); };
+    const off = () => art.classList.remove('is-pressed');
+    art.addEventListener('pointerdown', on);
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach((t) => art.addEventListener(t, off));   // a scroll start fires pointercancel
+  });
+
   /* ---------- cursor label over the art (mouse only) ---------- */
   if (!fine.matches) return;
   const tag = document.createElement('div');
