@@ -259,6 +259,91 @@
     window.addEventListener('scroll', () => { if (tip.classList.contains('is-on')) tip.classList.remove('is-on'); }, { passive: true });
   }
 
+  /* ---------- case study progress (desktop) + back to top (mobile) ----------
+     Both are built here so every page gets them from one place. The bar reads the case as an execution:
+     one tick per [data-chapter] section. Below 768px it's replaced by a glass back-to-top button. */
+  const DARK_TONE = '.on-dark, .bg-ink, .bg-plum, .navbg';
+  const isLightAt = (el, x, y) => {
+    let under = null;
+    for (const n of document.elementsFromPoint(x, y)) { if (!el.contains(n)) { under = n; break; } }
+    const tone = under && under.closest(DARK_TONE + ', .on-light');
+    return !!under && (!tone || tone.matches('.on-light'));
+  };
+  const mobile = window.matchMedia('(max-width: 767.98px)');
+
+  const chapters = [...document.querySelectorAll('[data-chapter]')];
+  let bar = null;
+  if (chapters.length > 1) {
+    bar = document.createElement('nav');
+    bar.className = 'cs-bar glass';
+    bar.setAttribute('aria-label', 'Case study progress');
+    bar.hidden = true;
+    bar.innerHTML = '<span class="cs-bar-dot" aria-hidden="true"></span><span class="cs-bar-text" aria-live="polite"></span><ol class="cs-bar-ticks"></ol>';
+    const text = bar.querySelector('.cs-bar-text');
+    const list = bar.querySelector('.cs-bar-ticks');
+    const links = chapters.map((c, i) => {
+      if (!c.id) c.id = 'ch-' + (i + 1);
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#' + c.id;
+      a.setAttribute('aria-label', c.dataset.chapter + ', ' + (i + 1) + ' of ' + chapters.length);
+      li.appendChild(a); list.appendChild(li);
+      return a;
+    });
+    document.body.appendChild(bar);   // outside .view: its entrance transform would trap position: fixed
+    const hero = document.querySelector('.case-hero');
+    const end = document.querySelector('.next-case') || document.querySelector('.site-footer');
+    let current = -1;
+    bar.__update = () => {
+      const vh = window.innerHeight;
+      const pastHero = hero ? hero.getBoundingClientRect().bottom < vh * 0.4 : window.scrollY > vh * 0.5;
+      const atEnd = end ? end.getBoundingClientRect().top < vh * 0.9 : false;
+      bar.hidden = mobile.matches || !pastHero || atEnd;
+      let idx = 0;
+      chapters.forEach((c, i) => { if (c.getBoundingClientRect().top < vh * 0.5) idx = i; });
+      if (idx === current) return;
+      current = idx;
+      const last = idx === chapters.length - 1;
+      bar.classList.toggle('is-finished', last);
+      text.textContent = last ? 'Finished' : chapters[idx].dataset.chapter + ', ' + (idx + 1) + ' of ' + chapters.length;
+      links.forEach((a, i) => {
+        a.classList.toggle('is-past', i < idx);
+        if (i === idx) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current');
+      });
+    };
+  }
+
+  const top = document.createElement('button');
+  top.type = 'button';
+  top.className = 'to-top glass glass--interactive';
+  top.setAttribute('aria-label', 'Back to top');
+  top.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  top.tabIndex = -1;
+  document.body.appendChild(top);
+  top.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    const target = document.getElementById('main');
+    if (target) target.focus({ preventScroll: true });
+  });
+  const updateTop = () => {
+    const on = mobile.matches && window.scrollY > window.innerHeight * 0.9;
+    top.classList.toggle('is-on', on);
+    top.tabIndex = on ? 0 : -1;
+    top.setAttribute('aria-hidden', on ? 'false' : 'true');
+    if (on) {
+      const r = top.getBoundingClientRect();
+      top.classList.toggle('glass--light', isLightAt(top, r.left + r.width / 2, r.top + r.height / 2));
+    }
+  };
+
+  let floatQueued = false;
+  const floatUpdate = () => { floatQueued = false; if (bar) bar.__update(); updateTop(); };
+  const floatQueue = () => { if (!floatQueued) { floatQueued = true; requestAnimationFrame(floatUpdate); } };
+  window.addEventListener('scroll', floatQueue, { passive: true });
+  window.addEventListener('resize', floatQueue, { passive: true });
+  if (mobile.addEventListener) mobile.addEventListener('change', floatQueue);
+  floatUpdate();
+
   /* ---------- page load: reveal + scroll regions ---------- */
   armReveals(document);
   bindScrollables();

@@ -49,7 +49,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=19">
+<link rel="stylesheet" href="styles.css?v=24">
 <link rel="preload" href="assets/ed-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -86,7 +86,7 @@
     </div>
   </header>
 
-  <section class="sec ed-glance" aria-labelledby="ed-glance-h">
+  <section class="sec ed-glance" aria-labelledby="ed-glance-h" data-chapter="Overview">
     <div class="wrap">
       <h2 class="sr-only" id="ed-glance-h">At a glance</h2>
       <div class="glance">
@@ -97,7 +97,7 @@
     </div>
   </section>
 
-  <section class="ed-pause on-dark" aria-labelledby="ed-q-h" data-bg-shader="waterPlane" data-bg-colors="#2a6596, #08090c, #7b8696" data-bg-brightness="1" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 210" data-bg-speed="0.06" data-bg-density="1.4" data-bg-strength="2">
+  <section class="ed-pause on-dark" aria-labelledby="ed-q-h" data-chapter="Question" data-bg-shader="waterPlane" data-bg-colors="#2a6596, #08090c, #7b8696" data-bg-brightness="1" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 210" data-bg-speed="0.06" data-bg-density="1.4" data-bg-strength="2">
     <div class="wrap ed-q">
       <div class="sec-head reveal">
         <p class="label">The question</p>
@@ -112,7 +112,7 @@
     </div>
   </section>
 
-  <section class="sec bg-white ed-research" aria-labelledby="ed-res-h">
+  <section class="sec bg-white ed-research" aria-labelledby="ed-res-h" data-chapter="Research">
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="label">The research</p>
@@ -132,7 +132,7 @@
           <figure class="ed-fig reveal"><div class="ed-well"><img data-zoom loading="lazy" src="assets/ed-heatmap.webp" width="877" height="425" alt="Heatmap over the original virtual office: attention concentrates on the area of the amount due" decoding="async"></div></figure>
           <div class="ed-stats">
             <div class="ed-stat reveal" style="--d:80ms"><p class="ed-stat-n"><span data-count-from="0" data-count-to="1">1</span>%</p><p>The most attention any button got. “Pagar ahora” was one of them.</p><img data-zoom loading="lazy" class="ed-stat-img" src="assets/ed-attention.webp" width="430" height="314" alt="Attention overlay on the original buttons, tagged with 1% and 0%" decoding="async"></div>
-            <div class="ed-stat reveal" style="--d:160ms"><div class="ed-gauge" style="--g:.54" role="img" aria-label="Clarity score 54%"><span><span data-count-from="0" data-count-to="54">54</span>%</span></div><p><b>Clarity score:</b> moderate difficulty.</p></div>
+            <div class="ed-stat ed-stat--gauge reveal" style="--d:160ms"><div class="ed-gauge" style="--g:.54" role="img" aria-label="Clarity score 54%"><span><span data-count-from="0" data-count-to="54">54</span>%</span></div><p><b>Clarity score:</b> moderate difficulty.</p></div>
           </div>
         </div>
       </article>
@@ -142,7 +142,7 @@
         <figure class="ed-fig reveal"><div class="scroll-x ed-matrix-wrap" data-scroll data-label="Card sorting results" style="--min-mobile:760px">
               <table class="ed-matrix ed-matrix--figma"><caption class="sr-only">Card sorting results: share of participants who put each feature in each category</caption>
               <thead><tr><td></td><th scope="col">Supply</th><th scope="col">Bills &amp; Payments</th><th scope="col">Technical Support</th><th scope="col">Customer Service</th><th scope="col">Energy Advisor</th><th scope="col">Cost Simulator</th></tr></thead><tbody><tr><th scope="row">Consumption</th><td class="is-top">71%</td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td><td>29%</td><td class="is-empty"><span class="sr-only">No value</span></td></tr><tr><th scope="row">Supply</th><td class="is-top">71%</td><td class="is-empty"><span class="sr-only">No value</span></td><td>29%</td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td></tr><tr><th scope="row">Address &amp; ID</th><td class="is-top">43%</td><td class="is-empty"><span class="sr-only">No value</span></td><td>14%</td><td>29%</td><td class="is-empty"><span class="sr-only">No value</span></td><td>14%</td></tr><tr><th scope="row">Account Statement</th><td class="is-tie">43%</td><td class="is-empty"><span class="sr-only">No value</span></td><td>14%</td><td class="is-tie">43%</td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td></tr><tr><th scope="row">Amount Due (Total)</th><td class="is-tie">43%</td><td class="is-tie">43%</td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td><td>14%</td><td class="is-empty"><span class="sr-only">No value</span></td></tr><tr><th scope="row">Download Invoice</th><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-top">100%</td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td></tr><tr><th scope="row">Digital Invoice</th><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-top">86%</td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td><td>14%</td><td class="is-empty"><span class="sr-only">No value</span></td></tr><tr><th scope="row">Direct Debit</th><td>14%</td><td class="is-top">71%</td><td class="is-empty"><span class="sr-only">No value</span></td><td>14%</td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td></tr><tr><th scope="row">Last Invoice</th><td>14%</td><td class="is-top">71%</td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td><td>14%</td></tr><tr><th scope="row">Last Invoice Period</th><td>14%</td><td class="is-top">71%</td><td class="is-empty"><span class="sr-only">No value</span></td><td>14%</td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td></tr><tr><th scope="row">Amount Due by Cutoff Date</th><td>29%</td><td class="is-top">57%</td><td class="is-empty"><span class="sr-only">No value</span></td><td>14%</td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td></tr><tr><th scope="row">Consumption Chart</th><td>29%</td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-empty"><span class="sr-only">No value</span></td><td class="is-top">43%</td><td>29%</td></tr></tbody></table>
-            </div><figcaption>Share of participants per category. Blue marks each feature’s top category; light blue, a tie.</figcaption></figure>
+            </div><div class="ed-sortlist" aria-label="Card sorting results, grouped by the category most participants chose"><p class="ed-sortlist-note">Each feature sits under the category most participants chose for it, with that share.</p><section class="ed-sortgroup"><h4>Bills &amp; Payments<span>6 features</span></h4><ul><li><span class="ed-sort-name">Download Invoice</span><span class="ed-sort-bar" style="--v:1.00" aria-hidden="true"></span><span class="ed-sort-v">100%</span></li><li><span class="ed-sort-name">Digital Invoice</span><span class="ed-sort-bar" style="--v:0.86" aria-hidden="true"></span><span class="ed-sort-v">86%</span></li><li><span class="ed-sort-name">Direct Debit</span><span class="ed-sort-bar" style="--v:0.71" aria-hidden="true"></span><span class="ed-sort-v">71%</span></li><li><span class="ed-sort-name">Last Invoice</span><span class="ed-sort-bar" style="--v:0.71" aria-hidden="true"></span><span class="ed-sort-v">71%</span></li><li><span class="ed-sort-name">Last Invoice Period</span><span class="ed-sort-bar" style="--v:0.71" aria-hidden="true"></span><span class="ed-sort-v">71%</span></li><li><span class="ed-sort-name">Amount Due by Cutoff Date</span><span class="ed-sort-bar" style="--v:0.57" aria-hidden="true"></span><span class="ed-sort-v">57%</span></li></ul></section><section class="ed-sortgroup"><h4>Supply<span>3 features</span></h4><ul><li><span class="ed-sort-name">Consumption</span><span class="ed-sort-bar" style="--v:0.71" aria-hidden="true"></span><span class="ed-sort-v">71%</span></li><li><span class="ed-sort-name">Supply</span><span class="ed-sort-bar" style="--v:0.71" aria-hidden="true"></span><span class="ed-sort-v">71%</span></li><li><span class="ed-sort-name">Address &amp; ID</span><span class="ed-sort-bar" style="--v:0.43" aria-hidden="true"></span><span class="ed-sort-v">43%</span></li></ul></section><section class="ed-sortgroup"><h4>Energy Advisor<span>1 feature</span></h4><ul><li><span class="ed-sort-name">Consumption Chart</span><span class="ed-sort-bar" style="--v:0.43" aria-hidden="true"></span><span class="ed-sort-v">43%</span></li></ul></section><section class="ed-sortgroup ed-sortgroup--tie"><h4>Split in two<span>2 features</span></h4><ul><li><span class="ed-sort-name">Account Statement</span><span class="ed-sort-split">Supply and Customer Service, 43% each</span></li><li><span class="ed-sort-name">Amount Due (Total)</span><span class="ed-sort-split">Supply and Bills &amp; Payments, 43% each</span></li></ul></section></div><figcaption class="ed-matrix-cap">Share of participants per category. Blue marks each feature’s top category; light blue, a tie.</figcaption></figure>
       </article>
 
       <article class="ed-method" id="ed-m-heur">
@@ -160,7 +160,7 @@
     </div>
   </section>
 
-  <section class="sec ed-found-sec" aria-labelledby="ed-found-h">
+  <section class="sec ed-found-sec" aria-labelledby="ed-found-h" data-chapter="Findings">
     <div class="wrap">
       <div class="sec-head reveal"><p class="label">What I found</p><h2 class="t-h2" id="ed-found-h">Four problems, four things to design for</h2></div>
       <ol class="ed-found">
@@ -180,13 +180,15 @@
         <p class="sub">I cut the main menu to Inicio, Facturas, Reporte and Ayuda (Home, Bills, Report, Help), based on the card sorting results. Address and supply settings moved into the profile, since people rarely need them. Fewer options means people find what they need faster (Hick’s law).</p>
       </div>
       <div class="ed-cut" data-cut aria-hidden="true">
+        <p class="ed-cut-label"><b>11</b> menu items before</p>
         <ol class="ed-cut-old"><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li></ol>
+        <p class="ed-cut-label ed-cut-label--new"><b>4</b> tabs after</p>
         <div class="ed-cut-new"><span><svg class="" width="22" height="22" viewBox="0 0 54 54" fill="none" aria-hidden="true"><path d="M52.8802 26.5665L29.8651 2.2106L28.3224 0.577208C27.9709 0.207497 27.4956 0 27.0001 0C26.5047 0 26.0293 0.207497 25.6778 0.577208L1.12003 26.5665C0.759859 26.9464 0.47521 27.3988 0.282885 27.897C0.0905606 28.3953 -0.00554309 28.9293 0.000246886 29.4675C0.024072 31.6874 1.76926 33.4596 3.86588 33.4596H6.3973V54H47.6029V33.4596H50.1879C51.2065 33.4596 52.1654 33.037 52.8861 32.2739C53.241 31.8994 53.5222 31.454 53.7134 30.9637C53.9046 30.4733 54.002 29.9476 54 29.4171C54 28.345 53.6009 27.3296 52.8802 26.5665V26.5665ZM30.3356 49.4593H23.6646V36.5939H30.3356V49.4593ZM43.3144 28.9188V49.4593H34.1477V35.0803C34.1477 33.6866 33.0815 32.5577 31.7651 32.5577H22.2351C20.9187 32.5577 19.8526 33.6866 19.8526 35.0803V49.4593H10.6858V28.9188H4.96779L27.0061 5.60353L28.382 7.06034L49.0384 28.9188H43.3144Z" fill="currentColor"/></svg>Inicio</span><span><svg class="" width="22" height="22" viewBox="0 0 51.6 51.6" fill="none" aria-hidden="true"><path d="M41.28 5.16H51.6V43.86C51.6 45.9128 50.7845 47.8815 49.333 49.333C47.8815 50.7845 45.9128 51.6 43.86 51.6H7.74C5.68722 51.6 3.71853 50.7845 2.26699 49.333C0.815462 47.8815 0 45.9128 0 43.86L0 0H41.28V5.16ZM41.28 10.32V43.86C41.28 44.5443 41.5518 45.2005 42.0357 45.6843C42.5195 46.1682 43.1757 46.44 43.86 46.44C44.5443 46.44 45.2005 46.1682 45.6843 45.6843C46.1682 45.2005 46.44 44.5443 46.44 43.86V10.32H41.28ZM5.16 5.16V43.86C5.16 44.5443 5.43182 45.2005 5.91566 45.6843C6.39951 46.1682 7.05574 46.44 7.74 46.44H36.5586C36.266 45.6114 36.1177 44.7387 36.12 43.86V5.16H5.16ZM10.32 25.8H30.96V30.96H10.32V25.8ZM10.32 36.12H30.96V41.28H10.32V36.12ZM10.32 10.32H30.96V20.64H10.32V10.32Z" fill="currentColor"/></svg>Facturas</span><span><svg class="" width="22" height="22" viewBox="0 0 67.2 67.2" fill="none" aria-hidden="true"><path d="M8.40039 14.0004V53.2004C8.40039 56.2888 10.912 58.8004 14.0004 58.8004H53.2004C56.2888 58.8004 58.8004 56.2888 58.8004 53.2004V14.0004C58.8004 10.912 56.2888 8.40039 53.2004 8.40039H14.0004C10.912 8.40039 8.40039 10.912 8.40039 14.0004ZM53.2032 53.2004H14.0004V14.0004H53.2004L53.2032 53.2004Z" fill="currentColor"/><path d="M30.8006 19.6016H36.4006V47.6016H30.8006V19.6016ZM42.0006 28.0016H47.6006V47.6016H42.0006V28.0016ZM19.6006 33.6016H25.2006V47.6016H19.6006V33.6016Z" fill="currentColor"/></svg>Reporte</span><span><svg class="" width="22" height="22" viewBox="0 0 52.8 52.8" fill="none" aria-hidden="true"><path d="M26.4 0C11.843 0 0 11.843 0 26.4V37.3375C0 40.0409 2.36808 42.24 5.28 42.24H7.92C8.62017 42.24 9.29166 41.9619 9.78676 41.4668C10.2819 40.9717 10.56 40.3002 10.56 39.6V26.0225C10.56 25.3223 10.2819 24.6508 9.78676 24.1557C9.29166 23.6606 8.62017 23.3825 7.92 23.3825H5.52288C6.99072 13.1657 15.7819 5.28 26.4 5.28C37.0181 5.28 45.8093 13.1657 47.2771 23.3825H44.88C44.1798 23.3825 43.5083 23.6606 43.0132 24.1557C42.5181 24.6508 42.24 25.3223 42.24 26.0225V42.24C42.24 45.1519 39.8719 47.52 36.96 47.52H31.68V44.88H21.12V52.8H36.96C42.7838 52.8 47.52 48.0638 47.52 42.24C50.4319 42.24 52.8 40.0409 52.8 37.3375V26.4C52.8 11.843 40.957 0 26.4 0Z" fill="currentColor"/></svg>Ayuda</span></div>
       </div>
     </div>
   </section>
 
-  <section class="sec bg-white ed-design" aria-labelledby="ed-design-h">
+  <section class="sec bg-white ed-design" aria-labelledby="ed-design-h" data-chapter="Redesign">
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="label">The redesign</p>
@@ -451,7 +453,8 @@
       </div>
 
       <div class="mock">
-        <div class="mock-frame"><img loading="lazy" src="assets/ed-mockup-phone.webp" width="490" height="885" alt="Edelap home screen on a phone: the profile at the top, the balance due with a Pay now button below it, and a consumption chart" decoding="async"></div>
+        <span class="ed-chip ed-chip--after mock-chip">After</span>
+        <div class="mock-frame"><span class="mock-pin" style="--y:.1497;--sx:.884" aria-hidden="true">1</span><span class="mock-pin" style="--y:.3531;--sx:.759" aria-hidden="true">2</span><span class="mock-pin" style="--y:.4401;--sx:.902" aria-hidden="true">3</span><span class="mock-pin" style="--y:.6729;--sx:.902" aria-hidden="true">4</span><img loading="lazy" src="assets/ed-mockup-phone.webp" width="490" height="885" alt="Edelap home screen on a phone: the profile at the top, the balance due with a Pay now button below it, and a consumption chart" decoding="async"></div>
         <ul class="callouts">
           <li class="callout" style="--y:.1497;--sx:.884;--off:29px"><p><strong>Nested settings:</strong> Address and supply management are nested within the profile to declutter the main interface.</p></li>
           <li class="callout callout--green" style="--y:.3531;--sx:.759;--off:29px"><p><strong>Primary focus:</strong> The balance due is the clear visual focal point, supported by helpers for immediate status clarity.</p></li>
@@ -462,7 +465,7 @@
     </div>
   </section>
 
-  <section class="sec ed-system" aria-labelledby="ed-sys-h">
+  <section class="sec ed-system" aria-labelledby="ed-sys-h" data-chapter="Design system">
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="label">Design system</p>
@@ -492,7 +495,7 @@
     </div>
   </section>
 
-  <section class="sec ed-outcome on-dark" aria-labelledby="ed-out-h">
+  <section class="sec ed-outcome on-dark" aria-labelledby="ed-out-h" data-chapter="Outcome">
     <div class="wrap">
       <div class="ed-outcome-grid">
         <div class="sec-head reveal">
@@ -510,7 +513,7 @@
     </div>
   </section>
 
-  <section class="sec bg-white" aria-labelledby="ed-back-h">
+  <section class="sec bg-white" aria-labelledby="ed-back-h" data-chapter="Looking back">
     <div class="wrap">
       <div class="sec-head reveal">
         <h2 class="t-h2" id="ed-back-h">Looking back</h2>
@@ -561,11 +564,11 @@
     </div>
   </section>
 </footer>
-<script src="app.js?v=8" defer></script>
+<script src="app.js?v=9" defer></script>
 <script src="lightbox.js?v=1" defer></script>
 <script src="thumbs.js?v=9" defer></script>
 <script src="hero-shader.js?v=6" defer></script>
 <script src="section-shader.js?v=6" defer></script>
-<script src="edelap.js?v=2" defer></script>
+<script src="edelap.js?v=3" defer></script>
 </body>
 </html>

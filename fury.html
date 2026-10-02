@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Designing for the platform 15,000 Mercado Libre engineers ship with | David Hoyos</title>
-<meta name="description" content="Fury, Mercado Libre&#x27;s internal developer platform: Segments, deployment pipelines and Scotia, designed as part of the Fury design team.">
+<title>A new technical field with every project, inside Mercado Libre’s Fury | David Hoyos</title>
+<meta name="description" content="Fury is the platform under Mercado Libre. From 2024 to 2026 I designed Analytics with AI insights, deployment pipelines and multi-country infrastructure, learning each technical field along the way.">
 <meta name="robots" content="index, follow, noimageindex">
 <meta name="author" content="David Hoyos">
 <meta name="copyright" content="© 2026 David Hoyos. All rights reserved.">
@@ -33,8 +33,9 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=19">
+<link rel="stylesheet" href="styles.css?v=24">
 <link rel="preload" href="assets/pm-shader-poster.webp" as="image" type="image/webp">
+<link rel="preload" href="assets/fury/fury-analytics-home-sm.webp" as="image" type="image/webp">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -52,200 +53,280 @@
 <main id="main" tabindex="-1">
 <section class="view enter" id="view-fury">
 
-  <header class="case-hero case-hero--fy case-hero--shader case-hero--split on-dark" data-hero-shader data-shader-colors="#3d7bff, #0b1d4d, #7fd4ff">
+  <header class="case-hero case-hero--fy case-hero--shader case-hero--split on-dark fx-hero" data-hero-shader data-shader-colors="#3d7bff, #0b1d4d, #7fd4ff">
     <div class="wrap">
       <div class="copy">
-        <p class="eyebrow">Fury at Mercado Libre</p>
-        <h1 class="t-display-case" tabindex="-1" data-focus>Designing for the platform 15,000 Mercado Libre engineers ship with</h1>
-        <p class="lead">Fury is Mercado Libre’s internal developer platform. Every business in the company builds, deploys and monitors its services on it. I was part of the Fury design team, working inside the squads that own each part of the platform.</p>
+        <p class="eyebrow">Mercado Libre, internal developer platform</p>
+        <h1 class="t-display-case" tabindex="-1" data-focus>A new technical field with every project, inside Mercado Libre’s Fury</h1>
+        <p class="lead">Fury is the platform under Mercado Libre, where its engineers build, deploy and run the services behind the marketplace and Mercado Pago. Each part of it belongs to a different team. From 2024 to 2026 I designed across them, and every project meant learning a new field first.</p>
       </div>
-      <div class="case-hero-media fy-hero-shot" aria-hidden="true"><img src="assets/fury/fury-exec-finished-sm.webp" srcset="assets/fury/fury-exec-finished-sm.webp 800w, assets/fury/fury-exec-finished.webp 1440w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 560px" width="1440" height="1383" alt="" decoding="async" fetchpriority="high"></div>
+      <div class="case-hero-media fx-stack" aria-hidden="true">
+        <div class="fx-stack-back"><img src="assets/fury/fury-analytics-home.webp" srcset="assets/fury/fury-analytics-home-sm.webp 800w, assets/fury/fury-analytics-home.webp 1440w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 520px" width="1440" height="880" alt="" decoding="async" fetchpriority="high"></div>
+        <div class="fx-stack-front"><img src="assets/fury/fury-exec-finished.webp" srcset="assets/fury/fury-exec-finished-sm.webp 800w, assets/fury/fury-exec-finished.webp 1440w" sizes="(max-width: 1023.98px) 70vw, 380px" width="1440" height="1383" alt="" decoding="async"></div>
+      </div>
       <dl class="facts">
         <div><dt>Role</dt><dd>Product designer, Fury design team</dd></div>
-        <div><dt>Company</dt><dd>Mercado Libre, Nasdaq-100</dd></div>
-        <div><dt>Product</dt><dd>Internal developer platform</dd></div>
+        <div><dt>Team</dt><dd>Internal Tools, Mercado Libre</dd></div>
+        <div><dt>Years</dt><dd>2024 to 2026</dd></div>
         <div><dt>Used by</dt><dd>15,000+ engineers</dd></div>
         <div><dt>Runs</dt><dd>30,000+ microservices</dd></div>
       </dl>
     </div>
   </header>
 
-  <section class="sec pm-glance fy-glance" aria-labelledby="fy-glance-h">
+  <section class="sec bg-white fx-intro" aria-labelledby="fx-intro-h" data-chapter="Context">
     <div class="wrap">
-      <h2 class="sr-only" id="fy-glance-h">At a glance</h2>
-      <div class="glance">
-        <div><p class="label">The platform</p><p class="t-statement">One platform under the marketplace, Mercado Pago and every other Mercado Libre business.</p></div>
-        <div><p class="label">What we worked on</p><p class="t-statement">Segments, so one service can be set up per country and company, and deployment pipelines built from modules.</p></div>
-        <div><p class="label">How I worked</p><p class="t-statement">Inside the squads that own each feature, designing with Scotia, our team’s adaptation of Andes.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--label bg-white" aria-labelledby="fy-start-h">
-    <div class="wrap">
-      <div class="pm-start">
-        <div class="sec-head reveal">
-          <p class="label">The starting point</p>
-          <h2 class="t-h2" id="fy-start-h">One platform under every Mercado Libre business</h2>
-          <p class="sub">Mercado Libre is the largest e-commerce company in Latin America. Fury is the platform underneath it: built in-house since 2015, it’s where engineers create, deploy, manage and monitor their applications, every day.</p>
-          <p class="sub">Each part of Fury belongs to a squad. As part of the design team, I worked with those squads on new features and UX fixes, so the work below was shaped together with engineers, product managers and other designers.</p>
-          <p class="sub"><a class="fy-source" href="https://medium.com/mercadolibre-tech/the-technological-evolution-at-mercado-libre-fb269776a4e8" target="_blank" rel="noopener noreferrer">How Mercado Libre’s tech team built Fury<span class="sr-only"> (opens in a new tab)</span></a></p>
+      <div class="fx-intro-grid">
+        <div class="fx-intro-head">
+          <p class="label">Context</p>
+          <h2 class="t-h2" id="fx-intro-h">The platform under Latin America’s largest <span class="fx-nowrap">e-commerce</span> company</h2>
         </div>
-        <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot"><img data-zoom src="assets/fury/fury-pipelines-list.webp" srcset="assets/fury/fury-pipelines-list-sm.webp 800w, assets/fury/fury-pipelines-list.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 640px" width="1440" height="1024" alt="Fury deployment pipelines list, with each pipeline’s description, last editor and a Run button" decoding="async"></div></div>
-            <figcaption>Deployment pipelines, one of the sections of Fury I worked on.</figcaption>
-          </figure>
+        <div class="fx-intro-body">
+          <p class="fx-big">As Mercado Libre grew, its engineers needed infrastructure that kept up and fewer steps between writing code and running it. They built Fury for that in 2015: one place to create, deploy, connect to the cloud and monitor applications.</p>
+          <p>It started as separate tools, one per need, and over time they were unified into a single Fury for the whole company. Once everyone was using the same platform, it needed a design point of view, so a design team was formed inside Internal Tools. When I joined in 2024, that team was already running.</p>
+        </div>
+      </div>
+
+      <div class="fx-fields" aria-labelledby="fx-fields-h">
+        <div class="fx-fields-head">
+          <h3 class="t-h3" id="fx-fields-h">The hardest part was understanding the system</h3>
+          <p>Mercado Libre’s internal structure is huge and deeply technical. Each new project came with a new team and its own vocabulary, so it felt like changing industries every month. These are the fields I had to learn, and where each one appears below.</p>
+        </div>
+        <ol class="fx-index">
+          <li><a href="#fx-analytics"><span class="fx-index-field">Data, AI and cloud cost</span><span class="fx-index-what">Analytics for engineers, HR, billing and executives, with AI that reads two metrics together</span><span class="fx-index-go"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+          <li><a href="#fx-pipes"><span class="fx-index-field">Software delivery</span><span class="fx-index-what">Deployment pipelines: how code reaches production and how it comes back when it fails</span><span class="fx-index-go"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+          <li><a href="#fx-infra"><span class="fx-index-field">Multi-country infrastructure</span><span class="fx-index-what">One service configured per country and company, without settings reaching the wrong one</span><span class="fx-index-go"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+          <li><a href="#fx-platform"><span class="fx-index-field">The platform itself</span><span class="fx-index-what">Sixteen sections that grew apart, and the shared components that bring them back</span><span class="fx-index-go"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        </ol>
       </div>
     </div>
   </section>
 
-  <section class="pm-plan pm-pause on-dark" aria-labelledby="fy-seg-h" data-bg-shader="waterPlane" data-bg-colors="#2b6be0, #071a40, #6fd0ff" data-bg-brightness="0.95" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 225" data-bg-speed="0.06" data-bg-density="1.4" data-bg-strength="2">
+  <section class="sec fx-flow on-dark" aria-labelledby="fx-flow-h" data-chapter="How work arrived">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="label">Segments</p>
-        <h2 class="t-h2" id="fy-seg-h">One service, set up differently for each country and company</h2>
-        <p class="sub">Mercado Libre runs in many countries and through several companies, and the same service often needs different settings in each. Segments split a service by segments such as Argentina, Brazil, Mexico, Mex Bank or Non prod, across tools like Key Value Store, BigQueue and traffic authorizations.</p>
+      <div class="sec-head">
+        <p class="label">How work arrived</p>
+        <h2 class="t-h2" id="fx-flow-h">By the time a project reached me, the code usually existed</h2>
+        <p class="sub">Ideas came from engineering leadership and were built by development squads. When a feature needed experience and visual work, the squad sent a ticket to the Fury design team, and our design manager assigned it. From there it was mine.</p>
+      </div>
+      <ol class="fx-run" data-run aria-label="The path of a project, from idea to QA">
+        <li class="fx-mod"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Idea</span><span class="fx-mod-who">Engineering leadership</span></li>
+        <li class="fx-mod"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Build</span><span class="fx-mod-who">Development squad</span></li>
+        <li class="fx-mod"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Design request</span><span class="fx-mod-who">Ticket to the design team</span></li>
+        <li class="fx-mod"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Assignment</span><span class="fx-mod-who">Design manager</span></li>
+        <li class="fx-mod fx-mod--mine"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Kickoff</span><span class="fx-mod-who">Me, with the developers</span></li>
+        <li class="fx-mod fx-mod--mine"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Design</span><span class="fx-mod-who">Me</span></li>
+        <li class="fx-mod fx-mod--mine"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Handoff</span><span class="fx-mod-who">Me, fully documented</span></li>
+        <li class="fx-mod fx-mod--mine"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">QA</span><span class="fx-mod-who">Me, on what shipped</span></li>
+      </ol>
+      <div class="fx-flow-notes">
+        <p><b>About a month per project,</b> sometimes two at once. The last four modules were mine on every one of them.</p>
+        <p><b>Arriving after the code changed how I started.</b> The first version on screen showed what the engineers assumed about the task, so I read it as research before proposing anything.</p>
       </div>
     </div>
   </section>
 
-  <section class="sec bg-white pm-decisions" aria-label="Five decisions in Segments">
+  <section class="sec bg-white fx-chapter" id="fx-analytics" aria-labelledby="fx-an-h" data-chapter="Analytics">
     <div class="wrap">
-      <div class="decisions">
+      <div class="fx-ch-head">
+        <div class="sec-head">
+          <p class="label">Field 1: data, AI and cloud cost</p>
+          <h2 class="t-h2" id="fx-an-h">Analytics, for people who never deploy and people who deploy every day</h2>
+          <p class="sub">Analytics is a feature inside Fury where engineers, HR, billing and company executives look at how the company builds software and what it costs. The work was a dashboard of data visualizations where people can cross parameters, and then a way for AI to help read them.</p>
+        </div>
+        <aside class="fx-notes" aria-label="What I had to learn first">
+          <p class="fx-notes-title">What I had to learn first</p>
+          <dl><div><dt>Deployment frequency</dt><dd>How often a team ships a change to production.</dd></div><div><dt>Build and version</dt><dd>A build compiles the code; a version is a build ready to be deployed.</dd></div><div><dt>Merge time</dt><dd>How long a pull request waits before it joins the main code.</dd></div><div><dt>BU value and Meli value</dt><dd>A business unit’s number, next to the same number for all of Mercado Libre.</dd></div></dl>
+        </aside>
+      </div>
 
-        <article class="decision" id="fy-d1">
-          <div class="d-head"><p class="label">Decision 1 of 5</p><h3 class="t-h3">Choose the segments when the service is created</h3></div>
-          <div class="d-body">
-            <div class="d-block"><p class="label">The situation</p><p>A segment changes where a service runs and which rules apply to it, so it can’t be an afterthought hidden in settings.</p></div>
-            <div class="d-block"><p class="label">What we did</p><p>Segmentation became its own block in the creation form, right after the basic details. Picking a non-productive segment sets the related parameters to Test automatically, and the form says so.</p></div>
-            <div class="d-block"><p class="label">Why it mattered</p><p>Teams decide the most consequential setting first, with the defaults that keep test segments away from production values.</p></div>
-          </div>
-          <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-new-topic.webp" srcset="assets/fury/fury-new-topic-sm.webp 800w, assets/fury/fury-new-topic.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 664px" width="1440" height="1388" alt="BigQueue new topic form with a Segmentation block of country and environment checkboxes, followed by criticality, tags, rate limit and TTL" decoding="async"></div></div>
-          </figure>
-        </article>
+      <figure class="fx-canvas">
+        <div class="fx-canvas-shot"><img loading="lazy" data-zoom src="assets/fury/fury-analytics-home.webp" srcset="assets/fury/fury-analytics-home-sm.webp 800w, assets/fury/fury-analytics-home.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 1100px" width="1440" height="880" alt="Analytics home with tabs for Efficiency, Resilience, User impact, Code quality and Security, and metric cards such as deployment frequency, build time and merge time" decoding="async"></div>
+        <figcaption>Five tabs group the metrics. Every card ends with the same three actions: what the metric means, an alert when it changes, and an AI reading.</figcaption>
+      </figure>
 
-        <article class="decision decision--rev" id="fy-d2">
-          <div class="d-head"><p class="label">Decision 2 of 5</p><h3 class="t-h3">Combined by default, split when a segment needs it</h3></div>
-          <div class="d-body">
-            <div class="d-block"><p class="label">The situation</p><p>Most settings are the same in every segment. Asking for each value once per segment would make the form several times longer.</p></div>
-            <div class="d-block"><p class="label">What we did</p><p>Criticality, tags, rate limit and time to live show one row for all segments. A Combined and Split switch opens a row per segment only when one of them needs a different value.</p></div>
-            <div class="d-block"><p class="label">Why it mattered</p><p>The common case stays short, and the exception is one click away instead of a separate flow.</p></div>
-          </div>
-          <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-add-segment.webp" srcset="assets/fury/fury-add-segment-sm.webp 800w, assets/fury/fury-add-segment.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 664px" width="1440" height="1260" alt="Edit topic screen where criticality and rate limit sections have a Combined and Split switch next to the segments count" decoding="async"></div></div>
-          </figure>
+      <div class="fx-moves">
+        <article class="fx-move">
+          <p class="fx-move-n">1</p>
+          <h3>Every card has the same three exits</h3>
+          <p>Someone from billing and a tech lead read the same card differently. Info, alert and AI sit in the same corner of every metric, so neither has to learn a new layout per tab.</p>
         </article>
+        <article class="fx-move">
+          <p class="fx-move-n">2</p>
+          <h3>A number always comes with a reference</h3>
+          <p>A build count alone says little. The detail view plots the team’s value against Mercado Libre’s, and lets people regroup by application, strategy or time.</p>
+        </article>
+        <article class="fx-move">
+          <p class="fx-move-n">3</p>
+          <h3>Two metrics in, one reading out</h3>
+          <p>Together with the team, we proposed letting AI combine two metrics into one rate, rate it against the target and recommend where to look. If the cloud budget climbs month after month, it points to the part driving it.</p>
+        </article>
+      </div>
 
-        <article class="decision" id="fy-d3">
-          <div class="d-head"><p class="label">Decision 3 of 5</p><h3 class="t-h3">A name that says which segment you’re looking at</h3></div>
-          <div class="d-body">
-            <div class="d-block"><p class="label">The situation</p><p>Lists can hold the same service many times, once per segment. Without a convention, rows that look identical point to different infrastructure.</p></div>
-            <div class="d-block"><p class="label">What we did</p><p>We defined one rule: the service name followed by the segment. While configuring, the final name appears as a read-only field, so people see it before it exists.</p></div>
-            <div class="d-block"><p class="label">Why it mattered</p><p>Engineers can tell segments apart in a table, a log or a URL without opening each item.</p></div>
-          </div>
-          <figure class="pm-fig reveal">
-            <div class="pm-well fy-naming">
-              <p class="fy-rule"><span>[service-name]</span>-<span>[segment]</span></p>
-              <ul class="fy-names" aria-label="Examples">
-                <li>kvs-name-<b>mexbank</b></li><li>kvs-name-<b>nonprod</b></li><li>kvs-name-<b>platform</b></li><li>kvs-name-<b>legacy</b></li>
-              </ul>
-            </div>
-            <figcaption>The naming rule for segmented entities. The segment is abbreviated and lowercase in the name and in tables, and written in full where rows are grouped by segment.</figcaption>
-          </figure>
-        </article>
-
-        <article class="decision decision--rev" id="fy-d4">
-          <div class="d-head"><p class="label">Decision 4 of 5</p><h3 class="t-h3">Ask which segment before a destructive action</h3></div>
-          <div class="d-body">
-            <div class="d-block"><p class="label">The situation</p><p>Flushing a topic deletes its scheduled messages. In a segmented service, doing it everywhere by mistake is a production incident.</p></div>
-            <div class="d-block"><p class="label">What we did</p><p>The flush dialog asks for the segment first, warns when productive scopes might still use the service, and requires typing a confirmation before the button turns on.</p></div>
-            <div class="d-block"><p class="label">Why it mattered</p><p>The riskiest action in the screen became the one with the most friction, and only there.</p></div>
-          </div>
-          <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-segmented-flush.webp" srcset="assets/fury/fury-segmented-flush-sm.webp 800w, assets/fury/fury-segmented-flush.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 664px" width="1440" height="1027" alt="Flush topic dialog with a warning, a segment selector and a confirmation field over the topic detail heatmap" decoding="async"></div></div>
-          </figure>
-        </article>
-
-        <article class="decision" id="fy-d5">
-          <div class="d-head"><p class="label">Decision 5 of 5</p><h3 class="t-h3">Access between segments, made explicit</h3></div>
-          <div class="d-body">
-            <div class="d-block"><p class="label">The situation</p><p>Applications in one segment sometimes need to call services in another, and those permissions have to be visible and reviewable.</p></div>
-            <div class="d-block"><p class="label">What we did</p><p>Traffic authorization separates the access groups a team exposes from the ones it’s been granted. Each group shows its rule type, such as inter-segment, with the segment of origin and destination.</p></div>
-            <div class="d-block"><p class="label">Why it mattered</p><p>Cross-segment access stops being a hidden exception in a config file and becomes something a team can read, approve and revoke.</p></div>
-          </div>
-          <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-traffic-access.webp" srcset="assets/fury/fury-traffic-access-sm.webp 800w, assets/fury/fury-traffic-access.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 664px" width="1440" height="1024" alt="Traffic authorization screen listing exposed access groups, with rule type Inter segment and segment origin and destination" decoding="async"></div></div>
-          </figure>
-        </article>
+      <div class="fx-pair">
+        <figure class="pm-fig">
+          <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-analytics-detail.webp" srcset="assets/fury/fury-analytics-detail-sm.webp 800w, assets/fury/fury-analytics-detail.webp 1440w" sizes="(max-width: 899.98px) 92vw, 600px" width="1440" height="740" alt="Builds and versions detail with filters, a line chart comparing Meli value, BU value and all, and a donut chart by deployment strategy" decoding="async"></div></div>
+          <figcaption>The detail view: the team’s line against Mercado Libre’s, and the same builds split by deployment strategy.</figcaption>
+        </figure>
+        <figure class="pm-fig">
+          <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-ai-insights.webp" srcset="assets/fury/fury-ai-insights-sm.webp 800w, assets/fury/fury-ai-insights.webp 1440w" sizes="(max-width: 899.98px) 92vw, 600px" width="1440" height="1024" alt="AI insights combining builds and generated versions into a rate of deployed versions, with Above, Meet, Warning and Below states and recommendations" decoding="async"></div></div>
+          <figcaption>AI Metrics: builds and generated versions become a rate of deployed versions, marked Above, Meet, Warning or Below, with recommendations beside it.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="sec sec--label fy-pipes" aria-labelledby="fy-pipes-h">
+  <section class="sec fx-chapter fx-chapter--tint" id="fx-pipes" aria-labelledby="fx-pp-h" data-chapter="Pipelines">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="label">Deployment pipelines</p>
-        <h2 class="t-h2" id="fy-pipes-h">Pipelines built from modules</h2>
-        <p class="sub">A pipeline is a sequence of modules: deploy, wait, swap traffic, roll back and finish. Each deployment module lists its scopes with their version, configuration release and strategy, such as canary or blue-green.</p>
+      <div class="fx-ch-head">
+        <div class="sec-head">
+          <p class="label">Field 2: software delivery</p>
+          <h2 class="t-h2" id="fx-pp-h">Deployment pipelines, from the first module to the rollback</h2>
+          <p class="sub">A pipeline is the sequence that takes a new version to production: deploy, wait, move traffic, and roll back if something fails. Engineers build it once and run it many times, so the work covered the whole life of a pipeline, including the moment it breaks.</p>
+        </div>
+        <aside class="fx-notes" aria-label="What I had to learn first">
+          <p class="fx-notes-title">What I had to learn first</p>
+          <dl><div><dt>Scope</dt><dd>An environment where an app runs, such as a production region or a test instance.</dd></div><div><dt>Canary</dt><dd>Sending a small share of traffic to the new version before everyone gets it.</dd></div><div><dt>Blue-green</dt><dd>Two identical environments; traffic switches from one to the other.</dd></div><div><dt>Rollback</dt><dd>Returning to the last version that worked.</dd></div></dl>
+        </aside>
       </div>
-      <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot" style="--mw:880px"><img loading="lazy" data-zoom src="assets/fury/fury-pipeline-build.webp" srcset="assets/fury/fury-pipeline-build-sm.webp 800w, assets/fury/fury-pipeline-build.webp 1433w" sizes="(max-width: 1023.98px) 92vw, 880px" width="1433" height="1440" alt="New pipeline from scratch: deployment, wait, finish and rollback modules stacked, with a row of modules to add" decoding="async"></div></div>
-            <figcaption>Building a pipeline: modules stack in order, and new ones are added from the row at the bottom.</figcaption>
-          </figure>
-      <div class="fy-grid">
-        <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-pipeline-preview.webp" srcset="assets/fury/fury-pipeline-preview-sm.webp 800w, assets/fury/fury-pipeline-preview.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1440" height="1024" alt="Run pipeline preview showing the sequence of modules and the traffic percentages of the swap traffic module" decoding="async"></div></div>
-            <figcaption>Before running, a preview shows the whole sequence, and each module opens its details.</figcaption>
-          </figure>
-        <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-exec-rollback.webp" srcset="assets/fury/fury-exec-rollback-sm.webp 800w, assets/fury/fury-exec-rollback.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1440" height="1192" alt="Execution details with the rollback module expanded, showing failed scopes and an error tooltip" decoding="async"></div></div>
-            <figcaption>When a step fails, the error appears where it happened: here, in one scope of the rollback.</figcaption>
-          </figure>
-        <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-pipeline-reco.webp" srcset="assets/fury/fury-pipeline-reco-sm.webp 800w, assets/fury/fury-pipeline-reco.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1440" height="1024" alt="New pipeline from a recommendation, with name, description and variables to complete" decoding="async"></div></div>
-            <figcaption>Teams can start from a recommended pipeline and only fill in what changes.</figcaption>
-          </figure>
-        <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-ai-insights.webp" srcset="assets/fury/fury-ai-insights-sm.webp 800w, assets/fury/fury-ai-insights.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1440" height="1024" alt="Analytics insights with the rate of deployed versions and recommendations next to the metrics" decoding="async"></div></div>
-            <figcaption>AI Insights, another piece I worked on: metrics on deployed versions with recommendations beside them.</figcaption>
-          </figure>
+    </div>
+    <div class="wrap">
+      <div class="fx-wizard" data-wizard>
+        <div class="fx-wz-steps" role="tablist" aria-label="The life of a pipeline">
+          <button type="button" role="tab" id="fx-wz-t-build" aria-controls="fx-wz-p-build" aria-selected="true"><span class="fx-wz-n" aria-hidden="true">1</span><span class="fx-wz-name">Build</span><span class="fx-wz-sub">Modules stack in order</span></button>
+          <button type="button" role="tab" id="fx-wz-t-preview" aria-controls="fx-wz-p-preview" aria-selected="false" tabindex="-1"><span class="fx-wz-n" aria-hidden="true">2</span><span class="fx-wz-name">Preview</span><span class="fx-wz-sub">The full sequence before running</span></button>
+          <button type="button" role="tab" id="fx-wz-t-run" aria-controls="fx-wz-p-run" aria-selected="false" tabindex="-1"><span class="fx-wz-n" aria-hidden="true">3</span><span class="fx-wz-name">Run</span><span class="fx-wz-sub">Every scope with its version and strategy</span></button>
+          <button type="button" role="tab" id="fx-wz-t-fail" aria-controls="fx-wz-p-fail" aria-selected="false" tabindex="-1"><span class="fx-wz-n" aria-hidden="true">4</span><span class="fx-wz-name">Fail</span><span class="fx-wz-sub">The error appears where it happened</span></button>
+          <button type="button" role="tab" id="fx-wz-t-reco" aria-controls="fx-wz-p-reco" aria-selected="false" tabindex="-1"><span class="fx-wz-n" aria-hidden="true">5</span><span class="fx-wz-name">Suggest</span><span class="fx-wz-sub">A pipeline suggested from the app’s scopes</span></button>
+        </div>
+        <div class="fx-wz-stage">
+          <div class="fx-wz-panel" role="tabpanel" id="fx-wz-p-build" aria-labelledby="fx-wz-t-build">
+            <div class="fx-wz-frame"><img data-zoom src="assets/fury/fury-pipeline-build.webp" srcset="assets/fury/fury-pipeline-build-sm.webp 800w, assets/fury/fury-pipeline-build.webp 1433w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1433" height="1440" alt="New pipeline from scratch: deployment, wait, finish and rollback modules stacked, with a row of modules to add" decoding="async"></div>
+            <p class="fx-wz-desc">Deploy, wait, swap traffic, finish and roll back are modules. Teams stack them in order and add new ones from the row at the bottom.</p>
+          </div>
+          <div class="fx-wz-panel" role="tabpanel" id="fx-wz-p-preview" aria-labelledby="fx-wz-t-preview" hidden>
+            <div class="fx-wz-frame"><img loading="lazy" data-zoom src="assets/fury/fury-pipeline-preview.webp" srcset="assets/fury/fury-pipeline-preview-sm.webp 800w, assets/fury/fury-pipeline-preview.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1440" height="1024" alt="Run pipeline preview with the sequence of modules and the traffic percentages of the swap traffic module" decoding="async"></div>
+            <p class="fx-wz-desc">Before anything runs, the whole sequence is visible, and each module opens its details, such as how much traffic moves to each scope.</p>
+          </div>
+          <div class="fx-wz-panel" role="tabpanel" id="fx-wz-p-run" aria-labelledby="fx-wz-t-run" hidden>
+            <div class="fx-wz-frame"><img loading="lazy" data-zoom src="assets/fury/fury-exec-finished.webp" srcset="assets/fury/fury-exec-finished-sm.webp 800w, assets/fury/fury-exec-finished.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1440" height="1383" alt="Finished execution with the deployment module expanded, listing scopes, versions, strategy and status" decoding="async"></div>
+            <p class="fx-wz-desc">During and after a run, each module lists its scopes with version, strategy and status.</p>
+          </div>
+          <div class="fx-wz-panel" role="tabpanel" id="fx-wz-p-fail" aria-labelledby="fx-wz-t-fail" hidden>
+            <div class="fx-wz-frame"><img loading="lazy" data-zoom src="assets/fury/fury-exec-rollback.webp" srcset="assets/fury/fury-exec-rollback-sm.webp 800w, assets/fury/fury-exec-rollback.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1440" height="1192" alt="Execution details with the rollback module expanded, showing failed scopes and an error tooltip" decoding="async"></div>
+            <p class="fx-wz-desc">When a step fails, the error shows in the scope that failed, inside the module where it happened.</p>
+          </div>
+          <div class="fx-wz-panel" role="tabpanel" id="fx-wz-p-reco" aria-labelledby="fx-wz-t-reco" hidden>
+            <div class="fx-wz-frame"><img loading="lazy" data-zoom src="assets/fury/fury-pipeline-reco.webp" srcset="assets/fury/fury-pipeline-reco-sm.webp 800w, assets/fury/fury-pipeline-reco.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1440" height="1024" alt="New pipeline from a recommendation, with name, description and variables to complete" decoding="async"></div>
+            <p class="fx-wz-desc">Fury reads the scopes of the selected app and suggests a pipeline, so teams only fill in what changes.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="sec pm-outcome pm-pause on-dark" aria-labelledby="fy-scotia-h" data-bg-shader="waterPlane" data-bg-colors="#1f56c8, #06122e, #5cc4ff" data-bg-brightness="1.1" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 160" data-bg-speed="0.06" data-bg-density="1.4" data-bg-strength="2">
+  <section class="sec bg-white fx-chapter" id="fx-infra" aria-labelledby="fx-in-h" data-chapter="Infrastructure">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="label">Scotia</p>
-        <h2 class="t-h2" id="fy-scotia-h">Andes, adapted for Fury</h2>
-        <p class="sub">Andes is Mercado Libre’s design system. Fury needed pieces it didn’t cover yet, like dense tables, technical icons and empty states for developer tools, so the team built Scotia, a library on top of Andes.</p>
-        <p class="sub">I didn’t create Scotia. Like every designer on the team, I kept it in step with Andes and added the components my projects needed, so the next person could reuse them.</p>
+      <div class="fx-ch-head">
+        <div class="sec-head">
+          <p class="label">Field 3: multi-country infrastructure</p>
+          <h2 class="t-h2" id="fx-in-h">One service, configured per country and company</h2>
+          <p class="sub">Mercado Libre runs in many countries and through several companies, and the same service often needs different settings in each. The platform team defined how to split services by segment, such as Argentina, Brazil, Mex Bank or Non prod. My part was the execution: making that model usable in Key Value Store, BigQueue and traffic authorizations.</p>
+        </div>
+        <aside class="fx-notes" aria-label="What I had to learn first">
+          <p class="fx-notes-title">What I had to learn first</p>
+          <dl><div><dt>Segment</dt><dd>The same service split by country or company.</dd></div><div><dt>Key Value Store</dt><dd>A fast store for simple data a service reads often.</dd></div><div><dt>Topic and flush</dt><dd>A topic holds a service’s messages; flushing it deletes the scheduled ones.</dd></div><div><dt>Traffic authorization</dt><dd>Which applications are allowed to call a service.</dd></div></dl>
+        </aside>
       </div>
-      <ul class="cards">
-        <li class="card reveal"><h3>Tables</h3><p>Presets with 5, 10 and 15 rows, search and pagination, and expandable rows for nested data.</p></li>
-        <li class="card reveal" style="--d:60ms"><h3>Empty states</h3><p>Four sizes and 16 illustrations, so an empty screen explains what goes there and how to start.</p></li>
-        <li class="card reveal" style="--d:120ms"><h3>Icons</h3><p>Technical icons like pull request, fork, merge and version, and logos for tools such as GitHub, Datadog, AWS and GCP.</p></li>
-      </ul>
+
+      <div class="fx-tiles">
+        <figure class="fx-tile">
+          <div class="pm-shot fx-frame" style="--op: 50% 72%"><img loading="lazy" data-zoom src="assets/fury/fury-new-topic.webp" srcset="assets/fury/fury-new-topic-sm.webp 800w, assets/fury/fury-new-topic.webp 1440w" sizes="(max-width: 767.98px) 92vw, 600px" width="1440" height="1388" alt="BigQueue new topic form with a Segmentation block of country and environment checkboxes" decoding="async"></div>
+          <figcaption><b>Segments are chosen when the service is created.</b> Picking a non-productive segment sets the related parameters to Test, and the form says so.</figcaption>
+        </figure>
+        <figure class="fx-tile fx-tile--ink">
+          <div class="fy-naming fx-frame">
+            <p class="fy-rule"><span>[service-name]</span>-<span>[segment]</span></p>
+            <ul class="fy-names" aria-label="Examples">
+              <li>kvs-name-<b>mexbank</b></li><li>kvs-name-<b>nonprod</b></li><li>kvs-name-<b>platform</b></li><li>kvs-name-<b>legacy</b></li>
+            </ul>
+          </div>
+          <figcaption><b>One naming rule, shown before the service exists.</b> The final name appears read-only while configuring, so identical-looking rows stop pointing to different infrastructure.</figcaption>
+        </figure>
+        <figure class="fx-tile">
+          <div class="pm-shot fx-frame"><img loading="lazy" data-zoom src="assets/fury/fury-segmented-flush.webp" srcset="assets/fury/fury-segmented-flush-sm.webp 800w, assets/fury/fury-segmented-flush.webp 1440w" sizes="(max-width: 767.98px) 92vw, 600px" width="1440" height="1027" alt="Flush topic dialog with a warning, a segment selector and a confirmation field" decoding="async"></div>
+          <figcaption><b>The riskiest action asks which segment first.</b> Flush warns when productive scopes may still use the service and needs a typed confirmation.</figcaption>
+        </figure>
+        <figure class="fx-tile">
+          <div class="pm-shot fx-frame"><img loading="lazy" data-zoom src="assets/fury/fury-traffic-access.webp" srcset="assets/fury/fury-traffic-access-sm.webp 800w, assets/fury/fury-traffic-access.webp 1440w" sizes="(max-width: 767.98px) 92vw, 600px" width="1440" height="1024" alt="Traffic authorization screen listing access groups with rule type Inter segment, origin and destination" decoding="async"></div>
+          <figcaption><b>Access between segments is readable.</b> Each access group shows its rule type and the segments of origin and destination.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
-  <section class="sec bg-white" aria-labelledby="fy-lib-h">
+  <section class="sec fx-chapter fx-platform on-dark" id="fx-platform" aria-labelledby="fx-pl-h" data-chapter="Platform">
     <div class="wrap">
-      <h2 class="sr-only" id="fy-lib-h">Scotia in Figma</h2>
-      <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot" style="--mw:1000px"><img loading="lazy" data-zoom src="assets/fury/fury-scotia-tables.webp" srcset="assets/fury/fury-scotia-tables-sm.webp 800w, assets/fury/fury-scotia-tables.webp 1600w" sizes="(max-width: 1023.98px) 92vw, 1000px" width="1600" height="850" alt="Scotia table presets in Figma: simple, with search and pagination, and expandable" decoding="async"></div></div>
-            <figcaption>Table presets in Scotia.</figcaption>
-          </figure>
-      <div class="fy-grid">
-        <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-empty-states.webp" srcset="assets/fury/fury-empty-states-sm.webp 800w, assets/fury/fury-empty-states.webp 1508w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1508" height="1600" alt="Grid of Scotia empty state illustrations in several sizes" decoding="async"></div></div>
-            <figcaption>Empty state illustrations, adapted to each size.</figcaption>
-          </figure>
-        <figure class="pm-fig reveal">
-            <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="assets/fury/fury-scotia-status.webp" srcset="assets/fury/fury-scotia-status-sm.webp 800w, assets/fury/fury-scotia-status.webp 1497w" sizes="(max-width: 1023.98px) 92vw, 600px" width="1497" height="1920" alt="Scotia build status table listing each component’s specs, design and code status, and the team responsible" decoding="async"></div></div>
-            <figcaption>The library’s build status, split between the design team and front end.</figcaption>
-          </figure>
+      <div class="sec-head">
+        <p class="label">Field 4: the platform itself</p>
+        <h2 class="t-h2" id="fx-pl-h">Sixteen sections, sixteen ways to say “nothing here”</h2>
+        <p class="sub">Fury grew one tool at a time, built by different squads, and it showed. A teammate audited the empty states of 39 screens across 16 sections. The same moment had a different layout, illustration and tone in almost every one.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="fx-versus">
+        <figure class="fx-vs">
+          <div class="fx-vs-frame"><img loading="lazy" data-zoom src="assets/fury/fury-es-auth.webp" srcset="assets/fury/fury-es-auth-sm.webp 800w, assets/fury/fury-es-auth.webp 1440w" sizes="(max-width: 899.98px) 92vw, 600px" width="1440" height="600" alt="Authorizations with no requests: a large card with a title, a description, an illustration and a button" decoding="async"><span class="fx-vs-ring" style="--x:6%;--y:37%;--w:89%;--h:55%" aria-hidden="true"></span></div>
+          <figcaption><span>Authorizations</span>Title, description, illustration and a button</figcaption>
+        </figure>
+        <p class="fx-vs-mid" aria-hidden="true">Same message</p>
+        <figure class="fx-vs">
+          <div class="fx-vs-frame"><img loading="lazy" data-zoom src="assets/fury/fury-es-news-full.webp" srcset="assets/fury/fury-es-news-full-sm.webp 800w, assets/fury/fury-es-news-full.webp 1440w" sizes="(max-width: 899.98px) 92vw, 600px" width="1440" height="600" alt="News and events with no active events: one grey line inside a box, at the top of the page" decoding="async"><span class="fx-vs-ring" style="--x:6%;--y:26%;--w:56%;--h:17%" aria-hidden="true"></span></div>
+          <figcaption><span>News and events</span>One grey line and a small cloud</figcaption>
+        </figure>
+      </div>
+      <p class="fx-vs-note">The audit became a single empty state component in Scotia, in four sizes, so every section says “nothing here” the same way.</p>
+    </div>
+  </section>
+
+  <section class="sec bg-white fx-scotia" aria-labelledby="fx-sc-h" data-chapter="Handoff">
+    <div class="wrap">
+      <div class="fx-ch-head fx-ch-head--solo">
+        <div class="sec-head">
+          <p class="label">Handoff</p>
+          <h2 class="t-h2" id="fx-sc-h">Everything the next designer needs, written down</h2>
+          <p class="sub">Projects lasted about a month and the next one often started right away, so each handoff had to stand on its own. Whoever picked up the work, a developer or the next designer, could continue without having to find me first.</p>
+        </div>
+      </div>
+      <ol class="fx-doc" aria-label="What every handoff documented">
+        <li><h3>What I discovered</h3><p>How that part of the system works, the vocabulary of the team and the technical limits that shaped the design.</p></li>
+        <li><h3>What I designed</h3><p>Flows, states and specs for development, with the reasoning behind each decision and the reusable pieces marked as such.</p></li>
+        <li><h3>What is still pending</h3><p>Open questions, ideas left out of scope and what QA found after release, so nothing depended on my memory.</p></li>
+      </ol>
+      <div class="fx-doc-lib">
+        <p>Components that other projects could use went into Scotia, our team’s library on top of Andes, Mercado Libre’s design system. I didn’t create Scotia; I kept it in step with Andes and added what my projects needed, like these two charts from Analytics.</p>
+      </div>
+      <div class="fx-charts">
+        <figure class="fx-chart">
+          <img loading="lazy" data-zoom src="assets/fury/fury-chart-cloud.webp" width="1049" height="247" alt="Area chart of daily cloud utilization against purchased plans, with underutilization shaded in orange" decoding="async">
+          <figcaption>Cloud utilization against purchased plans, with the underused part shaded.</figcaption>
+        </figure>
+        <figure class="fx-chart">
+          <img loading="lazy" data-zoom src="assets/fury/fury-chart-timeline.webp" width="1123" height="300" alt="Timeline chart of versions across a quarter, with bars for transitive dependencies and their sunset dates" decoding="async">
+          <figcaption>Versions on a quarter timeline, with their transitive dependencies and sunset dates.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec fx-reflect" aria-labelledby="fx-rf-h" data-chapter="Reflection">
+    <div class="wrap">
+      <div class="fx-reflect-grid">
+        <h2 class="t-h2" id="fx-rf-h">What two years of changing fields taught me</h2>
+        <div class="fx-reflect-body">
+          <p>Understanding the system took longer than designing for it. In two years I learned a lot about cloud, infrastructure, billing, AI and software development, because each team needed me to understand how its part of Mercado Libre works before my proposals were useful.</p>
+          <p>Platform work rarely ends with one metric to show. What I can point to is the path each project followed: a kickoff with the developers, a design built from what already existed, a handoff the next person could reuse, and QA on what actually shipped.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -285,10 +366,11 @@
     </div>
   </section>
 </footer>
-<script src="app.js?v=8" defer></script>
+<script src="app.js?v=9" defer></script>
 <script src="lightbox.js?v=1" defer></script>
 <script src="thumbs.js?v=9" defer></script>
 <script src="hero-shader.js?v=6" defer></script>
 <script src="section-shader.js?v=6" defer></script>
+<script src="fury.js?v=3" defer></script>
 </body>
 </html>

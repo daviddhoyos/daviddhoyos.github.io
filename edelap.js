@@ -33,11 +33,14 @@
   const count = (root) => {
     const nums = [...root.querySelectorAll('[data-count-to]')];
     const t0 = performance.now(), dur = 1600;
+    const gauges = [...root.querySelectorAll('.ed-gauge')];
     nums.forEach((n) => { n.textContent = n.dataset.countFrom; });
+    gauges.forEach((g) => g.style.setProperty('--gv', '0'));
     const tick = (now) => {
       const t = Math.min(1, (now - t0) / dur);
       nums.forEach((n, i) => { const a = +n.dataset.countFrom, b = +n.dataset.countTo; const tt = Math.max(0, Math.min(1, t * 1.3 - i * 0.1)); n.textContent = tt < 1 ? Math.round(a + (b - a) * ease(tt)) : String(b); });
-      if (t < 1 || nums.some((n) => n.textContent !== n.dataset.countTo)) { if (now - t0 < dur * 1.6) requestAnimationFrame(tick); else nums.forEach((n) => { n.textContent = n.dataset.countTo; }); }
+      gauges.forEach((g) => { const n = g.querySelector('[data-count-to]'); if (n) g.style.setProperty('--gv', (+getComputedStyle(g).getPropertyValue('--g') * (+n.textContent / +n.dataset.countTo)).toFixed(4)); });
+      if (t < 1 || nums.some((n) => n.textContent !== n.dataset.countTo)) { if (now - t0 < dur * 1.6) requestAnimationFrame(tick); else { nums.forEach((n) => { n.textContent = n.dataset.countTo; }); gauges.forEach((g) => g.style.removeProperty('--gv')); } }
     };
     requestAnimationFrame(tick);
   };
