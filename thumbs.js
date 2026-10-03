@@ -9,7 +9,7 @@
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   const hover = window.matchMedia('(hover: hover) and (pointer: fine)');
 
-  document.querySelectorAll('.thumb, .status-card, .hero-thumb').forEach((card) => {
+  document.querySelectorAll('.thumb, .status-card, .hero-thumb, .more-card').forEach((card) => {
     const win = card.querySelector('.win');
     const art = win || card.querySelector('.edelap-media');   // the animated piece: product window, or Edelap's media box
     if (!art) return;

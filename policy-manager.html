@@ -49,7 +49,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=37">
+<link rel="stylesheet" href="styles.css?v=40">
 <link rel="preload" href="assets/pm-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -95,6 +95,16 @@
         <div><p class="label">What I did</p><p class="t-statement">Made failures safe first, then replaced the review wizard with tabs, brought Word and Google Docs into the product and gave approvers a shorter path.</p></div>
         <div><p class="label">The outcome</p><p class="t-statement">The clients at risk renewed long term, board members approve in 3 steps instead of 14, and the core patterns still ship in 2026.</p></div>
       </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="pm-biz-h" data-chapter="The business">
+    <div class="wrap">
+      <div class="biz-grid">
+        <div class="sec-head"><p class="label">The business</p><h2 class="t-h2" id="pm-biz-h">A renewal is decided long before it’s signed</h2></div>
+        <div class="biz-body"><p class="biz-lead">Policy Manager is one of the apps inside Diligent One, the platform Diligent sells to large companies for governance and compliance.</p><p>Clients pay on contracts that run for months or years, and they review them well before they renew. The people in that review are the same compliance teams who use Policy Manager every week, so every crash they lived through became an argument for leaving.</p><p>The backend fixes would take time, and the renewal conversations wouldn’t wait for them, so the first job was to make failures survivable for the people already deciding whether to stay.</p></div>
+      </div>
+      <ul class="biz-points" style="--n:2"><li><h3>The user is the buyer</h3><p>The compliance teams approving policies in the product are the ones with a voice when the contract comes up.</p></li><li><h3>Decisions with long memory</h3><p>A contract reviewed over months remembers a bad quarter, so stability had to be visible before that review started.</p></li></ul>
     </div>
   </section>
 
@@ -282,7 +292,7 @@
             </div>
             <p class="pm-swipe" aria-hidden="true">Swipe to compare</p>
           </div><div role="tabpanel" id="pm-p-history" aria-labelledby="pm-t-history" hidden>
-            <p class="pm-screen-desc">Each revision lists what was added and removed, so reviewers see what changed without comparing two versions by eye.</p>
+            <p class="pm-screen-desc">Each revision shows what was removed in red and what was added in green, so reviewers see what changed without comparing two versions by eye.</p>
             <div class="pm-pair">
               <div class="pm-pair-item" style="--ar:1.8223"><span class="pm-chip">Before</span><div class="pm-shot"><img loading="lazy" data-zoom src="assets/pmx-history-before.webp" srcset="assets/pmx-history-before-sm.webp 564w, assets/pmx-history-before.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="619" alt="Before: the History viewer with a list of versions and the policy text" decoding="async"></div></div>
               <div class="pm-pair-item" style="--ar:1.4047"><span class="pm-chip pm-chip--after">After</span><div class="pm-shot"><img loading="lazy" data-zoom src="assets/pmx-history-after.webp" srcset="assets/pmx-history-after-sm.webp 564w, assets/pmx-history-after.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="803" alt="After: the History viewer listing what was added and removed in each revision" decoding="async"></div></div>
@@ -298,14 +308,14 @@
             <h4 class="t-h4">Sharing policies with subscribing school districts</h4>
             <p>Some clients are partner organizations that maintain policies for groups of school districts. As they moved from BoardDocs to Diligent Community, they needed to publish new or updated policies to those districts straight from Policy Manager, which made this feature critical to keeping them. I designed Subscriber Management: admins add a district from the Community site, choose which policy folders it receives and manage its status.</p>
           </div>
-          <ol class="pm-flow"><li><div class="pm-shot"><img data-zoom src="assets/pmx-subs-empty.webp" srcset="assets/pmx-subs-empty-sm.webp 360w, assets/pmx-subs-empty.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Subscribers page with no subscribers yet and an Add Subscriber button" loading="lazy" decoding="async"></div><p><b>1</b>Empty state</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-subs-add.webp" srcset="assets/pmx-subs-add-sm.webp 360w, assets/pmx-subs-add.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Add Subscriber form with name, type, policy folders and status" loading="lazy" decoding="async"></div><p><b>2</b>Add a subscriber</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-subs-manage.webp" srcset="assets/pmx-subs-manage-sm.webp 360w, assets/pmx-subs-manage.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Subscribers table with a dialog to deactivate a subscriber" loading="lazy" decoding="async"></div><p><b>3</b>Manage status</p></li></ol>
+          <ol class="pm-flow"><li><div class="pm-shot"><img data-zoom src="assets/pmx-subs-empty.webp" srcset="assets/pmx-subs-empty-sm.webp 360w, assets/pmx-subs-empty.webp 720w, assets/pmx-subs-empty-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Subscribers page with no subscribers yet and an Add Subscriber button" loading="lazy" decoding="async"></div><p><b>1</b>Empty state</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-subs-add.webp" srcset="assets/pmx-subs-add-sm.webp 360w, assets/pmx-subs-add.webp 720w, assets/pmx-subs-add-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Add Subscriber form with name, type, policy folders and status" loading="lazy" decoding="async"></div><p><b>2</b>Add a subscriber</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-subs-manage.webp" srcset="assets/pmx-subs-manage-sm.webp 360w, assets/pmx-subs-manage.webp 720w, assets/pmx-subs-manage-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Subscribers table with a dialog to deactivate a subscriber" loading="lazy" decoding="async"></div><p><b>3</b>Manage status</p></li></ol>
         </div>
         <div class="pm-cap">
           <div class="pm-cap-copy">
-            <h4 class="t-h4">Downloading a policy with its changes highlighted</h4>
-            <p>Audits often ask for proof of what changed between versions. From the History viewer, users choose which versions to compare and download a PDF with additions and deletions highlighted, so they can share it with people who don’t use Policy Manager.</p>
+            <h4 class="t-h4">See exactly what changed between two versions</h4>
+            <p>Before approving, people need to know what changed since the version they last signed off, and audits ask for proof of it. From the History viewer they pick two versions and get the document with removed text marked in red and added text in green. The same comparison downloads as a PDF for anyone who doesn’t use Policy Manager.</p>
           </div>
-          <ol class="pm-flow"><li><div class="pm-shot"><img data-zoom src="assets/pmx-pdf-history.webp" srcset="assets/pmx-pdf-history-sm.webp 360w, assets/pmx-pdf-history.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="420" alt="History viewer with a list of revisions and the policy text" loading="lazy" decoding="async"></div><p><b>1</b>History viewer</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-pdf-choose.webp" srcset="assets/pmx-pdf-choose-sm.webp 360w, assets/pmx-pdf-choose.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="420" alt="Download dialog to choose the language, version, tracked changes, comments and format" loading="lazy" decoding="async"></div><p><b>2</b>Choose what to export</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-pdf-highlighted.webp" srcset="assets/pmx-pdf-highlighted-sm.webp 360w, assets/pmx-pdf-highlighted.webp 720w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="406" alt="The exported PDF with additions and deletions highlighted" loading="lazy" decoding="async"></div><p><b>3</b>PDF with changes highlighted</p></li></ol>
+          <ol class="pm-flow"><li><div class="pm-shot"><img data-zoom src="assets/pmx-pdf-history.webp" srcset="assets/pmx-pdf-history-sm.webp 360w, assets/pmx-pdf-history.webp 720w, assets/pmx-pdf-history-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="420" alt="History viewer with a list of revisions and the policy text" loading="lazy" decoding="async"></div><p><b>1</b>Pick a version in the history</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-pdf-choose.webp" srcset="assets/pmx-pdf-choose-sm.webp 360w, assets/pmx-pdf-choose.webp 720w, assets/pmx-pdf-choose-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="420" alt="Download dialog to choose the language, version, tracked changes, comments and format" loading="lazy" decoding="async"></div><p><b>2</b>Choose what to compare</p></li><li><div class="pm-shot"><img data-zoom src="assets/pmx-pdf-highlighted.webp" srcset="assets/pmx-pdf-highlighted-sm.webp 360w, assets/pmx-pdf-highlighted.webp 720w, assets/pmx-pdf-highlighted-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="406" alt="The exported PDF with additions and deletions highlighted" loading="lazy" decoding="async"></div><p><b>3</b>Removed and added text, highlighted</p></li></ol>
         </div>
         <div class="pm-cap pm-cap--portal">
           <div class="pm-cap-copy">
@@ -356,6 +366,7 @@
       <ul class="pm-back">
         <li><p class="label">What worked</p><p>Fixing the experience of failure first bought the team time and trust while the backend was being stabilized.</p></li>
         <li><p class="label">What I’d do differently</p><p>Track error rates and support tickets from day one, to show the impact of defensive design in numbers.</p></li>
+        <li><p class="label">What I missed</p><p>Nothing told an approver that a policy was waiting on them. The dashboard showed owners what was coming due, but the person holding up a stage only found out when someone chased them by email. Today I’d add a reminder when a stage waits too long, with one click back to the review.</p></li>
         <li><p class="label">What I’d measure next</p><p>How long approvers take to move a stage forward in the simplified review cycle, compared with the full one.</p></li>
       </ul>
     </div>
@@ -399,7 +410,7 @@
 </footer>
 <script src="app.js?v=12" defer></script>
 <script src="lightbox.js?v=3" defer></script>
-<script src="thumbs.js?v=9" defer></script>
+<script src="thumbs.js?v=10" defer></script>
 <script src="hero-shader.js?v=7" defer></script>
 <script src="section-shader.js?v=6" defer></script>
 <script src="policy-manager.js?v=3" defer></script>

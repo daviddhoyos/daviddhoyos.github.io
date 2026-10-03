@@ -46,3 +46,27 @@ Registro de lo revisado y cambiado, de mayor a menor impacto. Pensado para dos l
 - El CV dice "with Figma and AI tools" para Edelap (2019–2021): puede leerse como anacronismo.
 - Si conseguís la captura de web archive de Edge226 de 2021, puede reemplazar el frame "Actual" de Figma como "antes".
 - SFR3 Vendor Dashboard está en el CV y no en el portfolio: candidato a More projects.
+
+## 6. Ronda de octubre: negocio y aprendizajes
+
+- **Edge226.**
+  - Árbol de arquitectura de información como el del Figma: tres pestañas (sitio original, primera propuesta, versión final), con las conexiones reales de cada nodo.
+  - Hero y thumbnail con el diseño nuevo de Global Scale, animados como el resto. La extensión se creó en Figma ("global scale — extended") con las verticales y el CTA reales.
+  - Home final con CTAs revisados en una copia del frame ("Home — final (portfolio, refined CTAs)"): primario blanco con violeta profundo, y secundario con contorno en lugar del botón amarillo.
+- **Sección "The business" en Policy Manager, Fury, Conduiit y Edelap.**
+  - Policy Manager: contratos largos y renovaciones.
+  - Fury: gobierno de costos de cloud y la versión SaaS modular.
+  - Conduiit: fundadores, modelo SaaS y competencia.
+  - Edelap: por qué importa cobrar en la app propia.
+- **Edge226:** por qué las verticales tienen su lugar en el menú.
+- **Propelify:** el rol del festival para TechUnited:NJ, por qué la renovación era urgente, y el merchandising y los colores del sitio en el propio festival.
+- **"What I missed" en los seis casos:**
+  - Policy Manager: recordatorios para aprobadores.
+  - Fury: una voz propia para toda la plataforma (mapeo completo y reglas compartidas de voz, terminología y patrones), para que se sienta un solo producto.
+  - Conduiit: compromisos de las órdenes de compra en el reporte de costos.
+  - Edelap: recordatorios y débito automático.
+  - Edge226: resultados de clientes en cada página de vertical.
+  - Propelify: una página de sponsors que venda, con audiencia, beneficios por nivel y razones para subir de tier.
+
+- **Lente de Product Designer.** Cada sección "The business" cierra con lo que ese modelo significó para el diseño: Fury (el costo en el flujo de creación), Edelap (pagar en menos pasos que una billetera) y Propelify (cuatro decisiones, cuatro caminos).
+- **Policy Manager:** la comparación de versiones se explica por lo que resuelve: el aprobador ve qué se eliminó (rojo) y qué se agregó (verde) entre dos versiones, y puede descargarlo como PDF. Título nuevo: "See exactly what changed between two versions".

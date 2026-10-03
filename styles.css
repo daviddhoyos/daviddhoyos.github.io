@@ -2729,7 +2729,7 @@ body:has(#view-edelap) .contact-email:hover { border-color: var(--ed-sky-lite); 
 /* ---------- More projects: the whole card is the link; hover/focus mirrors "Read the case study" (underline + arrow),
    with a slow lift of the card and a small push into the image ---------- */
 .more-card { overflow: hidden; transition: background-color 240ms ease, transform 420ms var(--ease-out), box-shadow 420ms var(--ease-out); }
-.more-card img { transition: transform 700ms var(--ease-out); transform-origin: 50% 0; }
+.more-card > img { transition: transform 700ms var(--ease-out); transform-origin: 50% 0; }
 .more-card .more-go { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font: 500 15px/1.4 var(--font-body); color: #fff; }
 .more-card .more-go span { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 4px; text-decoration-thickness: 1px; transition: text-decoration-color 200ms ease; }
 .more-card .more-go svg { transition: transform 260ms var(--ease-out); }
@@ -2737,13 +2737,13 @@ body:has(#view-edelap) .contact-email:hover { border-color: var(--ed-sky-lite); 
 .more-card:focus-within .more-go svg { transform: translate(2px, -2px); }
 @media (hover: hover) and (pointer: fine) {
   .more-card:hover { background: #2b2534; transform: translateY(-4px); box-shadow: 0 30px 60px -36px rgba(0, 0, 0, 0.8); }
-  .more-card:hover img { transform: scale(1.025); }
+  .more-card:hover > img { transform: scale(1.025); }
   .more-card:hover .more-go span { text-decoration-color: currentColor; }
   .more-card:hover .more-go svg { transform: translate(3px, -3px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .more-card, .more-card img, .more-card .more-go svg { transition: none; }
-  .more-card:hover { transform: none; } .more-card:hover img { transform: none; }
+  .more-card, .more-card > img, .more-card .more-go svg { transition: none; }
+  .more-card:hover { transform: none; } .more-card:hover > img { transform: none; }
 }
 
 /* ---------- footer: "Write to me" opens the mail app; only shown with a mouse, where clicking the address copies it ---------- */
@@ -2876,3 +2876,65 @@ body:has(#view-edelap) .contact-email:hover { border-color: var(--ed-sky-lite); 
 @media (max-width: 899.98px) { .ov-pair2--idea { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 639.98px) { .ov-steps2 { grid-template-columns: minmax(0, 1fr); } }
 .ov-wide .ov-steps2 { margin-top: 8px; }
+
+/* More projects: Edge226's card holds a live window like the case thumbnails; the page glides down on hover/focus */
+.win--edge { aspect-ratio: 619 / 507; border-radius: 16px; }
+.win--edge .win-base { border-radius: 16px; }
+.win--edge .win-viewport { border-radius: 16px; }
+.more-card.is-live .win-content { transform: translateY(calc(var(--travel) * -1)); transition: transform var(--dur, 4s) ease 150ms; }
+.more-card.is-live .win-pin::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .more-card.is-live .win-content { transform: none; transition: none; } }
+.case-hero-media .win--edge { border-radius: 18px; }
+
+/* Edge226: information architecture as trees, drawn like the original Figma sitemaps (dark canvas, colour per branch) */
+.ia-tabs [role="tablist"] { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1px var(--ov-line); margin-bottom: 20px; }
+.ia-tabs [role="tab"] { border: 0; background: none; padding: 10px 18px; border-radius: 999px; font: 500 15px/1.2 var(--font-body); color: var(--ov-accent); cursor: pointer; }
+.ia-tabs [role="tab"][aria-selected="true"] { background: var(--ov-accent); color: #fff; }
+.ia-tabs [role="tab"]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.ia-canvas { background: #444; border-radius: 20px; padding: 28px 24px 32px; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.3) transparent; }
+.ia-canvas:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.ia-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 20px; font: 500 13px/1.4 var(--font-body); color: #e6e6e6; }
+.ia-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.ia-legend i { width: 22px; height: 0; border-top: 2px solid var(--c); }
+.ia-legend i.dash { border-top-style: dashed; }
+.iat { --ln: #b3b3b3; width: max-content; min-width: 100%; display: flex; justify-content: center; }
+.iat ul { list-style: none; margin: 0; padding: 22px 0 0; display: flex; justify-content: center; position: relative; }
+.iat ul ul::before { content: ""; position: absolute; top: 0; left: 50%; height: 22px; border-left: 2px solid var(--ln); }
+.iat li { position: relative; padding: 22px 5px 0; display: flex; flex-direction: column; align-items: center; }
+.iat li::before, .iat li::after { content: ""; position: absolute; top: 0; width: 50%; height: 22px; border-top: 2px solid var(--ln); }
+.iat li::before { right: 50%; }
+.iat li::after { left: 50%; border-left: 2px solid var(--ln); }
+.iat li:only-child { padding-top: 0; }
+.iat li:only-child::before, .iat li:only-child::after { display: none; }
+.iat li:first-child::before, .iat li:last-child::after { border: 0 none; }
+.iat li:last-child::before { border-right: 2px solid var(--ln); border-top-right-radius: 6px; }
+.iat li:first-child::after { border-top-left-radius: 6px; }
+.iat > ul { padding-top: 0; }
+.iat > ul > li { padding-top: 0; }
+.iat > ul > li::before, .iat > ul > li::after { display: none; }
+.iat .n { display: block; max-width: 132px; padding: 7px 10px; border-radius: 4px; background: var(--c, #e6e6e6); color: var(--t, #000);
+  font: 600 12px/1.25 var(--font-body); text-align: center; white-space: normal; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+.iat .n--home { padding: 8px 22px; font-size: 13px; }
+.iat .n--dead { outline: 2px dashed #f24822; outline-offset: 2px; }
+.iat .n--out { font-style: italic; }
+.ia-note { margin-top: 16px; max-width: 760px; font: 400 15px/1.55 var(--font-body); color: var(--text-body); }
+.ia-note b { color: var(--text-strong); font-weight: 600; }
+.iat li { padding-left: 3px; padding-right: 3px; }
+.iat .n { max-width: 96px; padding: 5px 7px; font-size: 11px; }
+.iat .n--home { max-width: none; padding: 7px 20px; font-size: 12.5px; }
+@media (max-width: 767.98px) { .ia-canvas { padding: 20px 14px 24px; } }
+.ia-canvas { padding-left: 8px; padding-right: 8px; }
+.iat li { padding-left: 2px; padding-right: 2px; }
+
+/* "The business": why the design problem was a business problem. Page-agnostic, takes each page's label colour. */
+.biz-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 32px clamp(40px, 6vw, 96px); align-items: start; }
+.biz-grid .sec-head { margin-bottom: 0; }
+.biz-body { display: grid; gap: 18px; }
+.biz-body p { font: 400 18px/1.65 var(--font-body); color: var(--text-body); }
+.biz-body p.biz-lead { font: 500 clamp(1.2rem, 1.05rem + 0.6vw, 1.5rem)/1.45 var(--font-display); color: var(--text-strong); letter-spacing: -0.005em; }
+.biz-points { list-style: none; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: var(--grid-gap); margin-top: clamp(40px, 5vw, 64px); }
+.biz-points li { display: grid; gap: 8px; align-content: start; padding: 24px; border-radius: var(--r-card, 20px); background: var(--card-bg); }
+.biz-points h3 { font: 600 clamp(1.05rem, 1rem + 0.3vw, 1.2rem)/1.35 var(--font-display); color: var(--text-strong); }
+.biz-points p { font: 400 15px/1.6 var(--font-body); color: var(--text-body); }
+.bg-mist .biz-points li { background: #fff; }
+@media (max-width: 1023.98px) { .biz-grid { grid-template-columns: minmax(0, 1fr); } .biz-points { grid-template-columns: minmax(0, 1fr); } }
