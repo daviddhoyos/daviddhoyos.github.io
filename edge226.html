@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en" data-view="case">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Explaining ad tech to the people who buy it | Edge226 | David Hoyos</title>
+<meta name="description" content="How I redesigned the Edge226 website with its marketing team, rebuilt its information architecture twice, and turned a website project into the company’s rebrand.">
+<meta name="robots" content="index, follow, noimageindex">
+<meta name="author" content="David Hoyos">
+<meta name="copyright" content="© 2026 David Hoyos. All rights reserved.">
+<link rel="canonical" href="https://daviddhoyos.github.io/edge226.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="David Hoyos">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://daviddhoyos.github.io/edge226.html">
+<meta property="og:title" content="Explaining ad tech to the people who buy it | Edge226 | David Hoyos">
+<meta property="og:description" content="How I redesigned the Edge226 website with its marketing team, rebuilt its information architecture twice, and turned a website project into the company’s rebrand.">
+<meta property="og:image" content="https://daviddhoyos.github.io/assets/og/og-edge226.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Edge226 website redesign and rebrand case study by David Hoyos">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Explaining ad tech to the people who buy it | Edge226 | David Hoyos">
+<meta name="twitter:description" content="How I redesigned the Edge226 website with its marketing team, rebuilt its information architecture twice, and turned a website project into the company’s rebrand.">
+<meta name="twitter:image" content="https://daviddhoyos.github.io/assets/og/og-edge226.jpg">
+<meta name="twitter:image:alt" content="Edge226 website redesign and rebrand case study by David Hoyos">
+<meta name="theme-color" content="#19141a">
+<link rel="icon" href="favicon.ico" sizes="32x32" data-dark="favicon-dark.ico">
+<link rel="icon" href="favicon.svg" type="image/svg+xml" data-dark="favicon-dark.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png" data-dark="apple-touch-icon-dark.png">
+<script>
+/* favicon follows the colour scheme (dark grey mark on light, white mark on dark). The <link> is replaced, not just
+   re-pointed, because Chrome only refreshes the tab icon when a new element appears. */
+(function () {
+  var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  if (!mq) return;
+  var apply = function () {
+    document.querySelectorAll('link[data-dark]').forEach(function (l) {
+      if (!l.dataset.light) l.dataset.light = l.getAttribute('href');
+      var href = mq.matches ? l.dataset.dark : l.dataset.light;
+      if (l.getAttribute('href') === href) return;
+      var n = l.cloneNode(); n.setAttribute('href', href); l.replaceWith(n);
+    });
+  };
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply); else if (mq.addListener) mq.addListener(apply);
+})();
+</script>
+<link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css?v=37">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav-wrap">
+  <nav class="nav glass" aria-label="Primary" data-nav>
+    <ul>
+      <li class="nav-name"><a href="index.html"><svg class="nav-back" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span class="nav-name-text">Home</span></a></li>
+      <li><a href="index.html#projects">Case studies</a></li>
+      <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="mailto:daviddhoyos1@gmail.com" data-copy-email>Email<span class="sr-only ce-copy"> (copies the email address)</span><span class="sr-only ce-send"> (opens your mail app)</span></a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main" tabindex="-1">
+<section class="view enter view-ov" id="view-edge226">
+
+  <header class="case-hero case-hero--ov case-hero--shader case-hero--split on-dark" data-hero-shader data-shader-colors="#c850c0, #2a0a3e, #4158d0">
+    <div class="wrap">
+      <div class="copy">
+        <p class="eyebrow">Website redesign and rebrand for Edge226</p>
+        <h1 class="t-display-case" tabindex="-1" data-focus>Explaining ad tech to the people who buy it</h1>
+        <p class="lead">Edge226 is a multichannel performance marketing platform: mobile apps and games pay it for installs and purchases, not for impressions. Its website never said so. Working with Edge226’s marketing lead, I redesigned every page, and what started as a website project became the company’s new brand.</p>
+      </div>
+      <figure class="case-hero-media ov-hero-shot"><img src="assets/edge/ed-after-1440.webp" srcset="assets/edge/ed-after-720.webp 720w, assets/edge/ed-after-1440.webp 1440w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 560px" width="1440" height="780" alt="Redesigned Edge226 home: a violet gradient hero with the headline App Growth Beyond the Install, Book a demo and Peak Overview buttons" decoding="async"></figure>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Sole designer, end to end</dd></div>
+        <div><dt>Worked with</dt><dd>Edge226’s marketing lead</dd></div>
+        <div><dt>Scope</dt><dd>Information architecture, every page, style guide, rebrand</dd></div>
+        <div><dt>Platform</dt><dd>Website, desktop and mobile</dd></div>
+        <div><dt>Brand in use</dt><dd>About four years</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <section class="sec ov-status" aria-labelledby="eg-glance-h" data-chapter="Overview" style="padding-block:clamp(48px,6vw,80px)">
+    <div class="wrap">
+      <h2 class="sr-only" id="eg-glance-h">At a glance</h2>
+      <div class="glance">
+        <div><p class="label">The problem</p><p class="t-statement">Eight menu items named after internal teams, and not one line about what set Edge226 apart: clients pay for results.</p></div>
+        <div><p class="label">What I did</p><p class="t-statement">Turned marketing’s copy into pages, rebuilt the information architecture twice, and wrote a style guide for desktop and mobile.</p></div>
+        <div><p class="label">The outcome</p><p class="t-statement">The redesign became the rebrand. Edge226 moved from blue to violet and used the identity for about four years, online and at its event booths.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-biz-h" data-chapter="The business">
+    <div class="wrap">
+      <div class="fx-ch-head">
+        <div class="sec-head">
+          <p class="label">The business</p>
+          <h2 class="t-h2" id="eg-biz-h">A company that gets paid when its clients grow</h2>
+          <p class="sub">Edge226 is an ad-tech company founded in Israel, with offices in Tel Aviv and New York. Its core product, Peak, is a demand-side platform: software that buys ad space across thousands of apps on behalf of advertisers, and uses machine learning to decide where each dollar goes.</p>
+          <p class="sub">Its clients are mobile apps and games looking for users who stay and pay, in verticals like gaming, finance, travel and food delivery. Since then it has grown into connected TV and rewarded ads, and in 2026 it acquired AnyClip, an AI video company.</p>
+        </div>
+        <aside class="fx-notes" aria-label="The vocabulary behind the site">
+          <p class="fx-notes-title">The vocabulary behind the site</p>
+          <dl>
+            <div><dt>DSP</dt><dd>Demand-side platform. Buys ad space automatically for advertisers, across many apps at once.</dd></div>
+            <div><dt>Mobile supply</dt><dd>The ad space available inside apps. The more of it a DSP reaches, the more users it can find.</dd></div>
+            <div><dt>Outcome-based pricing</dt><dd>The advertiser pays for a result, such as an install or a purchase, instead of for each time an ad is shown.</dd></div>
+            <div><dt>ROAS</dt><dd>Return on ad spend: revenue earned for every dollar spent on ads. The number a growth team is judged by.</dd></div>
+            <div><dt>Vertical</dt><dd>An app category, like finance or gaming, with its own goals and its own idea of a valuable user.</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec ov-dark on-dark" aria-labelledby="eg-model-h" data-chapter="The model">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">How the money moves</p>
+        <h2 class="t-h2" id="eg-model-h">The business model is the website’s whole argument</h2>
+        <p class="sub">Most ad platforms charge for reach. Edge226 charges for results. That difference is what a visitor needs to get before anything else on the page matters.</p>
+      </div>
+      <ol class="ov-flow" style="--n:4">
+        <li><h3>An app sets a goal</h3><p>Installs, deposits, subscriptions or purchases: the action that is worth money to that business.</p></li>
+        <li><h3>The platform bids for space</h3><p>Its algorithms buy placements across in-app inventory, looking for the users most likely to act.</p></li>
+        <li><h3>A user acts</h3><p>Someone sees the ad, installs the app and, ideally, keeps using it.</p></li>
+        <li class="is-key"><h3>The app pays for the outcome</h3><p>Not for the impression. Spend is tied to the goal set in step one.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-start-h" data-chapter="Starting point">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">The starting point</p>
+        <h2 class="t-h2" id="eg-start-h">A site organized around the company, not the buyer</h2>
+        <p class="sub">The original site was blue and cyan, with a robot in the hero and eight items in the menu: User Acquisition, Technology, Our Approach, Resources, Creative Studio, Careers, About Us and Contact Us. A marketer had to know Edge226’s internal structure to find what it sold, and pricing by results appeared only as a line in a paragraph.</p>
+      </div>
+      <div class="ov-ba">
+        <figure><div class="ov-ba-shot"><span class="ov-chip">Before</span><img src="assets/edge/ed-before-1440.webp" srcset="assets/edge/ed-before-720.webp 720w, assets/edge/ed-before-1440.webp 1440w" sizes="(max-width: 767.98px) calc(100vw - 40px), 600px" width="1440" height="780" alt="Original Edge226 home: a robot holding a phone next to the headline Mobile Growth Powered by AI Technology, on white and pale blue" loading="lazy" decoding="async" data-zoom></div><figcaption>The original home, as the redesign found it.</figcaption></figure>
+        <figure><div class="ov-ba-shot"><span class="ov-chip ov-chip--after">After</span><img src="assets/edge/ed-after-1440.webp" srcset="assets/edge/ed-after-720.webp 720w, assets/edge/ed-after-1440.webp 1440w" sizes="(max-width: 767.98px) calc(100vw - 40px), 600px" width="1440" height="780" alt="Redesigned Edge226 home: violet gradient hero, App Growth Beyond the Install, with Book a demo and Peak Overview" loading="lazy" decoding="async" data-zoom></div><figcaption>The final home: the buyer’s outcome as the headline, and one main action.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec ov-dark on-dark" aria-labelledby="eg-idea-h" data-chapter="The idea">
+    <div class="wrap">
+      <div class="ov-split">
+        <div class="sec-head">
+          <p class="label">The idea</p>
+          <h2 class="t-h2" id="eg-idea-h">Named after a triathlon</h2>
+        </div>
+        <div class="ov-split-body">
+          <p class="ov-big">226 kilometers is the full triathlon distance: 3.8 swimming, 180 cycling, 42.2 running. The name was about endurance and performance, and the product was already called Peak.</p>
+          <p>So the visual language climbs. Peak’s three pillars, guaranteed results, global transparent supply and performance through technology, sit around a summit on the home. The Peak page opens with a mountain in the brand gradient. Every metaphor points the same way: up, toward the result the client pays for.</p>
+        </div>
+      </div>
+      <div class="ov-pair2" style="margin-top:clamp(40px,5vw,64px)">
+        <figure class="ov-wide"><div class="ov-wide-shot"><img src="assets/edge/ed-pillars-1440.webp" srcset="assets/edge/ed-pillars-720.webp 720w, assets/edge/ed-pillars-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 612px" width="1440" height="620" alt="Home section Powered by Peak’s Three Pillars: a gradient summit circled by Guaranteed Results, Global and Transparent Supply, and Performance through Technology" loading="lazy" decoding="async" data-zoom></div><figcaption class="ov-cap">The home: three pillars around one summit.</figcaption></figure>
+        <figure class="ov-wide"><div class="ov-wide-shot"><img src="assets/edge/ed-peak-mountain-1440.webp" srcset="assets/edge/ed-peak-mountain-720.webp 720w, assets/edge/ed-peak-mountain-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 612px" width="1440" height="620" alt="Peak Benefits section: a mountain in peach, magenta and violet rising above grey ranges" loading="lazy" decoding="async" data-zoom></div><figcaption class="ov-cap">The Peak page: the brand gradient, drawn as a mountain.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="eg-work-h" data-chapter="How we worked">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">How we worked</p>
+        <h2 class="t-h2" id="eg-work-h">Marketing brought the message. I turned it into pages.</h2>
+        <p class="sub">Edge226’s marketing lead was my counterpart for the whole project. Each page went through the same loop until it said what the company needed it to say.</p>
+      </div>
+      <ol class="cards cards--4">
+        <li class="card"><h3>Values and copy</h3><p>Marketing defined what Edge226 stands for and what each page had to communicate, and handed over the copy.</p></li>
+        <li class="card"><h3>Copy into structure</h3><p>I turned that copy into layouts: what each section says first, what proves it, and where the visitor goes next.</p></li>
+        <li class="card"><h3>Rounds of feedback</h3><p>Every version went back to the client. Feedback was mostly positive, sometimes a clear no, and each no sent a page back for another pass.</p></li>
+        <li class="card"><h3>Moving without answers</h3><p>Replies could take days, and the project couldn’t stop. Keeping the work moving between rounds was part of the job.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec bg-white ov-iter" aria-labelledby="eg-iter-h" data-chapter="Iterations">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">The iterations</p>
+        <h2 class="t-h2" id="eg-iter-h">From the first draft to the final home</h2>
+        <p class="sub">The home went through more than twenty versions. These five, in the order they were made, show the direction settling: from dark and light explorations, through a blue close to the old brand, to the violet that became the new one.</p>
+      </div>
+      <ol class="ov-versions"><li><div class="ov-v-shot"><img src="assets/edge/ed-v1.webp" width="460" height="736" alt="Edge226 home, version 1: dark" loading="lazy" decoding="async" data-zoom></div><p>Dark</p></li><li><div class="ov-v-shot"><img src="assets/edge/ed-v2.webp" width="460" height="736" alt="Edge226 home, version 2: light" loading="lazy" decoding="async" data-zoom></div><p>Light</p></li><li><div class="ov-v-shot"><img src="assets/edge/ed-v3.webp" width="460" height="736" alt="Edge226 home, version 3: blue, close to the old brand" loading="lazy" decoding="async" data-zoom></div><p>Blue, close to the old brand</p></li><li><div class="ov-v-shot"><img src="assets/edge/ed-v4.webp" width="460" height="736" alt="Edge226 home, version 4: first violet" loading="lazy" decoding="async" data-zoom></div><p>First violet</p></li><li><div class="ov-v-shot"><img src="assets/edge/ed-v5.webp" width="460" height="736" alt="Edge226 home, version 5: final" loading="lazy" decoding="async" data-zoom></div><p>Final</p></li></ol>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-ia-h" data-chapter="Structure">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Information architecture</p>
+        <h2 class="t-h2" id="eg-ia-h">Mapped, proposed, then refined</h2>
+        <p class="sub">I first mapped the existing site, then proposed a new structure. The refined version split it by what a buyer looks for: what Edge226 sells, and proof that it knows their kind of app.</p>
+      </div>
+      <div class="ov-ia3">
+        <div class="is-old"><p class="ov-ia-n">1 · The existing site</p><h3>Organized by internal team</h3>
+          <ul><li><span>User Acquisition</span></li><li><span>Technology</span><ul><li>Peak DSP</li><li>Echo Tracking</li></ul></li><li><span>Our Approach</span></li><li><span>Resources</span></li><li><span>Creative Studio</span></li><li><span>Careers</span></li><li><span>About Us</span></li><li><span>Contact Us</span></li></ul></div>
+        <div><p class="ov-ia-n">2 · First proposal</p><h3>Grouped, but still product-first</h3>
+          <ul><li><span>Peak DSP</span></li><li><span>Our Solutions</span><ul><li>Gaming</li><li>Travel</li><li>Streaming</li><li>Dating</li><li>Food &amp; Delivery</li></ul></li><li><span>Resources</span><ul><li>Success stories</li><li>Partnerships</li><li>Creative Studio</li></ul></li><li><span>Company</span><ul><li>Careers</li></ul></li><li><span>Contact</span></li></ul></div>
+        <div class="is-final"><p class="ov-ia-n">3 · Refined, and shipped</p><h3>What it sells, and who it’s for</h3>
+          <ul><li><span>Solutions</span><ul><li>Peak Platform</li><li>Results Pricing</li><li>Global Scale</li><li>Performance</li><li>Creative Studio</li></ul></li><li><span>Verticals</span><ul><li>Finance</li><li>Gaming</li><li>Food &amp; Delivery</li><li>Streaming</li><li>Travel</li><li>Dating</li></ul></li><li><span>Resources</span><ul><li>Success stories</li><li>Case study pages</li><li>Partnerships &amp; Integrations</li></ul></li><li><span>Company</span></li><li><span>Contact us</span></li><li><span>Client Login</span></li></ul></div>
+      </div>
+      <p class="ov-cap" style="margin-top:20px">The refined version gave Peak’s three pillars, pricing by results, global scale and performance, a page each, and moved app categories into their own Verticals section.</p>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="eg-color-h" data-chapter="Color">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Color as wayfinding</p>
+        <h2 class="t-h2" id="eg-color-h">A gradient for each part of the site</h2>
+        <p class="sub">The sitemap assigned every section its own blend of the same three colors, blue <code>#4158D0</code>, magenta <code>#C850C0</code> and peach <code>#FFCC70</code>, so visitors can tell where they are from the header alone.</p>
+      </div>
+      <ul class="ov-grads">
+        <li><div class="ov-g-shot"><img src="assets/edge/ed-sec-home-1440.webp" srcset="assets/edge/ed-sec-home-720.webp 720w, assets/edge/ed-sec-home-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 400px" width="1440" height="560" alt="Edge226 home header in a blue to peach gradient" loading="lazy" decoding="async" data-zoom></div><span class="ov-g-bar" style="background:linear-gradient(90deg,#4158d0,#c850c0 54%,#ffcc70)"></span><h3>Home</h3><p>All three colors: the full brand, once.</p></li>
+        <li><div class="ov-g-shot"><img src="assets/edge/ed-sec-peak-1440.webp" srcset="assets/edge/ed-sec-peak-720.webp 720w, assets/edge/ed-sec-peak-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 400px" width="1440" height="560" alt="Peak Platform page header in a violet to magenta gradient" loading="lazy" decoding="async" data-zoom></div><span class="ov-g-bar" style="background:linear-gradient(90deg,#4158d0,#c850c0)"></span><h3>Solutions</h3><p>Blue into magenta for the product pages.</p></li>
+        <li><div class="ov-g-shot"><img src="assets/edge/ed-sec-finance-1440.webp" srcset="assets/edge/ed-sec-finance-720.webp 720w, assets/edge/ed-sec-finance-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 400px" width="1440" height="560" alt="Finance vertical page header in a magenta to peach gradient" loading="lazy" decoding="async" data-zoom></div><span class="ov-g-bar" style="background:linear-gradient(90deg,#c850c0,#ffcc70)"></span><h3>Verticals</h3><p>Magenta into peach, warmer, for the industries.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-sg-h" data-chapter="Style guide">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">The style guide</p>
+        <h2 class="t-h2" id="eg-sg-h">One system for every page, on every screen</h2>
+        <p class="sub">The guide covered color, type, buttons, graphic resources and how each page adapts to mobile. On a phone, the hero keeps one job: get to the demo.</p>
+      </div>
+      <div class="ov-type">
+        <div><span class="ov-aa" style="font-family:Poppins, var(--font-display);font-weight:700">Aa</span><b>Poppins</b><span>Headings: geometric and round, close to the logo.</span></div>
+        <div><span class="ov-aa" style="font-family:Inter, var(--font-body)">Aa</span><b>Inter</b><span>Body text: built for screens, legible at small sizes.</span></div>
+      </div>
+      <figure class="ov-wide" style="margin-top:var(--grid-gap)"><div class="ov-wide-shot"><img src="assets/edge/ed-mobile-heroes-2390.webp" srcset="assets/edge/ed-mobile-heroes-1195.webp 1195w, assets/edge/ed-mobile-heroes-2390.webp 2390w" sizes="(max-width: 1280px) calc(100vw - 40px), 1248px" width="2390" height="920" alt="Five mobile versions of the Edge226 hero, each ending in a Book a Demo button" loading="lazy" decoding="async" data-zoom></div><figcaption class="ov-cap">Five directions for the mobile hero. Every one ends in the same full-width Book a Demo button.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="eg-final-h" data-chapter="The site">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">The final site</p>
+        <h2 class="t-h2" id="eg-final-h">The whole home, desktop and mobile</h2>
+        <p class="sub">Peak’s three pillars, a client quote, the verticals in tabs, the brands that use it, and one last call to book a demo. Scroll inside each screen.</p>
+      </div>
+      <div class="ov-devices">
+        <div class="ov-browser"><div class="ov-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>edge226.com</span></div><div class="ov-scroll" tabindex="0" role="region" aria-label="Edge226 desktop home, scrollable"><img src="assets/edge/ed-home-full-1440.webp" srcset="assets/edge/ed-home-full-960.webp 960w, assets/edge/ed-home-full-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 900px" width="1440" height="4959" alt="Full Edge226 desktop home: hero, Peak’s three pillars, a client testimonial, verticals in tabs, client logos, a closing call to action and the footer" loading="lazy" decoding="async"></div></div>
+        <div class="cd-phone ov-phone"><div class="cd-phone-frame"><div class="cd-phone-screen" tabindex="0" role="region" aria-label="Edge226 mobile home, scrollable"><img src="assets/edge/ed-mobile-home.webp" width="750" height="9524" alt="Full Edge226 mobile home, with the same sections stacked in one column" loading="lazy" decoding="async"></div></div><p>Mobile home<span>Scroll inside the screen</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-design-h" data-chapter="Details">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">A closer look</p>
+        <h2 class="t-h2" id="eg-design-h">Outcome first, product second</h2>
+        <p class="sub">The Global Scale page shows the approach: talk about what the buyer wants, then prove the platform can deliver it.</p>
+      </div>
+      <div class="ov-annot">
+        <figure class="ov-annot-media">
+          <div class="ov-annot-frame">
+            <img src="assets/more-edge226.webp" width="1238" height="1014" alt="Global Scale page of the Edge226 redesign, with numbered markers on the main action, the headline and the stat cards" loading="lazy" decoding="async" data-zoom>
+            <span class="ov-pin" style="--x:87.5%;--y:9.5%" aria-hidden="true">1</span>
+            <span class="ov-pin" style="--x:8%;--y:22.5%" aria-hidden="true">2</span>
+            <span class="ov-pin" style="--x:37%;--y:68.5%" aria-hidden="true">3</span>
+          </div>
+        </figure>
+        <ol class="ov-legend">
+          <li><span class="ov-pin" aria-hidden="true">1</span><div><h3><span class="sr-only">Marker 1: </span>One filled button</h3><p>Login, for current clients, stays outlined. Book a Demo is the only filled button in the header, so new visitors always know the next step.</p></div></li>
+          <li><span class="ov-pin" aria-hidden="true">2</span><div><h3><span class="sr-only">Marker 2: </span>The buyer’s goal as the headline</h3><p>“Reach a global customer base that’s right for your app” speaks to the result. Peak is named in the subhead, next to its two promises: scale and transparency.</p></div></li>
+          <li><span class="ov-pin" aria-hidden="true">3</span><div><h3><span class="sr-only">Marker 3: </span>Proof in three numbers</h3><p>99% of the world’s mobile supply, 4 billion devices, 2M+ applications answer “how big is your reach?” before anyone asks.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec ov-dark on-dark" aria-labelledby="eg-brand-h" data-chapter="Rebrand">
+    <div class="wrap">
+      <div class="ov-split" style="align-items:center">
+        <div class="ov-split-body">
+          <p class="label">From website to brand</p>
+          <h2 class="t-h2" id="eg-brand-h">The redesign became the rebrand</h2>
+          <p>It started as a new website. By the end, Edge226 had adopted the new palette as its identity: the company went from blue to violet, and kept the look for about four years, on its site and on the banners it took to industry events.</p>
+          <div class="ov-rebrand" style="margin-top:12px">
+            <div><i style="background:linear-gradient(135deg,#42bdee,#1060bd 60%,#062544)"></i><b>Before</b><span>Cyan and navy</span></div>
+            <svg class="ov-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <div><i style="background:linear-gradient(135deg,#4158d0,#8855c9 50%,#c850c0)"></i><b>After</b><span>Blue into violet and magenta</span></div>
+          </div>
+        </div>
+        <ul class="ov-booths">
+          <li><figure><img src="assets/edge/ed-booth-1.webp" width="526" height="1210" alt="Edge226 roll-up banner at an indoor industry event, in the blue to violet gradient, presenting a cross-channel performance marketing platform for apps and games" loading="lazy" decoding="async" data-zoom><figcaption>Indoor event booth</figcaption></figure></li>
+          <li><figure><img src="assets/edge/ed-booth-2.webp" width="294" height="680" alt="The same Edge226 banner at an outdoor event terrace" loading="lazy" decoding="async" data-zoom><figcaption>Outdoor event</figcaption></figure></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-held-h" data-chapter="Today">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Still there today</p>
+        <h2 class="t-h2" id="eg-held-h">The site has been rebuilt since. The structure hasn’t changed.</h2>
+        <p class="sub">Edge226’s current website (2026) has new visuals and new products, and keeps the decisions underneath.</p>
+      </div>
+      <ul class="cards">
+        <li class="card"><h3>The same four sections</h3><p>The header still leads with Solutions, Verticals, Resources and Company, now holding CTV and rewarded ads next to in-app.</p></li>
+        <li class="card"><h3>The same main action</h3><p>Book a Demo is still the primary button, with Login kept for existing clients.</p></li>
+        <li class="card"><h3>The same proof point</h3><p>Reaching 99% of global mobile supply is still one of the first claims a visitor reads.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="eg-back-h" data-chapter="Looking back">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="t-h2" id="eg-back-h">Looking back</h2></div>
+      <div class="ov-quote">
+        <p class="label">What I learned</p>
+        <p>We wanted different colors, but the client had already fallen in love with the gradients. Later we saw how hard they were to implement and scale to other screens. To keep pages light and accessible, I used them as accents instead of primary colors.</p>
+        <p>The lesson: decide carefully before presenting something to a client, so they don’t fall in love with an idea that won’t scale. And explain the reasoning well enough to negotiate. This project taught me to negotiate.</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="next-case" aria-label="Next case study">
+    <div class="wrap">
+      <a href="propelify.html"><span class="next-label">Next case study</span><span class="next-title">An identity for the “SXSW of the Northeast”</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </nav>
+
+</section>
+</main>
+<footer class="site-footer">
+  <section class="contact on-dark" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <h2 id="contact-h">Good products start with good conversations.</h2>
+          <p>Hiring for a role, or have a project in mind? Write to me. Fair warning: I'll happily talk your ear off about it.</p>
+          <div class="contact-who">
+            <img src="assets/avatar-footer.webp?v=2" width="208" height="208" alt="" decoding="async" loading="lazy">
+            <p><span>David Hoyos</span>Product Designer in Argentina, open to remote and hybrid roles</p>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="contact-email" href="mailto:daviddhoyos1@gmail.com" data-copy-email><span>daviddhoyos1@gmail.com</span><span class="contact-email-icon"><svg class="ce-copy" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"/></svg><svg class="ce-send" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><span class="sr-only ce-copy"> (copies the email address)</span><span class="sr-only ce-send"> (opens your mail app)</span></a>
+          <ul class="contact-links">
+            <li class="cl-write"><a class="btn btn--glass glass glass--clear glass--interactive" href="mailto:daviddhoyos1@gmail.com?subject=Hi%20David">Write to me<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg><span class="sr-only"> (opens your mail app)</span></a></li>
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16L16 8M9 8h7v7"/></svg><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="assets/david-hoyos-resume.pdf" download="David-Hoyos-Resume.pdf">Download resume<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="sr-only"> (PDF)</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal">
+        <p>© 2026 David Hoyos. All rights reserved.</p>
+      </div>
+    </div>
+  </section>
+</footer>
+<script src="app.js?v=11" defer></script>
+<script src="hero-shader.js?v=7" defer></script>
+<script src="lightbox.js?v=3" defer></script>
+</body>
+</html>

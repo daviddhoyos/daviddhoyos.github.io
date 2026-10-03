@@ -49,7 +49,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=34">
+<link rel="stylesheet" href="styles.css?v=37">
 <link rel="preload" href="assets/cd-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -73,17 +73,29 @@
       <div class="copy">
         <p class="eyebrow">Production finance platform at Conduiit</p>
         <h1 class="t-display-case" tabindex="-1" data-focus>Taking film production finance out of spreadsheets</h1>
-        <p class="lead">Conduiit is where productions for Netflix, Prime Video, HBO, Starz and Discovery handle purchase orders, payment requests and approvals. The product already worked, but its interface had aged. As the only designer, I rebuilt it from the smallest piece up: a design system, a dashboard for each role, light and dark modes, and a theme every company can brand as its own.</p>
+        <p class="lead">Conduiit is where productions for Netflix, Prime Video, HBO, Starz and Discovery handle purchase orders, payment requests and approvals. The product already worked, but its interface had aged. As its only designer, I rebuilt it from the smallest piece up: a design system, a dashboard for each role, light and dark modes, and a theme every company can brand as its own.</p>
       </div>
       <div class="case-hero-media thumb-media--window hero-thumb" aria-hidden="true"><div class="win" style="--vx:0.000%;--vy:6.088%;--vw:100.000%;--vh:93.912%;--travel:36.263%;--dur:5s;--r-bl:1.732% 2.436%;--r-br:1.732% 2.436%;--pin:10.411%;--pin-side:18.581%" data-pin data-pin-side><img class="win-base" src="assets/thumb-conduiit-1432.webp" srcset="assets/thumb-conduiit-716.webp 716w, assets/thumb-conduiit-1432.webp 1432w, assets/thumb-conduiit-2148.webp 2148w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 600px" width="716" height="542" alt="" decoding="async"><div class="win-viewport"><img class="win-content" src="assets/thumb-conduiit-content-1432.webp" srcset="assets/thumb-conduiit-content-716.webp 716w, assets/thumb-conduiit-content-1432.webp 1432w, assets/thumb-conduiit-content-2147.webp 2147w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 600px" width="1432" height="1598" alt="" decoding="async"></div></div></div>
       <dl class="facts">
         <div><dt>Role</dt><dd>Sole UX/UI designer, end to end</dd></div>
         <div><dt>Company</dt><dd>Conduiit</dd></div>
+        <div><dt>Years</dt><dd>2021 to 2022</dd></div>
         <div><dt>Platform</dt><dd>Web and mobile web</dd></div>
         <div><dt>Scope</dt><dd>Rebrand, design system, dashboards, print</dd></div>
       </dl>
     </div>
   </header>
+
+  <section class="sec cd-glance" aria-labelledby="cd-glance-h" data-chapter="Overview">
+    <div class="wrap">
+      <h2 class="sr-only" id="cd-glance-h">At a glance</h2>
+      <div class="glance">
+        <div><p class="label">The problem</p><p class="t-statement">Productions ran purchase orders and approvals through email, spreadsheets and shared folders, and the product built to replace them had an interface that had aged.</p></div>
+        <div><p class="label">What I did</p><p class="t-statement">Rebuilt it on a design system: a dashboard per role, an approval matrix with spending limits, pre-audit checks, and themes each studio can brand.</p></div>
+        <div><p class="label">The outcome</p><p class="t-statement">Conduiit still runs on the system we built, and each studio brands its own workspace without asking for design work.</p></div>
+      </div>
+    </div>
+  </section>
 
   <section class="sec bg-white" aria-labelledby="clients-h" data-chapter="Clients">
     <div class="wrap cd-clients">
@@ -110,10 +122,10 @@
         <p class="label">The starting point</p>
         <h2 class="t-h2" id="start-h">A product people relied on, wearing an old interface</h2>
         <p class="sub">Conduiit's founder, based in New Jersey, already had the platform running. He needed a complete rebrand and a new interface.</p>
-        <p class="sub">I don't have screenshots of the old app, so the story starts at the landing page on the right. It's what users see before signing in, and every flow in the redesign begins there.</p>
+        <p class="sub">Screens of the old app weren’t kept, so this story starts where every user does: the landing page on the right. It’s what people see before signing in, and every flow in the redesign begins there.</p>
       </div>
       <figure class="figure cd-fig">
-        <img src="assets/cd-landing.webp" width="1440" height="900" alt="Conduiit's landing page: the headline We make production compliance easier, a Book a demo button, an illustration of a film set and three dashboard screenshots" loading="lazy" decoding="async">
+        <img src="assets/cd-landing.webp" width="1440" height="900" alt="Conduiit's landing page: the headline We make production compliance easier, a Book a demo button, an illustration of a film set and three dashboard screenshots" loading="lazy" decoding="async" data-zoom>
         <figcaption>The landing page, the entry point of every flow.</figcaption>
       </figure>
     </div>
@@ -192,28 +204,28 @@
             <p class="cd-stage-note">Rebuilt in HTML from the component library, with sample data.</p>
           </div>
         </div>
-        <ol class="cd-steps">
-          <li class="cd-step" data-step="1">
+        <ol class="cd-steps" data-stations>
+          <li class="cd-step" data-step="1" data-station>
             <p class="cd-step-n"><b>1</b>Tokens</p>
             <h3 class="t-h3">Color, type and space</h3>
             <p>Primary violet <code>#561DE2</code>, a lighter <code>#7C45EF</code>, and a 10% tint for selected states. Text in three greys, green and red only for the graphs, amber as the second accent. Type is Lato, sized in rem from a 16px base: H1 at 28px, H2 at 24px, body and labels at 16px.</p>
           </li>
-          <li class="cd-step" data-step="2">
+          <li class="cd-step" data-step="2" data-station>
             <p class="cd-step-n"><b>2</b>Atoms</p>
             <h3 class="t-h3">Buttons, tabs, fields and icons</h3>
             <p>Primary, secondary and negative buttons share one shape and differ only in fill. Every field has default, active and filled states, and each 20px icon has default, hover and active versions.</p>
           </li>
-          <li class="cd-step" data-step="3">
+          <li class="cd-step" data-step="3" data-station>
             <p class="cd-step-n"><b>3</b>Molecules</p>
             <h3 class="t-h3">The pieces people actually read</h3>
             <p>A KPI card pairs a figure with its change from last month, over a red or green wave. A table row carries view and delete actions, and every column header has its own search.</p>
           </li>
-          <li class="cd-step" data-step="4">
+          <li class="cd-step" data-step="4" data-station>
             <p class="cd-step-n"><b>4</b>Organisms</p>
             <h3 class="t-h3">Sidebar, header and data table</h3>
             <p>The sidebar collapses to icons, and the header shrinks on scroll so the table keeps the room. Notifications live in the header as toasts and a dropdown, so approvals reach people wherever they are in the app.</p>
           </li>
-          <li class="cd-step" data-step="5">
+          <li class="cd-step" data-step="5" data-station>
             <p class="cd-step-n"><b>5</b>Screens</p>
             <h3 class="t-h3">One layout for every role</h3>
             <p>Each role's dashboard uses the same parts in a different order. From page to page, only the menu items and the main button change, so people who switch roles already know their way around.</p>
@@ -286,28 +298,28 @@
           <h3 class="t-h3">Every production at a glance</h3>
           <p>Six KPIs at the top, each compared with last month. Red and green waves show which numbers moved the wrong way before anyone reads them. Below, every cost report sits in one table, filtered by status and downloadable in one click.</p>
         </div>
-        <figure class="figure cd-fig"><img src="assets/cd-company-dashboard.webp" width="1400" height="1193" alt="Company dashboard: six KPI cards including total users, negative ETCs and cost to date, above a cost reports table with All, Pending approval and Fulfillment tabs" loading="lazy" decoding="async"></figure>
+        <figure class="figure cd-fig"><div class="cd-crop"><img src="assets/cd-company-dashboard.webp" width="1400" height="1193" alt="Company dashboard: six KPI cards including total users, negative ETCs and cost to date, above a cost reports table with All, Pending approval and Fulfillment tabs" loading="lazy" decoding="async" data-zoom></div></figure>
       </div>
       <div class="cd-screen-panel" role="tabpanel" id="p-matrix" aria-labelledby="t-matrix" hidden>
         <div class="copy">
           <h3 class="t-h3">Approval chains you can drag</h3>
-          <p>Project admins decide who approves what by moving people between levels: super admin, manager level 1 and manager level 2. On a phone, the same levels stack into a vertical list.</p>
+          <p>Project admins decide who approves what by moving people between levels: super admin, manager level 1 and manager level 2. Each level comes with its own spending limit, so a request goes as high as its amount requires and no higher. On a phone, the same levels stack into a vertical list.</p>
         </div>
-        <figure class="figure cd-fig"><img loading="lazy" src="assets/cd-approval-matrix.webp" width="1400" height="642" alt="Approval matrix: a person card being dragged into the Super Admin column, next to Manager Level 1 and Manager Level 2 columns with team member cards" decoding="async"></figure>
+        <figure class="figure cd-fig"><img loading="lazy" src="assets/cd-approval-matrix.webp" width="1400" height="642" alt="Approval matrix: a person card being dragged into the Super Admin column, next to Manager Level 1 and Manager Level 2 columns with team member cards" decoding="async" data-zoom></figure>
       </div>
       <div class="cd-screen-panel" role="tabpanel" id="p-po" aria-labelledby="t-po" hidden>
         <div class="copy">
           <h3 class="t-h3">Forms that replace paper</h3>
           <p>Purchase orders, check requests and wire transfers share one form pattern. An order can hold several account codes, and supporting files attach right inside it, so accounting gets the documents with the request.</p>
         </div>
-        <figure class="figure cd-fig"><img loading="lazy" src="assets/cd-new-po.webp" width="1400" height="1238" alt="New purchase order form with form name, submission date, vendor, description, expense type checkboxes, a repeatable account code block, commitment, comments and attached files" decoding="async"></figure>
+        <figure class="figure cd-fig"><div class="cd-crop"><img loading="lazy" src="assets/cd-new-po.webp" width="1400" height="1238" alt="New purchase order form with form name, submission date, vendor, description, expense type checkboxes, a repeatable account code block, commitment, comments and attached files" decoding="async" data-zoom></div></figure>
       </div>
       <div class="cd-screen-panel" role="tabpanel" id="p-notif" aria-labelledby="t-notif" hidden>
         <div class="copy">
           <h3 class="t-h3">Approvals that come to you</h3>
           <p>The thumbs-up in the header lists every purchase order and check request waiting on you. Managers approve them one by one or all at once without leaving the page they're on.</p>
         </div>
-        <figure class="figure cd-fig"><img loading="lazy" src="assets/cd-notif-dropdown.webp" width="1400" height="1193" alt="Company dashboard with the approvals dropdown open, listing purchase orders and check reports with Approve buttons, plus Delete all and Approve all" decoding="async"></figure>
+        <figure class="figure cd-fig"><div class="cd-crop"><img loading="lazy" src="assets/cd-notif-dropdown.webp" width="1400" height="1193" alt="Company dashboard with the approvals dropdown open, listing purchase orders and check reports with Approve buttons, plus Delete all and Approve all" decoding="async" data-zoom></div></figure>
       </div>
     </div>
   </section>
@@ -372,13 +384,11 @@
       <div class="sec-head">
         <p class="label">Mobile web</p>
         <h2 class="t-h2" id="mobile-h">The same system on a phone</h2>
-        <p class="sub">On small screens the KPI cards stack two by two, the sidebar moves into a hamburger menu and the approval matrix becomes a vertical list. The components don't change, only how they're arranged.</p>
+        <p class="sub">On small screens the KPI cards stack two by two, the sidebar moves into a hamburger menu and the approval matrix becomes a vertical list. The components don't change, only how they're arranged. Scroll inside each phone.</p>
       </div>
       <ul class="cd-phones">
         <li class="cd-phone"><div class="cd-phone-frame"><div class="cd-phone-screen" tabindex="0" role="region" aria-label="Mobile dashboard, scrollable"><img src="assets/cd-p-dash.webp" width="375" height="4022" alt="Company dashboard on mobile: KPI cards in two columns, status tabs and cost report cards, as one long page" loading="lazy" decoding="async"></div></div><p>Dashboard<span>Scroll inside the screen</span></p></li>
         <li class="cd-phone"><div class="cd-phone-frame"><div class="cd-phone-screen" tabindex="0" role="region" aria-label="Mobile approval matrix, scrollable"><img src="assets/cd-p-approval.webp" width="375" height="1160" alt="Approval matrix on mobile with Super Admin, Manager Level 1 and Manager Level 2 stacked vertically" loading="lazy" decoding="async"></div></div><p>Approval matrix<span>Scroll inside the screen</span></p></li>
-        <li class="cd-phone"><div class="cd-phone-frame"><div class="cd-phone-screen"><img src="assets/cd-p-notif.webp" width="375" height="665" alt="Approvals dropdown on mobile with Approve buttons, Delete all and Approve all" loading="lazy" decoding="async"></div></div><p>Approvals</p></li>
-        <li class="cd-phone"><div class="cd-phone-frame"><div class="cd-phone-screen"><img src="assets/cd-p-menu.webp" width="375" height="699" alt="Hamburger menu open on mobile in a studio's branded theme, with the studio's logo at the bottom" loading="lazy" decoding="async"></div></div><p>Menu with a studio's theme</p></li>
       </ul>
     </div>
   </section>
@@ -390,8 +400,9 @@
         <h2 class="t-h2" id="int-h">Connected to the tools finance already uses</h2>
         <p>Conduiit Connect links the platform with the accounting software each production runs. In this flow, a company sets up Revolution Entertainment Services' Probooks and tests the sync of its purchase orders.</p>
         <p>Every table also has a download button, so submissions and cost reports go out as spreadsheets for Excel or any similar tool.</p>
+        <p>Before a submission reaches accounting, pre-audit checks flag what would bounce it back: an account code that doesn’t fit the expense, or a missing receipt or invoice. Fixing it at the source is cheaper than finding it at month end.</p>
       </div>
-      <figure class="figure cd-fig"><img src="assets/cd-integrations.webp" width="1400" height="1189" alt="Conduiit Connect configuration: client ID, secret, token URL and scope fields, a connect flow from Refresh to Probooks, and a You're connected confirmation" loading="lazy" decoding="async"></figure>
+      <figure class="figure cd-fig"><img src="assets/cd-integrations.webp" width="1400" height="1189" alt="Conduiit Connect configuration: client ID, secret, token URL and scope fields, a connect flow from Refresh to Probooks, and a You're connected confirmation" loading="lazy" decoding="async" data-zoom></figure>
     </div>
   </section>
 
@@ -402,7 +413,7 @@
         <h2 class="t-h2" id="print-h">The new identity, on paper</h2>
         <p>With the system in place, I designed a two-page flyer to hand out at industry events and a set of business cards, both built on the same palette, type and illustration style.</p>
       </div>
-      <figure class="figure cd-fig"><img src="assets/cd-flyers.webp" width="1328" height="957" alt="Two-page Conduiit flyer: the first page explains digital workflows for production management and accounting, the second lists features and how Conduiit works in four steps" loading="lazy" decoding="async"></figure>
+      <figure class="figure cd-fig"><img src="assets/cd-flyers.webp" width="1328" height="957" alt="Two-page Conduiit flyer: the first page explains digital workflows for production management and accounting, the second lists features and how Conduiit works in four steps" loading="lazy" decoding="async" data-zoom></figure>
     </div>
   </section>
 
@@ -413,6 +424,7 @@
         <div class="cd-back-body">
           <p>Conduiit still runs on the system we built while I was there, and its clients still work in the same dashboards.</p>
           <p>The choice that paid off most was treating the company color as a token. Every component reads its primary from one place, so branding a studio's workspace became a setting the client changes on their own.</p>
+          <p><b>What I’d do differently:</b> agree on a baseline with the founder before the redesign starts, such as days from request to approval or how many submissions bounce back from accounting, so the impact of the new system shows in numbers and not only in screens.</p>
         </div>
       </div>
     </div>
@@ -436,12 +448,13 @@
           <p>Hiring for a role, or have a project in mind? Write to me. Fair warning: I'll happily talk your ear off about it.</p>
           <div class="contact-who">
             <img src="assets/avatar-footer.webp?v=2" width="208" height="208" alt="" decoding="async" loading="lazy">
-            <p><span>David Hoyos</span>Product Designer, based in Argentina</p>
+            <p><span>David Hoyos</span>Product Designer in Argentina, open to remote and hybrid roles</p>
           </div>
         </div>
         <div class="contact-actions">
-          <a class="contact-email" href="mailto:daviddhoyos1@gmail.com" data-copy-email><span>daviddhoyos1@gmail.com</span><span class="contact-email-icon"><svg class="ce-copy width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"/></svg><svg class="ce-send" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><span class="sr-only ce-copy"> (copies the email address)</span><span class="sr-only ce-send"> (opens your mail app)</span></a>
+          <a class="contact-email" href="mailto:daviddhoyos1@gmail.com" data-copy-email><span>daviddhoyos1@gmail.com</span><span class="contact-email-icon"><svg class="ce-copy" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"/></svg><svg class="ce-send" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><span class="sr-only ce-copy"> (copies the email address)</span><span class="sr-only ce-send"> (opens your mail app)</span></a>
           <ul class="contact-links">
+            <li class="cl-write"><a class="btn btn--glass glass glass--clear glass--interactive" href="mailto:daviddhoyos1@gmail.com?subject=Hi%20David">Write to me<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg><span class="sr-only"> (opens your mail app)</span></a></li>
             <li><a class="btn btn--glass glass glass--clear glass--interactive" href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16L16 8M9 8h7v7"/></svg><span class="sr-only"> (opens in a new tab)</span></a></li>
             <li><a class="btn btn--glass glass glass--clear glass--interactive" href="assets/david-hoyos-resume.pdf" download="David-Hoyos-Resume.pdf">Download resume<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="sr-only"> (PDF)</span></a></li>
           </ul>
@@ -453,9 +466,11 @@
     </div>
   </section>
 </footer>
-<script src="app.js?v=11" defer></script>
+<script src="app.js?v=12" defer></script>
 <script src="thumbs.js?v=9" defer></script>
 <script src="hero-shader.js?v=7" defer></script>
 <script src="conduiit.js?v=1" defer></script>
+<script src="lightbox.js?v=3" defer></script>
+<script src="stations.js?v=1" defer></script>
 </body>
 </html>
