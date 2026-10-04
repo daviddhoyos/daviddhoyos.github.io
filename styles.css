@@ -2938,3 +2938,28 @@ body:has(#view-edelap) .contact-email:hover { border-color: var(--ed-sky-lite); 
 .biz-points p { font: 400 15px/1.6 var(--font-body); color: var(--text-body); }
 .bg-mist .biz-points li { background: #fff; }
 @media (max-width: 1023.98px) { .biz-grid { grid-template-columns: minmax(0, 1fr); } .biz-points { grid-template-columns: minmax(0, 1fr); } }
+
+/* Terms of use and privacy: a short shader header, then a reading column with a sticky index */
+.case-hero.terms-hero { min-height: 0; padding: clamp(140px, 14vw, 180px) 0 clamp(48px, 6vw, 72px); }
+.terms-hero .copy { max-width: 760px; gap: 16px; }
+.terms-grid { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 720px); gap: clamp(40px, 6vw, 96px); align-items: start; }
+.terms-toc { position: sticky; top: 120px; }
+.terms-toc ol { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 2px; counter-reset: t; }
+.terms-toc li { counter-increment: t; }
+.terms-toc a { display: flex; gap: 10px; padding: 8px 0; color: var(--text-body); font: 500 15px/1.4 var(--font-body); text-decoration: none; }
+.terms-toc a::before { content: counter(t, decimal-leading-zero); color: var(--text-meta); font-variant-numeric: tabular-nums; }
+@media (hover: hover) and (pointer: fine) { .terms-toc a:hover { color: var(--violet-link); } }
+.terms-toc a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.terms-body { display: grid; gap: clamp(36px, 4vw, 48px); }
+.terms-summary { padding: 24px 28px; border-radius: 20px; background: var(--card-bg); font: 400 18px/1.6 var(--font-body); color: var(--text-body); }
+.terms-summary b { color: var(--text-strong); }
+.terms-sec { display: grid; gap: 14px; scroll-margin-top: 110px; }
+.terms-sec h2 { color: var(--text-strong); }
+.terms-sec p, .terms-sec li { font: 400 17px/1.7 var(--font-body); color: var(--text-body); }
+.terms-sec ul { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+.terms-sec a { color: var(--violet-link); text-underline-offset: 3px; }
+@media (max-width: 899.98px) { .terms-grid { grid-template-columns: minmax(0, 1fr); } .terms-toc { position: static; } }
+.contact .legal { gap: 8px 24px; flex-wrap: wrap; }
+.contact .legal a { color: var(--lavender-muted); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, 0.35); }
+@media (hover: hover) and (pointer: fine) { .contact .legal a:hover { color: #fff; text-decoration-color: currentColor; } }
+.contact .legal a:focus-visible { outline: 3px solid #fff; outline-offset: 2px; border-radius: 4px; }
