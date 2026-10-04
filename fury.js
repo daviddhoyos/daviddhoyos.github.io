@@ -4,14 +4,32 @@
   'use strict';
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* ---------- project run: modules finish in order, once, when the run comes into view ---------- */
+  /* ---------- project run: modules finish one by one (slowly), hold, reset and play again while in view ---------- */
   const run = document.querySelector('[data-run]');
   if (run) {
-    run.querySelectorAll('.fx-mod').forEach((m, i) => m.style.setProperty('--i', i));
+    const mods = run.querySelectorAll('.fx-mod');
+    mods.forEach((m, i) => m.style.setProperty('--i', i));
+    const STEP = 520;                                  // ms between modules (matches the 520ms delay per module in styles.css)
+    const FILL = mods.length * STEP + 700;             // time until the last check has landed
+    const HOLD = 2600;                                 // everything lit, before it restarts
+    const REST = 900;                                  // empty, before the next pass
+    let timer = 0;
+    const clear = () => { clearTimeout(timer); timer = 0; };
+    const empty = () => {                              // back to the start with no transition
+      run.classList.add('is-reset'); run.classList.remove('is-done'); void run.offsetWidth;
+    };
+    const play = () => {
+      run.classList.remove('is-reset'); void run.offsetWidth;
+      run.classList.add('is-done');
+      timer = setTimeout(() => { empty(); timer = setTimeout(play, REST); }, FILL + HOLD);
+    };
     if (reduce.matches || !('IntersectionObserver' in window)) run.classList.add('is-done');
     else {
       const io = new IntersectionObserver((es) => {
-        if (es.some((e) => e.isIntersecting)) { run.classList.add('is-done'); io.disconnect(); }
+        es.forEach((e) => {
+          if (e.isIntersecting) { if (!timer) play(); }
+          else { clear(); empty(); }
+        });
       }, { threshold: 0.5 });
       io.observe(run);
     }

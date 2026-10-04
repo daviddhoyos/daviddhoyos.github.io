@@ -52,7 +52,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=43">
+<link rel="stylesheet" href="styles.css?v=44">
 <link rel="preload" href="assets/pm-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -278,7 +278,7 @@
       <div class="pm-screens" data-screens>
         <div class="pm-screens-head">
           <h3 class="t-h3">Screen by screen</h3>
-          <div class="pm-tabs" role="tablist" aria-label="Screens"><button role="tab" id="pm-t-details" aria-controls="pm-p-details" aria-selected="true">Document details</button><button role="tab" id="pm-t-editor" aria-controls="pm-p-editor" aria-selected="false" tabindex="-1">Document editor</button><button role="tab" id="pm-t-history" aria-controls="pm-p-history" aria-selected="false" tabindex="-1">History viewer</button></div>
+          <div class="pm-tabs" role="tablist" aria-label="Screens"><button role="tab" id="pm-t-details" aria-controls="pm-p-details" aria-selected="true">Document details</button><button role="tab" id="pm-t-editor" aria-controls="pm-p-editor" aria-selected="false" tabindex="-1"><span class="tl-full">Document editor</span><span class="tl-short" aria-hidden="true">Editor</span></button><button role="tab" id="pm-t-history" aria-controls="pm-p-history" aria-selected="false" tabindex="-1"><span class="tl-full">History viewer</span><span class="tl-short" aria-hidden="true">History</span></button></div>
         </div>
         <div class="pm-well pm-screens-well"><div role="tabpanel" id="pm-p-details" aria-labelledby="pm-t-details">
             <p class="pm-screen-desc">Labels above fields and grouped sections turn a long form into something people can scan, and the document’s status is visible at a glance.</p>
@@ -288,7 +288,7 @@
             </div>
             <p class="pm-swipe" aria-hidden="true">Swipe to compare</p>
           </div><div role="tabpanel" id="pm-p-editor" aria-labelledby="pm-t-editor" hidden>
-            <p class="pm-screen-desc">The editor shows the policy as it will be published, with its outline beside it, so authors check the structure while they write.</p>
+            <p class="pm-screen-desc">Document editor shows the policy as it will be published, with its outline beside it, so authors check the structure while they write.</p>
             <div class="pm-pair">
               <div class="pm-pair-item" style="--ar:1.8048"><span class="pm-chip">Before</span><div class="pm-shot"><img loading="lazy" data-zoom src="assets/pmx-editor-before.webp" srcset="assets/pmx-editor-before-sm.webp 564w, assets/pmx-editor-before.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="625" alt="Before: the built-in document editor with a toolbar over plain text" decoding="async"></div></div>
               <div class="pm-pair-item" style="--ar:1.4047"><span class="pm-chip pm-chip--after">After</span><div class="pm-shot"><img loading="lazy" data-zoom src="assets/pmx-editor-after.webp" srcset="assets/pmx-editor-after-sm.webp 564w, assets/pmx-editor-after.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="803" alt="After: the document editor showing the policy with its outline beside it" decoding="async"></div></div>
@@ -390,7 +390,7 @@
       <div class="contact-grid">
         <div class="contact-copy">
           <h2 id="contact-h">Good products start with good conversations.</h2>
-          <p>Hiring for a role, or have a project in mind? Write to me. Fair warning: I'll happily talk your ear off about it.</p>
+          <p>Hiring for a role, or have a project in mind? Write to me.</p>
           <div class="contact-who">
             <img src="assets/avatar-footer.webp?v=2" width="208" height="208" alt="" decoding="async" loading="lazy">
             <p><span>David Hoyos</span>Product Designer in Argentina, open to remote and hybrid roles</p>
@@ -411,9 +411,9 @@
     </div>
   </section>
 </footer>
-<script src="app.js?v=14" defer></script>
+<script src="app.js?v=15" defer></script>
 <script src="lightbox.js?v=4" defer></script>
-<script src="thumbs.js?v=11" defer></script>
+<script src="thumbs.js?v=12" defer></script>
 <script src="hero-shader.js?v=7" defer></script>
 <script src="section-shader.js?v=6" defer></script>
 <script src="policy-manager.js?v=4" defer></script>

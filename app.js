@@ -396,7 +396,7 @@
   if (chapters.length > 1) {
     bar = document.createElement('nav');
     bar.className = 'cs-bar glass';
-    bar.setAttribute('aria-label', t('Case study progress', 'Progreso del caso'));
+    bar.setAttribute('aria-label', t('Case study progress', 'Progreso del proyecto'));
     bar.hidden = true;
     bar.innerHTML = '<span class="cs-bar-dot" aria-hidden="true"></span><span class="cs-bar-text" aria-live="polite"></span><ol class="cs-bar-ticks"></ol>';
     const text = bar.querySelector('.cs-bar-text');

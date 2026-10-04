@@ -73,7 +73,7 @@
   if (!cards.length || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   const tag = document.createElement('div');
-  tag.className = 'case-cursor'; tag.setAttribute('aria-hidden', 'true'); tag.textContent = /^es\b/i.test(document.documentElement.lang) ? 'Ver caso' : 'View case study';
+  tag.className = 'case-cursor'; tag.setAttribute('aria-hidden', 'true'); tag.textContent = /^es\b/i.test(document.documentElement.lang) ? 'Ver proyecto' : 'View case study';
   document.body.appendChild(tag);
   let x = 0, y = 0, tx = 0, ty = 0, raf = 0, w = 0, h = 0, shown = false, owner = null;
   const place = () => { tag.style.transform = `translate3d(${x - w / 2}px, ${y - h / 2}px, 0)`; };

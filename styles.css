@@ -1727,6 +1727,15 @@ html[data-view="resume"] main, html[data-view="resume"] .site-footer { position:
 .pm-tabs button { min-height: 44px; padding: 0 18px; border: 0; border-radius: var(--r-pill); background: transparent; cursor: pointer; font: 500 15px/1 var(--font-body); color: var(--text-body); transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out), transform 160ms var(--ease-out); }
 .pm-tabs button[aria-selected="true"] { background: var(--pm-deep); color: #fff; }
 .pm-tabs button:active { transform: scale(0.97); }
+.pm-tabs .tl-short { display: none; }
+@media (max-width: 719.98px) {
+  /* mobile: one row, short labels (Document details · Editor · History) instead of wrapping to a second line */
+  .pm-screens-head { flex-direction: column; align-items: stretch; }
+  .pm-tabs { display: flex; flex-wrap: nowrap; width: 100%; gap: 2px; }
+  .pm-tabs button { flex: 1 1 auto; min-width: 0; padding: 0 10px; font-size: 14px; white-space: nowrap; }
+  .pm-tabs .tl-full { display: none; }
+  .pm-tabs .tl-short { display: inline; }
+}
 @media (hover: hover) and (pointer: fine) { .pm-tabs button[aria-selected="false"]:hover { background: var(--pm-tint); } }
 .pm-screens-well { justify-items: stretch; }
 .pm-screens-well [role="tabpanel"] { display: grid; gap: 16px; min-width: 0; }
@@ -2231,13 +2240,13 @@ body:has(#view-edelap) .contact-email:hover { border-color: var(--ed-sky-lite); 
 .fx-mod-state {
   position: absolute; top: 4px; left: 0; width: 28px; height: 28px; border-radius: 50%;
   background: var(--fx-ink); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.28);
-  transition: background-color 260ms var(--ease-out), box-shadow 260ms var(--ease-out);
-  transition-delay: calc(var(--i, 0) * 180ms);
+  transition: background-color 520ms var(--ease-out), box-shadow 520ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 520ms);
 }
 .fx-mod-state::after {
   content: ""; position: absolute; inset: 0; margin: auto; width: 10px; height: 6px; translate: 0 -1px; rotate: -45deg;
   border-left: 2px solid #fff; border-bottom: 2px solid #fff; opacity: 0; scale: 0.6;
-  transition: opacity 200ms var(--ease-out), scale 260ms var(--ease-out); transition-delay: calc(var(--i, 0) * 180ms + 80ms);
+  transition: opacity 400ms var(--ease-out), scale 520ms var(--ease-out); transition-delay: calc(var(--i, 0) * 520ms + 160ms);
 }
 .fx-mod-name { font: 600 17px/1.3 var(--font-display); color: #fff; }
 .fx-mod-who { font: 400 14px/1.45 var(--font-body); color: var(--pm-mist); }
@@ -2247,6 +2256,7 @@ body:has(#view-edelap) .contact-email:hover { border-color: var(--ed-sky-lite); 
 .fx-run.is-done .fx-mod-state { background: var(--fx-ok); box-shadow: inset 0 0 0 2px var(--fx-ok); }
 .fx-run.is-done .fx-mod--mine .fx-mod-state { background: var(--pm-blue); box-shadow: inset 0 0 0 2px var(--pm-blue-soft); }
 .fx-run.is-done .fx-mod-state::after { opacity: 1; scale: 1; }
+.fx-run.is-reset .fx-mod-state, .fx-run.is-reset .fx-mod-state::after { transition: none; }
 .fx-flow-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px clamp(32px, 5vw, 80px); margin-top: clamp(56px, 6vw, 80px); padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
 .fx-flow-notes p { font: 400 17px/1.6 var(--font-body); color: var(--pm-mist); max-width: 520px; }
 .fx-flow-notes b { font-weight: 600; color: #fff; }
