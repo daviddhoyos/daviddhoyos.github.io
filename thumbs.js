@@ -39,11 +39,22 @@
 
     const live = (on) => card.classList.toggle('is-live', on && !reduce.matches);
 
-    // case-study header: the same window plays once on its own, shortly after the page settles, and stays there
+    // case-study header: the same window loops on its own, down and back up at the same speed (the CSS gives both
+    // directions the same duration and curve), with a short rest at each end. It only runs while it is on screen.
     if (card.classList.contains('hero-thumb')) {
       if (!win) return;
-      const start = () => setTimeout(() => live(true), 700);
-      if (document.readyState === 'complete') start(); else window.addEventListener('load', start, { once: true });
+      const dur = (parseFloat(getComputedStyle(win).getPropertyValue('--dur')) || 4) * 1000;
+      const rest = 1400;
+      let timer = 0, running = false;
+      const down = () => { live(true); timer = setTimeout(up, dur + rest); };
+      const up = () => { live(false); timer = setTimeout(down, dur + rest); };
+      const start = () => { if (running || reduce.matches) return; running = true; timer = setTimeout(down, 700); };
+      const stop = () => { running = false; clearTimeout(timer); live(false); };
+      const arm = () => {
+        if (!('IntersectionObserver' in window)) { start(); return; }
+        new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop()), { threshold: 0.2 }).observe(card);
+      };
+      if (document.readyState === 'complete') arm(); else window.addEventListener('load', arm, { once: true });
       return;
     }
     target.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') live(true); });

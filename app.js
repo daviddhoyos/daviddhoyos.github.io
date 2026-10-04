@@ -469,3 +469,7 @@
   bindScrollables();
   window.addEventListener('load', bindScrollables);
 })();
+
+/* images: no right-click menu and no dragging them out of the page (text and the rest of the page stay normal) */
+document.addEventListener('contextmenu', (e) => { if (e.target instanceof Element && e.target.closest('img')) e.preventDefault(); });
+document.addEventListener('dragstart', (e) => { if (e.target instanceof Element && e.target.tagName === 'IMG') e.preventDefault(); });

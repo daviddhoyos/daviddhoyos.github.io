@@ -53,7 +53,7 @@
 </script>
 <link rel="preload" href="../assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=44">
+<link rel="stylesheet" href="../styles.css?v=47">
 <link rel="preload" href="../assets/pm-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -86,7 +86,7 @@
         <div><dt>Años</dt><dd>2022 a 2024</dd></div>
         <div><dt>Plataforma</dt><dd>Web</dd></div>
         <div><dt>Aprobación para el directorio</dt><dd>14 pasos → 3</dd></div>
-        <div><dt>Velocidad de desarrollo</dt><dd>2x, con Lens</dd></div>
+        <div><dt>Velocidad de desarrollo</dt><dd>2x, desde mis prototipos</dd></div>
       </dl>
     </div>
   </header>
@@ -117,7 +117,7 @@
       <div class="pm-start">
         <div class="sec-head reveal">
           <p class="label">El punto de partida</p>
-          <h2 class="t-h2" id="pm-start-h">Un producto del que los clientes dependían, y que estaban por dejar</h2>
+          <h2 class="t-h2" id="pm-start-h">Diligent acababa de comprarlo y se caía en medio de las tareas</h2>
           <p class="sub">En Policy Manager, las organizaciones escriben, revisan, aprueban y distribuyen sus políticas de compliance, desde empresas como Salesforce y Cisco hasta grandes distritos escolares de Estados Unidos. Era el producto con los clientes más grandes del grupo Mission-Driven Organizations de Diligent.</p>
           <p class="sub">Diligent acababa de comprarlo. No seguía el design system y se rompía seguido. Cada producto del grupo tenía su propio diseñador, bajo un mismo design manager. Yo era el de Policy Manager y me ocupaba de la experiencia de punta a punta.</p>
         </div>
@@ -158,6 +158,19 @@
   </section>
 
   <section class="sec bg-white pm-decisions" aria-label="Las cinco decisiones">
+    <div class="wrap yc-wrap">
+      <div class="yc" data-yc data-yc-case="Policy Manager" data-yc-topic="por dónde empezar">
+        <p class="yc-label">Tu decisión</p>
+        <p class="yc-q" id="yc-q">El backend todavía no se puede reescribir, cada caída muestra errores de código en medio de una tarea y los clientes están decidiendo si renuevan. ¿Qué hacés primero?</p>
+        <ul class="yc-opts" aria-labelledby="yc-q">
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Rediseñar los flujos principales, para que el producto se vea nuevo al renovar</span></button></li>
+          <li><button type="button" class="yc-opt" data-yc-mine><span class="yc-opt-text">Hacer que cada falla se entienda y se pueda recuperar</span></button></li>
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Frenar el rediseño hasta que ingeniería corrija las caídas</span></button></li>
+        </ul>
+        <div class="yc-answer" data-yc-answer><div><p class="yc-verdict" data-yc-verdict></p><p class="yc-why">Primero hice que las fallas fueran seguras. Una interfaz nueva se iba a seguir cayendo, y los clientes grandes juzgan la estabilidad por lo que ven cuando algo se rompe. La decisión 1 cuenta cómo.</p></div></div>
+        <button type="button" class="yc-skip" data-yc-skip>Saltear y ver qué hice</button>
+      </div>
+    </div>
     <div class="wrap">
       <div class="decisions">
 
@@ -278,7 +291,7 @@
 
       <div class="pm-screens" data-screens>
         <div class="pm-screens-head">
-          <h3 class="t-h3">Pantalla por pantalla</h3>
+          <h3 class="t-h3">Cada pantalla, más fácil de recorrer</h3>
           <div class="pm-tabs" role="tablist" aria-label="Pantallas"><button role="tab" id="pm-t-details" aria-controls="pm-p-details" aria-selected="true">Detalles del documento</button><button role="tab" id="pm-t-editor" aria-controls="pm-p-editor" aria-selected="false" tabindex="-1"><span class="tl-full">Editor de documentos</span><span class="tl-short" aria-hidden="true">Editor</span></button><button role="tab" id="pm-t-history" aria-controls="pm-p-history" aria-selected="false" tabindex="-1"><span class="tl-full">Visor de historial</span><span class="tl-short" aria-hidden="true">Historial</span></button></div>
         </div>
         <div class="pm-well pm-screens-well"><div role="tabpanel" id="pm-p-details" aria-labelledby="pm-t-details">
@@ -306,7 +319,7 @@
       </div>
 
       <div class="pm-caps">
-        <h3 class="t-h3">Más allá de los flujos principales</h3>
+        <h3 class="t-h3">Para no perder a los socios que publican para distritos escolares</h3>
         <div class="pm-cap">
           <div class="pm-cap-copy">
             <h4 class="t-h4">Compartir políticas con los distritos escolares suscriptos</h4>
@@ -339,12 +352,12 @@
       <div class="pm-outcome-grid">
         <div class="sec-head reveal">
           <p class="label">El resultado</p>
-          <h2 class="t-h2" id="pm-next-h">Qué pasó después</h2>
+          <h2 class="t-h2" id="pm-next-h">Los clientes renovaron y los tickets por caídas quedaron bajo control</h2>
           <p class="sub">Los clientes en riesgo firmaron renovaciones a largo plazo, y los tickets de soporte por errores del sistema quedaron bajo control mientras ingeniería arreglaba el backend.</p>
         </div>
         <dl class="pm-stats" data-stats>
           <div class="reveal" style="--d:80ms"><dt>Pasos para que un miembro del directorio apruebe una política</dt><dd>14 <span aria-hidden="true">→</span><span class="sr-only">a</span> <span data-count-from="14" data-count-to="3">3</span></dd></div>
-          <div class="reveal" style="--d:160ms"><dt>Velocidad de desarrollo con Lens, el nuevo design system</dt><dd><span data-count-from="1" data-count-to="2" data-count-decimals="1">2</span>x</dd></div>
+          <div class="reveal" style="--d:160ms"><dt>Velocidad de desarrollo, con ingeniería construyendo desde mis prototipos en Lens</dt><dd><span data-count-from="1" data-count-to="2" data-count-decimals="1">2</span>x</dd></div>
         </dl>
       </div>
     </div>
@@ -378,7 +391,7 @@
 
   <nav class="next-case" aria-label="Siguiente proyecto">
     <div class="wrap">
-      <a href="fury.html"><span class="next-label">Siguiente proyecto</span><span class="next-title">Un campo técnico nuevo en cada proyecto, dentro de Fury de Mercado Libre</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="fury.html"><span class="next-label">Siguiente proyecto<span class="next-time"> · 10 min de lectura</span></span><span class="next-title">Un campo técnico nuevo en cada proyecto, dentro de Fury de Mercado Libre</span><span class="next-why">Analytics y pipelines de deploy para más de 15.000 ingenieros. El tiempo de alineación de diseño bajó un 30%.</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </nav>
 
@@ -412,9 +425,10 @@
     </div>
   </section>
 </footer>
-<script src="../app.js?v=15" defer></script>
+<script src="../app.js?v=16" defer></script>
+<script src="../engage.js?v=1" defer></script>
 <script src="../lightbox.js?v=4" defer></script>
-<script src="../thumbs.js?v=12" defer></script>
+<script src="../thumbs.js?v=13" defer></script>
 <script src="../hero-shader.js?v=7" defer></script>
 <script src="../section-shader.js?v=6" defer></script>
 <script src="../policy-manager.js?v=4" defer></script>

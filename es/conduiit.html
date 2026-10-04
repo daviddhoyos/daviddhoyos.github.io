@@ -53,7 +53,7 @@
 </script>
 <link rel="preload" href="../assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=44">
+<link rel="stylesheet" href="../styles.css?v=47">
 <link rel="preload" href="../assets/cd-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -145,6 +145,19 @@
   </section>
 
   <section class="sec bg-white" aria-labelledby="roles-h" data-chapter="Roles">
+    <div class="wrap yc-wrap">
+      <div class="yc" data-yc data-yc-case="Conduiit" data-yc-topic="los dashboards">
+        <p class="yc-label">Tu decisión</p>
+        <p class="yc-q" id="yc-q">Un admin de la empresa, un admin de proyecto y un project manager entran al mismo producto. ¿Qué ve cada uno primero?</p>
+        <ul class="yc-opts" aria-labelledby="yc-q">
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Un dashboard compartido, con filtros por rol</span></button></li>
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">El menú completo, con lo que no pueden usar en gris</span></button></li>
+          <li><button type="button" class="yc-opt" data-yc-mine><span class="yc-opt-text">Un dashboard y un menú armados según lo que le toca a cada uno</span></button></li>
+        </ul>
+        <div class="yc-answer" data-yc-answer><div><p class="yc-verdict" data-yc-verdict></p><p class="yc-why">Cada rol tuvo su propio dashboard y su menú, y el flujo se divide en el login. Abajo, lo que ve cada uno.</p></div></div>
+        <button type="button" class="yc-skip" data-yc-skip>Saltear y ver qué hice</button>
+      </div>
+    </div>
     <div class="wrap">
       <div class="sec-head">
         <p class="label">Quién inicia sesión</p>
@@ -446,7 +459,7 @@
 
   <nav class="next-case" aria-label="Siguiente proyecto">
     <div class="wrap">
-      <a href="edelap.html"><span class="next-label">Siguiente proyecto</span><span class="next-title">Devolverle a la app de Edelap el pago de facturas</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="edelap.html"><span class="next-label">Siguiente proyecto<span class="next-time"> · 9 min de lectura</span></span><span class="next-title">Devolverle a la app de Edelap el pago de facturas</span><span class="next-why">Una app de consumo. En las pruebas, pagar la factura pasó de 2 minutos a 40 segundos.</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </nav>
 
@@ -480,8 +493,9 @@
     </div>
   </section>
 </footer>
-<script src="../app.js?v=15" defer></script>
-<script src="../thumbs.js?v=12" defer></script>
+<script src="../app.js?v=16" defer></script>
+<script src="../engage.js?v=1" defer></script>
+<script src="../thumbs.js?v=13" defer></script>
 <script src="../hero-shader.js?v=7" defer></script>
 <script src="../conduiit.js?v=2" defer></script>
 <script src="../lightbox.js?v=4" defer></script>

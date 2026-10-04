@@ -52,7 +52,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=44">
+<link rel="stylesheet" href="styles.css?v=47">
 <link rel="preload" href="assets/ed-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -186,6 +186,19 @@
   </section>
 
   <section class="ed-navband on-dark" aria-labelledby="ed-nav-h">
+    <div class="wrap yc-wrap">
+      <div class="yc" data-yc data-yc-case="Edelap" data-yc-topic="the menu">
+        <p class="yc-label">Your call</p>
+        <p class="yc-q" id="yc-q">The card sorting is done, and the menu has 11 items. What do you do with it?</p>
+        <ul class="yc-opts" aria-labelledby="yc-q">
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Keep all 11 and group them under headings</span></button></li>
+          <li><button type="button" class="yc-opt" data-yc-mine><span class="yc-opt-text">Cut it to 4 and move rarely used settings into the profile</span></button></li>
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Hide it behind a hamburger menu</span></button></li>
+        </ul>
+        <div class="yc-answer" data-yc-answer><div><p class="yc-verdict" data-yc-verdict></p><p class="yc-why">I cut it to four: Home, Bills, Report and Help. Address and supply settings moved into the profile, since people rarely need them.</p></div></div>
+        <button type="button" class="yc-skip" data-yc-skip>Skip, show what I did</button>
+      </div>
+    </div>
     <div class="wrap ed-navband-grid">
       <div class="sec-head reveal">
         <p class="label">The biggest cut</p>
@@ -545,7 +558,7 @@
 
   <nav class="next-case" aria-label="Next case study">
     <div class="wrap">
-      <a href="edge226.html"><span class="next-label">Next project</span><span class="next-title">Edge226: explaining ad tech to the people who buy it</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="edge226.html"><span class="next-label">Next case study<span class="next-time"> · 8 min read</span></span><span class="next-title">Edge226: explaining ad tech to the people who buy it</span><span class="next-why">A website redesign that became the company’s brand for about four years.</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </nav>
 
@@ -579,9 +592,10 @@
     </div>
   </section>
 </footer>
-<script src="app.js?v=15" defer></script>
+<script src="app.js?v=16" defer></script>
+<script src="engage.js?v=1" defer></script>
 <script src="lightbox.js?v=4" defer></script>
-<script src="thumbs.js?v=12" defer></script>
+<script src="thumbs.js?v=13" defer></script>
 <script src="hero-shader.js?v=7" defer></script>
 <script src="section-shader.js?v=6" defer></script>
 <script src="edelap.js?v=3" defer></script>

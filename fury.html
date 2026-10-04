@@ -36,7 +36,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=44">
+<link rel="stylesheet" href="styles.css?v=47">
 <link rel="preload" href="assets/pm-shader-poster.webp" as="image" type="image/webp">
 <link rel="preload" href="assets/fury/fury-analytics-home-sm.webp" as="image" type="image/webp">
 </head>
@@ -115,6 +115,19 @@
   </section>
 
   <section class="sec fx-flow on-dark" aria-labelledby="fx-flow-h" data-chapter="How work arrived">
+    <div class="wrap yc-wrap">
+      <div class="yc" data-yc data-yc-case="Fury" data-yc-topic="how to start a project">
+        <p class="yc-label">Your call</p>
+        <p class="yc-q" id="yc-q">A ticket reaches you, and the squad has already built a first version. How do you start?</p>
+        <ul class="yc-opts" aria-labelledby="yc-q">
+          <li><button type="button" class="yc-opt" data-yc-mine><span class="yc-opt-text">Read their version as research before proposing anything</span></button></li>
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Start from a blank file, so the code doesn’t bias the design</span></button></li>
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Polish the screens they built</span></button></li>
+        </ul>
+        <div class="yc-answer" data-yc-answer><div><p class="yc-verdict" data-yc-verdict></p><p class="yc-why">I read it as research. The first version showed what the engineers assumed about the task, and every project was a field I had to learn first.</p></div></div>
+        <button type="button" class="yc-skip" data-yc-skip>Skip, show what I did</button>
+      </div>
+    </div>
     <div class="wrap">
       <div class="sec-head">
         <p class="label">How work arrived</p>
@@ -348,7 +361,7 @@
 
   <nav class="next-case" aria-label="Next case study">
     <div class="wrap">
-      <a href="conduiit.html"><span class="next-label">Next case study</span><span class="next-title">Taking film production finance out of spreadsheets</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="conduiit.html"><span class="next-label">Next case study<span class="next-time"> · 8 min read</span></span><span class="next-title">Taking film production finance out of spreadsheets</span><span class="next-why">A design system built from a single token up. Conduiit still runs on it.</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </nav>
 
@@ -382,9 +395,10 @@
     </div>
   </section>
 </footer>
-<script src="app.js?v=15" defer></script>
+<script src="app.js?v=16" defer></script>
+<script src="engage.js?v=1" defer></script>
 <script src="lightbox.js?v=4" defer></script>
-<script src="thumbs.js?v=12" defer></script>
+<script src="thumbs.js?v=13" defer></script>
 <script src="hero-shader.js?v=7" defer></script>
 <script src="section-shader.js?v=6" defer></script>
 <script src="fury.js?v=4" defer></script>

@@ -53,7 +53,7 @@
 </script>
 <link rel="preload" href="../assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=44">
+<link rel="stylesheet" href="../styles.css?v=47">
 <link rel="preload" href="../assets/ed-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -187,6 +187,19 @@
   </section>
 
   <section class="ed-navband on-dark" aria-labelledby="ed-nav-h">
+    <div class="wrap yc-wrap">
+      <div class="yc" data-yc data-yc-case="Edelap" data-yc-topic="el menú">
+        <p class="yc-label">Tu decisión</p>
+        <p class="yc-q" id="yc-q">El card sorting ya está y el menú tiene 11 ítems. ¿Qué hacés con él?</p>
+        <ul class="yc-opts" aria-labelledby="yc-q">
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Mantener los 11 y agruparlos con títulos</span></button></li>
+          <li><button type="button" class="yc-opt" data-yc-mine><span class="yc-opt-text">Bajarlo a 4 y llevar lo que casi no se usa al perfil</span></button></li>
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Esconderlo en un menú hamburguesa</span></button></li>
+        </ul>
+        <div class="yc-answer" data-yc-answer><div><p class="yc-verdict" data-yc-verdict></p><p class="yc-why">Lo bajé a cuatro: Inicio, Facturas, Reporte y Ayuda. Domicilio y suministros pasaron al perfil, porque se usan poco.</p></div></div>
+        <button type="button" class="yc-skip" data-yc-skip>Saltear y ver qué hice</button>
+      </div>
+    </div>
     <div class="wrap ed-navband-grid">
       <div class="sec-head reveal">
         <p class="label">El recorte más grande</p>
@@ -546,7 +559,7 @@
 
   <nav class="next-case" aria-label="Siguiente proyecto">
     <div class="wrap">
-      <a href="edge226.html"><span class="next-label">Siguiente proyecto</span><span class="next-title">Edge226: explicar ad tech a quienes la compran</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="edge226.html"><span class="next-label">Siguiente proyecto<span class="next-time"> · 9 min de lectura</span></span><span class="next-title">Edge226: explicar ad tech a quienes la compran</span><span class="next-why">Un rediseño del sitio que fue la marca de la empresa durante unos cuatro años.</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </nav>
 
@@ -580,9 +593,10 @@
     </div>
   </section>
 </footer>
-<script src="../app.js?v=15" defer></script>
+<script src="../app.js?v=16" defer></script>
+<script src="../engage.js?v=1" defer></script>
 <script src="../lightbox.js?v=4" defer></script>
-<script src="../thumbs.js?v=12" defer></script>
+<script src="../thumbs.js?v=13" defer></script>
 <script src="../hero-shader.js?v=7" defer></script>
 <script src="../section-shader.js?v=6" defer></script>
 <script src="../edelap.js?v=3" defer></script>

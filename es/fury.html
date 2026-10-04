@@ -36,7 +36,7 @@
 </script>
 <link rel="preload" href="../assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=44">
+<link rel="stylesheet" href="../styles.css?v=47">
 <link rel="preload" href="../assets/pm-shader-poster.webp" as="image" type="image/webp">
 <link rel="preload" href="../assets/fury/fury-analytics-home-sm.webp" as="image" type="image/webp">
 </head>
@@ -115,6 +115,19 @@
   </section>
 
   <section class="sec fx-flow on-dark" aria-labelledby="fx-flow-h" data-chapter="Cómo llegaba el trabajo">
+    <div class="wrap yc-wrap">
+      <div class="yc" data-yc data-yc-case="Fury" data-yc-topic="cómo empezar un proyecto">
+        <p class="yc-label">Tu decisión</p>
+        <p class="yc-q" id="yc-q">Te llega un ticket y el squad ya construyó una primera versión. ¿Cómo arrancás?</p>
+        <ul class="yc-opts" aria-labelledby="yc-q">
+          <li><button type="button" class="yc-opt" data-yc-mine><span class="yc-opt-text">Leer su versión como investigación antes de proponer nada</span></button></li>
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Empezar de un archivo en blanco, para que el código no condicione el diseño</span></button></li>
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Pulir las pantallas que construyeron</span></button></li>
+        </ul>
+        <div class="yc-answer" data-yc-answer><div><p class="yc-verdict" data-yc-verdict></p><p class="yc-why">La leí como investigación. La primera versión mostraba lo que los ingenieros suponían sobre la tarea, y cada proyecto era un campo que primero tenía que aprender.</p></div></div>
+        <button type="button" class="yc-skip" data-yc-skip>Saltear y ver qué hice</button>
+      </div>
+    </div>
     <div class="wrap">
       <div class="sec-head">
         <p class="label">Cómo llegaba el trabajo</p>
@@ -348,7 +361,7 @@
 
   <nav class="next-case" aria-label="Siguiente proyecto">
     <div class="wrap">
-      <a href="conduiit.html"><span class="next-label">Siguiente proyecto</span><span class="next-title">Sacar de las planillas las finanzas de las producciones de cine</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="conduiit.html"><span class="next-label">Siguiente proyecto<span class="next-time"> · 9 min de lectura</span></span><span class="next-title">Sacar de las planillas las finanzas de las producciones de cine</span><span class="next-why">Un design system armado desde un solo token. Conduiit todavía funciona sobre él.</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </nav>
 
@@ -382,9 +395,10 @@
     </div>
   </section>
 </footer>
-<script src="../app.js?v=15" defer></script>
+<script src="../app.js?v=16" defer></script>
+<script src="../engage.js?v=1" defer></script>
 <script src="../lightbox.js?v=4" defer></script>
-<script src="../thumbs.js?v=12" defer></script>
+<script src="../thumbs.js?v=13" defer></script>
 <script src="../hero-shader.js?v=7" defer></script>
 <script src="../section-shader.js?v=6" defer></script>
 <script src="../fury.js?v=4" defer></script>

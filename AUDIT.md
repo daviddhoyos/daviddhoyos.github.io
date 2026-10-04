@@ -70,3 +70,25 @@ Registro de lo revisado y cambiado, de mayor a menor impacto. Pensado para dos l
 
 - **Lente de Product Designer.** Cada sección "The business" cierra con lo que ese modelo significó para el diseño: Fury (el costo en el flujo de creación), Edelap (pagar en menos pasos que una billetera) y Propelify (cuatro decisiones, cuatro caminos).
 - **Policy Manager:** la comparación de versiones se explica por lo que resuelve: el aprobador ve qué se eliminó (rojo) y qué se agregó (verde) entre dos versiones, y puede descargarlo como PDF. Título nuevo: "See exactly what changed between two versions".
+
+## 7. Ronda de octubre: posicionamiento, logos y "Your call"
+
+- **Hero.** (Revertido en la ronda siguiente a "Simple products for complex problems." / "Productos simples para problemas complejos.") Frase anterior: "I learn the field, then make the product simple." Ya no encasilla en lo complejo y la bajada muestra el rango: plataforma para desarrolladores, compliance, la app de una empresa de energía y la marca de un festival. Foto chica al lado del nombre. Meta description y JSON-LD actualizados.
+- **Empresas.** Pasaron del footer al hero, en orden cronológico, y se sacó la banda vieja de fondo plano. Cada logo (salvo Azulo, sin datos todavía) muestra al pasar el cursor o tocarlo los años, el rol y los casos hechos ahí, con links. Une el CV (empresas) con el portfolio (productos).
+- **Home.** Cada caso suma una línea de resultado y el tiempo de lectura. More projects suma el tiempo de lectura.
+- **Next case.** Tiempo de lectura y una línea de por qué leerlo. Edelap decía "Next project": unificado.
+- **Títulos.** Policy Manager: "Starting point", "Screen by screen", "Beyond the core flows" y "What happened next" pasaron a títulos que dicen la conclusión. Edge226 y Propelify: las secciones de la home final también. "2x, on Lens" ahora dice de dónde sale: ingeniería construyendo desde los prototipos.
+- **"Your call" (archivo `engage.js`).** Un dilema real por caso, antes de la sección que lo resuelve: el lector elige y después ve qué hice y por qué. Sin puntajes ni respuestas correctas, se puede saltear y sin JS se lee como pregunta con respuesta. Si el lector habría elegido otra cosa, el cierre lo invita a contarlo con un mail con asunto prearmado.
+- **Descartado de la propuesta de Google:** el botón "Simplificar" del hero (refuerza lo complejo y es una UI falsa), parallax con el mouse sobre dashboards, reveals con blur y cortinas en cada imagen (demoran el contenido y repiten la misma entrada en toda la página), el generador de mensajes del footer y el toast con emoji. Los thumbnails ya tienen movimiento y los links ya tienen flecha animada.
+
+### Pendiente
+- Azulo: falta saber años, rol y proyecto para sumarlo al índice de empresas.
+
+## 7. Ronda de ajustes del hero y los casos
+
+- **Hero del home.** Sin foto (el avatar queda solo en el footer), para que la imagen no pese en la lectura de seniority. Título vuelve a "Simple products for complex problems." / "Productos simples para problemas complejos.", también en meta description y og/twitter.
+- **Empresas.** Logos estáticos: sin hover, sin botón, sin nota con casos. Opacidad fija en 0.62 (entre el 0.3 de "apagado" y el 1 del hover).
+- **Lista de casos del home.** Se saca el texto repetido antes de "Read the case study". El encabezado de cada caso ahora lleva rubro y minutos: "Policy Manager · Compliance SaaS · 9 min read", "Mercado Libre · Internal developer platform", "Conduiit · Production finance SaaS", "Edelap · Mobile app, UX audit and redesign". En pantallas chicas queda encabezado + título.
+- **Edge226.** Los dos banners ("Indoor event booth" y "Outdoor event") van en columnas iguales y con el mismo recorte. Before/after: se recortó la franja blanca del borde derecho y la banda blanca inferior del After; ambos quedan en 1440 x 752.
+- **Heroes de los casos.** La animación ahora es un loop: baja, descansa, sube con la misma duración y curva, descansa, repite. Solo corre mientras el hero está en pantalla y nunca con reduced motion.
+- **Propelify.** Hero y card de "More projects" animados como scroll de la home completa (desde `home_desktop.pdf`). Assets: `assets/propelify/pp-scroll-base-*.webp` y `pp-scroll-content-*.webp`.

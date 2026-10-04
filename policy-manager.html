@@ -52,7 +52,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=44">
+<link rel="stylesheet" href="styles.css?v=47">
 <link rel="preload" href="assets/pm-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -85,7 +85,7 @@
         <div><dt>Years</dt><dd>2022 to 2024</dd></div>
         <div><dt>Platform</dt><dd>Web</dd></div>
         <div><dt>Approval for board members</dt><dd>14 steps → 3</dd></div>
-        <div><dt>Development velocity</dt><dd>2x, on Lens</dd></div>
+        <div><dt>Development velocity</dt><dd>2x, from my prototypes</dd></div>
       </dl>
     </div>
   </header>
@@ -116,7 +116,7 @@
       <div class="pm-start">
         <div class="sec-head reveal">
           <p class="label">The starting point</p>
-          <h2 class="t-h2" id="pm-start-h">A product customers relied on, and were ready to leave</h2>
+          <h2 class="t-h2" id="pm-start-h">Diligent had just bought it, and it crashed mid-task</h2>
           <p class="sub">Policy Manager is where organizations write, review, approve and distribute their compliance policies, from companies like Salesforce and Cisco to large US school districts. It was the product with the largest clients in Diligent’s Mission-Driven Organizations group.</p>
           <p class="sub">Diligent had just acquired it. It didn’t follow the design system and broke often. Each product in the group had its own designer under one design manager; I was Policy Manager’s and owned the experience end to end.</p>
         </div>
@@ -157,6 +157,19 @@
   </section>
 
   <section class="sec bg-white pm-decisions" aria-label="The five decisions">
+    <div class="wrap yc-wrap">
+      <div class="yc" data-yc data-yc-case="Policy Manager" data-yc-topic="where to start">
+        <p class="yc-label">Your call</p>
+        <p class="yc-q" id="yc-q">The backend can’t be rewritten yet, every crash shows raw code errors mid-task, and clients are deciding whether to renew. What do you do first?</p>
+        <ul class="yc-opts" aria-labelledby="yc-q">
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Redesign the main flows, so the product looks new at renewal</span></button></li>
+          <li><button type="button" class="yc-opt" data-yc-mine><span class="yc-opt-text">Make every failure readable and safe to recover from</span></button></li>
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">Hold the redesign until engineering stops the crashes</span></button></li>
+        </ul>
+        <div class="yc-answer" data-yc-answer><div><p class="yc-verdict" data-yc-verdict></p><p class="yc-why">I made failures safe first. A new interface would still crash, and enterprise clients judge stability by what they see when something breaks. Decision 1 shows how.</p></div></div>
+        <button type="button" class="yc-skip" data-yc-skip>Skip, show what I did</button>
+      </div>
+    </div>
     <div class="wrap">
       <div class="decisions">
 
@@ -277,7 +290,7 @@
 
       <div class="pm-screens" data-screens>
         <div class="pm-screens-head">
-          <h3 class="t-h3">Screen by screen</h3>
+          <h3 class="t-h3">Every screen, easier to scan</h3>
           <div class="pm-tabs" role="tablist" aria-label="Screens"><button role="tab" id="pm-t-details" aria-controls="pm-p-details" aria-selected="true">Document details</button><button role="tab" id="pm-t-editor" aria-controls="pm-p-editor" aria-selected="false" tabindex="-1"><span class="tl-full">Document editor</span><span class="tl-short" aria-hidden="true">Editor</span></button><button role="tab" id="pm-t-history" aria-controls="pm-p-history" aria-selected="false" tabindex="-1"><span class="tl-full">History viewer</span><span class="tl-short" aria-hidden="true">History</span></button></div>
         </div>
         <div class="pm-well pm-screens-well"><div role="tabpanel" id="pm-p-details" aria-labelledby="pm-t-details">
@@ -305,7 +318,7 @@
       </div>
 
       <div class="pm-caps">
-        <h3 class="t-h3">Beyond the core flows</h3>
+        <h3 class="t-h3">Keeping the partners who publish to school districts</h3>
         <div class="pm-cap">
           <div class="pm-cap-copy">
             <h4 class="t-h4">Sharing policies with subscribing school districts</h4>
@@ -338,12 +351,12 @@
       <div class="pm-outcome-grid">
         <div class="sec-head reveal">
           <p class="label">The outcome</p>
-          <h2 class="t-h2" id="pm-next-h">What happened next</h2>
+          <h2 class="t-h2" id="pm-next-h">Clients renewed, and crash tickets came under control</h2>
           <p class="sub">The clients at risk signed long-term renewals, and support tickets caused by system errors came under control while engineering fixed the backend.</p>
         </div>
         <dl class="pm-stats" data-stats>
           <div class="reveal" style="--d:80ms"><dt>Steps for a board member to approve a policy</dt><dd>14 <span aria-hidden="true">→</span><span class="sr-only">to</span> <span data-count-from="14" data-count-to="3">3</span></dd></div>
-          <div class="reveal" style="--d:160ms"><dt>Development velocity on Lens, the new design system</dt><dd><span data-count-from="1" data-count-to="2" data-count-decimals="1">2</span>x</dd></div>
+          <div class="reveal" style="--d:160ms"><dt>Development velocity, with engineering building from my prototypes on Lens</dt><dd><span data-count-from="1" data-count-to="2" data-count-decimals="1">2</span>x</dd></div>
         </dl>
       </div>
     </div>
@@ -377,7 +390,7 @@
 
   <nav class="next-case" aria-label="Next case study">
     <div class="wrap">
-      <a href="fury.html"><span class="next-label">Next case study</span><span class="next-title">A new technical field with every project, inside Mercado Libre’s Fury</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="fury.html"><span class="next-label">Next case study<span class="next-time"> · 9 min read</span></span><span class="next-title">A new technical field with every project, inside Mercado Libre’s Fury</span><span class="next-why">Analytics and deployment pipelines for 15,000+ engineers. Design alignment time dropped 30%.</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </nav>
 
@@ -411,9 +424,10 @@
     </div>
   </section>
 </footer>
-<script src="app.js?v=15" defer></script>
+<script src="app.js?v=16" defer></script>
+<script src="engage.js?v=1" defer></script>
 <script src="lightbox.js?v=4" defer></script>
-<script src="thumbs.js?v=12" defer></script>
+<script src="thumbs.js?v=13" defer></script>
 <script src="hero-shader.js?v=7" defer></script>
 <script src="section-shader.js?v=6" defer></script>
 <script src="policy-manager.js?v=4" defer></script>

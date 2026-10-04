@@ -52,7 +52,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=44">
+<link rel="stylesheet" href="styles.css?v=47">
 <link rel="preload" href="assets/cd-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -144,6 +144,19 @@
   </section>
 
   <section class="sec bg-white" aria-labelledby="roles-h" data-chapter="Roles">
+    <div class="wrap yc-wrap">
+      <div class="yc" data-yc data-yc-case="Conduiit" data-yc-topic="the dashboards">
+        <p class="yc-label">Your call</p>
+        <p class="yc-q" id="yc-q">A company admin, a project admin and a project manager all sign in to the same product. What does each of them see first?</p>
+        <ul class="yc-opts" aria-labelledby="yc-q">
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">One shared dashboard, with filters for each role</span></button></li>
+          <li><button type="button" class="yc-opt"><span class="yc-opt-text">The full menu, with what they can’t use greyed out</span></button></li>
+          <li><button type="button" class="yc-opt" data-yc-mine><span class="yc-opt-text">A dashboard and menu built around what they’re responsible for</span></button></li>
+        </ul>
+        <div class="yc-answer" data-yc-answer><div><p class="yc-verdict" data-yc-verdict></p><p class="yc-why">Each role got its own dashboard and menu, and the flow branches at login. Below, what each one sees.</p></div></div>
+        <button type="button" class="yc-skip" data-yc-skip>Skip, show what I did</button>
+      </div>
+    </div>
     <div class="wrap">
       <div class="sec-head">
         <p class="label">Who signs in</p>
@@ -445,7 +458,7 @@
 
   <nav class="next-case" aria-label="Next case study">
     <div class="wrap">
-      <a href="edelap.html"><span class="next-label">Next case study</span><span class="next-title">Bringing bill payments back to Edelap’s own app</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="edelap.html"><span class="next-label">Next case study<span class="next-time"> · 8 min read</span></span><span class="next-title">Bringing bill payments back to Edelap’s own app</span><span class="next-why">A consumer app. In tests, paying a bill went from 2 minutes to 40 seconds.</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </nav>
 
@@ -479,8 +492,9 @@
     </div>
   </section>
 </footer>
-<script src="app.js?v=15" defer></script>
-<script src="thumbs.js?v=12" defer></script>
+<script src="app.js?v=16" defer></script>
+<script src="engage.js?v=1" defer></script>
+<script src="thumbs.js?v=13" defer></script>
 <script src="hero-shader.js?v=7" defer></script>
 <script src="conduiit.js?v=2" defer></script>
 <script src="lightbox.js?v=4" defer></script>
