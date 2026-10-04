@@ -9,6 +9,9 @@
 <meta name="author" content="David Hoyos">
 <meta name="copyright" content="© 2026 David Hoyos. All rights reserved.">
 <link rel="canonical" href="https://daviddhoyos.github.io/edelap.html">
+<link rel="alternate" hreflang="en" href="https://daviddhoyos.github.io/edelap.html">
+<link rel="alternate" hreflang="es" href="https://daviddhoyos.github.io/es/edelap.html">
+<link rel="alternate" hreflang="x-default" href="https://daviddhoyos.github.io/edelap.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="David Hoyos">
 <meta property="og:locale" content="en_US">
@@ -49,7 +52,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=37">
+<link rel="stylesheet" href="styles.css?v=43">
 <link rel="preload" href="assets/ed-shader-poster.webp" as="image" type="image/webp">
 </head>
 <body>
@@ -109,6 +112,16 @@
         <li class="reveal" style="--d:120ms"><b>2</b>How can I measure what it costs them?</li>
         <li class="reveal" style="--d:180ms"><b>3</b>Which fixes would change the most?</li>
       </ol>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="ed-biz-h" data-chapter="The business">
+    <div class="wrap">
+      <div class="biz-grid">
+        <div class="sec-head"><p class="label">The business</p><h2 class="t-h2" id="ed-biz-h">The only power company in town still competes for the payment</h2></div>
+        <div class="biz-body"><p class="biz-lead">Edelap is the only electricity distributor in La Plata and its area, so no one can take its customers. Other companies can take the moment the bill gets paid.</p><p>Customers can pay in Edelap’s own virtual office and app, but also through the Link and Banelco networks, by scanning the bill with a digital wallet, by phone, or in person at payment points. Every payment that goes through someone else’s channel costs Edelap more than one made in its own.</p><p>So making the app the easiest place to pay was a business goal. It lowers the cost of collecting and keeps people in the channel where everything else they need from Edelap already lives.</p><p>For design, that set the bar. Paying in the app had to take fewer steps than scanning the bill with a wallet, so the balance leads the home screen with the pay button right under it.</p></div>
+      </div>
+      <ul class="biz-points" style="--n:3"><li><h3>Collecting costs money</h3><p>Third-party collection networks charge for each payment they process, and the money can take days to arrive.</p></li><li><h3>Payments arrive disconnected</h3><p>A payment made elsewhere has to be matched back to the account. Until it is, the bill can still look unpaid, and people call to ask why.</p></li><li><h3>The rest goes unseen</h3><p>Someone paying in a wallet never sees the digital bill, automatic debit or the procedures they could do without visiting an office, each of which saves Edelap a visit, a call or a printed bill.</p></li></ul>
     </div>
   </section>
 
@@ -524,6 +537,7 @@
         <li class="card"><h3>Compare like with like</h3><p>The before numbers come from the desktop virtual office and the after numbers from the mobile prototype, so part of the change could come from the device. Today I’d test the old and new flows on the same device, with the same task.</p></li>
         <li class="card"><h3>Report who took part</h3><p>The results don’t say how many people took each test, so there’s no way to tell how solid a jump from 40% to 65% is. Today I’d publish the sample size next to every number and read small samples as a direction, not proof.</p></li>
         <li class="card"><h3>Put a number on the real problem</h3><p>The most important finding, that people paid through other apps, came from interviews and never got a number. Today I’d ask Edelap what share of payments happen outside its own channels and use that as the baseline.</p></li>
+        <li class="card"><h3>Help people remember the bill</h3><p>I made paying faster, but nothing in the flow reminded people that a bill was due, or offered automatic debit after a successful payment. A bill paid automatically never leaks to another app. Today I’d add due-date reminders and offer automatic debit right after the first payment.</p></li>
         <li class="card"><h3>Let people name the groups first</h3><p>The card sort used six categories I defined, which checks a structure but doesn’t discover one. Today I’d start with an open sort and confirm the result with a tree test before high-fidelity screens.</p></li>
       </ul>
     </div>
@@ -560,14 +574,14 @@
         </div>
       </div>
       <div class="legal">
-        <p>© 2026 David Hoyos. All rights reserved.</p>
+        <p>© 2026 David Hoyos. All rights reserved.</p><a href="legal.html">Terms and privacy</a>
       </div>
     </div>
   </section>
 </footer>
-<script src="app.js?v=12" defer></script>
-<script src="lightbox.js?v=3" defer></script>
-<script src="thumbs.js?v=9" defer></script>
+<script src="app.js?v=14" defer></script>
+<script src="lightbox.js?v=4" defer></script>
+<script src="thumbs.js?v=11" defer></script>
 <script src="hero-shader.js?v=7" defer></script>
 <script src="section-shader.js?v=6" defer></script>
 <script src="edelap.js?v=3" defer></script>

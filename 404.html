@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <base href="/">
+<script>/* a missing page under /es/ gets the Spanish 404 */ if (/^\/es\//.test(location.pathname)) location.replace('/es/404.html');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Page not found | David Hoyos</title>
 <meta name="description" content="This page doesn&#x27;t exist. Head back to the portfolio of David Hoyos, UX/UI and Product Designer.">
@@ -39,7 +40,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=37">
+<link rel="stylesheet" href="styles.css?v=43">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -56,18 +57,40 @@
 </header>
 <main id="main" tabindex="-1">
 <section class="view enter" id="view-not-found">
-  <div class="status hero-bg on-dark">
+  <div class="status hero-bg hero--shader on-dark" data-hero-shader data-shader-start="0">
     <div class="wrap">
-      <div class="copy">
-        <h1 class="t-display-case" tabindex="-1" data-focus>Page not found</h1>
-        <p class="lead">This page doesn’t exist, or it moved. Here are the case studies.</p>
-        <div class="actions">
-          <a class="btn btn--light" href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to home</a>
-          <a class="btn btn--glass glass glass--clear glass--interactive" href="policy-manager.html">Policy Manager</a>
-          <a class="btn btn--glass glass glass--clear glass--interactive" href="fury.html">Mercado Libre · Fury</a>
-          <a class="btn btn--glass glass glass--clear glass--interactive" href="conduiit.html">Conduiit</a>
-          <a class="btn btn--glass glass glass--clear glass--interactive" href="edelap.html">Edelap</a>
+      <div class="status-layout">
+        <div class="status-intro">
+          <h1 class="hero-name rise" style="--i:0" tabindex="-1" data-focus>Page not found</h1>
+          <p class="hero-statement rise" style="--i:1">This page doesn’t exist, or it moved. Here are the case studies instead.</p>
+          <a class="btn btn--light rise" style="--i:2" href="index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to home</a>
         </div>
+        <ul class="status-cards status-cards--list" aria-label="Case studies">
+          <li class="rise" style="--i:3">
+            <a class="status-card" href="policy-manager.html">
+              <div class="status-card-media"><div class="win win--mini" style="--vx:4.461%;--vy:6.088%;--vw:95.539%;--vh:93.912%;--travel:22.985%;--dur:4s;--r-br:1.813% 2.436%;--pin:6.247%" data-pin><img class="win-base" src="assets/thumb-diligent-716.webp" srcset="assets/thumb-diligent-716.webp 716w, assets/thumb-diligent-1432.webp 1432w, assets/thumb-diligent-2148.webp 2148w" sizes="(max-width: 639.98px) 120px, (max-width: 1023.98px) calc((100vw - 120px) / 2), min(330px, calc((100vw - 280px) * 0.29))" width="716" height="542" alt="" decoding="async"><div class="win-viewport"><img class="win-content" src="assets/thumb-diligent-content-1368.webp" srcset="assets/thumb-diligent-content-684.webp 684w, assets/thumb-diligent-content-1368.webp 1368w, assets/thumb-diligent-content-2052.webp 2052w" sizes="(max-width: 639.98px) 115px, (max-width: 1023.98px) calc((100vw - 120px) / 2 * 0.955), calc(min(330px, calc((100vw - 280px) * 0.29)) * 0.955)" width="1368" height="1322" alt="" loading="lazy" decoding="async"></div></div></div>
+              <span class="status-card-text"><span class="status-card-title">Policy Manager</span><span class="status-card-desc">Stabilized a compliance tool its biggest clients were ready to leave.</span></span>
+            </a>
+          </li>
+          <li class="rise" style="--i:4">
+            <a class="status-card" href="fury.html">
+              <div class="status-card-media"><div class="win win--mini" style="--vx:4.052%;--vy:6.088%;--vw:94.025%;--vh:93.912%;--travel:13.863%;--dur:3s;--pin:7.131%" data-pin><img class="win-base" src="assets/thumb-ml-716.webp" srcset="assets/thumb-ml-716.webp 716w, assets/thumb-ml-1432.webp 1432w, assets/thumb-ml-2148.webp 2148w" sizes="(max-width: 639.98px) 120px, (max-width: 1023.98px) calc((100vw - 120px) / 2), min(330px, calc((100vw - 280px) * 0.29))" width="716" height="542" alt="" decoding="async"><div class="win-viewport"><img class="win-content" src="assets/thumb-ml-content-1346.webp" srcset="assets/thumb-ml-content-673.webp 673w, assets/thumb-ml-content-1346.webp 1346w, assets/thumb-ml-content-2019.webp 2019w" sizes="(max-width: 639.98px) 115px, (max-width: 1023.98px) calc((100vw - 120px) / 2 * 0.940), calc(min(330px, calc((100vw - 280px) * 0.29)) * 0.940)" width="1346" height="1182" alt="" loading="lazy" decoding="async"></div></div></div>
+              <span class="status-card-text"><span class="status-card-title">Fury</span><span class="status-card-desc">Designed for the platform every Mercado Libre team builds on.</span></span>
+            </a>
+          </li>
+          <li class="rise" style="--i:5">
+            <a class="status-card" href="conduiit.html">
+              <div class="status-card-media"><div class="win win--mini" style="--vx:0.000%;--vy:6.088%;--vw:100.000%;--vh:93.912%;--travel:36.263%;--dur:5s;--r-bl:1.732% 2.436%;--r-br:1.732% 2.436%;--pin:10.411%;--pin-side:18.581%" data-pin data-pin-side><img class="win-base" src="assets/thumb-conduiit-716.webp" srcset="assets/thumb-conduiit-716.webp 716w, assets/thumb-conduiit-1432.webp 1432w, assets/thumb-conduiit-2148.webp 2148w" sizes="(max-width: 639.98px) 120px, (max-width: 1023.98px) calc((100vw - 120px) / 2), min(330px, calc((100vw - 280px) * 0.29))" width="716" height="542" alt="" decoding="async"><div class="win-viewport"><img class="win-content" src="assets/thumb-conduiit-content-1432.webp" srcset="assets/thumb-conduiit-content-716.webp 716w, assets/thumb-conduiit-content-1432.webp 1432w, assets/thumb-conduiit-content-2147.webp 2147w" sizes="(max-width: 639.98px) 115px, (max-width: 1023.98px) calc((100vw - 120px) / 2 * 1.000), calc(min(330px, calc((100vw - 280px) * 0.29)) * 1.000)" width="1432" height="1598" alt="" loading="lazy" decoding="async"></div></div></div>
+              <span class="status-card-text"><span class="status-card-title">Conduiit</span><span class="status-card-desc">Took film production finance out of spreadsheets.</span></span>
+            </a>
+          </li>
+          <li class="rise" style="--i:6">
+            <a class="status-card" href="edelap.html">
+              <div class="status-card-media status-card-media--edelap edelap-media"><img class="edelap-bg" src="assets/ed-thumb-bg.webp" width="1145" height="973" alt="" decoding="async"><img class="edelap-phone" src="assets/ed-thumb-phone-246.webp" srcset="assets/ed-thumb-phone-246.webp 246w, assets/ed-thumb-phone-492.webp 492w, assets/ed-thumb-phone-737.webp 737w" sizes="(max-width: 639.98px) 42px, (max-width: 1023.98px) calc((100vw - 120px) / 2 * 0.36), min(118px, calc((100vw - 280px) * 0.104))" width="737" height="1536" alt="" decoding="async"></div>
+              <span class="status-card-text"><span class="status-card-title">Edelap</span><span class="status-card-desc">Brought bill payments back to Edelap’s own app.</span></span>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -96,11 +119,13 @@
         </div>
       </div>
       <div class="legal">
-        <p>© 2026 David Hoyos. All rights reserved.</p>
+        <p>© 2026 David Hoyos. All rights reserved.</p><a href="legal.html">Terms and privacy</a>
       </div>
     </div>
   </section>
 </footer>
-<script src="app.js?v=12" defer></script>
+<script src="app.js?v=14" defer></script>
+<script src="hero-shader.js?v=7" defer></script>
+<script src="thumbs.js?v=11" defer></script>
 </body>
 </html>

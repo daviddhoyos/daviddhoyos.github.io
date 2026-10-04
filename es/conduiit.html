@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="es" data-view="case">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sacar de las planillas las finanzas de las producciones de cine | David Hoyos</title>
+<meta name="description" content="Cómo rehice Conduiit, la plataforma de finanzas que usan producciones para Netflix, Prime Video y HBO, desde los design tokens hasta dashboards por rol con temas adaptables a cada marca.">
+<meta name="robots" content="index, follow, noimageindex">
+<meta name="author" content="David Hoyos">
+<meta name="copyright" content="© 2026 David Hoyos. Todos los derechos reservados.">
+<link rel="canonical" href="https://daviddhoyos.github.io/es/conduiit.html">
+<link rel="alternate" hreflang="en" href="https://daviddhoyos.github.io/conduiit.html">
+<link rel="alternate" hreflang="es" href="https://daviddhoyos.github.io/es/conduiit.html">
+<link rel="alternate" hreflang="x-default" href="https://daviddhoyos.github.io/conduiit.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="David Hoyos">
+<meta property="og:locale" content="es_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://daviddhoyos.github.io/es/conduiit.html">
+<meta property="og:title" content="Sacar de las planillas las finanzas de las producciones de cine | David Hoyos">
+<meta property="og:description" content="Cómo rehice Conduiit, la plataforma de finanzas que usan producciones para Netflix, Prime Video y HBO, desde los design tokens hasta dashboards por rol con temas adaptables a cada marca.">
+<meta property="og:image" content="https://daviddhoyos.github.io/assets/og/og-conduiit.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Caso: Sacar de las planillas las finanzas de las producciones de cine, con el dashboard rediseñado de Conduiit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sacar de las planillas las finanzas de las producciones de cine | David Hoyos">
+<meta name="twitter:description" content="Cómo rehice Conduiit, la plataforma de finanzas que usan producciones para Netflix, Prime Video y HBO, desde los design tokens hasta dashboards por rol con temas adaptables a cada marca.">
+<meta name="twitter:image" content="https://daviddhoyos.github.io/assets/og/og-conduiit.jpg">
+<meta name="twitter:image:alt" content="Caso: Sacar de las planillas las finanzas de las producciones de cine, con el dashboard rediseñado de Conduiit">
+<meta name="theme-color" content="#19141a">
+<link rel="icon" href="../favicon.ico" sizes="32x32" data-dark="../favicon-dark.ico">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" data-dark="../favicon-dark.svg">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png" data-dark="../apple-touch-icon-dark.png">
+<script>
+/* favicon follows the colour scheme (dark grey mark on light, white mark on dark). The <link> is replaced, not just
+   re-pointed, because Chrome only refreshes the tab icon when a new element appears. */
+(function () {
+  var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  if (!mq) return;
+  var apply = function () {
+    document.querySelectorAll('link[data-dark]').forEach(function (l) {
+      if (!l.dataset.light) l.dataset.light = l.getAttribute('href');
+      var href = mq.matches ? l.dataset.dark : l.dataset.light;
+      if (l.getAttribute('href') === href) return;
+      var n = l.cloneNode(); n.setAttribute('href', href); l.replaceWith(n);
+    });
+  };
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply); else if (mq.addListener) mq.addListener(apply);
+})();
+</script>
+<link rel="preload" href="../assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css?v=43">
+<link rel="preload" href="../assets/cd-shader-poster.webp" as="image" type="image/webp">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="nav-wrap">
+  <nav class="nav glass" aria-label="Principal" data-nav>
+    <ul>
+      <li class="nav-name"><a href="index.html"><svg class="nav-back" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span class="nav-name-text">Inicio</span></a></li>
+      <li><a href="index.html#projects">Casos</a></li>
+      <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+      <li><a href="resume.html">CV</a></li>
+      <li><a href="mailto:daviddhoyos1@gmail.com" data-copy-email>Email<span class="sr-only ce-copy"> (copia la dirección de email)</span><span class="sr-only ce-send"> (abre tu app de correo)</span></a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main" tabindex="-1">
+<section class="view enter" id="view-conduiit">
+
+  <header class="case-hero case-hero--cd case-hero--shader case-hero--split on-dark" data-hero-shader data-shader-colors="#b49cf2, #5a34c8, #2a1c5c">
+    <div class="wrap">
+      <div class="copy">
+        <p class="eyebrow">Plataforma de finanzas para producciones en Conduiit</p>
+        <h1 class="t-display-case" tabindex="-1" data-focus>Sacar de las planillas las finanzas de las producciones de cine</h1>
+        <p class="lead">En Conduiit, producciones para Netflix, Prime Video, HBO, Starz y Discovery gestionan órdenes de compra, solicitudes de pago y aprobaciones. El producto ya funcionaba, pero su interfaz había envejecido. Como único diseñador, lo rehice desde la pieza más chica: un design system, un dashboard para cada rol, modos claro y oscuro, y un tema que cada empresa puede adaptar a su marca.</p>
+      </div>
+      <div class="case-hero-media thumb-media--window hero-thumb" aria-hidden="true"><div class="win" style="--vx:0.000%;--vy:6.088%;--vw:100.000%;--vh:93.912%;--travel:36.263%;--dur:5s;--r-bl:1.732% 2.436%;--r-br:1.732% 2.436%;--pin:10.411%;--pin-side:18.581%" data-pin data-pin-side><img class="win-base" src="../assets/thumb-conduiit-1432.webp" srcset="../assets/thumb-conduiit-716.webp 716w, ../assets/thumb-conduiit-1432.webp 1432w, ../assets/thumb-conduiit-2148.webp 2148w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 600px" width="716" height="542" alt="" decoding="async"><div class="win-viewport"><img class="win-content" src="../assets/thumb-conduiit-content-1432.webp" srcset="../assets/thumb-conduiit-content-716.webp 716w, ../assets/thumb-conduiit-content-1432.webp 1432w, ../assets/thumb-conduiit-content-2147.webp 2147w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 600px" width="1432" height="1598" alt="" decoding="async"></div></div></div>
+      <dl class="facts">
+        <div><dt>Rol</dt><dd>Único diseñador UX/UI, de punta a punta</dd></div>
+        <div><dt>Empresa</dt><dd>Conduiit</dd></div>
+        <div><dt>Años</dt><dd>2021 a 2022</dd></div>
+        <div><dt>Plataforma</dt><dd>Web y web mobile</dd></div>
+        <div><dt>Alcance</dt><dd>Rebranding, design system, dashboards, impresos</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <section class="sec cd-glance" aria-labelledby="cd-glance-h" data-chapter="Resumen">
+    <div class="wrap">
+      <h2 class="sr-only" id="cd-glance-h">De un vistazo</h2>
+      <div class="glance">
+        <div><p class="label">El problema</p><p class="t-statement">Las producciones manejaban órdenes de compra y aprobaciones por email, planillas y carpetas compartidas, y el producto creado para reemplazarlos tenía una interfaz envejecida.</p></div>
+        <div><p class="label">Qué hice</p><p class="t-statement">Lo rehice sobre un design system: un dashboard por rol, una matriz de aprobaciones con límites de gasto, controles previos a la auditoría y temas que cada estudio puede adaptar a su marca.</p></div>
+        <div><p class="label">El resultado</p><p class="t-statement">Conduiit sigue funcionando sobre el sistema que construimos, y cada estudio aplica su marca a su espacio de trabajo sin pedir trabajo de diseño.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="cd-biz-h" data-chapter="El negocio">
+    <div class="wrap">
+      <div class="biz-grid">
+        <div class="sec-head"><p class="label">El negocio</p><h2 class="t-h2" id="cd-biz-h">Creado por un contador de producción que vivió el problema</h2></div>
+        <div class="biz-body"><p class="biz-lead">Conduiit fue fundada en 2018 por Shawn Hamilton, ex contador de producción en Amazon, y Jason Thurman, después de que Hamilton viera cuánto tiempo perdían las producciones moviendo órdenes de compra y aprobaciones en papel, por email y en planillas.</p><p>Se vende como SaaS, y su argumento es tiempo y control. Hamilton dijo que una empresa puede ahorrar unas 30 horas de trabajo por semana, y en un año la plataforma supervisó 70 millones de dólares en transacciones. Suites de contabilidad para producciones como GreenSlate también ofrecen órdenes de compra digitales, así que Conduiit tiene que ganar por lo fácil que se siente el trabajo de todos los días.</p><p>Eso convirtió a la interfaz en parte del argumento de venta. Los productores aprueban desde donde estén, los contadores necesitan cada solicitud completa y bien codificada, y un estudio que paga por la plataforma quiere ver su propia marca cuando su gente inicia sesión.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="clients-h" data-chapter="Clientes">
+    <div class="wrap cd-clients">
+      <div class="sec-head" style="margin-bottom:0">
+        <h2 class="t-h2" id="clients-h">Más de 200 clientes, de servicios de streaming a productoras independientes</h2>
+      </div>
+      <div style="display:grid;gap:24px">
+        <p>Entre los clientes de Conduiit hay cadenas de TV de EE. UU., servicios de streaming y productoras independientes. Las producciones para las marcas de abajo manejan sus gastos ahí, junto con independientes como Jigsaw Productions y Partially Important Productions.</p>
+        <p>Antes de Conduiit, sus equipos de producción y de contabilidad movían órdenes de compra y aprobaciones por email, planillas y carpetas compartidas.</p>
+      </div>
+    </div>
+    <ul class="wrap cd-logos" aria-label="Empresas cuyas producciones usan Conduiit">
+      <li style="--h:30"><img src="../assets/brands/cd-client-netflix.svg" width="111" height="30" alt="Netflix" loading="lazy" decoding="async"></li>
+      <li style="--h:40"><img src="../assets/brands/cd-client-prime.png" width="440" height="140" alt="Prime Video" loading="lazy" decoding="async"></li>
+      <li style="--h:34"><img src="../assets/brands/cd-client-hbo.svg" width="99" height="34" alt="HBO" loading="lazy" decoding="async"></li>
+      <li style="--h:44"><img src="../assets/brands/cd-client-starz.png" width="403" height="140" alt="Starz" loading="lazy" decoding="async"></li>
+      <li style="--h:34"><img src="../assets/brands/cd-client-discovery.png" width="480" height="103" alt="Discovery" loading="lazy" decoding="async"></li>
+    </ul>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="start-h" data-chapter="Punto de partida">
+    <div class="wrap cd-start">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="label">El punto de partida</p>
+        <h2 class="t-h2" id="start-h">Un producto del que la gente dependía, con una interfaz vieja</h2>
+        <p class="sub">El fundador de Conduiit, con base en Nueva Jersey, ya tenía la plataforma funcionando. Necesitaba un rebranding completo y una interfaz nueva.</p>
+        <p class="sub">No se guardaron pantallas de la app vieja, así que esta historia empieza donde empieza cada usuario: la landing de la derecha. Es lo que la gente ve antes de iniciar sesión, y cada flujo del rediseño arranca ahí.</p>
+      </div>
+      <figure class="figure cd-fig">
+        <img src="../assets/cd-landing.webp" width="1440" height="900" alt="La landing de Conduiit: el título We make production compliance easier, un botón Book a demo, una ilustración de un set de filmación y tres capturas del dashboard" loading="lazy" decoding="async" data-zoom>
+        <figcaption>La landing, el punto de entrada de cada flujo.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="roles-h" data-chapter="Roles">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Quién inicia sesión</p>
+        <h2 class="t-h2" id="roles-h">Tres roles, cada uno con su dashboard</h2>
+        <p class="sub">Cada flujo empieza en el login y se divide por rol. Una empresa contrata el servicio, y adentro cada persona ve un dashboard y un menú pensados para lo que tiene a cargo.</p>
+      </div>
+      <ul class="cd-roles">
+        <li class="cd-role">
+          <h3 class="t-h4">Administrador de la empresa</h3>
+          <p>Configura la empresa y mira todas sus producciones: equipo, proveedores, reportes de costos e integraciones.</p>
+          <ul class="cd-role-menu" aria-label="Menú del administrador de la empresa">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 9h5a1 1 0 0 1 1 1v11M3 21h18M8 8h2M8 12h2M8 16h2"/></svg>Dashboard de la empresa</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13"/></svg>Company details</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Projects</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M21 19a5 5 0 0 0-4-4.9"/></svg>Team members</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v10h16V10M3 6l2-3h14l2 3v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/></svg>Vendors</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M12 11v6M10 13.5c0-1 .9-1.5 2-1.5s2 .5 2 1.3-.9 1.2-2 1.2-2 .5-2 1.3.9 1.2 2 1.2 2-.5 2-1.5"/></svg>Cost reports</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 8l9 5 9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5"/></svg>Integraciones</li>
+          </ul>
+        </li>
+        <li class="cd-role">
+          <h3 class="t-h4">Administrador de proyecto</h3>
+          <p>Lleva una producción: quién está, quién aprueba qué, y las solicitudes y reportes de costos que llegan.</p>
+          <ul class="cd-role-menu" aria-label="Menú del administrador de proyecto">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Project dashboard</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13"/></svg>Project details</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M21 19a5 5 0 0 0-4-4.9"/></svg>Team members</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 10h18M3 15h18M9 4v16"/></svg>Matriz de aprobaciones</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>Submissions</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M12 11v6M10 13.5c0-1 .9-1.5 2-1.5s2 .5 2 1.3-.9 1.2-2 1.2-2 .5-2 1.3.9 1.2 2 1.2 2-.5 2-1.5"/></svg>Cost reports</li>
+          </ul>
+        </li>
+        <li class="cd-role">
+          <h3 class="t-h4">Project manager</h3>
+          <p>Maneja el gasto del día a día: órdenes de compra, tarjetas de crédito, transferencias y pedidos de cheques, y los aprueba.</p>
+          <ul class="cd-role-menu" aria-label="Menú del project manager">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Manager dashboard</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M10 20V4M15 20v-7M20 20H3"/></svg>Resumen</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11h10.2L20 8H6.2M9 20a1 1 0 1 0 0-.01M17 20a1 1 0 1 0 0-.01"/></svg>Pending approval</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8zM14 3v5h5M9 13h6M9 17h6"/></svg>Purchase orders</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>Credit card</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h14l-4-4M20 16H6l4 4"/></svg>Wire transfer</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16v10H4zM8 12h3M15 11v2"/></svg>Check request</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec cd-build on-dark" aria-labelledby="build-h" data-chapter="Construcción">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">La construcción</p>
+        <h2 class="t-h2" id="build-h">De un token de color a un dashboard completo</h2>
+        <p class="sub">Armé el sistema de abajo hacia arriba, con atomic design. Cada nivel usa solo piezas del nivel anterior, así un cambio en un token llega a todas las pantallas. Scrolleá para armar el dashboard de la misma forma.</p>
+      </div>
+      <div class="cd-build-grid">
+        <div class="cd-stage-col">
+          <div class="cd-stage" data-stage="1" data-build-stage>
+            <div class="cd-wrap"><div class="cd-tokens" data-l="1" aria-hidden="true"><i style="background:#561de2"></i><i style="background:#7c45ef"></i><i style="background:#eee8fc"></i><i style="background:#eba518"></i><i style="background:#212121"></i><i style="background:#0b9962"></i><i style="background:#f0001c"></i><span class="type">Aa<small>Lato · 28 / 24 / 16</small></span></div><div class="cd" data-c="5" data-mode="light" role="img" aria-label="Dashboard de la empresa de Conduiit rehecho a partir de sus componentes: menú lateral, tres tarjetas de KPI, pestañas de estado y una tabla de solicitudes">
+<aside class="cd-side" data-c="4" aria-hidden="true"><div class="cd-logo" data-l="2"><svg width="22" height="12" viewBox="0 0 44 22" fill="none" stroke="currentColor" stroke-width="4" aria-hidden="true"><path d="M11 3a8 8 0 1 0 0 16c8 0 14-16 22-16a8 8 0 1 1 0 16C25 19 19 3 11 3z"/></svg><span>conduiit</span></div><div class="cd-item is-active" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 9h5a1 1 0 0 1 1 1v11M3 21h18M8 8h2M8 12h2M8 16h2"/></svg>Dashboard de la empresa</div><div class="cd-sep"></div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13"/></svg>Company details</div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Projects</div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M21 19a5 5 0 0 0-4-4.9"/></svg>Team members</div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v10h16V10M3 6l2-3h14l2 3v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/></svg>Vendors</div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M12 11v6M10 13.5c0-1 .9-1.5 2-1.5s2 .5 2 1.3-.9 1.2-2 1.2-2 .5-2 1.3.9 1.2 2 1.2 2-.5 2-1.5"/></svg>Cost reports</div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 8l9 5 9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5"/></svg>Integraciones</div><div class="cd-sep"></div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 3 9 12M12 15l-3-3c-2 0-3.5 1.5-3.5 3.5S4 19 3 20c3 1 7 0 8.5-2s.5-3 .5-3z"/></svg>Personalizar el tema</div></aside>
+<div class="cd-main" aria-hidden="true">
+<div class="cd-head" data-c="4"><div class="cd-user" data-l="3"><i></i>Shawn Hamilton</div><span class="cd-icon has-dot" data-l="2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0"/></svg></span><span class="cd-icon" data-l="2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11v9H4v-9zM7 11l4-7a2 2 0 0 1 3 2l-1 4h5a2 2 0 0 1 2 2.3l-1.2 6A2 2 0 0 1 16.8 20H7"/></svg></span></div>
+<div class="cd-kpis"><div class="cd-kpi neg" data-l="3"><p class="t">Total users</p><p class="v">−2,314<small>− 11.4%</small></p><p class="c">Compared to last month</p><svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wbuild0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--neg-w)"/><stop offset="1" style="stop-color:var(--neg-w);stop-opacity:0"/></linearGradient></defs><path d="M0 34 C 30 14, 60 12, 95 26 S 160 48, 200 40 L 200 60 L 0 60 Z" fill="url(#wbuild0)"/></svg></div><div class="cd-kpi neg" data-l="3"><p class="t">Negative ETCs</p><p class="v">$ −35,257<small>− 11.4%</small></p><p class="c">Compared to last month</p><svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wbuild1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--neg-w)"/><stop offset="1" style="stop-color:var(--neg-w);stop-opacity:0"/></linearGradient></defs><path d="M0 34 C 30 14, 60 12, 95 26 S 160 48, 200 40 L 200 60 L 0 60 Z" fill="url(#wbuild1)"/></svg></div><div class="cd-kpi pos" data-l="3"><p class="t">Cost to date</p><p class="v">$2,225<small>+ 2.4%</small></p><p class="c">Compared to last month</p><svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wbuild2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--pos-w)"/><stop offset="1" style="stop-color:var(--pos-w);stop-opacity:0"/></linearGradient></defs><path d="M0 46 C 40 40, 70 30, 110 36 S 170 26, 200 20 L 200 60 L 0 60 Z" fill="url(#wbuild2)"/></svg></div></div>
+<div class="cd-tabs" data-l="2"><span>All</span><span class="cd-on">Pending approval</span><span>Fulfillment</span></div>
+<div class="cd-table" data-c="4"><div class="cd-thead" data-l="3"><span>Form<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></span><span>PO number<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></span><span>Vendor<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></span><span>Commitment<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></span><span>Actual<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></span></div><div class="cd-body" data-c="4"><div class="cd-row" data-l="3"><span>Purchase order</span><span>0412</span><span>Grip & electric</span><span>18,400</span><span>17,950</span></div><div class="cd-row is-hover" data-l="3"><span>Check request</span><span>0413</span><span>Location fees</span><span>6,200</span><span>6,200</span></div><div class="cd-row" data-l="3"><span>Wire transfer</span><span>0414</span><span>Camera rental</span><span>42,000</span><span>39,800</span></div><div class="cd-row" data-l="3"><span>Purchase order</span><span>0415</span><span>Catering</span><span>9,750</span><span>10,120</span></div></div></div>
+<div class="cd-foot"><span class="cd-btn sec" data-l="2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download submissions</span><span class="cd-btn pri" data-l="2">Approve all</span><div class="cd-pages" data-l="5">‹ <b>1</b> 2 3 … 9 ›</div></div>
+</div></div></div>
+            <div class="cd-stage-meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <p class="cd-stage-note">Rehecho en HTML a partir de la librería de componentes, con datos de muestra.</p>
+          </div>
+        </div>
+        <ol class="cd-steps" data-stations>
+          <li class="cd-step" data-step="1" data-station>
+            <p class="cd-step-n"><b>1</b>Tokens</p>
+            <h3 class="t-h3">Color, tipografía y espacio</h3>
+            <p>Violeta primario <code>#561DE2</code>, uno más claro <code>#7C45EF</code>, y un tinte del 10% para los estados seleccionados. El texto en tres grises, verde y rojo solo para los gráficos, ámbar como segundo acento. La tipografía es Lato, en rem sobre una base de 16px: H1 de 28px, H2 de 24px, cuerpo y etiquetas de 16px.</p>
+          </li>
+          <li class="cd-step" data-step="2" data-station>
+            <p class="cd-step-n"><b>2</b>Átomos</p>
+            <h3 class="t-h3">Botones, pestañas, campos e íconos</h3>
+            <p>Los botones primario, secundario y negativo comparten la forma y solo cambian el relleno. Cada campo tiene estados por defecto, activo y completo, y cada ícono de 20px tiene versiones por defecto, hover y activa.</p>
+          </li>
+          <li class="cd-step" data-step="3" data-station>
+            <p class="cd-step-n"><b>3</b>Moléculas</p>
+            <h3 class="t-h3">Las piezas que la gente realmente lee</h3>
+            <p>Una tarjeta de KPI combina una cifra con su variación respecto del mes anterior, sobre una onda roja o verde. Una fila de tabla lleva las acciones de ver y borrar, y cada encabezado de columna tiene su propia búsqueda.</p>
+          </li>
+          <li class="cd-step" data-step="4" data-station>
+            <p class="cd-step-n"><b>4</b>Organismos</p>
+            <h3 class="t-h3">Barra lateral, header y tabla de datos</h3>
+            <p>La barra lateral se reduce a íconos y el header se achica al scrollear para dejarle lugar a la tabla. Las notificaciones viven en el header como toasts y un desplegable, así las aprobaciones llegan a la gente esté donde esté en la app.</p>
+          </li>
+          <li class="cd-step" data-step="5" data-station>
+            <p class="cd-step-n"><b>5</b>Pantallas</p>
+            <h3 class="t-h3">Un mismo layout para cada rol</h3>
+            <p>El dashboard de cada rol usa las mismas partes en otro orden. De una página a otra solo cambian los ítems del menú y el botón principal, así quien cambia de rol ya sabe moverse.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="rules-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">La guía de estilos</p>
+        <h2 class="t-h2" id="rules-h">Las reglas detrás de las piezas</h2>
+        <p class="sub">La guía cubre el color en modo claro y oscuro, la tipografía, los íconos, cada componente con sus estados y una tabla de rem a píxeles para los desarrolladores.</p>
+      </div>
+      <div class="cd-specimens">
+        <div class="cd-panel">
+          <h3 class="t-h4">Colores por defecto</h3>
+          <ul class="cd-swatches">
+            <li class="cd-swatch"><i style="background:#561de2"></i><b>Primario</b><span>#561DE2</span></li>
+            <li class="cd-swatch"><i style="background:#7c45ef"></i><b>Primario claro</b><span>#7C45EF</span></li>
+            <li class="cd-swatch"><i style="background:#eee8fc"></i><b>Seleccionado</b><span>#EEE8FC</span></li>
+            <li class="cd-swatch"><i style="background:#eba518"></i><b>Acento</b><span>#EBA518</span></li>
+            <li class="cd-swatch"><i style="background:#212121"></i><b>Texto</b><span>#212121</span></li>
+            <li class="cd-swatch"><i style="background:#575757"></i><b>Etiqueta, 75%</b><span>#575757</span></li>
+            <li class="cd-swatch"><i style="background:#717171"></i><b>Menú, 64%</b><span>#717171</span></li>
+            <li class="cd-swatch"><i style="background:#f9f9f9"></i><b>Fondo</b><span>#F9F9F9</span></li>
+            <li class="cd-swatch"><i style="background:#d4d1e3"></i><b>Sombra</b><span>#D4D1E3</span></li>
+            <li class="cd-swatch"><i style="background:linear-gradient(#0b9962 50%,#c4f3e3 50%)"></i><b>Gráfico, sube</b><span>#0B9962 / #C4F3E3</span></li>
+            <li class="cd-swatch"><i style="background:linear-gradient(#f0001c 50%,#ffc7ce 50%)"></i><b>Gráfico, baja</b><span>#F0001C / #FFC7CE</span></li>
+          </ul>
+        </div>
+        <div class="cd-panel">
+          <h3 class="t-h4">Tipografía</h3>
+          <dl class="cd-type-scale">
+            <div><dt>H1</dt><dd><span class="cd-ts-h1">Cost reports</span><small>Lato Bold, 28px (1.75rem)</small></dd></div>
+            <div><dt>H2</dt><dd><span class="cd-ts-h2">New purchase order</span><small>Lato Regular, 24px (1.5rem), texto al 75%</small></dd></div>
+            <div><dt>Cuerpo</dt><dd><span class="cd-ts-p">Add integration information below.</span><small>Lato Regular, 16px (1rem)</small></dd></div>
+            <div><dt>Menú</dt><dd><span class="cd-ts-menu">Vendors</span><span class="cd-ts-menu cd-on">Vendors</span><small>Por defecto al 64%, activo en el primario</small></dd></div>
+          </dl>
+        </div>
+        <div class="cd-elevation">
+          <h3 class="t-h4">Modo oscuro: altura en lugar de sombra</h3>
+          <p>El modo oscuro sigue el modelo de elevación de Material. Sobre un fondo #121212 las sombras no se ven, así que las superficies se aclaran a medida que suben: una capa blanca del 5%, 11% o 16%. El texto es blanco al 90%, 60% y 38% para énfasis alto, medio y bajo.</p>
+          <div class="cd-dp-row">
+            <div class="cd-dp cd-dp1"><b>1dp</b><div><span class="cd-hi">Cuerpo de tablas, tarjetas</span><span class="cd-mid">Capa #FFFFFF 5%</span></div></div>
+            <div class="cd-dp cd-dp6"><b>6dp</b><div><span class="cd-hi">Pestaña activa, ítem de menú</span><span class="cd-mid">Capa #FFFFFF 11%</span></div></div>
+            <div class="cd-dp cd-dp24"><b>24dp</b><div><span class="cd-hi">Desplegables, modales</span><span class="cd-mid">Capa #FFFFFF 16%</span><span class="cd-lo">Texto deshabilitado al 38%</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="screens-h" data-chapter="Producto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">El producto</p>
+        <h2 class="t-h2" id="screens-h">Las pantallas en las que la gente trabaja todos los días</h2>
+      </div>
+      <div class="cd-screen-tabs" role="tablist" aria-label="Pantallas">
+        <button role="tab" id="t-dash" aria-controls="p-dash" aria-selected="true">Dashboard de la empresa</button>
+        <button role="tab" id="t-matrix" aria-controls="p-matrix" aria-selected="false" tabindex="-1">Matriz de aprobaciones</button>
+        <button role="tab" id="t-po" aria-controls="p-po" aria-selected="false" tabindex="-1">Purchase order</button>
+        <button role="tab" id="t-notif" aria-controls="p-notif" aria-selected="false" tabindex="-1">Aprobaciones</button>
+      </div>
+      <div class="cd-screen-panel" role="tabpanel" id="p-dash" aria-labelledby="t-dash">
+        <div class="copy">
+          <h3 class="t-h3">Todas las producciones de un vistazo</h3>
+          <p>Seis KPIs arriba, cada uno comparado con el mes anterior. Las ondas rojas y verdes muestran qué números se movieron para el lado equivocado antes de que alguien los lea. Abajo, todos los reportes de costos están en una tabla, filtrada por estado y descargable con un clic.</p>
+        </div>
+        <figure class="figure cd-fig"><div class="cd-crop"><img src="../assets/cd-company-dashboard.webp" width="1400" height="1193" alt="Dashboard de la empresa: seis tarjetas de KPI, entre ellas total de usuarios, ETCs negativos y costo a la fecha, sobre una tabla de reportes de costos con las pestañas All, Pending approval y Fulfillment" loading="lazy" decoding="async" data-zoom></div></figure>
+      </div>
+      <div class="cd-screen-panel" role="tabpanel" id="p-matrix" aria-labelledby="t-matrix" hidden>
+        <div class="copy">
+          <h3 class="t-h3">Cadenas de aprobación que se arrastran</h3>
+          <p>Los administradores de proyecto deciden quién aprueba qué moviendo personas entre niveles: super admin, manager nivel 1 y manager nivel 2. Cada nivel tiene su propio límite de gasto, así una solicitud sube tanto como su monto lo requiere y no más. En el teléfono, los mismos niveles se apilan en una lista vertical.</p>
+        </div>
+        <figure class="figure cd-fig"><img loading="lazy" src="../assets/cd-approval-matrix.webp" width="1400" height="642" alt="Matriz de aprobaciones: la tarjeta de una persona arrastrada a la columna Super Admin, al lado de las columnas Manager Level 1 y Manager Level 2 con tarjetas de miembros del equipo" decoding="async" data-zoom></figure>
+      </div>
+      <div class="cd-screen-panel" role="tabpanel" id="p-po" aria-labelledby="t-po" hidden>
+        <div class="copy">
+          <h3 class="t-h3">Formularios que reemplazan el papel</h3>
+          <p>Las órdenes de compra, los pedidos de cheques y las transferencias comparten un mismo patrón de formulario. Una orden puede tener varios códigos de cuenta, y los archivos de respaldo se adjuntan ahí mismo, así contabilidad recibe los documentos junto con la solicitud.</p>
+        </div>
+        <figure class="figure cd-fig"><div class="cd-crop"><img loading="lazy" src="../assets/cd-new-po.webp" width="1400" height="1238" alt="Formulario de nueva orden de compra con nombre, fecha de envío, proveedor, descripción, casillas de tipo de gasto, un bloque repetible de código de cuenta, compromiso, comentarios y archivos adjuntos" decoding="async" data-zoom></div></figure>
+      </div>
+      <div class="cd-screen-panel" role="tabpanel" id="p-notif" aria-labelledby="t-notif" hidden>
+        <div class="copy">
+          <h3 class="t-h3">Aprobaciones que llegan solas</h3>
+          <p>El pulgar arriba del header lista cada orden de compra y pedido de cheque que espera tu aprobación. Los managers los aprueban de a uno o todos juntos sin salir de la página en la que están.</p>
+        </div>
+        <figure class="figure cd-fig"><div class="cd-crop"><img loading="lazy" src="../assets/cd-notif-dropdown.webp" width="1400" height="1193" alt="Dashboard de la empresa con el desplegable de aprobaciones abierto, que lista órdenes de compra y pedidos de cheques con botones Approve, además de Delete all y Approve all" decoding="async" data-zoom></div></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec cd-theme on-dark" aria-labelledby="theme-h" data-chapter="Temas">
+    <div class="wrap">
+      <div class="cd-theme-grid">
+        <div>
+          <div class="sec-head" style="margin-bottom:40px">
+            <p class="label">Personalizar el tema</p>
+            <h2 class="t-h2" id="theme-h">Cada empresa puede hacerlo suyo</h2>
+            <p class="sub">Un administrador de la empresa elige un color, sube un logo y elige modo claro u oscuro. El color elegido reemplaza al primario, y el sistema deriva el resto a partir de él. Todo lo demás queda igual. Probalo en el dashboard.</p>
+          </div>
+          <div class="cd-controls">
+            <fieldset class="cd-ctrl">
+              <legend>Color de la empresa</legend>
+              <div class="cd-chips" data-swatches>
+                <button class="cd-chip-swatch" style="--c:#561de2" data-color="#561de2" aria-pressed="true"><span class="sr-only">Violeta de Conduiit</span></button>
+                <button class="cd-chip-swatch" style="--c:#d81f26" data-color="#d81f26" aria-pressed="false"><span class="sr-only">Rojo</span></button>
+                <button class="cd-chip-swatch" style="--c:#0a7d6e" data-color="#0a7d6e" aria-pressed="false"><span class="sr-only">Verde azulado</span></button>
+                <button class="cd-chip-swatch" style="--c:#1f5fd1" data-color="#1f5fd1" aria-pressed="false"><span class="sr-only">Azul</span></button>
+                <button class="cd-chip-swatch" style="--c:#c77700" data-color="#c77700" aria-pressed="false"><span class="sr-only">Ámbar</span></button>
+                <label class="cd-chip-custom"><span class="sr-only">Elegí cualquier color</span><input type="color" value="#561de2" data-custom></label>
+              </div>
+            </fieldset>
+            <fieldset class="cd-ctrl">
+              <legend>Derivados</legend>
+              <div class="cd-derived" data-derived>
+                <div><i style="--c:var(--tp)"></i>Principal</div>
+                <div><i style="--c:color-mix(in srgb, var(--tp) 75%, transparent)"></i>75%, contornos</div>
+                <div><i style="--c:color-mix(in srgb, var(--tp) 10%, white)"></i>10%, seleccionado</div>
+              </div>
+            </fieldset>
+            <fieldset class="cd-ctrl">
+              <legend>Modo</legend>
+              <div class="cd-mode-toggle" data-mode-toggle>
+                <button type="button" data-mode="light" aria-pressed="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Light</button>
+                <button type="button" data-mode="dark" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>Dark</button>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div data-theme-target><div class="cd" data-c="5" data-mode="light" role="img" aria-label="Dashboard de la empresa de Conduiit rehecho a partir de sus componentes: menú lateral, tres tarjetas de KPI, pestañas de estado y una tabla de solicitudes">
+<aside class="cd-side" data-c="4" aria-hidden="true"><div class="cd-logo" data-l="2"><svg width="22" height="12" viewBox="0 0 44 22" fill="none" stroke="currentColor" stroke-width="4" aria-hidden="true"><path d="M11 3a8 8 0 1 0 0 16c8 0 14-16 22-16a8 8 0 1 1 0 16C25 19 19 3 11 3z"/></svg><span>conduiit</span></div><div class="cd-item is-active" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 9h5a1 1 0 0 1 1 1v11M3 21h18M8 8h2M8 12h2M8 16h2"/></svg>Dashboard de la empresa</div><div class="cd-sep"></div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13"/></svg>Company details</div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Projects</div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M21 19a5 5 0 0 0-4-4.9"/></svg>Team members</div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v10h16V10M3 6l2-3h14l2 3v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/></svg>Vendors</div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M12 11v6M10 13.5c0-1 .9-1.5 2-1.5s2 .5 2 1.3-.9 1.2-2 1.2-2 .5-2 1.3.9 1.2 2 1.2 2-.5 2-1.5"/></svg>Cost reports</div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 8l9 5 9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5"/></svg>Integraciones</div><div class="cd-sep"></div><div class="cd-item" data-l="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 3 9 12M12 15l-3-3c-2 0-3.5 1.5-3.5 3.5S4 19 3 20c3 1 7 0 8.5-2s.5-3 .5-3z"/></svg>Personalizar el tema</div></aside>
+<div class="cd-main" aria-hidden="true">
+<div class="cd-head" data-c="4"><div class="cd-user" data-l="3"><i></i>Shawn Hamilton</div><span class="cd-icon has-dot" data-l="2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0"/></svg></span><span class="cd-icon" data-l="2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11v9H4v-9zM7 11l4-7a2 2 0 0 1 3 2l-1 4h5a2 2 0 0 1 2 2.3l-1.2 6A2 2 0 0 1 16.8 20H7"/></svg></span></div>
+<div class="cd-kpis"><div class="cd-kpi neg" data-l="3"><p class="t">Total users</p><p class="v">−2,314<small>− 11.4%</small></p><p class="c">Compared to last month</p><svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wtheme0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--neg-w)"/><stop offset="1" style="stop-color:var(--neg-w);stop-opacity:0"/></linearGradient></defs><path d="M0 34 C 30 14, 60 12, 95 26 S 160 48, 200 40 L 200 60 L 0 60 Z" fill="url(#wtheme0)"/></svg></div><div class="cd-kpi neg" data-l="3"><p class="t">Negative ETCs</p><p class="v">$ −35,257<small>− 11.4%</small></p><p class="c">Compared to last month</p><svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wtheme1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--neg-w)"/><stop offset="1" style="stop-color:var(--neg-w);stop-opacity:0"/></linearGradient></defs><path d="M0 34 C 30 14, 60 12, 95 26 S 160 48, 200 40 L 200 60 L 0 60 Z" fill="url(#wtheme1)"/></svg></div><div class="cd-kpi pos" data-l="3"><p class="t">Cost to date</p><p class="v">$2,225<small>+ 2.4%</small></p><p class="c">Compared to last month</p><svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wtheme2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--pos-w)"/><stop offset="1" style="stop-color:var(--pos-w);stop-opacity:0"/></linearGradient></defs><path d="M0 46 C 40 40, 70 30, 110 36 S 170 26, 200 20 L 200 60 L 0 60 Z" fill="url(#wtheme2)"/></svg></div></div>
+<div class="cd-tabs" data-l="2"><span>All</span><span class="cd-on">Pending approval</span><span>Fulfillment</span></div>
+<div class="cd-table" data-c="4"><div class="cd-thead" data-l="3"><span>Form<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></span><span>PO number<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></span><span>Vendor<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></span><span>Commitment<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></span><span>Actual<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></span></div><div class="cd-body" data-c="4"><div class="cd-row" data-l="3"><span>Purchase order</span><span>0412</span><span>Grip & electric</span><span>18,400</span><span>17,950</span></div><div class="cd-row is-hover" data-l="3"><span>Check request</span><span>0413</span><span>Location fees</span><span>6,200</span><span>6,200</span></div><div class="cd-row" data-l="3"><span>Wire transfer</span><span>0414</span><span>Camera rental</span><span>42,000</span><span>39,800</span></div><div class="cd-row" data-l="3"><span>Purchase order</span><span>0415</span><span>Catering</span><span>9,750</span><span>10,120</span></div></div></div>
+<div class="cd-foot"><span class="cd-btn sec" data-l="2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download submissions</span><span class="cd-btn pri" data-l="2">Approve all</span><div class="cd-pages" data-l="5">‹ <b>1</b> 2 3 … 9 ›</div></div>
+</div></div></div>
+      </div>
+      <div class="cd-theme-figs">
+        <figure class="figure cd-fig"><img src="../assets/cd-manager-company.webp" width="1400" height="1199" alt="Dashboard de manager en modo claro, con el logo de un estudio y rojo como color primario" loading="lazy" decoding="async"><figcaption>El espacio de trabajo de un estudio, con su marca, en modo claro.</figcaption></figure>
+        <figure class="figure cd-fig"><img src="../assets/cd-manager-dark-company.webp" width="1400" height="1177" alt="El mismo dashboard de manager en modo oscuro, con el logo del estudio y acentos rojos" loading="lazy" decoding="async"><figcaption>El mismo espacio de trabajo en modo oscuro.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="mobile-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Web mobile</p>
+        <h2 class="t-h2" id="mobile-h">El mismo sistema en el teléfono</h2>
+        <p class="sub">En pantallas chicas, las tarjetas de KPI se apilan de a dos, la barra lateral pasa a un menú hamburguesa y la matriz de aprobaciones se convierte en una lista vertical. Los componentes no cambian, solo cómo se ordenan. Scrolleá dentro de cada teléfono.</p>
+      </div>
+      <ul class="cd-phones">
+        <li class="cd-phone"><div class="cd-phone-frame"><div class="cd-phone-screen" tabindex="0" role="region" aria-label="Dashboard mobile, con scroll"><img src="../assets/cd-p-dash.webp" width="375" height="4022" alt="Dashboard de la empresa en mobile: tarjetas de KPI en dos columnas, pestañas de estado y tarjetas de reportes de costos, en una sola página larga" loading="lazy" decoding="async"></div></div><p>Dashboard<span>Scrolleá dentro de la pantalla</span></p></li>
+        <li class="cd-phone"><div class="cd-phone-frame"><div class="cd-phone-screen" tabindex="0" role="region" aria-label="Matriz de aprobaciones mobile, con scroll"><img src="../assets/cd-p-approval.webp" width="375" height="1160" alt="Matriz de aprobaciones en mobile con Super Admin, Manager Level 1 y Manager Level 2 apilados en vertical" loading="lazy" decoding="async"></div></div><p>Matriz de aprobaciones<span>Scrolleá dentro de la pantalla</span></p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="int-h" data-chapter="Integraciones">
+    <div class="wrap cd-split">
+      <div class="copy">
+        <p class="label">Integraciones y reportes</p>
+        <h2 class="t-h2" id="int-h">Conectado a las herramientas que finanzas ya usa</h2>
+        <p>Conduiit Connect vincula la plataforma con el software contable de cada producción. En este flujo, una empresa configura Probooks, de Revolution Entertainment Services, y prueba la sincronización de sus órdenes de compra.</p>
+        <p>Cada tabla tiene además un botón de descarga, así las solicitudes y los reportes de costos salen como planillas para Excel o cualquier herramienta parecida.</p>
+        <p>Antes de que una solicitud llegue a contabilidad, los controles previos a la auditoría marcan lo que haría que la rebotaran: un código de cuenta que no corresponde al gasto, o un recibo o factura faltante. Corregirlo en el origen sale más barato que encontrarlo a fin de mes.</p>
+      </div>
+      <figure class="figure cd-fig"><img src="../assets/cd-integrations.webp" width="1400" height="1189" alt="Configuración de Conduiit Connect: campos de client ID, secret, token URL y scope, un flujo de conexión de Refresh a Probooks y una confirmación You’re connected" loading="lazy" decoding="async" data-zoom></figure>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="print-h">
+    <div class="wrap cd-split">
+      <div class="copy">
+        <p class="label">Fuera de la pantalla</p>
+        <h2 class="t-h2" id="print-h">La nueva identidad, en papel</h2>
+        <p>Con el sistema listo, diseñé un folleto de dos páginas para repartir en eventos de la industria y un juego de tarjetas personales, los dos con la misma paleta, tipografía y estilo de ilustración.</p>
+      </div>
+      <figure class="figure cd-fig"><img src="../assets/cd-flyers.webp" width="1328" height="957" alt="Folleto de Conduiit de dos páginas: la primera explica los flujos digitales para la gestión y la contabilidad de producciones, la segunda enumera funciones y cómo funciona Conduiit en cuatro pasos" loading="lazy" decoding="async" data-zoom></figure>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="back-h" data-chapter="En retrospectiva">
+    <div class="wrap">
+      <div class="cd-back">
+        <h2 class="t-h2" id="back-h">En retrospectiva</h2>
+        <div class="cd-back-body">
+          <p>Conduiit sigue funcionando sobre el sistema que construimos mientras estuve ahí, y sus clientes siguen trabajando en los mismos dashboards.</p>
+          <p>La decisión que más rindió fue tratar el color de la empresa como un token. Cada componente toma su primario de un solo lugar, así que aplicar la marca de un estudio pasó a ser una configuración que el cliente cambia por su cuenta.</p>
+          <p><b>Qué se me pasó:</b> el reporte de costos mostraba el presupuesto y el gasto real, pero no la plata ya comprometida en órdenes de compra aprobadas. Más adelante Conduiit tuvo que sumar esos compromisos a sus reportes, porque una producción puede parecer por debajo del presupuesto mientras sus órdenes aprobadas dicen otra cosa. Hoy diseñaría el reporte alrededor de presupuesto, comprometido y real desde la primera versión.</p>
+          <p><b>Qué haría distinto:</b> acordar una línea de base con el fundador antes de empezar el rediseño, como los días entre la solicitud y la aprobación o cuántas solicitudes rebota contabilidad, para que el impacto del sistema nuevo se viera en números y no solo en pantallas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="next-case" aria-label="Siguiente caso">
+    <div class="wrap">
+      <a href="edelap.html"><span class="next-label">Siguiente caso</span><span class="next-title">Devolverle a la app de Edelap el pago de facturas</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </nav>
+
+</section>
+
+</main>
+<footer class="site-footer">
+  <section class="contact on-dark" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <h2 id="contact-h">Los buenos productos empiezan con buenas conversaciones.</h2>
+          <p>¿Estás buscando a alguien para un puesto o tenés un proyecto en mente? Escribime. Aviso: te voy a hablar del tema hasta por los codos.</p>
+          <div class="contact-who">
+            <img src="../assets/avatar-footer.webp?v=2" width="208" height="208" alt="" decoding="async" loading="lazy">
+            <p><span>David Hoyos</span>Product Designer en Argentina, abierto a puestos remotos e híbridos</p>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="contact-email" href="mailto:daviddhoyos1@gmail.com" data-copy-email><span>daviddhoyos1@gmail.com</span><span class="contact-email-icon"><svg class="ce-copy" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"/></svg><svg class="ce-send" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><span class="sr-only ce-copy"> (copia la dirección de email)</span><span class="sr-only ce-send"> (abre tu app de correo)</span></a>
+          <ul class="contact-links">
+            <li class="cl-write"><a class="btn btn--glass glass glass--clear glass--interactive" href="mailto:daviddhoyos1@gmail.com?subject=Hola%20David">Escribime<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg><span class="sr-only"> (abre tu app de correo)</span></a></li>
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16L16 8M9 8h7v7"/></svg><span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="../assets/david-hoyos-cv-es.pdf" download="David-Hoyos-CV.pdf">Descargar CV<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="sr-only"> (PDF)</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal">
+        <p>© 2026 David Hoyos. Todos los derechos reservados.</p><a href="legal.html">Términos y privacidad</a>
+      </div>
+    </div>
+  </section>
+</footer>
+<script src="../app.js?v=14" defer></script>
+<script src="../thumbs.js?v=11" defer></script>
+<script src="../hero-shader.js?v=7" defer></script>
+<script src="../conduiit.js?v=2" defer></script>
+<script src="../lightbox.js?v=4" defer></script>
+<script src="../stations.js?v=2" defer></script>
+</body>
+</html>

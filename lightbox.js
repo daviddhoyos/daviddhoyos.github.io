@@ -8,15 +8,16 @@
   const imgs = document.querySelectorAll('img[data-zoom]');
   if (!imgs.length || typeof HTMLDialogElement !== 'function') return;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ES = /^es\b/i.test(document.documentElement.lang);
   const ICON_EXPAND = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>';
   const ICON_CLOSE = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
 
   const dlg = document.createElement('dialog');
   dlg.className = 'lightbox';
   dlg.tabIndex = -1;
-  dlg.setAttribute('aria-label', 'Enlarged image');
+  dlg.setAttribute('aria-label', ES ? 'Imagen ampliada' : 'Enlarged image');
   dlg.innerHTML = '<div class="lightbox-stage"><img class="lightbox-img" alt=""></div><p class="lightbox-caption"></p>' +
-    '<button class="lightbox-close" type="button" aria-label="Close enlarged image">' + ICON_CLOSE + '</button>';
+    '<button class="lightbox-close" type="button" aria-label="' + (ES ? 'Cerrar imagen ampliada' : 'Close enlarged image') + '">' + ICON_CLOSE + '</button>';
   document.body.appendChild(dlg);
   const big = dlg.querySelector('.lightbox-img');
   const cap = dlg.querySelector('.lightbox-caption');
@@ -66,7 +67,7 @@
     img.parentNode.insertBefore(wrap, img); wrap.appendChild(img);
     const btn = document.createElement('button');
     btn.type = 'button'; btn.className = 'zoom-btn';
-    btn.setAttribute('aria-label', 'Enlarge image' + (captionOf(img) ? ': ' + captionOf(img) : ''));
+    btn.setAttribute('aria-label', (ES ? 'Ampliar imagen' : 'Enlarge image') + (captionOf(img) ? ': ' + captionOf(img) : ''));
     btn.innerHTML = ICON_EXPAND;
     wrap.appendChild(btn);
     btn.addEventListener('click', (e) => { e.stopPropagation(); open(img); });

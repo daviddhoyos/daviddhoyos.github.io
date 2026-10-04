@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es" data-view="case">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Explicar ad tech a quienes la compran | Edge226 | David Hoyos</title>
+<meta name="description" content="Cómo rediseñé el sitio de Edge226 con su equipo de marketing, rehice dos veces su arquitectura de información y convertí un proyecto de sitio web en el rebranding de la empresa.">
+<meta name="robots" content="index, follow, noimageindex">
+<meta name="author" content="David Hoyos">
+<meta name="copyright" content="© 2026 David Hoyos. Todos los derechos reservados.">
+<link rel="canonical" href="https://daviddhoyos.github.io/es/edge226.html">
+<link rel="alternate" hreflang="en" href="https://daviddhoyos.github.io/edge226.html">
+<link rel="alternate" hreflang="es" href="https://daviddhoyos.github.io/es/edge226.html">
+<link rel="alternate" hreflang="x-default" href="https://daviddhoyos.github.io/edge226.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="David Hoyos">
+<meta property="og:locale" content="es_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://daviddhoyos.github.io/es/edge226.html">
+<meta property="og:title" content="Explicar ad tech a quienes la compran | Edge226 | David Hoyos">
+<meta property="og:description" content="Cómo rediseñé el sitio de Edge226 con su equipo de marketing, rehice dos veces su arquitectura de información y convertí un proyecto de sitio web en el rebranding de la empresa.">
+<meta property="og:image" content="https://daviddhoyos.github.io/assets/og/og-edge226.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Caso de rediseño del sitio y rebranding de Edge226, por David Hoyos">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Explicar ad tech a quienes la compran | Edge226 | David Hoyos">
+<meta name="twitter:description" content="Cómo rediseñé el sitio de Edge226 con su equipo de marketing, rehice dos veces su arquitectura de información y convertí un proyecto de sitio web en el rebranding de la empresa.">
+<meta name="twitter:image" content="https://daviddhoyos.github.io/assets/og/og-edge226.jpg">
+<meta name="twitter:image:alt" content="Caso de rediseño del sitio y rebranding de Edge226, por David Hoyos">
+<meta name="theme-color" content="#19141a">
+<link rel="icon" href="../favicon.ico" sizes="32x32" data-dark="../favicon-dark.ico">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" data-dark="../favicon-dark.svg">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png" data-dark="../apple-touch-icon-dark.png">
+<script>
+/* favicon follows the colour scheme (dark grey mark on light, white mark on dark). The <link> is replaced, not just
+   re-pointed, because Chrome only refreshes the tab icon when a new element appears. */
+(function () {
+  var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  if (!mq) return;
+  var apply = function () {
+    document.querySelectorAll('link[data-dark]').forEach(function (l) {
+      if (!l.dataset.light) l.dataset.light = l.getAttribute('href');
+      var href = mq.matches ? l.dataset.dark : l.dataset.light;
+      if (l.getAttribute('href') === href) return;
+      var n = l.cloneNode(); n.setAttribute('href', href); l.replaceWith(n);
+    });
+  };
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply); else if (mq.addListener) mq.addListener(apply);
+})();
+</script>
+<link rel="preload" href="../assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css?v=43">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="nav-wrap">
+  <nav class="nav glass" aria-label="Principal" data-nav>
+    <ul>
+      <li class="nav-name"><a href="index.html"><svg class="nav-back" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span class="nav-name-text">Inicio</span></a></li>
+      <li><a href="index.html#projects">Casos</a></li>
+      <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+      <li><a href="resume.html">CV</a></li>
+      <li><a href="mailto:daviddhoyos1@gmail.com" data-copy-email>Email<span class="sr-only ce-copy"> (copia la dirección de email)</span><span class="sr-only ce-send"> (abre tu app de correo)</span></a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main" tabindex="-1">
+<section class="view enter view-ov" id="view-edge226">
+
+  <header class="case-hero case-hero--ov case-hero--shader case-hero--split on-dark" data-hero-shader data-shader-colors="#c850c0, #2a0a3e, #4158d0">
+    <div class="wrap">
+      <div class="copy">
+        <p class="eyebrow">Rediseño del sitio y rebranding de Edge226</p>
+        <h1 class="t-display-case" tabindex="-1" data-focus>Explicar ad tech a quienes la compran</h1>
+        <p class="lead">Edge226 es una plataforma de performance marketing multicanal: las apps y juegos mobile le pagan por instalaciones y compras, no por impresiones. Su sitio nunca lo decía. Junto con la líder de marketing de Edge226 rediseñé cada página, y lo que empezó como un proyecto de sitio web se convirtió en la nueva marca de la empresa.</p>
+      </div>
+      <div class="case-hero-media thumb-media--window hero-thumb" aria-hidden="true"><div class="win win--edge" style="--vx:0%;--vy:0%;--vw:100%;--vh:100%;--travel:41.05%;--dur:3.2s;--pin:8.48%" data-pin><img class="win-base" src="../assets/edge/ed-thumb-base-1238.webp" srcset="../assets/edge/ed-thumb-base-619.webp 619w, ../assets/edge/ed-thumb-base-1238.webp 1238w, ../assets/edge/ed-thumb-base-1857.webp 1857w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 560px" width="619" height="507" alt="" decoding="async"><div class="win-viewport"><img class="win-content" src="../assets/edge/ed-thumb-content-1238.webp" srcset="../assets/edge/ed-thumb-content-619.webp 619w, ../assets/edge/ed-thumb-content-1238.webp 1238w, ../assets/edge/ed-thumb-content-1857.webp 1857w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 560px" width="619" height="860" alt="" decoding="async"></div></div></div>
+      <dl class="facts">
+        <div><dt>Rol</dt><dd>Único diseñador, de punta a punta</dd></div>
+        <div><dt>Trabajé con</dt><dd>La líder de marketing de Edge226</dd></div>
+        <div><dt>Alcance</dt><dd>Arquitectura de información, todas las páginas, guía de estilos, rebranding</dd></div>
+        <div><dt>Plataforma</dt><dd>Sitio web, desktop y mobile</dd></div>
+        <div><dt>Marca en uso</dt><dd>Unos cuatro años</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <section class="sec ov-status" aria-labelledby="eg-glance-h" data-chapter="Resumen" style="padding-block:clamp(48px,6vw,80px)">
+    <div class="wrap">
+      <h2 class="sr-only" id="eg-glance-h">De un vistazo</h2>
+      <div class="glance">
+        <div><p class="label">El problema</p><p class="t-statement">Ocho ítems de menú con nombres de equipos internos, y ni una línea sobre lo que distinguía a Edge226: los clientes pagan por resultados.</p></div>
+        <div><p class="label">Qué hice</p><p class="t-statement">Convertí los textos de marketing en páginas, rehice dos veces la arquitectura de información y armé una guía de estilos para desktop y mobile.</p></div>
+        <div><p class="label">El resultado</p><p class="t-statement">El rediseño se convirtió en el rebranding. Edge226 pasó del azul al violeta y usó esa identidad durante unos cuatro años, online y en los stands de sus eventos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-biz-h" data-chapter="El negocio">
+    <div class="wrap">
+      <div class="fx-ch-head">
+        <div class="sec-head">
+          <p class="label">El negocio</p>
+          <h2 class="t-h2" id="eg-biz-h">Una empresa que cobra cuando sus clientes crecen</h2>
+          <p class="sub">Edge226 es una empresa de ad tech fundada en Israel, con oficinas en Tel Aviv y Nueva York. Su producto principal, Peak, es una demand-side platform: un software que compra espacios publicitarios en miles de apps en nombre de los anunciantes y usa machine learning para decidir adónde va cada dólar.</p>
+          <p class="sub">Sus clientes son apps y juegos mobile que buscan usuarios que se queden y paguen, en verticales como gaming, finanzas, viajes y delivery de comida. Desde entonces creció hacia la TV conectada y los anuncios con recompensa, y en 2026 compró AnyClip, una empresa de video con IA.</p>
+        </div>
+        <aside class="fx-notes" aria-label="El vocabulario detrás del sitio">
+          <p class="fx-notes-title">El vocabulario detrás del sitio</p>
+          <dl>
+            <div><dt>DSP</dt><dd>Demand-side platform. Compra espacios publicitarios de forma automática para los anunciantes, en muchas apps a la vez.</dd></div>
+            <div><dt>Mobile supply</dt><dd>El espacio publicitario disponible dentro de las apps. Cuanto más alcanza una DSP, más usuarios puede encontrar.</dd></div>
+            <div><dt>Precio por resultados</dt><dd>El anunciante paga por un resultado, como una instalación o una compra, en lugar de por cada vez que se muestra un anuncio.</dd></div>
+            <div><dt>ROAS</dt><dd>Retorno sobre la inversión publicitaria: los ingresos por cada dólar gastado en anuncios. El número por el que se juzga a un equipo de growth.</dd></div>
+            <div><dt>Vertical</dt><dd>Una categoría de apps, como finanzas o gaming, con sus propios objetivos y su propia idea de lo que vale un usuario.</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec ov-dark on-dark" aria-labelledby="eg-model-h" data-chapter="El modelo">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Cómo se mueve la plata</p>
+        <h2 class="t-h2" id="eg-model-h">El modelo de negocio es todo el argumento del sitio</h2>
+        <p class="sub">La mayoría de las plataformas publicitarias cobran por alcance. Edge226 cobra por resultados. Esa diferencia es lo que un visitante tiene que entender antes de que importe cualquier otra cosa en la página.</p>
+      </div>
+      <ol class="ov-flow" style="--n:4">
+        <li><h3>Una app define un objetivo</h3><p>Instalaciones, depósitos, suscripciones o compras: la acción que vale plata para ese negocio.</p></li>
+        <li><h3>La plataforma puja por espacios</h3><p>Sus algoritmos compran ubicaciones en el inventario de las apps, buscando a los usuarios con más chances de actuar.</p></li>
+        <li><h3>Un usuario actúa</h3><p>Alguien ve el anuncio, instala la app y, idealmente, la sigue usando.</p></li>
+        <li class="is-key"><h3>La app paga por el resultado</h3><p>No por la impresión. El gasto está atado al objetivo definido en el primer paso.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-start-h" data-chapter="Punto de partida">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">El punto de partida</p>
+        <h2 class="t-h2" id="eg-start-h">Un sitio organizado alrededor de la empresa, no de quien compra</h2>
+        <p class="sub">El sitio original era azul y cian, con un robot en el hero y ocho ítems en el menú: User Acquisition, Technology, Our Approach, Resources, Creative Studio, Careers, About Us y Contact Us. Un marketer tenía que conocer la estructura interna de Edge226 para encontrar lo que vendía, y el precio por resultados aparecía apenas como una línea dentro de un párrafo.</p>
+      </div>
+      <div class="ov-ba">
+        <figure><div class="ov-ba-shot"><span class="ov-chip">Antes</span><img src="../assets/edge/ed-before-1440.webp" srcset="../assets/edge/ed-before-720.webp 720w, ../assets/edge/ed-before-1440.webp 1440w" sizes="(max-width: 767.98px) calc(100vw - 40px), 600px" width="1440" height="780" alt="Home original de Edge226: un robot con un teléfono al lado del título Mobile Growth Powered by AI Technology, sobre blanco y celeste" loading="lazy" decoding="async" data-zoom></div><figcaption>La home original, como la encontró el rediseño.</figcaption></figure>
+        <figure><div class="ov-ba-shot"><span class="ov-chip ov-chip--after">Después</span><img src="../assets/edge/ed-after-1440.webp" srcset="../assets/edge/ed-after-720.webp 720w, ../assets/edge/ed-after-1440.webp 1440w" sizes="(max-width: 767.98px) calc(100vw - 40px), 600px" width="1440" height="780" alt="Home rediseñada de Edge226: hero con degradé violeta, App Growth Beyond the Install, con Book a demo y Peak Overview" loading="lazy" decoding="async" data-zoom></div><figcaption>La home final: el resultado de quien compra como título, y una sola acción principal.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec ov-dark on-dark" aria-labelledby="eg-idea-h" data-chapter="La idea">
+    <div class="wrap">
+      <div class="ov-split">
+        <div class="sec-head">
+          <p class="label">La idea</p>
+          <h2 class="t-h2" id="eg-idea-h">Un nombre que viene del triatlón</h2>
+        </div>
+        <div class="ov-split-body">
+          <p class="ov-big">226 kilómetros es la distancia de un triatlón completo: 3,8 nadando, 180 en bici, 42,2 corriendo. El nombre hablaba de resistencia y rendimiento, y el producto ya se llamaba Peak.</p>
+          <p>Así que el lenguaje visual sube. Los tres pilares de Peak, resultados garantizados, supply global y transparente, y rendimiento a través de la tecnología, rodean una cumbre en la home. La página de Peak abre con una montaña en el degradé de la marca. Todas las metáforas apuntan al mismo lado: hacia arriba, hacia el resultado por el que paga el cliente.</p>
+        </div>
+      </div>
+      <div class="ov-pair2" style="margin-top:clamp(40px,5vw,64px)">
+        <figure class="ov-wide"><div class="ov-wide-shot"><img src="../assets/edge/ed-pillars-1440.webp" srcset="../assets/edge/ed-pillars-720.webp 720w, ../assets/edge/ed-pillars-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 612px" width="1440" height="620" alt="Sección de la home Powered by Peak’s Three Pillars: una cumbre en degradé rodeada por Guaranteed Results, Global and Transparent Supply y Performance through Technology" loading="lazy" decoding="async" data-zoom></div><figcaption class="ov-cap">La home: tres pilares alrededor de una cumbre.</figcaption></figure>
+        <figure class="ov-wide"><div class="ov-wide-shot"><img src="../assets/edge/ed-peak-mountain-1440.webp" srcset="../assets/edge/ed-peak-mountain-720.webp 720w, ../assets/edge/ed-peak-mountain-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 612px" width="1440" height="620" alt="Sección Peak Benefits: una montaña en durazno, magenta y violeta que se eleva sobre cordones grises" loading="lazy" decoding="async" data-zoom></div><figcaption class="ov-cap">La página de Peak: el degradé de la marca, dibujado como una montaña.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="eg-work-h" data-chapter="Cómo trabajamos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Cómo trabajamos</p>
+        <h2 class="t-h2" id="eg-work-h">Marketing traía el mensaje. Yo lo convertía en páginas.</h2>
+        <p class="sub">La líder de marketing de Edge226 fue mi contraparte durante todo el proyecto. Cada página pasó por el mismo ciclo hasta que decía lo que la empresa necesitaba.</p>
+      </div>
+      <ol class="cards cards--4">
+        <li class="card"><h3>Valores y textos</h3><p>Marketing definía qué representaba Edge226 y qué tenía que comunicar cada página, y entregaba los textos.</p></li>
+        <li class="card"><h3>De los textos a la estructura</h3><p>Convertía esos textos en layouts: qué dice primero cada sección, qué lo demuestra y adónde va el visitante después.</p></li>
+        <li class="card"><h3>Rondas de feedback</h3><p>Cada versión volvía al cliente. El feedback era mayormente positivo, a veces un no claro, y cada no mandaba una página de vuelta para otra pasada.</p></li>
+        <li class="card"><h3>Avanzar sin respuestas</h3><p>Las respuestas podían tardar días, y el proyecto no podía frenar. Mantener el trabajo en movimiento entre rondas era parte del trabajo.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec bg-white ov-iter" aria-labelledby="eg-iter-h" data-chapter="Iteraciones">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Las iteraciones</p>
+        <h2 class="t-h2" id="eg-iter-h">Del primer boceto a la home final</h2>
+        <p class="sub">La home pasó por más de veinte versiones. Estas cinco, en el orden en que se hicieron, muestran cómo se fue definiendo el rumbo: de exploraciones oscuras y claras, a un azul cercano a la marca vieja, hasta el violeta que se convirtió en la nueva.</p>
+      </div>
+      <ol class="ov-versions"><li><div class="ov-v-shot"><img src="../assets/edge/ed-v1.webp" width="460" height="736" alt="Home de Edge226, versión 1: oscura" loading="lazy" decoding="async" data-zoom></div><p>Oscura</p></li><li><div class="ov-v-shot"><img src="../assets/edge/ed-v2.webp" width="460" height="736" alt="Home de Edge226, versión 2: clara" loading="lazy" decoding="async" data-zoom></div><p>Clara</p></li><li><div class="ov-v-shot"><img src="../assets/edge/ed-v3.webp" width="460" height="736" alt="Home de Edge226, versión 3: azul, cercana a la marca vieja" loading="lazy" decoding="async" data-zoom></div><p>Azul, cercana a la marca vieja</p></li><li><div class="ov-v-shot"><img src="../assets/edge/ed-v4.webp" width="460" height="736" alt="Home de Edge226, versión 4: primer violeta" loading="lazy" decoding="async" data-zoom></div><p>Primer violeta</p></li><li><div class="ov-v-shot"><img src="../assets/edge/ed-v5.webp" width="460" height="736" alt="Home de Edge226, versión 5: final" loading="lazy" decoding="async" data-zoom></div><p>Final</p></li></ol>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-ia-h" data-chapter="Estructura">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Arquitectura de información</p>
+        <h2 class="t-h2" id="eg-ia-h">Relevada, propuesta y refinada</h2>
+        <p class="sub">Relevé cada recorrido del sitio existente, propuse una estructura nueva y la refiné hasta que el menú respondiera las dos cosas que busca quien compra: qué vende Edge226 y la prueba de que conoce su tipo de app.</p>
+      </div>
+      <div class="ia-tabs" data-tabs>
+        <div role="tablist" aria-label="Versiones de la arquitectura de información">
+          <button role="tab" id="ia-t1" aria-controls="ia-p1" aria-selected="false" tabindex="-1">1 · Sitio existente</button>
+          <button role="tab" id="ia-t2" aria-controls="ia-p2" aria-selected="false" tabindex="-1">2 · Primera propuesta</button>
+          <button role="tab" id="ia-t3" aria-controls="ia-p3" aria-selected="true" tabindex="0">3 · Refinada y publicada</button>
+        </div>
+        <div role="tabpanel" id="ia-p1" aria-labelledby="ia-t1" hidden><div class="ia-canvas" tabindex="0" role="region" aria-label="Mapa del sitio existente, con scroll"><div class="iat"><ul><li><span class="n n--home" style="--c:#14ae5c;--t:#fff">Inicio</span><ul><li><span class="n" style="--c:#ffa629;--t:#000">Mobile User Retargeting</span><ul><li><span class="n" style="--c:#ffa629;--t:#000">Request Demo</span><ul><li><span class="n" style="--c:#ffa629;--t:#000">Contact Us</span></li></ul></li></ul></li><li><span class="n" style="--c:#ffd233;--t:#333">User Acquisition</span><ul><li><span class="n" style="--c:#ffd233;--t:#333">Request Demo</span><ul><li><span class="n" style="--c:#ffd233;--t:#333">Contact Us</span></li></ul></li></ul></li><li><span class="n" style="--c:#85b6ff;--t:#000">Technology</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Peak DSP</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Request Demo</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Contact Us</span></li></ul></li><li><span class="n" style="--c:#85b6ff;--t:#000">Inventory Partners</span><ul><li><span class="n n--dead" style="--c:#f24822;--t:#fff">Null</span></li></ul></li></ul></li><li><span class="n" style="--c:#85b6ff;--t:#000">Echo Tracking</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Request Free Trial</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Contact Us</span></li></ul></li><li><span class="n" style="--c:#85b6ff;--t:#000">Request Demo</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Contact Us</span></li></ul></li></ul></li><li><span class="n" style="--c:#85b6ff;--t:#000">Excitead</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Request Demo</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Contact Us</span></li></ul></li><li><span class="n" style="--c:#85b6ff;--t:#000">Book a Demo</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Contact Us</span></li></ul></li></ul></li></ul></li><li><span class="n" style="--c:#d99bff;--t:#333">Our Approach</span><ul><li><span class="n" style="--c:#d99bff;--t:#333">Request Demo</span><ul><li><span class="n" style="--c:#d99bff;--t:#333">Contact Us</span></li></ul></li></ul></li><li><span class="n" style="--c:#4ecb71;--t:#fff">Resources</span><ul><li><span class="n" style="--c:#4ecb71;--t:#fff">Success Stories</span><ul><li><span class="n" style="--c:#4ecb71;--t:#fff">Case Study Name</span><ul><li><span class="n" style="--c:#4ecb71;--t:#fff">Download Success Story</span></li></ul></li></ul></li></ul></li><li><span class="n" style="--c:#ff9a62;--t:#000">Creative Studio</span><ul><li><span class="n" style="--c:#ff9a62;--t:#000">See the Full Gallery</span><ul><li><span class="n n--out" style="--c:#0d99ff;--t:#fff">behance.com</span></li></ul></li><li><span class="n" style="--c:#ff9a62;--t:#000">Request Demo</span><ul><li><span class="n" style="--c:#ff9a62;--t:#000">Contact Us</span></li></ul></li></ul></li><li><span class="n" style="--c:#0d99ff;--t:#fff">Careers</span><ul><li><span class="n" style="--c:#0d99ff;--t:#fff">Read more: Job Opportunity</span></li></ul></li><li><span class="n" style="--c:#ffa629;--t:#000">About Us</span><ul><li><span class="n" style="--c:#9747ff;--t:#fff">Contact us</span></li></ul></li><li><span class="n" style="--c:#9747ff;--t:#fff">Contact us</span></li></ul></li></ul></div></div><p class="ia-note"><b>Diez ramas desde la home, con nombres de equipos internos.</b> Nueve botones distintos pedían una demo o una prueba, con tres nombres diferentes. Inventory Partners llevaba a una página que no existía, y la galería mandaba a los visitantes a Behance.</p></div>
+        <div role="tabpanel" id="ia-p2" aria-labelledby="ia-t2" hidden><div class="ia-canvas" tabindex="0" role="region" aria-label="Mapa de la primera propuesta, con scroll"><div class="iat"><ul><li><span class="n n--home" style="--c:#14ae5c;--t:#fff">Inicio</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Peak DSP</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">DSP &amp; AI</span></li><li><span class="n" style="--c:#85b6ff;--t:#000">Results Pricing</span></li><li><span class="n" style="--c:#85b6ff;--t:#000">Global Scale</span></li></ul></li><li><span class="n" style="--c:#d99bff;--t:#333">Our Solutions</span><ul><li><span class="n" style="--c:#d99bff;--t:#333">Resumen</span></li><li><span class="n" style="--c:#d99bff;--t:#333">Finance</span></li><li><span class="n" style="--c:#d99bff;--t:#333">Food &amp; Delivery</span></li><li><span class="n" style="--c:#d99bff;--t:#333">Streaming</span></li><li><span class="n" style="--c:#d99bff;--t:#333">Travel</span></li><li><span class="n" style="--c:#d99bff;--t:#333">Dating</span></li><li><span class="n" style="--c:#d99bff;--t:#333">Gaming</span></li></ul></li><li><span class="n" style="--c:#4ecb71;--t:#fff">Resources</span><ul><li><span class="n" style="--c:#4ecb71;--t:#fff">Success stories</span><ul><li><span class="n" style="--c:#4ecb71;--t:#fff">Case Study Pages</span></li><li><span class="n" style="--c:#4ecb71;--t:#fff">News (post) pages</span></li></ul></li><li><span class="n" style="--c:#4ecb71;--t:#fff">Partnership &amp; Integrations</span></li><li><span class="n" style="--c:#4ecb71;--t:#fff">Creative Studio</span></li></ul></li><li><span class="n" style="--c:#ffa629;--t:#000">Company</span><ul><li><span class="n" style="--c:#ffcd29;--t:#000">Careers pages</span></li></ul></li><li><span class="n" style="--c:#0d99ff;--t:#fff">Contact</span></li></ul></li></ul></div></div><p class="ia-note"><b>Cinco secciones.</b> Las ideas de Peak tuvieron sus propias páginas y las categorías de apps aparecieron por primera vez, pero todavía archivadas bajo un genérico “Our Solutions”.</p></div>
+        <div role="tabpanel" id="ia-p3" aria-labelledby="ia-t3"><div class="ia-canvas" tabindex="0" role="region" aria-label="Mapa refinado, con scroll"><div class="iat"><ul><li><span class="n n--home" style="--c:#14ae5c;--t:#fff">Inicio</span><ul><li><span class="n" style="--c:#e6e6e6;--t:#000">Solutions</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Peak Platform</span><ul><li><span class="n" style="--c:#85b6ff;--t:#000">Results Pricing</span></li><li><span class="n" style="--c:#85b6ff;--t:#000">Global Scale</span></li><li><span class="n" style="--c:#85b6ff;--t:#000">Performance</span></li></ul></li><li><span class="n" style="--c:#85b6ff;--t:#000">Creative Studio</span></li></ul></li><li><span class="n" style="--c:#e6e6e6;--t:#000">Verticals</span><ul><li><span class="n" style="--c:#d99bff;--t:#333">Finance</span></li><li><span class="n" style="--c:#d99bff;--t:#333">Food &amp; Delivery</span></li><li><span class="n" style="--c:#d99bff;--t:#333">Streaming</span></li><li><span class="n" style="--c:#d99bff;--t:#333">Travel</span></li><li><span class="n" style="--c:#d99bff;--t:#333">Dating</span></li><li><span class="n" style="--c:#d99bff;--t:#333">Gaming</span></li></ul></li><li><span class="n" style="--c:#e6e6e6;--t:#000">Resources</span><ul><li><span class="n" style="--c:#4ecb71;--t:#fff">Success stories</span><ul><li><span class="n" style="--c:#4ecb71;--t:#fff">Case Study Pages</span></li></ul></li><li><span class="n" style="--c:#4ecb71;--t:#fff">Partnership &amp; Integrations</span></li></ul></li><li><span class="n" style="--c:#ffa629;--t:#000">Company</span></li><li><span class="n" style="--c:#ffcd29;--t:#000">Contact us</span></li><li><span class="n" style="--c:#ffa629;--t:#000">Client Login</span></li></ul></li></ul></div></div><p class="ia-note"><b>Solutions y Verticals, uno al lado del otro.</b> Lo que vende Edge226 y las industrias a las que les vende, cada uno a un clic desde el header. Una sola forma de pedir una demo, y un login aparte para los clientes actuales.</p></div>
+      </div>
+      <h3 class="t-h3" style="margin-top:clamp(48px,6vw,72px)">Por qué Verticals ganó un lugar en el menú</h3>
+      <ul class="biz-points" style="--n:2;margin-top:20px">
+        <li><h3>Cada industria cuenta un resultado distinto</h3><p>Una app de finanzas cuenta depósitos, un juego cuenta jugadores que pagan, una app de delivery cuenta pedidos repetidos. Una página por vertical habla del número por el que se juzga a quien compra.</p></li>
+        <li><h3>Quien compra busca primero su propio mercado</h3><p>Un marketer confía en una plataforma que ya muestra que conoce apps como la suya. Poner las industrias al lado de Solutions dejó esa prueba a un clic del header, donde empieza la decisión de agendar una demo.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="eg-color-h" data-chapter="Color">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">El color como orientación</p>
+        <h2 class="t-h2" id="eg-color-h">Un degradé para cada parte del sitio</h2>
+        <p class="sub">El mapa del sitio le asignó a cada sección su propia mezcla de los mismos tres colores, azul <code>#4158D0</code>, magenta <code>#C850C0</code> y durazno <code>#FFCC70</code>, para que los visitantes sepan dónde están solo con mirar el header.</p>
+      </div>
+      <ul class="ov-grads">
+        <li><div class="ov-g-shot"><img src="../assets/edge/ed-sec-home-1440.webp" srcset="../assets/edge/ed-sec-home-720.webp 720w, ../assets/edge/ed-sec-home-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 400px" width="1440" height="560" alt="Header de la home de Edge226 con un degradé de azul a durazno" loading="lazy" decoding="async" data-zoom></div><span class="ov-g-bar" style="background:linear-gradient(90deg,#4158d0,#c850c0 54%,#ffcc70)"></span><h3>Inicio</h3><p>Los tres colores: la marca completa, una sola vez.</p></li>
+        <li><div class="ov-g-shot"><img src="../assets/edge/ed-sec-peak-1440.webp" srcset="../assets/edge/ed-sec-peak-720.webp 720w, ../assets/edge/ed-sec-peak-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 400px" width="1440" height="560" alt="Header de la página Peak Platform con un degradé de violeta a magenta" loading="lazy" decoding="async" data-zoom></div><span class="ov-g-bar" style="background:linear-gradient(90deg,#4158d0,#c850c0)"></span><h3>Solutions</h3><p>Azul hacia magenta para las páginas de producto.</p></li>
+        <li><div class="ov-g-shot"><img src="../assets/edge/ed-sec-finance-1440.webp" srcset="../assets/edge/ed-sec-finance-720.webp 720w, ../assets/edge/ed-sec-finance-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 400px" width="1440" height="560" alt="Header de la página de la vertical Finance con un degradé de magenta a durazno" loading="lazy" decoding="async" data-zoom></div><span class="ov-g-bar" style="background:linear-gradient(90deg,#c850c0,#ffcc70)"></span><h3>Verticals</h3><p>Magenta hacia durazno, más cálido, para las industrias.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-sg-h" data-chapter="Guía de estilos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">La guía de estilos</p>
+        <h2 class="t-h2" id="eg-sg-h">Un solo sistema para cada página, en cada pantalla</h2>
+        <p class="sub">La guía cubría color, tipografía, botones, recursos gráficos y cómo se adapta cada página a mobile. En el teléfono, el hero tiene un solo trabajo: llevar a la demo.</p>
+      </div>
+      <div class="ov-type">
+        <div><span class="ov-aa" style="font-family:Poppins, var(--font-display);font-weight:700">Aa</span><b>Poppins</b><span>Títulos: geométrica y redondeada, cercana al logo.</span></div>
+        <div><span class="ov-aa" style="font-family:Inter, var(--font-body)">Aa</span><b>Inter</b><span>Texto: pensada para pantallas, legible en tamaños chicos.</span></div>
+      </div>
+      <figure class="ov-wide" style="margin-top:var(--grid-gap)"><div class="ov-wide-shot"><img src="../assets/edge/ed-mobile-heroes-2390.webp" srcset="../assets/edge/ed-mobile-heroes-1195.webp 1195w, ../assets/edge/ed-mobile-heroes-2390.webp 2390w" sizes="(max-width: 1280px) calc(100vw - 40px), 1248px" width="2390" height="920" alt="Cinco versiones mobile del hero de Edge226, cada una terminando en un botón Book a Demo" loading="lazy" decoding="async" data-zoom></div><figcaption class="ov-cap">Cinco direcciones para el hero mobile. Todas terminan en el mismo botón Book a Demo de ancho completo.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="eg-final-h" data-chapter="El sitio">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">El sitio final</p>
+        <h2 class="t-h2" id="eg-final-h">La home completa, en desktop y mobile</h2>
+        <p class="sub">Los tres pilares de Peak, una frase de un cliente, las verticales en pestañas, las marcas que lo usan y un último llamado a agendar una demo. Scrolleá dentro de cada pantalla.</p>
+      </div>
+      <div class="ov-devices">
+        <div class="ov-browser"><div class="ov-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>edge226.com</span></div><div class="ov-scroll" tabindex="0" role="region" aria-label="Home desktop de Edge226, con scroll"><img src="../assets/edge/ed-home-full-1440.webp" srcset="../assets/edge/ed-home-full-960.webp 960w, ../assets/edge/ed-home-full-1440.webp 1440w" sizes="(max-width: 899.98px) calc(100vw - 40px), 900px" width="1440" height="4959" alt="Home desktop completa de Edge226: hero, los tres pilares de Peak, la frase de un cliente, verticales en pestañas, logos de clientes, un llamado final a la acción y el footer" loading="lazy" decoding="async"></div></div>
+        <div class="cd-phone ov-phone"><div class="cd-phone-frame"><div class="cd-phone-screen" tabindex="0" role="region" aria-label="Home mobile de Edge226, con scroll"><img src="../assets/edge/ed-mobile-home.webp" width="750" height="9524" alt="Home mobile completa de Edge226, con las mismas secciones apiladas en una columna" loading="lazy" decoding="async"></div></div><p>Home mobile<span>Scrolleá dentro de la pantalla</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-design-h" data-chapter="Detalles">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Una mirada más de cerca</p>
+        <h2 class="t-h2" id="eg-design-h">Primero el resultado, después el producto</h2>
+        <p class="sub">La página Global Scale muestra el enfoque: hablar de lo que quiere quien compra y después demostrar que la plataforma puede dárselo.</p>
+      </div>
+      <div class="ov-annot">
+        <figure class="ov-annot-media">
+          <div class="ov-annot-frame">
+            <img src="../assets/more-edge226.webp" width="1238" height="1014" alt="Página Global Scale del rediseño de Edge226, con marcadores numerados en la acción principal, el título y las tarjetas de cifras" loading="lazy" decoding="async" data-zoom>
+            <span class="ov-pin" style="--x:87.5%;--y:9.5%" aria-hidden="true">1</span>
+            <span class="ov-pin" style="--x:8%;--y:22.5%" aria-hidden="true">2</span>
+            <span class="ov-pin" style="--x:37%;--y:68.5%" aria-hidden="true">3</span>
+          </div>
+        </figure>
+        <ol class="ov-legend">
+          <li><span class="ov-pin" aria-hidden="true">1</span><div><h3><span class="sr-only">Marcador 1: </span>Un solo botón con relleno</h3><p>Login, para los clientes actuales, queda con contorno. Book a Demo es el único botón con relleno del header, así los visitantes nuevos siempre saben cuál es el próximo paso.</p></div></li>
+          <li><span class="ov-pin" aria-hidden="true">2</span><div><h3><span class="sr-only">Marcador 2: </span>El objetivo de quien compra como título</h3><p>“Reach a global customer base that’s right for your app” habla del resultado. Peak aparece en el subtítulo, junto a sus dos promesas: escala y transparencia.</p></div></li>
+          <li><span class="ov-pin" aria-hidden="true">3</span><div><h3><span class="sr-only">Marcador 3: </span>La prueba en tres números</h3><p>99% del mobile supply del mundo, 4.000 millones de dispositivos y más de 2 millones de aplicaciones responden “¿qué alcance tienen?” antes de que nadie lo pregunte.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec ov-dark on-dark" aria-labelledby="eg-brand-h" data-chapter="Rebranding">
+    <div class="wrap">
+      <div class="ov-split" style="align-items:center">
+        <div class="ov-split-body">
+          <p class="label">Del sitio web a la marca</p>
+          <h2 class="t-h2" id="eg-brand-h">El rediseño se convirtió en el rebranding</h2>
+          <p>Empezó como un sitio nuevo. Al final, Edge226 adoptó la nueva paleta como su identidad: la empresa pasó del azul al violeta y mantuvo ese look durante unos cuatro años, en su sitio y en los banners que llevaba a los eventos de la industria.</p>
+          <div class="ov-rebrand" style="margin-top:12px">
+            <div><i style="background:linear-gradient(135deg,#42bdee,#1060bd 60%,#062544)"></i><b>Antes</b><span>Cian y azul marino</span></div>
+            <svg class="ov-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <div><i style="background:linear-gradient(135deg,#4158d0,#8855c9 50%,#c850c0)"></i><b>Después</b><span>Azul hacia violeta y magenta</span></div>
+          </div>
+        </div>
+        <ul class="ov-booths">
+          <li><figure><img src="../assets/edge/ed-booth-1.webp" width="526" height="1210" alt="Banner roll-up de Edge226 en un evento de la industria bajo techo, con el degradé de azul a violeta, presentando una plataforma de performance marketing multicanal para apps y juegos" loading="lazy" decoding="async" data-zoom><figcaption>Stand en un evento bajo techo</figcaption></figure></li>
+          <li><figure><img src="../assets/edge/ed-booth-2.webp" width="294" height="680" alt="El mismo banner de Edge226 en la terraza de un evento al aire libre" loading="lazy" decoding="async" data-zoom><figcaption>Evento al aire libre</figcaption></figure></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="eg-held-h" data-chapter="Hoy">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Todavía sigue ahí</p>
+        <h2 class="t-h2" id="eg-held-h">El sitio se rehízo desde entonces. La estructura no cambió.</h2>
+        <p class="sub">El sitio actual de Edge226 (2026) tiene nuevas imágenes y nuevos productos, y mantiene las decisiones de fondo.</p>
+      </div>
+      <ul class="cards">
+        <li class="card"><h3>Las mismas cuatro secciones</h3><p>El header sigue arrancando con Solutions, Verticals, Resources y Company, que ahora incluyen CTV y anuncios con recompensa además de in-app.</p></li>
+        <li class="card"><h3>La misma acción principal</h3><p>Book a Demo sigue siendo el botón principal, con Login aparte para los clientes actuales.</p></li>
+        <li class="card"><h3>La misma prueba</h3><p>Llegar al 99% del mobile supply global sigue siendo una de las primeras afirmaciones que lee un visitante.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="eg-back-h" data-chapter="En retrospectiva">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="t-h2" id="eg-back-h">En retrospectiva</h2></div>
+      <div class="ov-quote">
+        <p class="label">Qué aprendí</p>
+        <p>Queríamos otros colores, pero el cliente ya se había enamorado de los degradés. Después vimos lo difícil que era implementarlos y llevarlos a otras pantallas. Para que las páginas fueran livianas y accesibles, los usé como acentos en lugar de colores principales.</p>
+        <p>La lección: decidir con cuidado antes de mostrarle algo a un cliente, para que no se enamore de una idea que no escala. Y explicar el razonamiento lo bastante bien como para negociar. Este proyecto me enseñó a negociar.</p>
+      </div>
+      <div class="ov-quote" style="margin-top:var(--grid-gap)">
+        <p class="label">Qué se me pasó</p>
+        <p>Las páginas de verticales le explicaban Edge226 a cada industria, pero los resultados de clientes reales de esa industria estaban en Resources, a un clic de donde un marketer de finanzas estaba tomando su decisión. Hoy pondría al menos un resultado de un cliente en cada página de vertical.</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="next-case" aria-label="Siguiente caso">
+    <div class="wrap">
+      <a href="propelify.html"><span class="next-label">Siguiente caso</span><span class="next-title">Una identidad para el “SXSW del Noreste”</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </nav>
+
+</section>
+</main>
+<footer class="site-footer">
+  <section class="contact on-dark" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <h2 id="contact-h">Los buenos productos empiezan con buenas conversaciones.</h2>
+          <p>¿Estás buscando a alguien para un puesto o tenés un proyecto en mente? Escribime. Aviso: te voy a hablar del tema hasta por los codos.</p>
+          <div class="contact-who">
+            <img src="../assets/avatar-footer.webp?v=2" width="208" height="208" alt="" decoding="async" loading="lazy">
+            <p><span>David Hoyos</span>Product Designer en Argentina, abierto a puestos remotos e híbridos</p>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="contact-email" href="mailto:daviddhoyos1@gmail.com" data-copy-email><span>daviddhoyos1@gmail.com</span><span class="contact-email-icon"><svg class="ce-copy" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"/></svg><svg class="ce-send" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><span class="sr-only ce-copy"> (copia la dirección de email)</span><span class="sr-only ce-send"> (abre tu app de correo)</span></a>
+          <ul class="contact-links">
+            <li class="cl-write"><a class="btn btn--glass glass glass--clear glass--interactive" href="mailto:daviddhoyos1@gmail.com?subject=Hola%20David">Escribime<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg><span class="sr-only"> (abre tu app de correo)</span></a></li>
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16L16 8M9 8h7v7"/></svg><span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="../assets/david-hoyos-cv-es.pdf" download="David-Hoyos-CV.pdf">Descargar CV<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="sr-only"> (PDF)</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal">
+        <p>© 2026 David Hoyos. Todos los derechos reservados.</p><a href="legal.html">Términos y privacidad</a>
+      </div>
+    </div>
+  </section>
+</footer>
+<script src="../app.js?v=13" defer></script>
+<script src="../thumbs.js?v=11" defer></script>
+<script src="../hero-shader.js?v=7" defer></script>
+<script src="../lightbox.js?v=4" defer></script>
+<script src="../tabs.js?v=1" defer></script>
+</body>
+</html>

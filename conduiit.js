@@ -55,6 +55,7 @@
   const swatches = [...document.querySelectorAll('[data-swatches] .cd-chip-swatch')];
   const custom = document.querySelector('[data-custom]');
   const logo = dash.querySelector('.cd-logo span');
+  const YOUR = /^es\b/i.test(document.documentElement.lang) ? 'tu estudio' : 'your studio';
   const setColor = (c) => {
     dash.style.setProperty('--p', c);
     derived.style.setProperty('--tp', c);
@@ -63,11 +64,11 @@
   swatches.forEach((b) => b.addEventListener('click', () => {
     swatches.forEach((x) => x.setAttribute('aria-pressed', x === b));
     setColor(b.dataset.color); custom.value = b.dataset.color;
-    logo.textContent = b.dataset.color === '#561de2' ? 'conduiit' : 'your studio';
+    logo.textContent = b.dataset.color === '#561de2' ? 'conduiit' : YOUR;
   }));
   custom.addEventListener('input', () => {
     swatches.forEach((x) => x.setAttribute('aria-pressed', 'false'));
-    setColor(custom.value); logo.textContent = 'your studio';
+    setColor(custom.value); logo.textContent = YOUR;
   });
   const modes = [...document.querySelectorAll('[data-mode-toggle] button')];
   modes.forEach((b) => b.addEventListener('click', () => {

@@ -46,15 +46,23 @@
     const dir = Math.sign(d);
     if (!dir) return;
     measure();
-    const y = scrollY, vh = innerHeight, tol = vh * 0.1, zone = vh * 0.9;
+    const y = scrollY, vh = innerHeight, tol = vh * 0.06, zone = vh * 1.5;
     const set = sets.find((s) => s.S.length > 1 && y >= s.S[0] - zone && y <= s.S[s.S.length - 1] + zone);
     if (!set) return;                                            // outside every section: native scroll
     const S = set.S, first = S[0], last = S[S.length - 1];
     if (exiting && (dir < 0 || performance.now() - exitT > 400)) exiting = false;
     if (exiting) exitT = performance.now();
-    if ((y > last + tol || (exiting && dir > 0)) && !anim) return;
+    if ((y > last + tol || (exiting && dir > 0)) && !anim) {
+      // below the section: native, until going up would cross the last station; then land on it
+      if (dir < 0 && !exiting && y + d <= last + tol) { e.preventDefault(); lastT = performance.now(); lastDir = dir; lastAbs = Math.abs(d); go(last); }
+      return;
+    }
     if (dir < 0 && y <= first + tol && y >= first - tol) { anim = null; clearTimeout(endT); lockUntil = 0; return; }
-    if (dir < 0 && y < first - tol) return;                      // above the section going up: native
+    if (y < first - tol && !anim) {
+      // above the section: native, so the heading can be read, until going down would cross the first station
+      if (dir > 0 && y + d >= first - tol) { e.preventDefault(); lastT = performance.now(); lastDir = dir; lastAbs = Math.abs(d); go(first); }
+      return;
+    }
 
     const now = performance.now(), abs = Math.abs(d), gap = now - lastT;
     const fresh = gap > 200 || dir !== lastDir || abs > lastAbs * 1.6 + 4;

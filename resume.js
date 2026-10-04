@@ -4,12 +4,13 @@
    - Crisp: each page is re-rasterised for its real width x device pixel ratio, again when that width changes.
    - Links in the PDF (email, LinkedIn) stay clickable, as transparent links over the page.
    - Screen readers get the page text (visually hidden), not just a picture of it.
-   - If anything fails, the sheet turns into a link to the PDF; the Open/Download buttons always work. */
+   - If anything fails, the sheet turns into a link to the PDF; the Download button always works. */
 (() => {
   'use strict';
   const host = document.querySelector('[data-resume]');
   if (!host) return;
-  const SRC = host.dataset.src;
+  const ES = /^es\b/i.test(document.documentElement.lang);
+  let SRC = host.dataset.src;
   const LIB = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
 
   const fail = () => {
@@ -17,7 +18,7 @@
     host.innerHTML = '';
     const p = document.createElement('p');
     p.className = 'resume-fallback';
-    p.innerHTML = 'The preview couldn’t load. <a href="' + SRC + '" target="_blank" rel="noopener">Open the resume as a PDF</a>.';
+    p.innerHTML = (ES ? 'No se pudo cargar la vista previa. <a href="' : 'The preview couldn’t load. <a href="') + SRC + '" target="_blank" rel="noopener">' + (ES ? 'Abrir el CV en PDF' : 'Open the resume as a PDF') + '</a>.';
     host.appendChild(p);
   };
 
@@ -55,6 +56,8 @@
   };
 
   const build = async (pdf) => {
+    sheets.forEach((s) => { if (s.task) s.task.cancel(); });
+    sheets.length = 0;
     host.innerHTML = '';
     for (let n = 1; n <= pdf.numPages; n++) {
       const page = await pdf.getPage(n);
@@ -63,7 +66,7 @@
       el.className = 'resume-page on-light is-loading';
       el.style.aspectRatio = base.width + ' / ' + base.height;
       el.setAttribute('role', 'group');
-      el.setAttribute('aria-label', 'Page ' + n + ' of ' + pdf.numPages);
+      el.setAttribute('aria-label', (ES ? 'Página ' : 'Page ') + n + (ES ? ' de ' : ' of ') + pdf.numPages);
       host.appendChild(el);
       const sheet = { page, base, el, canvas: null, task: null, width: 0 };
       sheets.push(sheet);
@@ -99,17 +102,53 @@
     host.removeAttribute('aria-busy');
   };
 
-  const start = async () => {
+  let lib = null, observed = false, loadId = 0;
+  const load = async () => {
+    const id = ++loadId;
     try {
-      const lib = await loadLib();
-      lib.GlobalWorkerOptions.workerSrc = LIB + 'pdf.worker.min.js';
+      if (!lib) { lib = await loadLib(); lib.GlobalWorkerOptions.workerSrc = LIB + 'pdf.worker.min.js'; }
       const pdf = await lib.getDocument({ url: SRC }).promise;
+      if (id !== loadId) return;                       // a newer choice already started
       await build(pdf);
-    } catch (e) { fail(); return; }
+    } catch (e) { if (id === loadId) fail(); return; }
+    host.classList.remove('is-switching');
+    if (observed) return;
+    observed = true;
     let t = 0;
     const redraw = () => { clearTimeout(t); t = setTimeout(() => sheets.forEach(draw), 120); };
     if ('ResizeObserver' in window) new ResizeObserver(redraw).observe(host);
     else window.addEventListener('resize', redraw, { passive: true });
   };
-  start();
+
+  /* which CV: English or Spanish, whatever language the site is in. Starts on the page's language.
+     A radio group: arrows move and select, the preview and the Download button follow. */
+  const group = document.querySelector('[data-cv-lang]');
+  const dl = document.querySelector('[data-cv-download]');
+  if (group) {
+    const radios = [...group.querySelectorAll('[role="radio"]')];
+    const select = (r, focus) => {
+      const i = radios.indexOf(r);
+      radios.forEach((x) => { x.setAttribute('aria-checked', x === r); x.tabIndex = x === r ? 0 : -1; });
+      group.style.setProperty('--cv-i', i);
+      if (focus) r.focus();
+      if (dl) { dl.href = r.dataset.src; dl.setAttribute('download', r.dataset.file); }
+      if (r.dataset.src === SRC) return;
+      SRC = r.dataset.src; host.dataset.src = SRC;
+      host.classList.add('is-switching');
+      load();
+    };
+    radios.forEach((r, i) => {
+      r.addEventListener('click', () => select(r));
+      r.addEventListener('keydown', (e) => {
+        const k = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        if (k) { e.preventDefault(); select(radios[(i + k + radios.length) % radios.length], true); }
+      });
+    });
+    const initial = radios.find((r) => r.lang === (ES ? 'es' : 'en')) || radios[0];
+    radios.forEach((x) => { x.setAttribute('aria-checked', x === initial); x.tabIndex = x === initial ? 0 : -1; });
+    group.style.setProperty('--cv-i', radios.indexOf(initial));
+    if (dl) { dl.href = initial.dataset.src; dl.setAttribute('download', initial.dataset.file); }
+    SRC = initial.dataset.src; host.dataset.src = SRC;
+  }
+  load();
 })();

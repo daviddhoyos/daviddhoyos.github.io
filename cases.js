@@ -153,7 +153,7 @@
   /* ---------- cursor label over the art (mouse only) ---------- */
   if (!fine.matches) return;
   const tag = document.createElement('div');
-  tag.className = 'case-cursor'; tag.setAttribute('aria-hidden', 'true'); tag.textContent = 'View case study';
+  tag.className = 'case-cursor'; tag.setAttribute('aria-hidden', 'true'); tag.textContent = /^es\b/i.test(document.documentElement.lang) ? 'Ver caso' : 'View case study';
   document.body.appendChild(tag);
   let x = 0, y = 0, tx = 0, ty = 0, w = 0, h = 0, shown = false, craf = 0, has = false;
   const place = () => { tag.style.transform = `translate3d(${x - w / 2}px, ${y - h / 2}px, 0)`; };

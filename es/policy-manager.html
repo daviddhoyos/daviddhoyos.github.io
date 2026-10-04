@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="es" data-view="case">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salvar un producto que sus clientes más grandes estaban por dejar | David Hoyos</title>
+<meta name="description" content="Cómo estabilicé y rediseñé Policy Manager de Diligent como único diseñador de producto, cuando sus clientes enterprise más grandes estaban por irse.">
+<meta name="robots" content="index, follow, noimageindex">
+<meta name="author" content="David Hoyos">
+<meta name="copyright" content="© 2026 David Hoyos. Todos los derechos reservados.">
+<link rel="canonical" href="https://daviddhoyos.github.io/es/policy-manager.html">
+<link rel="alternate" hreflang="en" href="https://daviddhoyos.github.io/policy-manager.html">
+<link rel="alternate" hreflang="es" href="https://daviddhoyos.github.io/es/policy-manager.html">
+<link rel="alternate" hreflang="x-default" href="https://daviddhoyos.github.io/policy-manager.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="David Hoyos">
+<meta property="og:locale" content="es_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://daviddhoyos.github.io/es/policy-manager.html">
+<meta property="og:title" content="Salvar un producto que sus clientes más grandes estaban por dejar | David Hoyos">
+<meta property="og:description" content="Cómo estabilicé y rediseñé Policy Manager de Diligent como único diseñador de producto, cuando sus clientes enterprise más grandes estaban por irse.">
+<meta property="og:image" content="https://daviddhoyos.github.io/assets/og/og-policy-manager.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Caso: Salvar un producto que sus clientes más grandes estaban por dejar, con el dashboard rediseñado de Policy Manager">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Salvar un producto que sus clientes más grandes estaban por dejar | David Hoyos">
+<meta name="twitter:description" content="Cómo estabilicé y rediseñé Policy Manager de Diligent como único diseñador de producto, cuando sus clientes enterprise más grandes estaban por irse.">
+<meta name="twitter:image" content="https://daviddhoyos.github.io/assets/og/og-policy-manager.jpg">
+<meta name="twitter:image:alt" content="Caso: Salvar un producto que sus clientes más grandes estaban por dejar, con el dashboard rediseñado de Policy Manager">
+<meta name="theme-color" content="#19141a">
+<link rel="icon" href="../favicon.ico" sizes="32x32" data-dark="../favicon-dark.ico">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" data-dark="../favicon-dark.svg">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png" data-dark="../apple-touch-icon-dark.png">
+<script>
+/* favicon follows the colour scheme (dark grey mark on light, white mark on dark). The <link> is replaced, not just
+   re-pointed, because Chrome only refreshes the tab icon when a new element appears. */
+(function () {
+  var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  if (!mq) return;
+  var apply = function () {
+    document.querySelectorAll('link[data-dark]').forEach(function (l) {
+      if (!l.dataset.light) l.dataset.light = l.getAttribute('href');
+      var href = mq.matches ? l.dataset.dark : l.dataset.light;
+      if (l.getAttribute('href') === href) return;
+      var n = l.cloneNode(); n.setAttribute('href', href); l.replaceWith(n);
+    });
+  };
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply); else if (mq.addListener) mq.addListener(apply);
+})();
+</script>
+<link rel="preload" href="../assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css?v=43">
+<link rel="preload" href="../assets/pm-shader-poster.webp" as="image" type="image/webp">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="nav-wrap">
+  <nav class="nav glass" aria-label="Principal" data-nav>
+    <ul>
+      <li class="nav-name"><a href="index.html"><svg class="nav-back" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span class="nav-name-text">Inicio</span></a></li>
+      <li><a href="index.html#projects">Casos</a></li>
+      <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+      <li><a href="resume.html">CV</a></li>
+      <li><a href="mailto:daviddhoyos1@gmail.com" data-copy-email>Email<span class="sr-only ce-copy"> (copia la dirección de email)</span><span class="sr-only ce-send"> (abre tu app de correo)</span></a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main" tabindex="-1">
+<section class="view enter" id="view-policy-manager">
+
+  <header class="case-hero case-hero--pm case-hero--shader case-hero--split on-dark" data-hero-shader data-shader-colors="#6d88ff, #1a2766, #a3b4ff">
+    <div class="wrap">
+      <div class="copy">
+        <p class="eyebrow">Policy Manager en Diligent</p>
+        <h1 class="t-display-case" tabindex="-1" data-focus>Salvar un producto que sus clientes más grandes estaban por dejar</h1>
+        <p class="lead">En Policy Manager, empresas como Salesforce y Cisco escriben y aprueban sus políticas de compliance. Cuando Diligent lo compró, se caía seguido y sus clientes más grandes estaban por irse. Como único diseñador de producto, primero hice que las fallas fueran seguras y después rediseñé cómo se revisan y aprueban las políticas.</p>
+      </div>
+      <div class="case-hero-media thumb-media--window hero-thumb" aria-hidden="true"><div class="win" style="--vx:4.461%;--vy:6.088%;--vw:95.539%;--vh:93.912%;--travel:22.985%;--dur:4s;--r-br:1.813% 2.436%;--pin:6.247%" data-pin><img class="win-base" src="../assets/thumb-diligent-1432.webp" srcset="../assets/thumb-diligent-716.webp 716w, ../assets/thumb-diligent-1432.webp 1432w, ../assets/thumb-diligent-2148.webp 2148w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 600px" width="716" height="542" alt="" decoding="async"><div class="win-viewport"><img class="win-content" src="../assets/thumb-diligent-content-1368.webp" srcset="../assets/thumb-diligent-content-684.webp 684w, ../assets/thumb-diligent-content-1368.webp 1368w, ../assets/thumb-diligent-content-2052.webp 2052w" sizes="(max-width: 1023.98px) calc((100vw - 40px) * 0.955), 573px" width="1368" height="1322" alt="" decoding="async"></div></div></div>
+      <dl class="facts">
+        <div><dt>Rol</dt><dd>Único diseñador de producto, de punta a punta</dd></div>
+        <div><dt>Empresa</dt><dd>Diligent</dd></div>
+        <div><dt>Años</dt><dd>2022 a 2024</dd></div>
+        <div><dt>Plataforma</dt><dd>Web</dd></div>
+        <div><dt>Aprobación para el directorio</dt><dd>14 pasos → 3</dd></div>
+        <div><dt>Velocidad de desarrollo</dt><dd>2x, con Lens</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <section class="sec pm-glance" aria-labelledby="pm-glance-h" data-chapter="Resumen">
+    <div class="wrap">
+      <h2 class="sr-only" id="pm-glance-h">De un vistazo</h2>
+      <div class="glance">
+        <div><p class="label">El problema</p><p class="t-statement">Caídas en medio de las tareas, errores de código crudos, un editor que la gente evitaba y clientes enterprise amenazando con irse.</p></div>
+        <div><p class="label">Qué hice</p><p class="t-statement">Primero hice que las fallas fueran seguras. Después reemplacé el wizard de revisión por pestañas, integré Word y Google Docs al producto y les di a los aprobadores un camino más corto.</p></div>
+        <div><p class="label">El resultado</p><p class="t-statement">Los clientes en riesgo renovaron a largo plazo, el directorio aprueba en 3 pasos en lugar de 14 y los patrones centrales siguen en el producto en 2026.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="pm-biz-h" data-chapter="El negocio">
+    <div class="wrap">
+      <div class="biz-grid">
+        <div class="sec-head"><p class="label">El negocio</p><h2 class="t-h2" id="pm-biz-h">Una renovación se decide mucho antes de firmarse</h2></div>
+        <div class="biz-body"><p class="biz-lead">Policy Manager es una de las apps de Diligent One, la plataforma de gobierno corporativo y compliance que Diligent vende a empresas grandes.</p><p>Los clientes pagan con contratos de meses o años, y los revisan bastante antes de renovar. En esa revisión participan los mismos equipos de compliance que usan Policy Manager todas las semanas, así que cada caída que vivieron se convertía en un argumento para irse.</p><p>Los arreglos del backend iban a llevar tiempo y las conversaciones de renovación no iban a esperarlos. Por eso lo primero fue que las fallas fueran tolerables para quienes ya estaban decidiendo si quedarse.</p></div>
+      </div>
+      <ul class="biz-points" style="--n:2"><li><h3>Quien lo usa es quien lo compra</h3><p>Los equipos de compliance que aprueban políticas en el producto son los que opinan cuando llega el momento del contrato.</p></li><li><h3>Decisiones con buena memoria</h3><p>Un contrato que se revisa durante meses se acuerda de un mal trimestre, así que la estabilidad tenía que notarse antes de que empezara esa revisión.</p></li></ul>
+    </div>
+  </section>
+
+  <section class="sec sec--label bg-white" aria-labelledby="pm-start-h" data-chapter="Punto de partida">
+    <div class="wrap">
+      <div class="pm-start">
+        <div class="sec-head reveal">
+          <p class="label">El punto de partida</p>
+          <h2 class="t-h2" id="pm-start-h">Un producto del que los clientes dependían, y que estaban por dejar</h2>
+          <p class="sub">En Policy Manager, las organizaciones escriben, revisan, aprueban y distribuyen sus políticas de compliance, desde empresas como Salesforce y Cisco hasta grandes distritos escolares de Estados Unidos. Era el producto con los clientes más grandes del grupo Mission-Driven Organizations de Diligent.</p>
+          <p class="sub">Diligent acababa de comprarlo. No seguía el design system y se rompía seguido. Cada producto del grupo tenía su propio diseñador, bajo un mismo design manager. Yo era el de Policy Manager y me ocupaba de la experiencia de punta a punta.</p>
+        </div>
+        <figure class="pm-fig reveal" style="--d:80ms">
+          <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="../assets/pmx-legacy.webp" srcset="../assets/pmx-legacy-sm.webp 900w, ../assets/pmx-legacy.webp 1800w" sizes="(max-width: 1023.98px) 92vw, 640px" width="1800" height="996" alt="Policy Manager tal como lo compró Diligent: un dashboard con dos gráficos de dona del perfil de documentos" decoding="async"></div></div>
+          <figcaption>Policy Manager tal como lo compró Diligent.</figcaption>
+        </figure>
+      </div>
+      <ul class="pm-issues">
+        <li class="reveal" style="--d:0ms"><h3 class="t-h4">Clientes a punto de irse</h3><p>Clientes de alto valor veían el producto como inestable y amenazaban con irse.</p></li>
+        <li class="reveal" style="--d:60ms"><h3 class="t-h4">Caídas a mitad de tarea</h3><p>Flujos críticos fallaban a la mitad y mostraban errores de código crudos, lo que generaba una cantidad constante de tickets de soporte.</p></li>
+        <li class="reveal" style="--d:120ms"><h3 class="t-h4">La redacción pasaba en otro lado</h3><p>El editor integrado era tan limitado que la gente escribía en Word por su cuenta, y Policy Manager dejó de ser la fuente de verdad.</p></li>
+      </ul>
+      <div class="pm-people">
+        <div class="pm-people-head reveal">
+          <h3 class="t-h3">Cuatro tipos de personas, un producto</h3>
+          <p>Los calendarios de revisión ya eran muy configurables y eso no lo cambié. Mi trabajo fue pensar cada pantalla para la persona que la usa.</p>
+        </div>
+        <ul class="pm-personas">
+          <li class="pm-persona reveal" style="--d:0ms"><p class="pm-persona-tag">Acceso total</p><h4 class="t-h4">Administradores</h4><p>Ven todos los documentos y pueden cambiar cualquier cosa. Un administrador puede ser editor y aprobador al mismo tiempo.</p></li>
+          <li class="pm-persona pm-persona--key reveal" style="--d:60ms"><p class="pm-persona-tag">Los que más lo usan</p><h4 class="t-h4">Editores</h4><p>Equipos de RR. HH., legales y compliance que redactan y actualizan políticas. Se manejan bien con la tecnología y aprenden rápido un sistema nuevo.</p></li>
+          <li class="pm-persona pm-persona--key reveal" style="--d:120ms"><p class="pm-persona-tag">Los segundos que más lo usan</p><h4 class="t-h4">Aprobadores</h4><p>Miembros del directorio y líderes senior que aprueban, rechazan o devuelven una política con comentarios. Una interfaz completa los puede abrumar, así que recibieron una versión más liviana, pensada para esa sola tarea.</p></li>
+          <li class="pm-persona reveal" style="--d:180ms"><p class="pm-persona-tag">Solo lectura</p><h4 class="t-h4">Empleados</h4><p>Personas que nunca abren Policy Manager. Buscan, leen y descargan las políticas publicadas en Policy Portal, en su propio idioma.</p></li>
+        </ul>
+</div>
+    </div>
+  </section>
+
+  <section class="pm-plan pm-pause on-dark" aria-labelledby="pm-approach-h" data-chapter="Enfoque" data-bg-shader="waterPlane" data-bg-colors="#2b4bd6, #0a1233, #7d96ff" data-bg-brightness="0.95" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 225" data-bg-speed="0.06" data-bg-density="1.4" data-bg-strength="2">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="label">El enfoque</p>
+        <h2 class="t-h2" id="pm-approach-h">Cinco decisiones que cambiaron el producto</h2>
+        <p class="sub">No podía reescribir el backend enseguida, así que empecé por lo que los usuarios sentían primero: las fallas. Después arreglé la estructura y, por último, los roles.</p>
+      </div>
+      <ol class="pm-toc"><li class="reveal" style="--d:0ms"><a href="#pm-d1"><b>1</b><span>Diseñar para las fallas antes de rediseñar la UI</span></a></li><li class="reveal" style="--d:60ms"><a href="#pm-d2"><b>2</b><span>Convertir un arreglo local en un estándar de la empresa</span></a></li><li class="reveal" style="--d:120ms"><a href="#pm-d3"><b>3</b><span>Reemplazar un falso wizard por pestañas flexibles</span></a></li><li class="reveal" style="--d:180ms"><a href="#pm-d4"><b>4</b><span>Integrarse con Word en lugar de competir con él</span></a></li><li class="reveal" style="--d:240ms"><a href="#pm-d5"><b>5</b><span>Darles a los aprobadores un camino más corto</span></a></li></ol>
+    </div>
+  </section>
+
+  <section class="sec bg-white pm-decisions" aria-label="Las cinco decisiones">
+    <div class="wrap">
+      <div class="decisions">
+
+        <article class="decision" id="pm-d1">
+          <div class="d-head"><p class="label">Decisión 1 de 5</p><h3 class="t-h3">Diseñar para las fallas antes de rediseñar la UI</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">La situación</p><p>El backend no se podía reescribir enseguida, y cada caída mostraba errores de código crudos, en rojo y amarillo, en medio de una tarea.</p></div>
+            <div class="d-block"><p class="label">Qué hice</p><p>Los reemplacé por una biblioteca de errores estandarizada. Con un UX writer que nos prestó otro equipo, escribí mensajes que dicen qué pasó y qué está a salvo. No arreglaba la causa de fondo, pero cada falla pasó a ser algo de lo que la gente se podía recuperar mientras ingeniería estabilizaba la plataforma.</p></div>
+            <div class="d-block"><p class="label">Por qué importaba</p><p>Los clientes enterprise juzgan la estabilidad por lo que ven cuando algo se rompe. Era la forma más rápida de calmar a las cuentas en riesgo y reducir los tickets por caídas.</p></div>
+          </div>
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well">
+              <div class="pm-msg" data-msg>
+                <p class="pm-msg-text"><span class="pm-part" data-part="safe">Guardamos tu borrador en este dispositivo</span> antes de que <span class="pm-part" data-part="happened">se cortara la conexión</span>.</p>
+                <span class="pm-part pm-msg-btn" data-part="next">Siguiente paso</span>
+                <ul class="pm-msg-legend" aria-label="Partes del mensaje">
+                  <li><button type="button" data-show-part="happened"><i class="k-happened"></i>Qué pasó</button></li>
+                  <li><button type="button" data-show-part="safe"><i class="k-safe"></i>Qué está a salvo</button></li>
+                  <li><button type="button" data-show-part="next"><i class="k-next"></i>Qué hacer después</button></li>
+                </ul>
+              </div>
+            </div>
+            <figcaption>La estructura detrás de cada mensaje de la biblioteca de errores. Señalá una parte para encontrarla en la frase.</figcaption>
+          </figure>
+        </article>
+
+        <article class="decision decision--rev" id="pm-d2">
+          <div class="d-head"><p class="label">Decisión 2 de 5</p><h3 class="t-h3">Convertir un arreglo local en un estándar de la empresa</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">La situación</p><p>Al auditar los errores apareció el mismo problema en toda la suite de Diligent.</p></div>
+            <div class="d-block"><p class="label">Qué hice</p><p>Audité los estados de error, vacíos y 404 en los productos de Diligent, definí un único estándar y sumé los componentes al design system central.</p></div>
+            <div class="d-block"><p class="label">Por qué importaba</p><p>Ahora cada equipo resuelve estos estados una sola vez. Los clientes que usan varios productos de Diligent encuentran el mismo comportamiento en todos, y eso importa porque Diligent los vende juntos como una sola plataforma.</p></div>
+          </div>
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well"><div class="pm-shot"><img data-zoom src="../assets/pmx-d2-empty.webp" srcset="../assets/pmx-d2-empty-sm.webp 520w, ../assets/pmx-d2-empty.webp 1040w" sizes="(max-width: 1023.98px) 92vw, 560px" width="1040" height="694" alt="Página de suscriptores con una tabla vacía que dice que todavía no hay suscriptores, y un botón Add Subscriber" loading="lazy" decoding="async"></div></div>
+            <figcaption>Un estado vacío que dice qué falta y deja a mano la siguiente acción, Add Subscriber.</figcaption>
+          </figure>
+        </article>
+
+        <article class="decision decision--wide" id="pm-d3">
+          <div class="d-head"><p class="label">Decisión 3 de 5</p><h3 class="t-h3">Reemplazar un falso wizard por pestañas flexibles</h3></div>
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well"><div class="pm-pair">
+              <div class="pm-pair-item" style="--ar:1.8019"><span class="pm-chip">Antes</span><div class="pm-shot"><img data-zoom src="../assets/pmx-d3-before.webp" srcset="../assets/pmx-d3-before-sm.webp 564w, ../assets/pmx-d3-before.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="626" alt="Antes: la pantalla de revisión como un wizard paso a paso" loading="lazy" decoding="async"><span class="pm-mk" style="--x:20.92%;--y:15.65%" aria-hidden="true">1</span><span class="pm-mk" style="--x:44.86%;--y:78.59%" aria-hidden="true">2</span><span class="pm-mk" style="--x:3.55%;--y:27.16%" aria-hidden="true">3</span></div></div>
+              <div class="pm-pair-item" style="--ar:1.4047"><span class="pm-chip pm-chip--after">Después</span><div class="pm-shot"><img data-zoom src="../assets/pmx-d3-after.webp" srcset="../assets/pmx-d3-after-sm.webp 564w, ../assets/pmx-d3-after.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="803" alt="Después: la pantalla de revisión con pestañas, Approve y Not approve arriba de la tarea, y navegación colapsable" loading="lazy" decoding="async"><span class="pm-mk" style="--x:7.45%;--y:19.95%" aria-hidden="true">1</span><span class="pm-mk" style="--x:51.24%;--y:37.41%" aria-hidden="true">2</span><span class="pm-mk" style="--x:2.13%;--y:29.93%" aria-hidden="true">3</span></div></div>
+            </div>
+            <p class="pm-swipe" aria-hidden="true">Deslizá para comparar</p></div>
+            <ol class="pm-legend" style="--n:3"><li><span class="pm-mk pm-mk--static" aria-hidden="true">1</span><span><span class="sr-only">Marcador 1: </span>Los pasos se volvieron pestañas: quienes revisan pasan entre información general, revisión, editor, referencias e historial en cualquier orden.</span></li><li><span class="pm-mk pm-mk--static" aria-hidden="true">2</span><span><span class="sr-only">Marcador 2: </span>Approve y Not approve pasaron de abajo del panel a arriba de la tarea.</span></li><li><span class="pm-mk pm-mk--static" aria-hidden="true">3</span><span><span class="sr-only">Marcador 3: </span>La lista larga de documentos dejó lugar a una navegación colapsable, así la revisión ocupa todo el ancho.</span></li></ol>
+          </figure>
+          <div class="d-body">
+            <div class="d-block"><p class="label">La situación</p><p>El ciclo de revisión estaba forzado en un wizard paso a paso, pero quienes revisan van y vienen todo el tiempo entre el historial de una política y su borrador.</p></div>
+            <div class="d-block"><p class="label">Qué hice</p><p>Desarmé el wizard y diseñé una estructura con pestañas donde quienes revisan saltan libremente entre el borrador, su historial y sus referencias.</p></div>
+            <div class="d-block" style="grid-column:1 / -1"><p class="label">Por qué importaba</p><p>Revisar no es lineal: la gente compara, vuelve atrás y recién después aprueba. Las pestañas acompañan eso y dejan la aprobación a un paso, así los ciclos de revisión no se traban y los clientes están siempre listos para una auditoría.</p></div>
+          </div>
+        </article>
+
+        <article class="decision decision--wide" id="pm-d4">
+          <div class="d-head"><p class="label">Decisión 4 de 5</p><h3 class="t-h3">Integrarse con Word en lugar de competir con él</h3></div>
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well"><span class="pm-chip pm-chip--today">Hoy: demo pública de Diligent, 2026</span><div class="pm-shot" style="--mw:880px"><img data-zoom src="../assets/pmx-d4-word.webp" srcset="../assets/pmx-d4-word-sm.webp 800w, ../assets/pmx-d4-word.webp 1600w" sizes="(max-width: 1023.98px) 92vw, 880px" width="1600" height="524" alt="Una política abierta en Policy Manager, en la demo pública de Diligent de 2026, con las acciones Open in Microsoft Word y Replace document marcadas como 1 y 2" loading="lazy" decoding="async"><span class="pm-mk" style="--x:17.47%;--y:87.99%" aria-hidden="true">1</span><span class="pm-mk" style="--x:33.39%;--y:87.99%" aria-hidden="true">2</span></div></div>
+            <ol class="pm-legend" style="--n:2"><li><span class="pm-mk pm-mk--static" aria-hidden="true">1</span><span><span class="sr-only">Marcador 1: </span>“Open in Microsoft Word”: los autores editan en Word sin salir de Policy Manager, y las versiones y el registro de auditoría quedan en el producto.</span></li><li><span class="pm-mk pm-mk--static" aria-hidden="true">2</span><span><span class="sr-only">Marcador 2: </span>“Replace document”: una versión nueva redactada afuera vuelve a entrar con una sola acción.</span></li></ol>
+          </figure>
+          <div class="d-body">
+            <div class="d-block"><p class="label">La situación</p><p>Los usuarios ya redactaban en Microsoft Word y Google Docs. Construir un editor tan bueno como para reemplazarlos hubiera exigido muchos recursos de ingeniería.</p></div>
+            <div class="d-block"><p class="label">Qué hice</p><p>Propuse una estrategia de integración y diseñé los flujos de importación y sincronización con Microsoft Word y Google Docs, y los dos salieron a producción. Policy Manager mantuvo un editor integrado más simple para cambios rápidos, y la redacción pesada quedó en las herramientas que la gente ya conocía.</p></div>
+            <div class="d-block" style="grid-column:1 / -1"><p class="label">Por qué importaba</p><p>La verdadera barrera era pedirles a los autores que cambiaran de herramienta. Encontrarlos en Word mantuvo las versiones y el registro de auditoría dentro de Policy Manager, evitó construir un editor completo y les permitió a los clientes nuevos traer sus documentos tal como estaban.</p></div>
+          </div>
+        </article>
+
+        <article class="decision" id="pm-d5">
+          <div class="d-head"><p class="label">Decisión 5 de 5</p><h3 class="t-h3">Darles a los aprobadores un camino más corto</h3></div>
+          <div class="d-body">
+            <div class="d-block"><p class="label">La situación</p><p>Mucha gente solo necesitaba revisar políticas, pero no había roles y todos tenían el editor completo. Los aprobadores solían ser miembros del directorio y ejecutivos senior con poca paciencia para el software complejo.</p></div>
+            <div class="d-block"><p class="label">Qué hice</p><p>Definí los roles con el equipo y diseñé un ciclo de revisión simplificado para los aprobadores: las etapas, lo que vence y sus propias tareas. RR. HH. y legales mantuvieron todas las opciones de revisión. Primero propuse una app de iPad aparte para el directorio; el equipo eligió los roles, así que los aprobadores tuvieron una vista más liviana dentro del mismo producto.</p></div>
+            <div class="d-block"><p class="label">Por qué importaba</p><p>Los aprobadores son los que menos usan el producto, pero pueden trabar todo el ciclo. Además son las personas de más rango en cada cliente, así que su experiencia define cómo ve el cliente el producto a la hora de renovar.</p></div>
+          </div>
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well"><div class="pm-shot"><img data-zoom src="../assets/pm-d5-review-1328.webp" width="1328" height="778" sizes="(max-width: 1023.98px) 92vw, 560px" alt="El ciclo de revisión del aprobador para una política anticorrupción: cinco etapas a la izquierda y las tareas de la etapa Drafting a la derecha" loading="lazy" decoding="async"></div></div>
+            <figcaption>El ciclo de revisión del aprobador: las etapas a la izquierda y las tareas de la etapa actual a la derecha.</figcaption>
+          </figure>
+        </article>
+
+        <div class="pm-demo on-dark" data-demo>
+          <div class="pm-demo-head">
+            <p class="label">Probalo</p>
+            <h3 class="t-h3">Aprobar una política como miembro del directorio</h3>
+            <p>Cada clic es un paso. Los dos flujos arrancan juntos; el nuevo termina en el tercer clic.</p>
+          </div>
+          <div class="pm-track" data-track="old" data-total="14">
+            <p class="pm-track-label"><b>Antes</b><span data-status>14 pasos para aprobar</span></p>
+            <ol class="pm-dots" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+          </div>
+          <div class="pm-track pm-track--new" data-track="new" data-total="3">
+            <p class="pm-track-label"><b>Después</b><span data-status>3 pasos para aprobar</span></p>
+            <ol class="pm-dots" aria-hidden="true"><li></li><li></li><li></li></ol>
+          </div>
+          <div class="pm-demo-actions">
+            <button type="button" class="pm-demo-next" data-demo-next>Dar el siguiente paso<span class="pm-demo-next-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+            <button type="button" class="pm-demo-reset" data-demo-reset hidden>Empezar de nuevo</button>
+            <p class="sr-only" aria-live="polite" data-demo-live></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--label pm-redesign" aria-labelledby="pm-after-h" data-chapter="Rediseño">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="label">El rediseño</p>
+        <h2 class="t-h2" id="pm-after-h">Un producto estable en el que los clientes vuelven a confiar</h2>
+        <p class="sub">Policy Manager rehecho sobre Lens, el nuevo design system de Diligent. El dashboard muestra de un vistazo el estado de los documentos y los próximos ciclos de revisión, para que los responsables vean qué necesita atención antes de que se venza.</p>
+      </div>
+      <figure class="pm-fig pm-hero-shot">
+        <div class="pm-well"><div class="pm-shot" style="--mw:880px"><img data-zoom src="../assets/pmx-dashboard.webp" srcset="../assets/pmx-dashboard-sm.webp 1040w, ../assets/pmx-dashboard.webp 2080w" sizes="(max-width: 1023.98px) 92vw, 880px" width="2080" height="1164" alt="El dashboard rediseñado de Policy Manager con gráficos del perfil de documentos y los próximos ciclos de revisión" loading="lazy" decoding="async"></div></div>
+      </figure>
+
+      <div class="pm-screens" data-screens>
+        <div class="pm-screens-head">
+          <h3 class="t-h3">Pantalla por pantalla</h3>
+          <div class="pm-tabs" role="tablist" aria-label="Pantallas"><button role="tab" id="pm-t-details" aria-controls="pm-p-details" aria-selected="true">Detalles del documento</button><button role="tab" id="pm-t-editor" aria-controls="pm-p-editor" aria-selected="false" tabindex="-1">Editor de documentos</button><button role="tab" id="pm-t-history" aria-controls="pm-p-history" aria-selected="false" tabindex="-1">Visor de historial</button></div>
+        </div>
+        <div class="pm-well pm-screens-well"><div role="tabpanel" id="pm-p-details" aria-labelledby="pm-t-details">
+            <p class="pm-screen-desc">Las etiquetas arriba de los campos y las secciones agrupadas convierten un formulario largo en algo que se puede recorrer con la vista, y el estado del documento se ve de un vistazo.</p>
+            <div class="pm-pair">
+              <div class="pm-pair-item" style="--ar:1.8106"><span class="pm-chip">Antes</span><div class="pm-shot"><img data-zoom src="../assets/pmx-details-before.webp" srcset="../assets/pmx-details-before-sm.webp 564w, ../assets/pmx-details-before.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="623" alt="Antes: el formulario Document details con una lista larga de campos" loading="lazy" decoding="async"></div></div>
+              <div class="pm-pair-item" style="--ar:1.4047"><span class="pm-chip pm-chip--after">Después</span><div class="pm-shot"><img data-zoom src="../assets/pmx-details-after.webp" srcset="../assets/pmx-details-after-sm.webp 564w, ../assets/pmx-details-after.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="803" alt="Después: el formulario Document details con etiquetas arriba de los campos, secciones agrupadas y el estado del documento" loading="lazy" decoding="async"></div></div>
+            </div>
+            <p class="pm-swipe" aria-hidden="true">Deslizá para comparar</p>
+          </div><div role="tabpanel" id="pm-p-editor" aria-labelledby="pm-t-editor" hidden>
+            <p class="pm-screen-desc">El editor muestra la política como se va a publicar, con el índice al costado, así los autores revisan la estructura mientras escriben.</p>
+            <div class="pm-pair">
+              <div class="pm-pair-item" style="--ar:1.8048"><span class="pm-chip">Antes</span><div class="pm-shot"><img loading="lazy" data-zoom src="../assets/pmx-editor-before.webp" srcset="../assets/pmx-editor-before-sm.webp 564w, ../assets/pmx-editor-before.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="625" alt="Antes: el editor integrado con una barra de herramientas sobre texto plano" decoding="async"></div></div>
+              <div class="pm-pair-item" style="--ar:1.4047"><span class="pm-chip pm-chip--after">Después</span><div class="pm-shot"><img loading="lazy" data-zoom src="../assets/pmx-editor-after.webp" srcset="../assets/pmx-editor-after-sm.webp 564w, ../assets/pmx-editor-after.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="803" alt="Después: el editor muestra la política con su índice al costado" decoding="async"></div></div>
+            </div>
+            <p class="pm-swipe" aria-hidden="true">Deslizá para comparar</p>
+          </div><div role="tabpanel" id="pm-p-history" aria-labelledby="pm-t-history" hidden>
+            <p class="pm-screen-desc">Cada revisión muestra en rojo lo que se quitó y en verde lo que se agregó, así quienes revisan ven qué cambió sin comparar dos versiones a ojo.</p>
+            <div class="pm-pair">
+              <div class="pm-pair-item" style="--ar:1.8223"><span class="pm-chip">Antes</span><div class="pm-shot"><img loading="lazy" data-zoom src="../assets/pmx-history-before.webp" srcset="../assets/pmx-history-before-sm.webp 564w, ../assets/pmx-history-before.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="619" alt="Antes: el visor de historial con una lista de versiones y el texto de la política" decoding="async"></div></div>
+              <div class="pm-pair-item" style="--ar:1.4047"><span class="pm-chip pm-chip--after">Después</span><div class="pm-shot"><img loading="lazy" data-zoom src="../assets/pmx-history-after.webp" srcset="../assets/pmx-history-after-sm.webp 564w, ../assets/pmx-history-after.webp 1128w" sizes="(max-width: 719.98px) 86vw, 640px" width="1128" height="803" alt="Después: el visor de historial con lo que se agregó y se quitó en cada revisión" decoding="async"></div></div>
+            </div>
+            <p class="pm-swipe" aria-hidden="true">Deslizá para comparar</p>
+          </div></div>
+      </div>
+
+      <div class="pm-caps">
+        <h3 class="t-h3">Más allá de los flujos principales</h3>
+        <div class="pm-cap">
+          <div class="pm-cap-copy">
+            <h4 class="t-h4">Compartir políticas con los distritos escolares suscriptos</h4>
+            <p>Algunos clientes son organizaciones asociadas que mantienen las políticas de grupos de distritos escolares. Al pasar de BoardDocs a Diligent Community, necesitaban publicar políticas nuevas o actualizadas para esos distritos directamente desde Policy Manager, y por eso esta función era clave para retenerlos. Diseñé Subscriber Management: los administradores suman un distrito desde el sitio de Community, eligen qué carpetas de políticas recibe y gestionan su estado.</p>
+          </div>
+          <ol class="pm-flow"><li><div class="pm-shot"><img data-zoom src="../assets/pmx-subs-empty.webp" srcset="../assets/pmx-subs-empty-sm.webp 360w, ../assets/pmx-subs-empty.webp 720w, ../assets/pmx-subs-empty-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Página de suscriptores todavía vacía, con un botón Add Subscriber" loading="lazy" decoding="async"></div><p><b>1</b>Estado vacío</p></li><li><div class="pm-shot"><img data-zoom src="../assets/pmx-subs-add.webp" srcset="../assets/pmx-subs-add-sm.webp 360w, ../assets/pmx-subs-add.webp 720w, ../assets/pmx-subs-add-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Formulario Add Subscriber con nombre, tipo, carpetas de políticas y estado" loading="lazy" decoding="async"></div><p><b>2</b>Sumar un suscriptor</p></li><li><div class="pm-shot"><img data-zoom src="../assets/pmx-subs-manage.webp" srcset="../assets/pmx-subs-manage-sm.webp 360w, ../assets/pmx-subs-manage.webp 720w, ../assets/pmx-subs-manage-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="480" alt="Tabla de suscriptores con un diálogo para desactivar a uno" loading="lazy" decoding="async"></div><p><b>3</b>Gestionar el estado</p></li></ol>
+        </div>
+        <div class="pm-cap">
+          <div class="pm-cap-copy">
+            <h4 class="t-h4">Ver exactamente qué cambió entre dos versiones</h4>
+            <p>Antes de aprobar, la gente necesita saber qué cambió desde la última versión que aprobó, y las auditorías piden pruebas de eso. Desde el visor de historial eligen dos versiones y reciben el documento con el texto quitado en rojo y el agregado en verde. La misma comparación se descarga como PDF para quien no usa Policy Manager.</p>
+          </div>
+          <ol class="pm-flow"><li><div class="pm-shot"><img data-zoom src="../assets/pmx-pdf-history.webp" srcset="../assets/pmx-pdf-history-sm.webp 360w, ../assets/pmx-pdf-history.webp 720w, ../assets/pmx-pdf-history-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="420" alt="Visor de historial con una lista de revisiones y el texto de la política" loading="lazy" decoding="async"></div><p><b>1</b>Elegir una versión en el historial</p></li><li><div class="pm-shot"><img data-zoom src="../assets/pmx-pdf-choose.webp" srcset="../assets/pmx-pdf-choose-sm.webp 360w, ../assets/pmx-pdf-choose.webp 720w, ../assets/pmx-pdf-choose-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="420" alt="Diálogo de descarga para elegir idioma, versión, control de cambios, comentarios y formato" loading="lazy" decoding="async"></div><p><b>2</b>Elegir qué comparar</p></li><li><div class="pm-shot"><img data-zoom src="../assets/pmx-pdf-highlighted.webp" srcset="../assets/pmx-pdf-highlighted-sm.webp 360w, ../assets/pmx-pdf-highlighted.webp 720w, ../assets/pmx-pdf-highlighted-1440.webp 1440w" sizes="(max-width: 719.98px) 86vw, 400px" width="720" height="406" alt="El PDF exportado con los agregados y las eliminaciones resaltados" loading="lazy" decoding="async"></div><p><b>3</b>Texto quitado y agregado, resaltado</p></li></ol>
+        </div>
+        <div class="pm-cap pm-cap--portal">
+          <div class="pm-cap-copy">
+            <h4 class="t-h4">Policy Portal, para quienes solo necesitan leer</h4>
+            <p>La mayoría de las personas de un cliente nunca abre Policy Manager: lee las políticas publicadas en Policy Portal. Participé en su rediseño, con un índice por carpeta, una búsqueda básica y otra avanzada, las políticas más populares y más recientes, y un selector de idioma, para que los empleados encuentren una política y la lean o descarguen sin ayuda.</p>
+          </div>
+          <figure class="pm-fig reveal" data-marks>
+            <div class="pm-well"><div class="pm-shot" style="--mw:760px"><img data-zoom src="../assets/pmx-portal.webp" srcset="../assets/pmx-portal-sm.webp 900w, ../assets/pmx-portal.webp 1800w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1800" height="975" alt="Policy Portal con las pestañas Index, Search, Most Popular y Recent Activity, un selector de idioma en inglés y las carpetas de políticas" loading="lazy" decoding="async"></div></div>
+          </figure>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec pm-outcome pm-pause on-dark" aria-labelledby="pm-next-h" data-chapter="Resultado" data-bg-shader="waterPlane" data-bg-colors="#1f3aa8, #070c22, #5d7bff" data-bg-brightness="1.1" data-bg-distance="2.4" data-bg-polar="95" data-bg-azimuth="180" data-bg-position="0, -2.1, 0" data-bg-rotation="0, 0, 160" data-bg-speed="0.06" data-bg-density="1.4" data-bg-strength="2">
+    <div class="wrap">
+      <div class="pm-outcome-grid">
+        <div class="sec-head reveal">
+          <p class="label">El resultado</p>
+          <h2 class="t-h2" id="pm-next-h">Qué pasó después</h2>
+          <p class="sub">Los clientes en riesgo firmaron renovaciones a largo plazo, y los tickets de soporte por errores del sistema quedaron bajo control mientras ingeniería arreglaba el backend.</p>
+        </div>
+        <dl class="pm-stats" data-stats>
+          <div class="reveal" style="--d:80ms"><dt>Pasos para que un miembro del directorio apruebe una política</dt><dd>14 <span aria-hidden="true">→</span><span class="sr-only">a</span> <span data-count-from="14" data-count-to="3">3</span></dd></div>
+          <div class="reveal" style="--d:160ms"><dt>Velocidad de desarrollo con Lens, el nuevo design system</dt><dd><span data-count-from="1" data-count-to="2" data-count-decimals="1">2</span>x</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec pm-still-sec" aria-labelledby="pm-still-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 class="t-h2" id="pm-still-h">Todavía en el producto</h2>
+        <p class="sub">La demo pública de Diligent (2026) muestra qué decisiones se sostuvieron, y una que evolucionó de una forma que confirma el razonamiento detrás de ellas.</p>
+      </div>
+      <ul class="cards">
+        <li class="card pm-still-card reveal"><h3>La decisión 3 se sostuvo</h3><p>La revisión sigue siendo una pestaña al lado del documento, no un wizard, y el flujo todavía lleva el nombre de Lens, el design system sobre el que se construyó. Quienes revisan siguen pasando entre borrador, historial y referencias en cualquier orden.</p></li>
+        <li class="card pm-still-card reveal"><h3>La decisión 4 se sostuvo</h3><p>La edición sigue pasando en Word, dentro de Policy Manager, y las versiones y el registro de auditoría quedan en el producto. Diligent hoy vende la función en esos mismos términos. Lanzamos Word y Google Docs; la demo muestra Word.</p></li>
+        <li class="card pm-still-card reveal"><h3>Lo que evolucionó</h3><p>Crear una política sigue siendo un wizard de tres pasos, y tiene sentido: crear es lineal, revisar no. Es el mismo principio aplicado a otra tarea: que la estructura siga la forma en que la gente realmente trabaja.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec bg-white" aria-labelledby="pm-back-h" data-chapter="En retrospectiva">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="t-h2" id="pm-back-h">En retrospectiva</h2></div>
+      <ul class="pm-back">
+        <li><p class="label">Qué funcionó</p><p>Resolver primero la experiencia de las fallas le dio al equipo tiempo y confianza mientras se estabilizaba el backend.</p></li>
+        <li><p class="label">Qué haría distinto</p><p>Medir la tasa de errores y los tickets de soporte desde el primer día, para mostrar con números el impacto del diseño defensivo.</p></li>
+        <li><p class="label">Qué se me pasó</p><p>Nada le avisaba a un aprobador que una política lo estaba esperando. El dashboard les mostraba a los responsables qué estaba por vencer, pero quien frenaba una etapa recién se enteraba cuando alguien lo perseguía por email. Hoy agregaría un recordatorio cuando una etapa espera demasiado, con un clic para volver a la revisión.</p></li>
+        <li><p class="label">Qué mediría ahora</p><p>Cuánto tardan los aprobadores en avanzar una etapa en el ciclo de revisión simplificado, comparado con el completo.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <nav class="next-case" aria-label="Siguiente caso">
+    <div class="wrap">
+      <a href="fury.html"><span class="next-label">Siguiente caso</span><span class="next-title">Un campo técnico nuevo en cada proyecto, dentro de Fury de Mercado Libre</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </nav>
+
+</section>
+
+</main>
+<footer class="site-footer">
+  <section class="contact on-dark" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <h2 id="contact-h">Los buenos productos empiezan con buenas conversaciones.</h2>
+          <p>¿Estás buscando a alguien para un puesto o tenés un proyecto en mente? Escribime. Aviso: te voy a hablar del tema hasta por los codos.</p>
+          <div class="contact-who">
+            <img src="../assets/avatar-footer.webp?v=2" width="208" height="208" alt="" decoding="async" loading="lazy">
+            <p><span>David Hoyos</span>Product Designer en Argentina, abierto a puestos remotos e híbridos</p>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="contact-email" href="mailto:daviddhoyos1@gmail.com" data-copy-email><span>daviddhoyos1@gmail.com</span><span class="contact-email-icon"><svg class="ce-copy" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"/></svg><svg class="ce-send" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><span class="sr-only ce-copy"> (copia la dirección de email)</span><span class="sr-only ce-send"> (abre tu app de correo)</span></a>
+          <ul class="contact-links">
+            <li class="cl-write"><a class="btn btn--glass glass glass--clear glass--interactive" href="mailto:daviddhoyos1@gmail.com?subject=Hola%20David">Escribime<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg><span class="sr-only"> (abre tu app de correo)</span></a></li>
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16L16 8M9 8h7v7"/></svg><span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="../assets/david-hoyos-cv-es.pdf" download="David-Hoyos-CV.pdf">Descargar CV<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="sr-only"> (PDF)</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal">
+        <p>© 2026 David Hoyos. Todos los derechos reservados.</p><a href="legal.html">Términos y privacidad</a>
+      </div>
+    </div>
+  </section>
+</footer>
+<script src="../app.js?v=14" defer></script>
+<script src="../lightbox.js?v=4" defer></script>
+<script src="../thumbs.js?v=11" defer></script>
+<script src="../hero-shader.js?v=7" defer></script>
+<script src="../section-shader.js?v=6" defer></script>
+<script src="../policy-manager.js?v=4" defer></script>
+</body>
+</html>

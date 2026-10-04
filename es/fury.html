@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="es" data-view="case">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Un campo técnico nuevo en cada proyecto, dentro de Fury de Mercado Libre | David Hoyos</title>
+<meta name="description" content="Fury es la plataforma sobre la que funciona Mercado Libre. De 2024 a 2026 diseñé Analytics con insights de IA, pipelines de deploy e infraestructura multipaís, y en el camino aprendí cada campo técnico.">
+<meta name="robots" content="index, follow, noimageindex">
+<meta name="author" content="David Hoyos">
+<meta name="copyright" content="© 2026 David Hoyos. Todos los derechos reservados.">
+<link rel="canonical" href="https://daviddhoyos.github.io/es/fury.html">
+<link rel="alternate" hreflang="en" href="https://daviddhoyos.github.io/fury.html">
+<link rel="alternate" hreflang="es" href="https://daviddhoyos.github.io/es/fury.html">
+<link rel="alternate" hreflang="x-default" href="https://daviddhoyos.github.io/fury.html">
+<meta name="theme-color" content="#19141a">
+<link rel="icon" href="../favicon.ico" sizes="32x32" data-dark="../favicon-dark.ico">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" data-dark="../favicon-dark.svg">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png" data-dark="../apple-touch-icon-dark.png">
+<script>
+/* favicon follows the colour scheme (dark grey mark on light, white mark on dark). The <link> is replaced, not just
+   re-pointed, because Chrome only refreshes the tab icon when a new element appears. */
+(function () {
+  var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  if (!mq) return;
+  var apply = function () {
+    document.querySelectorAll('link[data-dark]').forEach(function (l) {
+      if (!l.dataset.light) l.dataset.light = l.getAttribute('href');
+      var href = mq.matches ? l.dataset.dark : l.dataset.light;
+      if (l.getAttribute('href') === href) return;
+      var n = l.cloneNode(); n.setAttribute('href', href); l.replaceWith(n);
+    });
+  };
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply); else if (mq.addListener) mq.addListener(apply);
+})();
+</script>
+<link rel="preload" href="../assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css?v=43">
+<link rel="preload" href="../assets/pm-shader-poster.webp" as="image" type="image/webp">
+<link rel="preload" href="../assets/fury/fury-analytics-home-sm.webp" as="image" type="image/webp">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="nav-wrap">
+  <nav class="nav glass" aria-label="Principal" data-nav>
+    <ul>
+      <li class="nav-name"><a href="index.html"><svg class="nav-back" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span class="nav-name-text">Inicio</span></a></li>
+      <li><a href="index.html#projects">Casos</a></li>
+      <li><a href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+      <li><a href="resume.html">CV</a></li>
+      <li><a href="mailto:daviddhoyos1@gmail.com" data-copy-email>Email<span class="sr-only ce-copy"> (copia la dirección de email)</span><span class="sr-only ce-send"> (abre tu app de correo)</span></a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main" tabindex="-1">
+<section class="view enter" id="view-fury">
+
+  <header class="case-hero case-hero--fy case-hero--shader case-hero--split on-dark fx-hero" data-hero-shader data-shader-colors="#3d7bff, #0b1d4d, #7fd4ff">
+    <div class="wrap">
+      <div class="copy">
+        <p class="eyebrow">Mercado Libre, plataforma interna para desarrolladores</p>
+        <h1 class="t-display-case" tabindex="-1" data-focus>Un campo técnico nuevo en cada proyecto, dentro de Fury de Mercado Libre</h1>
+        <p class="lead">Fury es la plataforma sobre la que funciona Mercado Libre: ahí sus ingenieros construyen, despliegan y operan los servicios detrás del marketplace y de Mercado Pago. Cada parte pertenece a un equipo distinto. De 2024 a 2026 diseñé para varios de ellos, y cada proyecto implicó aprender primero un campo nuevo.</p>
+      </div>
+      <div class="case-hero-media fx-stack" aria-hidden="true">
+        <div class="fx-stack-back"><img src="../assets/fury/fury-analytics-home.webp" srcset="../assets/fury/fury-analytics-home-sm.webp 800w, ../assets/fury/fury-analytics-home.webp 1440w" sizes="(max-width: 1023.98px) calc(100vw - 40px), 520px" width="1440" height="880" alt="" decoding="async" fetchpriority="high"></div>
+        <div class="fx-stack-front"><img src="../assets/fury/fury-exec-finished.webp" srcset="../assets/fury/fury-exec-finished-sm.webp 800w, ../assets/fury/fury-exec-finished.webp 1440w" sizes="(max-width: 1023.98px) 70vw, 380px" width="1440" height="1383" alt="" decoding="async"></div>
+      </div>
+      <dl class="facts">
+        <div><dt>Rol</dt><dd>Diseñador de producto, equipo de diseño de Fury</dd></div>
+        <div><dt>Equipo</dt><dd>Internal Tools, Mercado Libre</dd></div>
+        <div><dt>Años</dt><dd>2024 a 2026</dd></div>
+        <div><dt>La usan</dt><dd>más de 15.000 ingenieros</dd></div>
+        <div><dt>Corre</dt><dd>más de 30.000 microservicios</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <section class="sec bg-white fx-intro" aria-labelledby="fx-intro-h" data-chapter="Contexto">
+    <div class="wrap">
+      <div class="fx-intro-grid">
+        <div class="fx-intro-head">
+          <p class="label">Contexto</p>
+          <h2 class="t-h2" id="fx-intro-h">La plataforma debajo de la empresa de <span class="fx-nowrap">e-commerce</span> más grande de Latinoamérica</h2>
+        </div>
+        <div class="fx-intro-body">
+          <p class="fx-big">A medida que Mercado Libre crecía, sus ingenieros necesitaban una infraestructura que acompañara y menos pasos entre escribir código y ponerlo a correr. Para eso crearon Fury en 2015: un solo lugar para crear, desplegar, conectar a la nube y monitorear aplicaciones.</p>
+          <p>Empezó como herramientas separadas, una por necesidad, y con el tiempo se unificaron en un solo Fury para toda la empresa. Cuando todos pasaron a usar la misma plataforma, hizo falta una mirada de diseño, y se formó un equipo de diseño dentro de Internal Tools. Cuando entré en 2024, ese equipo ya estaba funcionando.</p>
+        </div>
+      </div>
+
+      <div class="fx-fields" aria-labelledby="fx-fields-h">
+        <div class="fx-fields-head">
+          <h3 class="t-h3" id="fx-fields-h">Lo más difícil era entender el sistema</h3>
+          <p>La estructura interna de Mercado Libre es enorme y muy técnica. Cada proyecto nuevo traía un equipo nuevo con su propio vocabulario, así que era como cambiar de industria todos los meses. Estos son los campos que tuve que aprender, y dónde aparece cada uno más abajo.</p>
+        </div>
+        <ol class="fx-index">
+          <li><a href="#fx-analytics"><span class="fx-index-field">Datos, IA y costo de nube</span><span class="fx-index-what">Analytics para ingenieros, RR. HH., facturación y dirección, con IA que lee dos métricas juntas</span><span class="fx-index-go"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+          <li><a href="#fx-pipes"><span class="fx-index-field">Entrega de software</span><span class="fx-index-what">Pipelines de deploy: cómo llega el código a producción y cómo vuelve cuando falla</span><span class="fx-index-go"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+          <li><a href="#fx-infra"><span class="fx-index-field">Infraestructura multipaís</span><span class="fx-index-what">Un servicio configurado por país y empresa, sin que una configuración llegue al lugar equivocado</span><span class="fx-index-go"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+          <li><a href="#fx-platform"><span class="fx-index-field">La plataforma en sí</span><span class="fx-index-what">Dieciséis secciones que se fueron separando, y los componentes compartidos que las vuelven a unir</span><span class="fx-index-go"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="fx-biz-h" data-chapter="El negocio">
+    <div class="wrap">
+      <div class="biz-grid">
+        <div class="sec-head"><p class="label">El negocio</p><h2 class="t-h2" id="fx-biz-h">Una plataforma que mantiene bajo control el gasto en la nube</h2></div>
+        <div class="biz-body"><p class="biz-lead">Todo en Mercado Libre corre en la nube, y cada aplicación de Fury usa infraestructura que proveedores como AWS facturan.</p><p>Cuando un equipo crea una aplicación, Fury pregunta qué va a hacer, cuánta carga espera y cuántas personas van a trabajar en ella, y recomienda el tipo de servidor que corresponde. Cada tipo de aplicación tiene un presupuesto. Los entornos que no atienden clientes, como los de testing, tienen uno más chico, y pasarse requiere un pedido de permiso que sube por la cadena. Todo apunta a dos objetivos: equipos que lanzan más rápido y un presupuesto de nube trimestral que alcance para todo el trimestre.</p><p>La apuesta más nueva es vender Fury a otras empresas como un SaaS modular, como Diligent vende sus apps dentro de Diligent One. Los clientes pagan por los servicios que necesitan, y solo una parte de Fury tiene sentido fuera de Mercado Libre. Esa versión la van a usar managers y equipos de RR. HH. además de desarrolladores, así que tiene que ser más simple y totalmente accesible para gente que nunca abrió una terminal. También trabajé en ella, así que cada decisión tenía que funcionar para los ingenieros de Mercado Libre y para los clientes de afuera.</p><p>Para diseño, el control de costos tiene que aparecer en el momento de decidir. El presupuesto, el servidor recomendado y el costo de pasarse van en el flujo de creación, donde se toma la decisión, y no en un reporte que llega cuando la plata ya se gastó.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec fx-flow on-dark" aria-labelledby="fx-flow-h" data-chapter="Cómo llegaba el trabajo">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Cómo llegaba el trabajo</p>
+        <h2 class="t-h2" id="fx-flow-h">Cuando un proyecto me llegaba, el código casi siempre ya existía</h2>
+        <p class="sub">Las ideas salían del liderazgo de ingeniería y las construían los squads de desarrollo. Cuando una función necesitaba trabajo de experiencia y visual, el squad mandaba un ticket al equipo de diseño de Fury y nuestro design manager lo asignaba. A partir de ahí era mío.</p>
+      </div>
+      <ol class="fx-run" data-run aria-label="El camino de un proyecto, de la idea al QA">
+        <li class="fx-mod"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Idea</span><span class="fx-mod-who">Liderazgo de ingeniería</span></li>
+        <li class="fx-mod"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Desarrollo</span><span class="fx-mod-who">Squad de desarrollo</span></li>
+        <li class="fx-mod"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Pedido de diseño</span><span class="fx-mod-who">Ticket al equipo de diseño</span></li>
+        <li class="fx-mod"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Asignación</span><span class="fx-mod-who">Design manager</span></li>
+        <li class="fx-mod fx-mod--mine"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Kickoff</span><span class="fx-mod-who">Yo, con los desarrolladores</span></li>
+        <li class="fx-mod fx-mod--mine"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Diseño</span><span class="fx-mod-who">Yo</span></li>
+        <li class="fx-mod fx-mod--mine"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">Handoff</span><span class="fx-mod-who">Yo, todo documentado</span></li>
+        <li class="fx-mod fx-mod--mine"><span class="fx-mod-state" aria-hidden="true"></span><span class="fx-mod-name">QA</span><span class="fx-mod-who">Yo, sobre lo que salió</span></li>
+      </ol>
+      <div class="fx-flow-notes">
+        <p><b>Más o menos un mes por proyecto,</b> a veces dos a la vez. Los últimos cuatro módulos fueron míos en todos.</p>
+        <p><b>Llegar después del código cambió cómo empezaba.</b> La primera versión en pantalla mostraba lo que los ingenieros suponían sobre la tarea, así que la leía como investigación antes de proponer nada.</p>
+        <p><b>La IA acortó la curva de aprendizaje.</b> Usé Gemini para sintetizar RFCs técnicos largos antes de cada kickoff, y flujos con IA para prototipar más rápido. El tiempo de alineación de diseño bajó un 30%.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white fx-chapter" id="fx-analytics" aria-labelledby="fx-an-h" data-chapter="Analytics">
+    <div class="wrap">
+      <div class="fx-ch-head">
+        <div class="sec-head">
+          <p class="label">Campo 1: datos, IA y costo de nube</p>
+          <h2 class="t-h2" id="fx-an-h">Analytics, para quienes nunca despliegan y para quienes despliegan todos los días</h2>
+          <p class="sub">Analytics es una función de Fury donde ingenieros, RR. HH., facturación y la dirección de la empresa miran cómo se construye software y cuánto cuesta. El trabajo fue un dashboard de visualizaciones de datos donde se pueden cruzar parámetros, y después una forma de que la IA ayude a leerlas.</p>
+        </div>
+        <aside class="fx-notes" aria-label="Lo que tuve que aprender primero">
+          <p class="fx-notes-title">Lo que tuve que aprender primero</p>
+          <dl><div><dt>Frecuencia de deploy</dt><dd>Cada cuánto un equipo lleva un cambio a producción.</dd></div><div><dt>Build y versión</dt><dd>Un build compila el código; una versión es un build listo para desplegar.</dd></div><div><dt>Tiempo de merge</dt><dd>Cuánto espera un pull request antes de sumarse al código principal.</dd></div><div><dt>Valor BU y valor Meli</dt><dd>El número de una unidad de negocio, al lado del mismo número para todo Mercado Libre.</dd></div></dl>
+        </aside>
+      </div>
+
+      <figure class="fx-canvas">
+        <div class="fx-canvas-shot"><img loading="lazy" data-zoom src="../assets/fury/fury-analytics-home.webp" srcset="../assets/fury/fury-analytics-home-sm.webp 800w, ../assets/fury/fury-analytics-home.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 1100px" width="1440" height="880" alt="Home de Analytics con pestañas Efficiency, Resilience, User impact, Code quality y Security, y tarjetas de métricas como frecuencia de deploy, tiempo de build y tiempo de merge" decoding="async"></div>
+        <figcaption>Cinco pestañas agrupan las métricas. Cada tarjeta termina con las mismas tres acciones: qué significa la métrica, una alerta cuando cambia y una lectura con IA.</figcaption>
+      </figure>
+
+      <div class="fx-moves">
+        <article class="fx-move">
+          <p class="fx-move-n">1</p>
+          <h3>Cada tarjeta tiene las mismas tres salidas</h3>
+          <p>Alguien de facturación y un tech lead leen la misma tarjeta de forma distinta. Info, alerta e IA están en la misma esquina de cada métrica, así nadie tiene que aprender un layout nuevo por pestaña.</p>
+        </article>
+        <article class="fx-move">
+          <p class="fx-move-n">2</p>
+          <h3>Un número siempre viene con una referencia</h3>
+          <p>Una cantidad de builds sola dice poco. La vista de detalle grafica el valor del equipo contra el de Mercado Libre, y permite reagrupar por aplicación, estrategia o tiempo.</p>
+        </article>
+        <article class="fx-move">
+          <p class="fx-move-n">3</p>
+          <h3>Entran dos métricas, sale una lectura</h3>
+          <p>Con el equipo propusimos que la IA combine dos métricas en una tasa, la compare con el objetivo y recomiende dónde mirar. Si el presupuesto de nube sube mes a mes, señala la parte que lo empuja.</p>
+        </article>
+      </div>
+
+      <div class="fx-pair">
+        <figure class="pm-fig">
+          <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="../assets/fury/fury-analytics-detail.webp" srcset="../assets/fury/fury-analytics-detail-sm.webp 800w, ../assets/fury/fury-analytics-detail.webp 1440w" sizes="(max-width: 899.98px) 92vw, 600px" width="1440" height="740" alt="Detalle de builds y versiones con filtros, un gráfico de líneas que compara Meli value, BU value y el total, y un gráfico de dona por estrategia de deploy" decoding="async"></div></div>
+          <figcaption>La vista de detalle: la línea del equipo contra la de Mercado Libre, y los mismos builds separados por estrategia de deploy.</figcaption>
+        </figure>
+        <figure class="pm-fig">
+          <div class="pm-well"><div class="pm-shot"><img loading="lazy" data-zoom src="../assets/fury/fury-ai-insights.webp" srcset="../assets/fury/fury-ai-insights-sm.webp 800w, ../assets/fury/fury-ai-insights.webp 1440w" sizes="(max-width: 899.98px) 92vw, 600px" width="1440" height="1024" alt="Insights de IA que combinan builds y versiones generadas en una tasa de versiones desplegadas, con los estados Above, Meet, Warning y Below y recomendaciones" decoding="async"></div></div>
+          <figcaption>AI Metrics: los builds y las versiones generadas se convierten en una tasa de versiones desplegadas, marcada como Above, Meet, Warning o Below, con recomendaciones al lado.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec fx-chapter fx-chapter--tint" id="fx-pipes" aria-labelledby="fx-pp-h" data-chapter="Pipelines">
+    <div class="wrap">
+      <div class="fx-ch-head">
+        <div class="sec-head">
+          <p class="label">Campo 2: entrega de software</p>
+          <h2 class="t-h2" id="fx-pp-h">Pipelines de deploy, del primer módulo al rollback</h2>
+          <p class="sub">Un pipeline es la secuencia que lleva una versión nueva a producción: desplegar, esperar, mover tráfico y volver atrás si algo falla. Los ingenieros lo arman una vez y lo corren muchas, así que el trabajo cubrió toda la vida de un pipeline, incluido el momento en que se rompe.</p>
+        </div>
+        <aside class="fx-notes" aria-label="Lo que tuve que aprender primero">
+          <p class="fx-notes-title">Lo que tuve que aprender primero</p>
+          <dl><div><dt>Scope</dt><dd>Un entorno donde corre una app, como una región de producción o una instancia de prueba.</dd></div><div><dt>Canary</dt><dd>Mandar una parte chica del tráfico a la versión nueva antes de que llegue a todos.</dd></div><div><dt>Blue-green</dt><dd>Dos entornos idénticos; el tráfico pasa de uno al otro.</dd></div><div><dt>Rollback</dt><dd>Volver a la última versión que funcionaba.</dd></div></dl>
+        </aside>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="fx-wizard" data-wizard>
+        <div class="fx-wz-steps" role="tablist" aria-label="La vida de un pipeline">
+          <button type="button" role="tab" id="fx-wz-t-build" aria-controls="fx-wz-p-build" aria-selected="true"><span class="fx-wz-n" aria-hidden="true">1</span><span class="fx-wz-name">Armar</span><span class="fx-wz-sub">Los módulos se apilan en orden</span></button>
+          <button type="button" role="tab" id="fx-wz-t-preview" aria-controls="fx-wz-p-preview" aria-selected="false" tabindex="-1"><span class="fx-wz-n" aria-hidden="true">2</span><span class="fx-wz-name">Previsualizar</span><span class="fx-wz-sub">La secuencia completa antes de correr</span></button>
+          <button type="button" role="tab" id="fx-wz-t-run" aria-controls="fx-wz-p-run" aria-selected="false" tabindex="-1"><span class="fx-wz-n" aria-hidden="true">3</span><span class="fx-wz-name">Correr</span><span class="fx-wz-sub">Cada scope con su versión y estrategia</span></button>
+          <button type="button" role="tab" id="fx-wz-t-fail" aria-controls="fx-wz-p-fail" aria-selected="false" tabindex="-1"><span class="fx-wz-n" aria-hidden="true">4</span><span class="fx-wz-name">Fallar</span><span class="fx-wz-sub">El error aparece donde pasó</span></button>
+          <button type="button" role="tab" id="fx-wz-t-reco" aria-controls="fx-wz-p-reco" aria-selected="false" tabindex="-1"><span class="fx-wz-n" aria-hidden="true">5</span><span class="fx-wz-name">Sugerir</span><span class="fx-wz-sub">Un pipeline sugerido a partir de los scopes de la app</span></button>
+        </div>
+        <div class="fx-wz-stage">
+          <div class="fx-wz-panel" role="tabpanel" id="fx-wz-p-build" aria-labelledby="fx-wz-t-build">
+            <div class="fx-wz-frame"><img data-zoom src="../assets/fury/fury-pipeline-build.webp" srcset="../assets/fury/fury-pipeline-build-sm.webp 800w, ../assets/fury/fury-pipeline-build.webp 1433w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1433" height="1440" alt="Pipeline nuevo desde cero: módulos de deploy, espera, finalización y rollback apilados, con una fila de módulos para sumar" decoding="async"></div>
+            <p class="fx-wz-desc">Desplegar, esperar, cambiar tráfico, terminar y volver atrás son módulos. Los equipos los apilan en orden y suman nuevos desde la fila de abajo.</p>
+          </div>
+          <div class="fx-wz-panel" role="tabpanel" id="fx-wz-p-preview" aria-labelledby="fx-wz-t-preview" hidden>
+            <div class="fx-wz-frame"><img loading="lazy" data-zoom src="../assets/fury/fury-pipeline-preview.webp" srcset="../assets/fury/fury-pipeline-preview-sm.webp 800w, ../assets/fury/fury-pipeline-preview.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1440" height="1024" alt="Previsualización de un pipeline con la secuencia de módulos y los porcentajes de tráfico del módulo de cambio de tráfico" decoding="async"></div>
+            <p class="fx-wz-desc">Antes de correr nada, la secuencia completa está a la vista, y cada módulo abre sus detalles, como cuánto tráfico pasa a cada scope.</p>
+          </div>
+          <div class="fx-wz-panel" role="tabpanel" id="fx-wz-p-run" aria-labelledby="fx-wz-t-run" hidden>
+            <div class="fx-wz-frame"><img loading="lazy" data-zoom src="../assets/fury/fury-exec-finished.webp" srcset="../assets/fury/fury-exec-finished-sm.webp 800w, ../assets/fury/fury-exec-finished.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1440" height="1383" alt="Ejecución terminada con el módulo de deploy abierto, que lista scopes, versiones, estrategia y estado" decoding="async"></div>
+            <p class="fx-wz-desc">Durante y después de una ejecución, cada módulo lista sus scopes con versión, estrategia y estado.</p>
+          </div>
+          <div class="fx-wz-panel" role="tabpanel" id="fx-wz-p-fail" aria-labelledby="fx-wz-t-fail" hidden>
+            <div class="fx-wz-frame"><img loading="lazy" data-zoom src="../assets/fury/fury-exec-rollback.webp" srcset="../assets/fury/fury-exec-rollback-sm.webp 800w, ../assets/fury/fury-exec-rollback.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1440" height="1192" alt="Detalle de una ejecución con el módulo de rollback abierto, que muestra los scopes fallidos y un tooltip de error" decoding="async"></div>
+            <p class="fx-wz-desc">Cuando un paso falla, el error aparece en el scope que falló, dentro del módulo donde pasó.</p>
+          </div>
+          <div class="fx-wz-panel" role="tabpanel" id="fx-wz-p-reco" aria-labelledby="fx-wz-t-reco" hidden>
+            <div class="fx-wz-frame"><img loading="lazy" data-zoom src="../assets/fury/fury-pipeline-reco.webp" srcset="../assets/fury/fury-pipeline-reco-sm.webp 800w, ../assets/fury/fury-pipeline-reco.webp 1440w" sizes="(max-width: 1023.98px) 92vw, 760px" width="1440" height="1024" alt="Pipeline nuevo a partir de una recomendación, con nombre, descripción y variables para completar" decoding="async"></div>
+            <p class="fx-wz-desc">Fury lee los scopes de la app seleccionada y sugiere un pipeline, así los equipos solo completan lo que cambia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-white fx-chapter" id="fx-infra" aria-labelledby="fx-in-h" data-chapter="Infraestructura">
+    <div class="wrap">
+      <div class="fx-ch-head">
+        <div class="sec-head">
+          <p class="label">Campo 3: infraestructura multipaís</p>
+          <h2 class="t-h2" id="fx-in-h">Un servicio, configurado por país y por empresa</h2>
+          <p class="sub">Mercado Libre opera en muchos países y a través de varias empresas, y el mismo servicio suele necesitar configuraciones distintas en cada una. El equipo de plataforma definió cómo dividir los servicios por segmento, como Argentina, Brasil, Mex Bank o Non prod. Mi parte fue la ejecución: hacer que ese modelo se pudiera usar en Key Value Store, BigQueue y las autorizaciones de tráfico.</p>
+        </div>
+        <aside class="fx-notes" aria-label="Lo que tuve que aprender primero">
+          <p class="fx-notes-title">Lo que tuve que aprender primero</p>
+          <dl><div><dt>Segmento</dt><dd>El mismo servicio dividido por país o empresa.</dd></div><div><dt>Key Value Store</dt><dd>Un almacenamiento rápido para datos simples que un servicio lee seguido.</dd></div><div><dt>Topic y flush</dt><dd>Un topic guarda los mensajes de un servicio; hacer flush borra los que están programados.</dd></div><div><dt>Autorización de tráfico</dt><dd>Qué aplicaciones pueden llamar a un servicio.</dd></div></dl>
+        </aside>
+      </div>
+
+      <div class="fx-tiles">
+        <figure class="fx-tile">
+          <div class="pm-shot fx-frame" style="--op: 50% 72%"><img loading="lazy" data-zoom src="../assets/fury/fury-new-topic.webp" srcset="../assets/fury/fury-new-topic-sm.webp 800w, ../assets/fury/fury-new-topic.webp 1440w" sizes="(max-width: 767.98px) 92vw, 600px" width="1440" height="1388" alt="Formulario de topic nuevo en BigQueue con un bloque de segmentación con casillas de país y entorno" decoding="async"></div>
+          <figcaption><b>Los segmentos se eligen al crear el servicio.</b> Elegir un segmento no productivo pone los parámetros relacionados en Test, y el formulario lo dice.</figcaption>
+        </figure>
+        <figure class="fx-tile fx-tile--ink">
+          <div class="fy-naming fx-frame">
+            <p class="fy-rule"><span>[service-name]</span>-<span>[segment]</span></p>
+            <ul class="fy-names" aria-label="Ejemplos">
+              <li>kvs-name-<b>mexbank</b></li><li>kvs-name-<b>nonprod</b></li><li>kvs-name-<b>platform</b></li><li>kvs-name-<b>legacy</b></li>
+            </ul>
+          </div>
+          <figcaption><b>Una sola regla de nombres, visible antes de que el servicio exista.</b> El nombre final aparece en solo lectura mientras se configura, así filas que parecen iguales dejan de apuntar a infraestructuras distintas.</figcaption>
+        </figure>
+        <figure class="fx-tile">
+          <div class="pm-shot fx-frame"><img loading="lazy" data-zoom src="../assets/fury/fury-segmented-flush.webp" srcset="../assets/fury/fury-segmented-flush-sm.webp 800w, ../assets/fury/fury-segmented-flush.webp 1440w" sizes="(max-width: 767.98px) 92vw, 600px" width="1440" height="1027" alt="Diálogo de flush de un topic con una advertencia, un selector de segmento y un campo de confirmación" decoding="async"></div>
+          <figcaption><b>La acción más riesgosa pregunta primero qué segmento.</b> El flush avisa cuando scopes productivos todavía pueden estar usando el servicio y pide una confirmación escrita.</figcaption>
+        </figure>
+        <figure class="fx-tile">
+          <div class="pm-shot fx-frame"><img loading="lazy" data-zoom src="../assets/fury/fury-traffic-access.webp" srcset="../assets/fury/fury-traffic-access-sm.webp 800w, ../assets/fury/fury-traffic-access.webp 1440w" sizes="(max-width: 767.98px) 92vw, 600px" width="1440" height="1024" alt="Pantalla de autorización de tráfico con grupos de acceso, tipo de regla Inter segment, origen y destino" decoding="async"></div>
+          <figcaption><b>El acceso entre segmentos se entiende.</b> Cada grupo de acceso muestra su tipo de regla y los segmentos de origen y destino.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec fx-chapter fx-platform on-dark" id="fx-platform" aria-labelledby="fx-pl-h" data-chapter="Plataforma">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Campo 4: la plataforma en sí</p>
+        <h2 class="t-h2" id="fx-pl-h">Dieciséis secciones, dieciséis formas de decir “no hay nada”</h2>
+        <p class="sub">Fury creció de a una herramienta, construida por squads distintos, y se notaba. Un compañero auditó los estados vacíos de 39 pantallas en 16 secciones. El mismo momento tenía otro layout, otra ilustración y otro tono en casi todas.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="fx-versus">
+        <figure class="fx-vs">
+          <div class="fx-vs-frame"><img loading="lazy" data-zoom src="../assets/fury/fury-es-auth.webp" srcset="../assets/fury/fury-es-auth-sm.webp 800w, ../assets/fury/fury-es-auth.webp 1440w" sizes="(max-width: 899.98px) 92vw, 600px" width="1440" height="600" alt="Autorizaciones sin pedidos: una tarjeta grande con título, descripción, ilustración y un botón" decoding="async"><span class="fx-vs-ring" style="--x:6%;--y:37%;--w:89%;--h:55%" aria-hidden="true"></span></div>
+          <figcaption><span>Autorizaciones</span>Título, descripción, ilustración y un botón</figcaption>
+        </figure>
+        <p class="fx-vs-mid" aria-hidden="true">Mismo mensaje</p>
+        <figure class="fx-vs">
+          <div class="fx-vs-frame"><img loading="lazy" data-zoom src="../assets/fury/fury-es-news-full.webp" srcset="../assets/fury/fury-es-news-full-sm.webp 800w, ../assets/fury/fury-es-news-full.webp 1440w" sizes="(max-width: 899.98px) 92vw, 600px" width="1440" height="600" alt="Noticias y eventos sin eventos activos: una línea gris dentro de una caja, arriba de la página" decoding="async"><span class="fx-vs-ring" style="--x:6%;--y:26%;--w:56%;--h:17%" aria-hidden="true"></span></div>
+          <figcaption><span>Noticias y eventos</span>Una línea gris y una nubecita</figcaption>
+        </figure>
+      </div>
+      <p class="fx-vs-note">La auditoría se convirtió en un único componente de estado vacío en Scotia, en cuatro tamaños, para que cada sección diga “no hay nada” de la misma forma.</p>
+    </div>
+  </section>
+
+  <section class="sec bg-white fx-scotia" aria-labelledby="fx-sc-h" data-chapter="Handoff">
+    <div class="wrap">
+      <div class="fx-ch-head fx-ch-head--solo">
+        <div class="sec-head">
+          <p class="label">Handoff</p>
+          <h2 class="t-h2" id="fx-sc-h">Todo lo que necesita el próximo diseñador, por escrito</h2>
+          <p class="sub">Los proyectos duraban más o menos un mes y el siguiente solía arrancar enseguida, así que cada handoff tenía que sostenerse solo. Quien tomara el trabajo, un desarrollador o el próximo diseñador, podía seguir sin tener que buscarme primero.</p>
+        </div>
+      </div>
+      <ol class="fx-doc" aria-label="Lo que documentaba cada handoff">
+        <li><h3>Qué descubrí</h3><p>Cómo funciona esa parte del sistema, el vocabulario del equipo y los límites técnicos que le dieron forma al diseño.</p></li>
+        <li><h3>Qué diseñé</h3><p>Flujos, estados y especificaciones para desarrollo, con el porqué de cada decisión y las piezas reutilizables marcadas como tales.</p></li>
+        <li><h3>Qué quedó pendiente</h3><p>Preguntas abiertas, ideas que quedaron fuera del alcance y lo que encontró QA después del lanzamiento, para que nada dependiera de mi memoria.</p></li>
+      </ol>
+      <div class="fx-doc-lib">
+        <p>Los componentes que otros proyectos podían usar fueron a Scotia, la librería de nuestro equipo sobre Andes, el design system de Mercado Libre. No creé Scotia: la mantuve alineada con Andes y le sumé lo que necesitaban mis proyectos, como estos dos gráficos de Analytics.</p>
+      </div>
+      <div class="fx-charts">
+        <figure class="fx-chart">
+          <img loading="lazy" data-zoom src="../assets/fury/fury-chart-cloud.webp" width="1049" height="247" alt="Gráfico de área del uso diario de la nube contra los planes contratados, con la subutilización sombreada en naranja" decoding="async">
+          <figcaption>Uso de la nube contra los planes contratados, con la parte subutilizada sombreada.</figcaption>
+        </figure>
+        <figure class="fx-chart">
+          <img loading="lazy" data-zoom src="../assets/fury/fury-chart-timeline.webp" width="1123" height="300" alt="Gráfico de línea de tiempo de versiones a lo largo de un trimestre, con barras para las dependencias transitivas y sus fechas de baja" decoding="async">
+          <figcaption>Versiones en una línea de tiempo trimestral, con sus dependencias transitivas y fechas de baja.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec fx-reflect" aria-labelledby="fx-rf-h" data-chapter="Reflexión">
+    <div class="wrap">
+      <div class="fx-reflect-grid">
+        <h2 class="t-h2" id="fx-rf-h">Lo que me enseñaron dos años cambiando de campo</h2>
+        <div class="fx-reflect-body">
+          <p>Entender el sistema llevó más tiempo que diseñar para él. En dos años aprendí mucho de cloud, infraestructura, facturación, IA y desarrollo de software, porque cada equipo necesitaba que entendiera cómo funciona su parte de Mercado Libre antes de que mis propuestas sirvieran.</p>
+          <p><b>Lo que Fury todavía necesita: una sola voz.</b> Cada diseñador del equipo se ocupa de un proyecto o una función, y cada uno lo resuelve a su manera. Las palabras cambian de pantalla en pantalla, la misma acción puede terminar con nombres distintos y mucho texto da por sentado el vocabulario interno de Mercado Libre. Las funciones sirven a departamentos muy distintos, y muchas las usan pocos equipos, así que algo de diferencia es esperable. Lo que falta es un mapa de toda la plataforma y, después, reglas compartidas de voz, terminología y patrones, para que Fury se sienta como un solo producto y no como bloques apilados. Ese trabajo importa todavía más ahora que la va a usar gente de fuera de Mercado Libre.</p>
+          <p>Lo próximo en lo que quiero mejorar es infraestructura y escalabilidad, donde están las decisiones de plataforma más difíciles.</p>
+          <p>El trabajo de plataforma rara vez termina con una métrica para mostrar. Lo que sí puedo mostrar es el camino de cada proyecto: un kickoff con los desarrolladores, un diseño construido a partir de lo que ya existía, un handoff que la siguiente persona pudo reutilizar y QA sobre lo que realmente salió.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="next-case" aria-label="Siguiente caso">
+    <div class="wrap">
+      <a href="conduiit.html"><span class="next-label">Siguiente caso</span><span class="next-title">Sacar de las planillas las finanzas de las producciones de cine</span><span class="next-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </nav>
+
+</section>
+
+</main>
+<footer class="site-footer">
+  <section class="contact on-dark" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <h2 id="contact-h">Los buenos productos empiezan con buenas conversaciones.</h2>
+          <p>¿Estás buscando a alguien para un puesto o tenés un proyecto en mente? Escribime. Aviso: te voy a hablar del tema hasta por los codos.</p>
+          <div class="contact-who">
+            <img src="../assets/avatar-footer.webp?v=2" width="208" height="208" alt="" decoding="async" loading="lazy">
+            <p><span>David Hoyos</span>Product Designer en Argentina, abierto a puestos remotos e híbridos</p>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="contact-email" href="mailto:daviddhoyos1@gmail.com" data-copy-email><span>daviddhoyos1@gmail.com</span><span class="contact-email-icon"><svg class="ce-copy" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"/></svg><svg class="ce-send" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><span class="sr-only ce-copy"> (copia la dirección de email)</span><span class="sr-only ce-send"> (abre tu app de correo)</span></a>
+          <ul class="contact-links">
+            <li class="cl-write"><a class="btn btn--glass glass glass--clear glass--interactive" href="mailto:daviddhoyos1@gmail.com?subject=Hola%20David">Escribime<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg><span class="sr-only"> (abre tu app de correo)</span></a></li>
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="https://www.linkedin.com/in/daviddhoyos/" target="_blank" rel="noopener noreferrer">LinkedIn<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16L16 8M9 8h7v7"/></svg><span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+            <li><a class="btn btn--glass glass glass--clear glass--interactive" href="../assets/david-hoyos-cv-es.pdf" download="David-Hoyos-CV.pdf">Descargar CV<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="sr-only"> (PDF)</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal">
+        <p>© 2026 David Hoyos. Todos los derechos reservados.</p><a href="legal.html">Términos y privacidad</a>
+      </div>
+    </div>
+  </section>
+</footer>
+<script src="../app.js?v=14" defer></script>
+<script src="../lightbox.js?v=4" defer></script>
+<script src="../thumbs.js?v=11" defer></script>
+<script src="../hero-shader.js?v=7" defer></script>
+<script src="../section-shader.js?v=6" defer></script>
+<script src="../fury.js?v=3" defer></script>
+</body>
+</html>

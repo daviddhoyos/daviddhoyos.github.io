@@ -2,6 +2,9 @@
   'use strict';
   const root = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  /* the Spanish pages live in /es/ with <html lang="es">; strings built here follow the page */
+  const ES = /^es\b/i.test(root.lang || '');
+  const t = (en, es) => (ES ? es : en);
 
   /* ---------- reveal on scroll (home only, content visible by default without JS/IO) ---------- */
   let io = null;
@@ -25,7 +28,7 @@
     if (can) {
       el.tabIndex = 0;
       el.setAttribute('role', 'region');
-      el.setAttribute('aria-label', el.dataset.label || 'Scrollable content');
+      el.setAttribute('aria-label', el.dataset.label || t('Scrollable content', 'Contenido desplazable'));
       updateEdge(el);
     } else {
       el.removeAttribute('tabindex');
@@ -188,6 +191,119 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(start); else start();
   }
 
+  /* ---------- language switch (desktop): EN | ES, its own piece of glass in the top-right corner ----------
+     Built only where the page declares both alternates (<link rel="alternate" hreflang>), so a page without a twin
+     shows nothing. Two links, not buttons: each goes to the same page in the other language, keeping the #section.
+     Pressing lifts the selection into a lens; it can be dragged across and settles on a spring that inherits the
+     drag's velocity (critically damped for taps and keys, a little bounce after a throw). Reduced motion: no slide. */
+  const altOf = (l) => document.querySelector('link[rel="alternate"][hreflang="' + l + '"]');
+  if (nav && altOf('en') && altOf('es')) {
+    const LANGS = [['en', 'EN', 'English'], ['es', 'ES', 'Español']];
+    const curIdx = ES ? 1 : 0;
+    const sw = document.createElement('div');
+    sw.className = 'lang glass glass--interactive';
+    sw.setAttribute('role', 'group');
+    sw.setAttribute('aria-label', t('Language', 'Idioma'));
+    sw.innerHTML = '<span class="lang-thumb" aria-hidden="true"></span>' + LANGS.map(([code, label, name], i) =>
+      '<a href="' + new URL(altOf(code).href).pathname + '" hreflang="' + code + '" lang="' + code + '" aria-label="' + name + '"' +
+      (i === curIdx ? ' aria-current="true"' : '') + '>' + label + '</a>').join('');
+    const header = nav.closest('header') || nav;
+    header.parentNode.insertBefore(sw, header.nextSibling);   // tab order: right after the nav links
+    const thumb = sw.querySelector('.lang-thumb');
+    const links = [...sw.querySelectorAll('a')];
+
+    // same tone as the nav: bare over the home hero, dark or light glass with whatever is underneath
+    const tone = () => {
+      sw.classList.toggle('glass--light', nav.classList.contains('is-on-light'));
+      sw.classList.toggle('is-resting', nav.classList.contains('is-resting'));
+    };
+    new MutationObserver(tone).observe(nav, { attributes: true, attributeFilter: ['class'] });
+    tone();
+
+    // springs (mass 1): stiffness (2π/response)², damping 4π·ζ/response, as in SwiftUI
+    let seg = 0;
+    const S = { x: 0, v: 0, to: 0, damp: 1, s: 1, sv: 0, sto: 1 };
+    const paint = () => { thumb.style.transform = 'translateX(' + S.x.toFixed(2) + 'px) scale(' + S.s.toFixed(4) + ')'; };
+    const measure = () => {
+      seg = links[1].offsetLeft - links[0].offsetLeft;
+      if (!raf && !drag) { S.x = S.to = links.findIndex((a) => a.hasAttribute('aria-current')) * seg; paint(); }
+    };
+    let raf = 0, last = 0, drag = null, swallowClick = false;
+    const spring = (p, v, to, response, zeta, dt) => {
+      const k = Math.pow((2 * Math.PI) / response, 2), c = (4 * Math.PI * zeta) / response;
+      v += (-k * (p - to) - c * v) * dt;
+      return [p + v * dt, v];
+    };
+    const step = (now) => {
+      const dt = Math.min((now - last) / 1000, 1 / 30); last = now;
+      if (!drag) [S.x, S.v] = spring(S.x, S.v, S.to, 0.36, S.damp, dt);
+      [S.s, S.sv] = spring(S.s, S.sv, S.sto, 0.24, 1, dt);
+      const still = Math.abs(S.x - S.to) < 0.15 && Math.abs(S.v) < 3 && Math.abs(S.s - S.sto) < 0.001 && Math.abs(S.sv) < 0.02;
+      if (still && !drag) { S.x = S.to; S.s = S.sto; S.v = S.sv = 0; raf = 0; } else raf = requestAnimationFrame(step);
+      paint();
+    };
+    const run = () => { if (!raf) { last = performance.now(); raf = requestAnimationFrame(step); } };
+
+    const commit = (idx, thrown) => {
+      S.to = idx * seg; S.damp = thrown ? 0.8 : 1; S.sto = 1;
+      if (idx === links.findIndex((a) => a.hasAttribute('aria-current'))) { run(); return; }
+      links.forEach((a, i) => { if (i === idx) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+      const url = links[idx].getAttribute('href') + location.hash;
+      if (reduceMotion.matches) { location.href = url; return; }
+      run();
+      setTimeout(() => { location.href = url; }, 300);   // the thumb has all but arrived; the page follows
+    };
+
+    links.forEach((a, i) => a.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (swallowClick) return;
+      if (!seg) measure();
+      commit(i, false);
+    }));
+
+    sw.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0 || reduceMotion.matches) return;
+      measure();
+      drag = { id: e.pointerId, x0: e.clientX, base: S.x, moved: false, lx: e.clientX, lt: performance.now(), vel: 0 };
+      S.sto = 1.16; sw.classList.add('is-lifted'); run();   // highlight on touch-down: the selection lifts into a lens
+    });
+    sw.addEventListener('pointermove', (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.x0;
+      if (!drag.moved) {
+        if (Math.abs(dx) < 4) return;
+        drag.moved = true; sw.setPointerCapture(e.pointerId);
+      }
+      let x = drag.base + dx;                                    // glued to the pointer, from where it was grabbed
+      if (x < 0) x /= 3; else if (x > seg) x = seg + (x - seg) / 3; // rubber band past the ends
+      const now = performance.now();
+      drag.vel = (e.clientX - drag.lx) / Math.max((now - drag.lt) / 1000, 0.001);
+      drag.lx = e.clientX; drag.lt = now;
+      S.x = x; S.v = 0;
+    });
+    const release = (e, cancelled) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const d = drag; drag = null;
+      sw.classList.remove('is-lifted');
+      if (!d.moved) { S.sto = 1; run(); return; }               // a plain press: the click commits
+      swallowClick = true; setTimeout(() => { swallowClick = false; }, 0);
+      S.v = d.vel;                                               // hand the drag's velocity to the spring
+      const home = links.findIndex((a) => a.hasAttribute('aria-current'));
+      commit(cancelled ? home : (S.x + d.vel * 0.08 > seg / 2 ? 1 : 0), true);
+    };
+    sw.addEventListener('pointerup', (e) => release(e, false));
+    sw.addEventListener('pointercancel', (e) => release(e, true));
+
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    if (desktop.addEventListener) desktop.addEventListener('change', measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure); else measure();
+    window.addEventListener('pageshow', (e) => {                // back/forward cache: undo a half-finished switch
+      if (!e.persisted) return;
+      links.forEach((a, i) => { if (i === curIdx) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+      cancelAnimationFrame(raf); raf = 0; S.s = S.sto = 1; measure();
+    });
+  }
+
   /* ---------- interactive glass: the specular highlight follows the pointer (fine pointers only) ---------- */
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     document.querySelectorAll('.glass--interactive').forEach((el) => {
@@ -245,7 +361,7 @@
     const showTip = (link) => {
       clearTimeout(hideTimer);
       tipText.textContent = '';                                   // re-set so screen readers announce every copy
-      requestAnimationFrame(() => { tipText.textContent = 'Email copied'; placeTip(link); tip.classList.add('is-on'); });
+      requestAnimationFrame(() => { tipText.textContent = t('Email copied', 'Email copiado'); placeTip(link); tip.classList.add('is-on'); });
       hideTimer = setTimeout(() => tip.classList.remove('is-on'), 2200);
     };
 
@@ -280,7 +396,7 @@
   if (chapters.length > 1) {
     bar = document.createElement('nav');
     bar.className = 'cs-bar glass';
-    bar.setAttribute('aria-label', 'Case study progress');
+    bar.setAttribute('aria-label', t('Case study progress', 'Progreso del caso'));
     bar.hidden = true;
     bar.innerHTML = '<span class="cs-bar-dot" aria-hidden="true"></span><span class="cs-bar-text" aria-live="polite"></span><ol class="cs-bar-ticks"></ol>';
     const text = bar.querySelector('.cs-bar-text');
@@ -290,7 +406,7 @@
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = '#' + c.id;
-      a.setAttribute('aria-label', c.dataset.chapter + ', ' + (i + 1) + ' of ' + chapters.length);
+      a.setAttribute('aria-label', c.dataset.chapter + ', ' + (i + 1) + t(' of ', ' de ') + chapters.length);
       li.appendChild(a); list.appendChild(li);
       return a;
     });
@@ -309,7 +425,7 @@
       current = idx;
       const last = idx === chapters.length - 1;
       bar.classList.toggle('is-finished', last);
-      text.textContent = last ? 'Finished' : chapters[idx].dataset.chapter + ', ' + (idx + 1) + ' of ' + chapters.length;
+      text.textContent = last ? t('Finished', 'Terminado') : chapters[idx].dataset.chapter + ', ' + (idx + 1) + t(' of ', ' de ') + chapters.length;
       links.forEach((a, i) => {
         a.classList.toggle('is-past', i < idx);
         if (i === idx) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current');
@@ -320,7 +436,7 @@
   const top = document.createElement('button');
   top.type = 'button';
   top.className = 'to-top glass glass--interactive';
-  top.setAttribute('aria-label', 'Back to top');
+  top.setAttribute('aria-label', t('Back to top', 'Volver arriba'));
   top.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
   top.tabIndex = -1;
   document.body.appendChild(top);

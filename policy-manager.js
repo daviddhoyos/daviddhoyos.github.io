@@ -1,5 +1,6 @@
 /* Policy Manager case study: message anatomy, screen tabs and the approval demo. */
 (() => {
+  const ES = /^es\b/i.test(document.documentElement.lang);
   /* ---------- message anatomy: point at a part of the legend to find it in the sentence ---------- */
   document.querySelectorAll('[data-msg]').forEach((box) => {
     const set = (part) => { if (part) box.dataset.active = part; else delete box.dataset.active; };
@@ -48,9 +49,9 @@
         const done = Math.min(n, t.total);
         t.dots.forEach((d, i) => d.classList.toggle('is-done', i < done));
         t.el.classList.toggle('is-complete', n >= t.total);
-        t.status.textContent = n === 0 ? `${t.total} steps to approve`
-          : n >= t.total ? `Approved in ${t.total} steps`
-          : `Step ${n} of ${t.total}, ${t.total - n} to go`;
+        t.status.textContent = ES
+          ? (n === 0 ? `${t.total} pasos para aprobar` : n >= t.total ? `Aprobada en ${t.total} pasos` : `Paso ${n} de ${t.total}, faltan ${t.total - n}`)
+          : (n === 0 ? `${t.total} steps to approve` : n >= t.total ? `Approved in ${t.total} steps` : `Step ${n} of ${t.total}, ${t.total - n} to go`);
       });
       reset.hidden = n === 0;
       next.hidden = n >= max;

@@ -9,6 +9,9 @@
 <meta name="author" content="David Hoyos">
 <meta name="copyright" content="© 2026 David Hoyos. All rights reserved.">
 <link rel="canonical" href="https://daviddhoyos.github.io/fury.html">
+<link rel="alternate" hreflang="en" href="https://daviddhoyos.github.io/fury.html">
+<link rel="alternate" hreflang="es" href="https://daviddhoyos.github.io/es/fury.html">
+<link rel="alternate" hreflang="x-default" href="https://daviddhoyos.github.io/fury.html">
 <meta name="theme-color" content="#19141a">
 <link rel="icon" href="favicon.ico" sizes="32x32" data-dark="favicon-dark.ico">
 <link rel="icon" href="favicon.svg" type="image/svg+xml" data-dark="favicon-dark.svg">
@@ -33,7 +36,7 @@
 </script>
 <link rel="preload" href="assets/fonts/geist-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=37">
+<link rel="stylesheet" href="styles.css?v=43">
 <link rel="preload" href="assets/pm-shader-poster.webp" as="image" type="image/webp">
 <link rel="preload" href="assets/fury/fury-analytics-home-sm.webp" as="image" type="image/webp">
 </head>
@@ -84,7 +87,6 @@
         <div class="fx-intro-body">
           <p class="fx-big">As Mercado Libre grew, its engineers needed infrastructure that kept up and fewer steps between writing code and running it. They built Fury for that in 2015: one place to create, deploy, connect to the cloud and monitor applications.</p>
           <p>It started as separate tools, one per need, and over time they were unified into a single Fury for the whole company. Once everyone was using the same platform, it needed a design point of view, so a design team was formed inside Internal Tools. When I joined in 2024, that team was already running.</p>
-          <p>Fury is now also offered to other companies as a modular product: they subscribe to the features they need instead of the whole platform. I worked on that version as well, so every decision had to hold for engineers inside Mercado Libre and for clients outside it.</p>
         </div>
       </div>
 
@@ -99,6 +101,15 @@
           <li><a href="#fx-infra"><span class="fx-index-field">Multi-country infrastructure</span><span class="fx-index-what">One service configured per country and company, without settings reaching the wrong one</span><span class="fx-index-go"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
           <li><a href="#fx-platform"><span class="fx-index-field">The platform itself</span><span class="fx-index-what">Sixteen sections that grew apart, and the shared components that bring them back</span><span class="fx-index-go"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
         </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-mist" aria-labelledby="fx-biz-h" data-chapter="The business">
+    <div class="wrap">
+      <div class="biz-grid">
+        <div class="sec-head"><p class="label">The business</p><h2 class="t-h2" id="fx-biz-h">A platform that keeps cloud spend under control</h2></div>
+        <div class="biz-body"><p class="biz-lead">Everything at Mercado Libre runs in the cloud, and every application on Fury draws on infrastructure that providers like AWS bill for.</p><p>When a team creates an application, Fury asks what it will do, how much load it expects and how many people will work on it, then recommends the kind of server that fits. Each type of application gets a budget. Environments that don’t serve customers, like testing, get a smaller one, and going past it takes a permission request that moves up the chain. All of it serves two goals: teams that ship faster, and a quarter’s cloud budget that lasts the whole quarter.</p><p>The newer bet is selling Fury to other companies as a modular SaaS, the way Diligent sells its apps inside Diligent One. Clients pay for the services they need, and only part of Fury makes sense outside Mercado Libre. That version will be used by managers and HR teams as well as developers, so it has to be simpler and fully accessible to people who have never opened a terminal. I worked on it too, so every decision had to hold for engineers inside Mercado Libre and for clients outside it.</p><p>For design, cost control has to show up at the moment of decision. The budget, the recommended server and the cost of going over belong in the creation flow, where the choice is made, and not in a report that arrives after the money is spent.</p></div>
       </div>
     </div>
   </section>
@@ -327,6 +338,8 @@
         <h2 class="t-h2" id="fx-rf-h">What two years of changing fields taught me</h2>
         <div class="fx-reflect-body">
           <p>Understanding the system took longer than designing for it. In two years I learned a lot about cloud, infrastructure, billing, AI and software development, because each team needed me to understand how its part of Mercado Libre works before my proposals were useful.</p>
+          <p><b>What Fury still needs: one voice.</b> Each designer on the team owns a project or a feature, and each one solves it their own way. The words change from screen to screen, the same action can end up with different names, and a lot of copy assumes Mercado Libre’s internal vocabulary. Features serve very different departments, and many of them are used by only a few teams, so some difference is expected. What’s missing is a map of the whole platform, followed by shared rules for voice, terminology and patterns, so that Fury feels like one product and not a stack of separate blocks. That work matters even more now that people outside Mercado Libre will use it.</p>
+          <p>The next thing I want to get better at is infrastructure and scalability, where the hardest platform decisions live.</p>
           <p>Platform work rarely ends with one metric to show. What I can point to is the path each project followed: a kickoff with the developers, a design built from what already existed, a handoff the next person could reuse, and QA on what actually shipped.</p>
         </div>
       </div>
@@ -364,14 +377,14 @@
         </div>
       </div>
       <div class="legal">
-        <p>© 2026 David Hoyos. All rights reserved.</p>
+        <p>© 2026 David Hoyos. All rights reserved.</p><a href="legal.html">Terms and privacy</a>
       </div>
     </div>
   </section>
 </footer>
-<script src="app.js?v=12" defer></script>
-<script src="lightbox.js?v=3" defer></script>
-<script src="thumbs.js?v=9" defer></script>
+<script src="app.js?v=14" defer></script>
+<script src="lightbox.js?v=4" defer></script>
+<script src="thumbs.js?v=11" defer></script>
 <script src="hero-shader.js?v=7" defer></script>
 <script src="section-shader.js?v=6" defer></script>
 <script src="fury.js?v=3" defer></script>
