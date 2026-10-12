@@ -12,6 +12,18 @@ Allow: /apple-touch-icon.png
 Allow: /apple-touch-icon-dark.png
 Allow: /favicon-dark.ico
 
+# Same intent for Bing, written differently because Bing has no image-only crawler
+# and ignores noimageindex: bingbot has to be told by file type. The product
+# screenshots stay out of Bing Images; the CV PDFs and the web fonts stay readable,
+# and the favicons at the root are untouched.
+User-agent: bingbot
+User-agent: msnbot-media
+Disallow: /assets/*.webp$
+Disallow: /assets/*.jpg$
+Disallow: /assets/*.jpeg$
+Disallow: /assets/*.png$
+Disallow: /assets/*.svg$
+
 # AI crawlers and dataset builders: content may not be reproduced or used to train models (see /legal.html)
 User-agent: GPTBot
 User-agent: ChatGPT-User
