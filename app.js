@@ -473,3 +473,24 @@
 /* images: no right-click menu and no dragging them out of the page (text and the rest of the page stay normal) */
 document.addEventListener('contextmenu', (e) => { if (e.target instanceof Element && e.target.closest('img')) e.preventDefault(); });
 document.addEventListener('dragstart', (e) => { if (e.target instanceof Element && e.target.tagName === 'IMG') e.preventDefault(); });
+
+/* text: Cmd+C and the right-click Copy come back empty inside the content. The CSS already turns
+   selection off, so this only catches what gets through it. Three things stay copyable on purpose:
+   the contact details, anything typed into a field, and the Mail button — that one writes to the
+   clipboard directly, and its fallback textarea sits on document.body, outside <main>. Like every
+   measure of this kind it is client side and anyone who means it can read the page source instead;
+   /legal.html and the LICENSE are what actually bind. */
+(() => {
+  const FREE = '.contact, input, textarea, [contenteditable="true"]';
+  const owner = (n) => (n instanceof Element ? n : n && n.parentElement);
+  document.addEventListener('copy', guard);
+  document.addEventListener('cut', guard);
+  function guard(e) {
+    if (e.target instanceof Element && e.target.closest(FREE)) return;
+    const sel = document.getSelection();
+    if (!sel || sel.isCollapsed) return;
+    const el = owner(sel.anchorNode);
+    if (!el || el.closest(FREE)) return;
+    if (el.closest('main')) e.preventDefault();
+  }
+})();

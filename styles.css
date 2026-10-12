@@ -3171,3 +3171,15 @@ html:not(.yc-js) .yc-skip { display: none; }
 }
 
 img { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
+
+/* ---------- content: the same first barrier the images already have ----------
+   Selection is off across the content, so the case copy cannot be swept up with the cursor or
+   taken with Cmd+A. It is a speed bump, not a lock: whatever the browser renders can still be
+   read from the page source, and what actually binds is /legal.html. Selection stays on where
+   people genuinely need it — the contact details and anything they type into a field — and none
+   of this reaches assistive technology, which reads the accessibility tree, not the selection. */
+main { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+.contact, .contact *,
+main :is(input, textarea, [contenteditable="true"]) {
+  -webkit-user-select: text; -moz-user-select: text; user-select: text;
+}
