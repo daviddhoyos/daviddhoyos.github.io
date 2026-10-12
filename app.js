@@ -481,7 +481,7 @@ document.addEventListener('dragstart', (e) => { if (e.target instanceof Element 
    measure of this kind it is client side and anyone who means it can read the page source instead;
    /legal.html and the LICENSE are what actually bind. */
 (() => {
-  const FREE = '.contact, input, textarea, [contenteditable="true"]';
+  const FREE = '.contact, .terms-sec, input, textarea, [contenteditable="true"]';
   const owner = (n) => (n instanceof Element ? n : n && n.parentElement);
   document.addEventListener('copy', guard);
   document.addEventListener('cut', guard);

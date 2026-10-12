@@ -3179,7 +3179,9 @@ img { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
    people genuinely need it — the contact details and anything they type into a field — and none
    of this reaches assistive technology, which reads the accessibility tree, not the selection. */
 main { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+/* the terms are the one page meant to be quoted back at me, so they stay selectable */
 .contact, .contact *,
+.terms-sec, .terms-sec *,
 main :is(input, textarea, [contenteditable="true"]) {
   -webkit-user-select: text; -moz-user-select: text; user-select: text;
 }
