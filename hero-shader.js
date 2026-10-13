@@ -338,7 +338,14 @@
     gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
     gl.viewport(0, 0, W, H);
     gl.clearColor(0, 0, 0, 1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    gl.enable(gl.DEPTH_TEST); gl.disable(gl.CULL_FACE);
+    /* Back faces are dropped before they are shaded, which is where about a third of the frame goes:
+       every one of them runs the full image-based lighting and is then thrown away by the depth test.
+       Safe here because the mesh cannot fold. The displacement is radial — normal is position, so
+       position + normal * d is position * (1 + d) with d in [-0.3, 0.3], never negative — and the
+       twist is a rotation about Y that varies by latitude, which keeps each vertex's height and
+       radius. Both maps are orientation preserving, so the surface stays star shaped about the origin
+       and every back face is behind a front face along the same ray. */
+    gl.enable(gl.DEPTH_TEST); gl.enable(gl.CULL_FACE); gl.cullFace(gl.BACK);
     gl.useProgram(sphere.p);
     gl.uniform1f(sphere.u.uTime, time);
     gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, envSpec);
